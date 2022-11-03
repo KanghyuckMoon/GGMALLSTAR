@@ -21,6 +21,14 @@ MonoBehaviour:
     m_Address: EFFSO
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f3f764c218390c64f9b06c99ce0f8a88
+    m_Address: Training_BGM
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8010b5eee4fcb1247bea53c434b8b44a
+    m_Address: MainMixer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
