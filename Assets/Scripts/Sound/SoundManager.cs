@@ -13,9 +13,10 @@ namespace Sound
 		private AudioMixerGroup _bgmAudioGroup;
 		private AudioMixerGroup _effAudioGroup;
 		private AudioSource _bgmAudioSource = null;
+		private AudioSource _effAudioSource = null;
 		private Dictionary<AudioBGMType, AudioClip> _bgmAudioClips = new Dictionary<AudioBGMType, AudioClip>();
-		private Dictionary<AudioEFFType, AudioSource> _effAudioSource = new Dictionary<AudioEFFType, AudioSource>();
 		private AudioBGMType _currentBGMType = AudioBGMType.Count;
+		private EFFSO _effSO;
 		private bool _isInit = false;
 
 		public void Awake()
@@ -34,6 +35,7 @@ namespace Sound
 			}
 			_isInit = true;
 
+			_effSO = AddressablesManager.Instance.GetResource<EFFSO>("EFFSO");
 			_audioMixer = AddressablesManager.Instance.GetResource<AudioMixer>("MainMixer");
 
 			var groups = _audioMixer.FindMatchingGroups(string.Empty);
@@ -75,28 +77,20 @@ namespace Sound
 		/// </summary>
 		private void GenerateEFFAudioSource()
 		{
-			int count = (int)AudioEFFType.Count;
-			for (int i = 0; i < count; ++i)
-			{
-				//키와 오디오 클립 가져오기
-				string key = System.Enum.GetName(typeof(AudioEFFType), i);
-				AudioClip audioClip = AddressablesManager.Instance.GetResource<AudioClip>(key);
+			//새로운 오디오 소스 만들기
+			GameObject obj = new GameObject("EFF");
+			obj.transform.SetParent(transform);
+			AudioSource audioSource = obj.AddComponent<AudioSource>();
+			audioSource.outputAudioMixerGroup = _bgmAudioGroup;
+			audioSource.clip = null;
+			audioSource.playOnAwake = true;
+			audioSource.loop = true;
 
-				//새로운 오디오 소스 만들기
-				GameObject obj = new GameObject(key);
-				obj.transform.SetParent(transform);
-				AudioSource audioSource = obj.AddComponent<AudioSource>();
-				audioSource.outputAudioMixerGroup = _effAudioGroup;
-				audioSource.clip = audioClip;
-				audioSource.playOnAwake = false;
-
-				//오디오 소스에 추가하기
-				_effAudioSource.Add((AudioEFFType)i, audioSource);
-			}
+			_effAudioSource = audioSource;
 		}
 
 		/// <summary>
-		/// 효과음 재생
+		/// 효과음 재생 개량중 사용금지
 		/// </summary>
 		/// <param name="audioEFFType"></param>
 		public void PlayEFF(AudioEFFType audioEFFType)
@@ -106,8 +100,28 @@ namespace Sound
 				Init();
 			}
 
-			_effAudioSource[audioEFFType].Play();
+			//_effAudioSource[audioEFFType].Play();
 		}
+
+		public void PlayEFF(string audioName)
+		{
+			if (!_isInit)
+			{
+				Init();
+			}
+
+			_effAudioSource.PlayOneShot(_effSO.GetEFFClip(audioName));
+		}
+		public void PlayEFF(AudioClip clip)
+		{
+			if (!_isInit)
+			{
+				Init();
+			}
+
+			_effAudioSource.PlayOneShot(clip);
+		}
+
 
 		/// <summary>
 		/// 배경음악 재생
