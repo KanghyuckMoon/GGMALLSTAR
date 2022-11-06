@@ -19,6 +19,7 @@ namespace UI
             {
                 GameObject obj = Instantiate(_characterSelectBBlockPrefab, transform);
                 obj.GetComponent<Image>().sprite = _characterDataBaseSO.CharacterScriptableObjects[i].CharacterImage;
+
             }
         }
     }
