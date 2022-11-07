@@ -1747,6 +1747,7 @@ GameObject:
   - component: {fileID: 1304786248}
   - component: {fileID: 1304786247}
   - component: {fileID: 1304786249}
+  - component: {fileID: 1304786250}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1851,6 +1852,26 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &1304786250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304786246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4132f37f6f3e51149853605cee5e6e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  period: 1
+  speed: 1
 --- !u!1 &1313992376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,6 +2550,7 @@ GameObject:
   - component: {fileID: 1745499496}
   - component: {fileID: 1745499498}
   - component: {fileID: 1745499497}
+  - component: {fileID: 1745499499}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -2633,6 +2655,62 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1745499499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745499495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4132f37f6f3e51149853605cee5e6e49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -135.25719
+      outSlope: -135.25719
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.15525977
+      value: -20
+      inSlope: -27.072285
+      outSlope: -27.072285
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6484013
+      value: 20
+      inSlope: 13.536867
+      outSlope: 13.536867
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -54.038883
+      outSlope: -54.038883
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  period: 1
+  speed: 0.12
 --- !u!1 &1953707334
 GameObject:
   m_ObjectHideFlags: 0
