@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c7985b5843b302428b4cb80fb3fd930, type: 3}
-  m_Name: Move
+  m_Script: {fileID: 11500000, guid: 21c57d06dbcf56d41b173326ed63c69d, type: 3}
+  m_Name: Move1
   m_EditorClassIdentifier: 
-  inputData:
+  InputData:
   - keyCode: 119
-    actionName: Up
+    actionName: UP
   - keyCode: 97
-    actionName: Left
+    actionName: LEFT
   - keyCode: 115
-    actionName: Down
+    actionName: DOWN
   - keyCode: 100
-    actionName: Right
+    actionName: RIGHT
