@@ -1,7 +1,9 @@
+using System.Data.Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace UI
 {
@@ -19,7 +21,11 @@ namespace UI
             {
                 GameObject obj = Instantiate(_characterSelectBBlockPrefab, transform);
                 obj.GetComponent<Image>().sprite = _characterDataBaseSO.CharacterScriptableObjects[i].CharacterImage;
-
+                // EventTrigger trigger = obj.GetComponent<EventTrigger>();
+                // EventTrigger.Entry entry = new EventTrigger.Entry();
+                // entry.eventID = EventTriggerType.PointerClick;
+                // entry.callback.AddListener((data) => { });
+                // trigger.triggers.Add(entry);
             }
         }
     }
