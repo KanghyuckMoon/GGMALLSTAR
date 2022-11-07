@@ -10,4 +10,5 @@ public class CharacterSO : ScriptableObject
     public CollaborationGame CollaborationGame;
     public string Name;
     public Sprite CharacterImage;
+    public InputDataBaseSO InputDataBaseSO;
 }

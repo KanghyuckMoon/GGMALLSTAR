@@ -8,5 +8,5 @@ public class InputData
 {
     public KeyCode keyCode;
 
-    public Action actions;
+    public string actionName;
 }
