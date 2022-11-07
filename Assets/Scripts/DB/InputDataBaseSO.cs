@@ -19,4 +19,12 @@ public class InputDataBaseSO : InputSO
 
         return base.GetInputData(keyCode);
     }
+
+    public InputData[] GetInputData()
+    {
+        List<InputData> inputDataList = new();
+        inputDataList.AddRange(MoveInput.InputData);
+        inputDataList.AddRange(InputData);
+        return inputDataList.ToArray();
+    }
 }

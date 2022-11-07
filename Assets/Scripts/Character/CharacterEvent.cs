@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterEvent : MonoBehaviour
+public class CharacterEvent : CharacterComponent
 {
-    private Dictionary<string, System.Action> characterEvent = new();
+    public CharacterEvent(Character character) : base(character)
+    {
+    }
 
-    private readonly string[] MOVE_ACTION = { "UP", "DOWN", "LEFT", "RIGHT" };
+    private Dictionary<string, System.Action> characterEvent = new();
 
     public void AddEvent(string actionName, System.Action action)
     {
@@ -20,29 +22,15 @@ public class CharacterEvent : MonoBehaviour
         }
     }
 
-    public void RegistrationToDictionary(InputDataBaseSO inputDataBaseSO)
+    public void AddEvent(string actionName)
     {
-        foreach (var actionName in inputDataBaseSO.MoveInput.InputData)
+        if (characterEvent.ContainsKey(actionName))
         {
-            switch (actionName.actionName)
-            {
-                case "UP":
-                case "DOWN":
-                case "LEFT":
-                case "RIGHT":
-                    AddEvent(actionName.actionName, () => Debug.Log(actionName.actionName));
-                    AddEvent(actionName.actionName, GetComponent<CharacterMove>().Move);
-                    break;
-            }
+            characterEvent[actionName] += null;
         }
-        foreach (var inputData in inputDataBaseSO.InputData)
+        else
         {
-            switch (inputData.actionName)
-            {
-                default:
-                    AddEvent(inputData.actionName, () => Debug.Log(inputData.actionName));
-                    break;
-            }
+            characterEvent.Add(actionName, null);
         }
     }
 
@@ -51,6 +39,21 @@ public class CharacterEvent : MonoBehaviour
         if (characterEvent.ContainsKey(actionName))
         {
             characterEvent[actionName]?.Invoke();
+        }
+    }
+
+    public void RemoveEvent(string actionName, System.Action action = null)
+    {
+        if (characterEvent.ContainsKey(actionName))
+        {
+            if (action != null)
+            {
+                characterEvent[actionName] -= action;
+            }
+            else
+            {
+                characterEvent.Remove(actionName);
+            }
         }
     }
 }

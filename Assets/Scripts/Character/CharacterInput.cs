@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterInput : MonoBehaviour
+public class CharacterInput : CharacterComponent
 {
-    [SerializeField]
+    public CharacterInput(Character character) : base(character)
+    {
+        _inputDataBaseSO = Character.InputDataBaseSO;
+        _characterEvent = Character.GetCharacterComponent<CharacterEvent>();
+
+        InputData[] inputData = _inputDataBaseSO.GetInputData();
+
+        foreach (var input in inputData)
+        {
+            _characterEvent.AddEvent(input.actionName);
+        }
+    }
+
     private InputDataBaseSO _inputDataBaseSO = null;
+    private CharacterEvent _characterEvent = null;
 
-    private void Start() => GetComponent<CharacterEvent>().RegistrationToDictionary(_inputDataBaseSO);
-
-    private void Update()
+    public override void Update()
     {
         if (Input.anyKeyDown)
         {
@@ -18,7 +29,7 @@ public class CharacterInput : MonoBehaviour
                 if (Input.GetKeyDown(keyCode))
                 {
                     string actionName = _inputDataBaseSO.GetInputData(keyCode);
-                    GetComponent<CharacterEvent>().EventTrigger(actionName);
+                    _characterEvent.EventTrigger(actionName);
                 }
             }
         }
