@@ -5,12 +5,17 @@ using UnityEngine;
 public abstract class CharacterComponent
 {
     private Character _character;
+    public Character Character => _character;
+
     public CharacterComponent(Character character)
     {
         _character = character;
+        Awake();
     }
 
-    public Character Character => _character;
-
+    protected virtual void Awake() { }
+    public virtual void Start() { }
     public virtual void Update() { }
+    public virtual void FixedUpdate() { }
+    public virtual void LateUpdate() { }
 }

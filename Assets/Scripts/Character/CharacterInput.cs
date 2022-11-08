@@ -22,15 +22,20 @@ public class CharacterInput : CharacterComponent
 
     public override void Update()
     {
-        if (Input.anyKeyDown)
+        foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
         {
-            foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+            string actionName;
+
+            if (Input.GetKeyDown(keyCode))
             {
-                if (Input.GetKeyDown(keyCode))
-                {
-                    string actionName = _inputDataBaseSO.GetInputData(keyCode);
-                    _characterEvent.EventTrigger(actionName);
-                }
+                actionName = _inputDataBaseSO.GetInputData(keyCode);
+                _characterEvent.EventTrigger(actionName);
+            }
+
+            if (Input.GetKeyUp(keyCode))
+            {
+                actionName = _inputDataBaseSO.GetInputData(keyCode);
+                _characterEvent.EventTrigger(actionName);
             }
         }
     }

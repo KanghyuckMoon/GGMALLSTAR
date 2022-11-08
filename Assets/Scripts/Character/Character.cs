@@ -51,4 +51,20 @@ public class Character : MonoBehaviour
             characterComponent.Update();
         }
     }
+
+    private void LateUpdate()
+    {
+        foreach (CharacterComponent characterComponent in _characterComponents.Values)
+        {
+            characterComponent.LateUpdate();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        foreach (CharacterComponent characterComponent in _characterComponents.Values)
+        {
+            characterComponent.FixedUpdate();
+        }
+    }
 }
