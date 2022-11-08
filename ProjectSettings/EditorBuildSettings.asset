@@ -8,6 +8,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Loading/LoadingScene.unity
+    guid: 8e5fe3525687e50468d2d6db1bf40d02
+  - enabled: 1
+    path: Assets/Scenes/Stage/FoolCity.unity
+    guid: 48011b521d9b1134aa4a2801bd67429e
+  - enabled: 1
+    path: Assets/Scenes/Stage/QuietTown.unity
+    guid: 0e6479d88623a984485b3dbfbf885e5a
+  - enabled: 1
+    path: Assets/Scenes/Stage/Training.unity
+    guid: 2caa35d596f41b344b43bdb789be67f6
+  - enabled: 1
+    path: Assets/Scenes/Stage/Well.unity
+    guid: bc04b32bae6344748bc24f84e8dc2347
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 03db60e03b4afb844811c42aeae79d3f,
       type: 2}
