@@ -11,6 +11,7 @@ namespace Inventory
 	{
 		private InventoryData inventoryData = new InventoryData();
 		private InventorySO inventorySO;
+		private AllItemSO allItemSO;
 		private bool isInit = false;
 		public void Awake()
 		{
@@ -22,6 +23,7 @@ namespace Inventory
 			isInit = true;
 
 			inventorySO = AddressablesManager.Instance.GetResource<InventorySO>("InventorySO");
+			allItemSO = AddressablesManager.Instance.GetResource<AllItemSO>("AllItemSO");
 			SaveManager.Load<InventoryData>(ref inventoryData);
 
 			foreach(string itemAddressName in inventoryData.itemAddressNames)
@@ -43,6 +45,27 @@ namespace Inventory
 				inventorySO.itemDatas.Add(AddressablesManager.Instance.GetResource<ItemDataSO>(itemAdressName));
 				SaveManager.Save<InventoryData>(ref inventoryData);
 			}
+		}
+
+		/// <summary>
+		/// ∑£¥˝ æ∆¿Ã≈€ »πµÊ
+		/// </summary>
+		public void RandomGetItem()
+		{
+			while(allItemSO.allItemAddressNames.Count > 0)
+			{
+				string addressName = allItemSO.allItemAddressNames[Random.Range(0, allItemSO.allItemAddressNames.Count - 1)];
+				if(inventoryData.itemAddressNames.Contains(addressName))
+				{
+					allItemSO.allItemAddressNames.Remove(addressName);
+				}
+				else
+				{
+					GetItem(addressName);
+					break;
+				}
+			}
+
 		}
 
 	}

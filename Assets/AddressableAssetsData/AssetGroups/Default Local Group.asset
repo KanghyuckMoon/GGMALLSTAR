@@ -154,35 +154,39 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 6e2253df85574fb4280028ac32b8d372
-    m_Address: Assets/SO/ItemData/I_3D2048.asset
+    m_Address: I_3D2048
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: e171720dbc3a20f4b8bee01782740b03
-    m_Address: Assets/SO/ItemData/I_Acupuncture.asset
+    m_Address: I_Acupuncture
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 3a8f61926b678304aa733b29dade9d64
-    m_Address: Assets/SO/ItemData/I_ElectricityClicker.asset
+    m_Address: I_ElectricityClicker
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 5ef7ce31cf3530f41b1def03ec91dded
-    m_Address: Assets/SO/ItemData/I_GRGR.asset
+    m_Address: I_GRGR
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 2516bdd24770c0946b5d730ee28c0699
-    m_Address: Assets/SO/ItemData/I_NeonTower.asset
+    m_Address: I_NeonTower
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: a476565263b4c13438ddaaf347f3b6de
-    m_Address: Assets/SO/ItemData/I_NinjaSprint.asset
+    m_Address: I_NinjaSprint
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 9bfaa4d6aee9d6946b90d0775565aff5
-    m_Address: Assets/SO/ItemData/I_TheThank.asset
+    m_Address: I_TheThank
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: ee46450ad87494447ab6b44a4f1b892d
-    m_Address: Assets/SO/ItemData/I_TrainFPS.asset
+    m_Address: I_TrainFPS
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ff269c328b7835f46bf1553575c8849e
+    m_Address: Assets/SO/ItemData/All Item SO.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
