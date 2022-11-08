@@ -13,7 +13,7 @@ public abstract class CharacterComponent
         Awake();
     }
 
-    public virtual void Awake() { }
+    protected virtual void Awake() { }
     public virtual void Start() { }
     public virtual void Update() { }
     public virtual void FixedUpdate() { }

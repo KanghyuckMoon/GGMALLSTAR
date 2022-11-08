@@ -9,8 +9,20 @@ public class CharacterAttack : CharacterComponent
         character.GetCharacterComponent<CharacterEvent>().AddEvent(EventKeyWord.ATTACK, Attack);
     }
 
+    private bool _isAttack = false;
+
+    protected override void Awake()
+    {
+        _isAttack = false;
+    }
+
     private void Attack()
     {
+        _isAttack = !_isAttack;
+        if (_isAttack)
+        {
+            return;
+        }
         Debug.Log("Attack");
     }
 }
