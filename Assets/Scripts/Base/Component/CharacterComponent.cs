@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class CharacterComponent
 {
     private Character _character;
-    public Character Character => _character;
+    protected Character Character => _character;
 
     public CharacterComponent(Character character)
     {

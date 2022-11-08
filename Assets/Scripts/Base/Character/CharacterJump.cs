@@ -44,24 +44,17 @@ public class CharacterJump : CharacterComponent
     private bool _isFirstJump = true;
 
     private bool _isGround = false;
-
-    [SerializeField]
-    private LayerMask _groundMask = 0;
     #endregion
 
     #region PlayerNormalJump
 
-    [SerializeField]
     private float _maxAcceleration = 1f;
-    [SerializeField]
     private float _accelerationPower = 0.06f;
 
-    [SerializeField]
     private float _timer = 0.1f;
-    [SerializeField]
+
     private float _curTime = 0f;
 
-    [SerializeField]
     private float _acceleration = 0f;
 
     #endregion
@@ -77,15 +70,24 @@ public class CharacterJump : CharacterComponent
         }
         else if (_isJump && _wasJump)
         {
-            // 누르고 있을때
+            _curTime += Time.deltaTime;
+            if (_curTime < _timer)
+            {
+                return;
+            }
+            _acceleration += Time.deltaTime;
+            _acceleration = Mathf.Clamp(_acceleration, 0f, _maxAcceleration);
+
+            if (_acceleration < _maxAcceleration)
+            {
+                JumpProportion(_accelerationPower);
+            }
         }
         else if (!_isJump && _wasJump)
         {
-            // 떼었을때
-        }
-        else if (!_isJump && !_wasJump)
-        {
-            // 누르고 있지 않을때
+            _wasJump = false;
+            _acceleration = 0f;
+            _curTime = 0f;
         }
     }
 
@@ -116,7 +118,7 @@ public class CharacterJump : CharacterComponent
 
     private void GroundCheck()
     {
-        _isGround = Physics.Raycast(Character.transform.position, Vector3.down, _rayLength, _groundMask);
+        _isGround = Physics.Raycast(Character.transform.position, Vector3.down, _rayLength, LayerMask.GetMask("Ground"));
         _isFirstJump = _isGround;
         if (_isGround)
         {
