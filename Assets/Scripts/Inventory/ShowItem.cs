@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 namespace Inventory
 {
 	public class ShowItem : MonoBehaviour
 	{
+		public Transform pedestal;
 		public InventorySO inventorySO;
+		public TextMeshProUGUI captionText;
 		public int testShowItemIndex;
+
 		private GameObject itemObj = null;
 
 		#region TestCode
@@ -51,7 +55,8 @@ namespace Inventory
 			{
 				Destroy(itemObj);
 			}
-			itemObj = Instantiate(itemDataSO.prefeb, null);
+			itemObj = Instantiate(itemDataSO.prefeb, pedestal);
+			captionText.text = itemDataSO.explanation;
 		}
 	}
 }
