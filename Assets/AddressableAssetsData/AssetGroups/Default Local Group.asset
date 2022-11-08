@@ -41,6 +41,22 @@ MonoBehaviour:
     m_Address: FoolCity_BGM
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: a2ab56839e1c9504ea9d141e95d0b16b
+    m_Address: Hit_1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec3f674830402cc45bce805cf6493db7
+    m_Address: Hit_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f5507a8c6a22c404ab324980c4e8a11b
+    m_Address: Hit_3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ef35fa36e3a65043b2d800600204bdd
+    m_Address: Hit_4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
