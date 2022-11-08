@@ -67,4 +67,12 @@ public class Character : MonoBehaviour
             characterComponent.FixedUpdate();
         }
     }
+
+    private void OnCollisionExit(Collision other)
+    {
+        foreach (CharacterComponent characterComponent in _characterComponents.Values)
+        {
+            characterComponent.OnCollisionExit(other);
+        }
+    }
 }

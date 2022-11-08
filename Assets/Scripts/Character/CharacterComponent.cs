@@ -18,4 +18,6 @@ public abstract class CharacterComponent
     public virtual void Update() { }
     public virtual void FixedUpdate() { }
     public virtual void LateUpdate() { }
+
+    public virtual void OnCollisionExit(Collision collision) { }
 }
