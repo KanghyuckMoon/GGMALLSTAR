@@ -6,7 +6,7 @@ namespace Inventory
     [CreateAssetMenu]
     public class InventorySO : ScriptableObject
     {
-        public ItemDataSO[] itemDatas;
+        public List<ItemDataSO> itemDatas;
     }
 
 }

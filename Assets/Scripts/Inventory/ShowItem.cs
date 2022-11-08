@@ -46,7 +46,7 @@ namespace Inventory
 		{
 			if (Input.GetKeyDown(KeyCode.DownArrow))
 			{
-				testShowItemIndex = (testShowItemIndex + 1) % inventorySO.itemDatas.Length;
+				testShowItemIndex = (testShowItemIndex + 1) % inventorySO.itemDatas.Count;
 				SetItem(inventorySO.itemDatas[testShowItemIndex]);
 			}
 			if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -54,7 +54,7 @@ namespace Inventory
 				testShowItemIndex--;
 				if (testShowItemIndex < 0)
 				{
-					testShowItemIndex = inventorySO.itemDatas.Length - 1;
+					testShowItemIndex = inventorySO.itemDatas.Count - 1;
 				}
 				SetItem(inventorySO.itemDatas[testShowItemIndex]);
 			}
