@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,36 +7,45 @@ public class CharacterInput : CharacterComponent
 {
     public CharacterInput(Character character) : base(character)
     {
-        _inputDataBaseSO = Character.InputDataBaseSO;
+        _inputData = Character.InputDataBaseSO.GetInputData();
         _characterEvent = Character.GetCharacterComponent<CharacterEvent>();
 
-        InputData[] inputData = _inputDataBaseSO.GetInputData();
+        _wasInput = new();
 
-        foreach (var input in inputData)
+        foreach (var input in _inputData)
         {
-            _characterEvent.AddEvent(input.actionName);
+            _wasInput.Add(input.keyCode, false);
+            for (uint i = 0; i < Enum.GetValues(typeof(EventType)).Length; i++)
+            {
+                _characterEvent.AddEvent(input.actionName, (EventType)i);
+            }
         }
     }
 
-    private InputDataBaseSO _inputDataBaseSO = null;
+    private InputData[] _inputData = null;
     private CharacterEvent _characterEvent = null;
+    private Dictionary<KeyCode, bool> _wasInput = null;
 
     public override void Update()
     {
-        foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
+        foreach (var input in _inputData)
         {
-            string actionName;
+            KeyCode keyCode = input.keyCode;
+            string actionName = input.actionName;
 
-            if (Input.GetKeyDown(keyCode))
+            if (_wasInput[keyCode])
             {
-                actionName = _inputDataBaseSO.GetInputData(keyCode);
-                _characterEvent.EventTrigger(actionName);
+                _characterEvent.EventTrigger(actionName, EventType.KEY_HOLD);
             }
-
-            if (Input.GetKeyUp(keyCode))
+            else if (Input.GetKeyDown(keyCode))
             {
-                actionName = _inputDataBaseSO.GetInputData(keyCode);
-                _characterEvent.EventTrigger(actionName);
+                _wasInput[keyCode] = true;
+                _characterEvent.EventTrigger(actionName, EventType.KEY_DOWN);
+            }
+            else if (Input.GetKeyUp(keyCode))
+            {
+                _wasInput[keyCode] = false;
+                _characterEvent.EventTrigger(actionName, EventType.KEY_UP);
             }
         }
     }

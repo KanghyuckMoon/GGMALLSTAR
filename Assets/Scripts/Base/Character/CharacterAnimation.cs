@@ -6,7 +6,7 @@ public class CharacterAnimation : CharacterComponent
 {
     public CharacterAnimation(Character character) : base(character)
     {
-        character.GetCharacterComponent<CharacterEvent>().AddEvent(EventKeyWord.ATTACK, Attack);
+        character.GetCharacterComponent<CharacterEvent>().AddEvent(EventKeyWord.ATTACK, AttackAnimation);
     }
 
     private Animator _animator = null;
@@ -16,8 +16,13 @@ public class CharacterAnimation : CharacterComponent
         _animator = Character.GetComponentInChildren<Animator>();
     }
 
-    private void Attack()
+    private void AttackAnimation()
     {
         _animator.SetTrigger("Attack");
+    }
+
+    private void RunAnimation()
+    {
+        _animator.SetBool("IsRun", true);
     }
 }
