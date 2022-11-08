@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 namespace Inventory
 {
@@ -11,13 +10,19 @@ namespace Inventory
 		public InventorySO inventorySO;
 		public TextMeshProUGUI captionText;
 		public int testShowItemIndex;
+		public Transform contents;
+		public GameObject itemNamePanel;
+		public float heightSize;
 
+		private int testPreviousItemIndex;
+		private List<GameObject> namePanelObjectList = new List<GameObject>();
 		private GameObject itemObj = null;
 
 		#region TestCode
 
 		public void Start()
 		{
+			InitItemList();
 			SetItem(inventorySO.itemDatas[testShowItemIndex]);
 		}
 
@@ -25,14 +30,25 @@ namespace Inventory
 		{
 			InputToShowItem();
 		}
+
+		private void InitItemList()
+		{
+			foreach (var itemData in inventorySO.itemDatas)
+			{
+				GameObject namePanel = Instantiate(itemNamePanel, contents);
+				namePanel.GetComponentInChildren<TextMeshProUGUI>().text = itemData.itemName;
+				namePanelObjectList.Add(namePanel);
+			}
+		}
+
 		private void InputToShowItem()
 		{
-			if (Input.GetKeyDown(KeyCode.RightArrow))
+			if (Input.GetKeyDown(KeyCode.DownArrow))
 			{
 				testShowItemIndex = (testShowItemIndex + 1) % inventorySO.itemDatas.Length;
 				SetItem(inventorySO.itemDatas[testShowItemIndex]);
 			}
-			if (Input.GetKeyDown(KeyCode.LeftArrow))
+			if (Input.GetKeyDown(KeyCode.UpArrow))
 			{
 				testShowItemIndex--;
 				if (testShowItemIndex < 0)
@@ -51,12 +67,25 @@ namespace Inventory
 		/// <param name="itemDataSO"></param>
 		public void SetItem(ItemDataSO itemDataSO)
 		{
-			if(itemObj != null)
+			if (itemObj != null)
 			{
 				Destroy(itemObj);
 			}
 			itemObj = Instantiate(itemDataSO.prefeb, pedestal);
 			captionText.text = itemDataSO.explanation;
+
+			//테스트코드
+			{
+				namePanelObjectList[testShowItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.yellow;
+				namePanelObjectList[testPreviousItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
+
+				var contentRect = contents.GetComponent<RectTransform>();
+				var contentPos = contentRect.anchoredPosition;
+				contentPos.y += (testShowItemIndex - testPreviousItemIndex) * heightSize;
+				contentRect.anchoredPosition = contentPos;
+
+				testPreviousItemIndex = testShowItemIndex;
+			}
 		}
 	}
 }
