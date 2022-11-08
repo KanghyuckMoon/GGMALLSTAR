@@ -26,7 +26,7 @@ public class CharacterInput : CharacterComponent
         {
             foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
             {
-                if (Input.GetKeyDown(keyCode))
+                if (Input.GetKey(keyCode))
                 {
                     string actionName = _inputDataBaseSO.GetInputData(keyCode);
                     _characterEvent.EventTrigger(actionName);
