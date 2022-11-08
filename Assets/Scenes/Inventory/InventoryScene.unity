@@ -174,7 +174,8 @@ MonoBehaviour:
   contents: {fileID: 518470868}
   itemNamePanel: {fileID: 4127939744058233049, guid: fdb347cbcf02b7a49aab4435b93e869c,
     type: 3}
-  heightSize: 0
+  namePanelHeightSize: 100
+  viewPortHeightSize: 600
 --- !u!1 &152188125
 GameObject:
   m_ObjectHideFlags: 0

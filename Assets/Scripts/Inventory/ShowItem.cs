@@ -12,7 +12,8 @@ namespace Inventory
 		public int testShowItemIndex;
 		public Transform contents;
 		public GameObject itemNamePanel;
-		public float heightSize;
+		public float namePanelHeightSize;
+		public float viewPortHeightSize;
 
 		private int testPreviousItemIndex;
 		private List<GameObject> namePanelObjectList = new List<GameObject>();
@@ -81,8 +82,18 @@ namespace Inventory
 
 				var contentRect = contents.GetComponent<RectTransform>();
 				var contentPos = contentRect.anchoredPosition;
-				contentPos.y += (testShowItemIndex - testPreviousItemIndex) * heightSize;
-				contentRect.anchoredPosition = contentPos;
+				float addHeight = (testShowItemIndex - testPreviousItemIndex) * namePanelHeightSize;
+
+				if(Mathf.Abs(testShowItemIndex - testPreviousItemIndex) > 1)
+				{
+					contentPos.y += addHeight;
+					contentRect.anchoredPosition = contentPos;
+				}
+				if(contentPos.y + addHeight >= 0 && contentPos.y + addHeight <= contentRect.sizeDelta.y - viewPortHeightSize)
+				{
+					contentPos.y += addHeight;
+					contentRect.anchoredPosition = contentPos;
+				}
 
 				testPreviousItemIndex = testShowItemIndex;
 			}
