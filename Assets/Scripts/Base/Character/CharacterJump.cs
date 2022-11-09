@@ -18,7 +18,7 @@ public class CharacterJump : CharacterComponent
 
     private Rigidbody _rigidbody = null;
 
-    private float _jumpPower = 100f;
+    private float _jumpPower = 1500f;
 
     private bool _isGround = false;
 
@@ -33,14 +33,12 @@ public class CharacterJump : CharacterComponent
     {
         if (_isGround)
         {
-            Debug.Log("Jump");
             _rigidbody.AddForce(Vector3.up * _jumpPower);
         }
     }
 
     private void GroundCheck()
     {
-        Debug.Log("GroundCheck " + _isGround);
         _isGround = Physics.Raycast(Character.transform.position + new Vector3(0, 0.5f, 0), Vector3.down, 0.6f, _groundLayerMask);
     }
 }
