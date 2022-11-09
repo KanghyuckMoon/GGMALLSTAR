@@ -24,6 +24,8 @@ namespace Pool
             }
             catch (ArgumentException e)
             {
+                Debug.Log(e.ToString());
+
                 pool.Clear();
                 prefabDictionary.Clear();
                 pool.Add(name, q);
@@ -34,56 +36,56 @@ namespace Pool
         public static void AddObjToPool<T>(string name, T obj) where T : MonoBehaviour
         {
             if (!pool.ContainsKey(name))
-			{
+            {
                 CreatePool<T>(name);
-			}
+            }
             ((Queue<T>)pool[name]).Enqueue(obj);
         }
 
         public static void DeleteAllPool()
-		{
+        {
             pool.Clear();
-		}
+        }
 
         public static T GetItem<T>(string name) where T : MonoBehaviour
         {
             T item = null;
 
             if (!prefabDictionary.ContainsKey(name))
-			{
+            {
                 CreatePool<T>(name);
-			}
+            }
 
-			if (pool.ContainsKey(name))
-			{
-				Queue<T> q = (Queue<T>)pool[name];
+            if (pool.ContainsKey(name))
+            {
+                Queue<T> q = (Queue<T>)pool[name];
 
-				if (q.Count == 0)
-				{  //Ã¹¹øÂ° ¾ÆÀÌÅÛÀÌ ÀÌ¹Ì »ç¿ëÁßÀÌ¶ó¸é
-					GameObject prefab = prefabDictionary[name];
-					GameObject g = GameObject.Instantiate(prefab);
-					item = g.GetComponent<T>();
-				}
-				else
-				{
-					item = q.Dequeue();
-				}
+                if (q.Count == 0)
+                {  //Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½
+                    GameObject prefab = prefabDictionary[name];
+                    GameObject g = GameObject.Instantiate(prefab);
+                    item = g.GetComponent<T>();
+                }
+                else
+                {
+                    item = q.Dequeue();
+                }
 
-				IPoolable ipool = item.GetComponent<IPoolable>();
+                IPoolable ipool = item.GetComponent<IPoolable>();
 
-				if (ipool != null)
-				{
-					ipool.OnPoolOut();
-				}
-				
-			}
+                if (ipool != null)
+                {
+                    ipool.OnPoolOut();
+                }
+
+            }
             else
             {
                 GameObject prefab = prefabDictionary[name];
                 GameObject g = GameObject.Instantiate(prefab);
                 item = g.GetComponent<T>();
             }
-			return item;
+            return item;
         }
     }
 
