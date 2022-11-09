@@ -7,7 +7,7 @@ public class Character_Jaeby : Character
     protected override void SetComponent()
     {
         base.SetComponent();
-        AddComponent(ComponentType.Attack, new CharacterAttack_Jaeby(this));
+        AddComponent(ComponentType.Attack, new CharacterAttack(this));
         AddComponent(ComponentType.Gravity, new CharacterGravity(this));
         AddComponent(ComponentType.Animation, new CharacterAnimation_Jaeby(this));
         AddComponent(ComponentType.Move, new CharacterMove(this));
