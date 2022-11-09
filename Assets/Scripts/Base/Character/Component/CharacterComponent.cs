@@ -15,6 +15,7 @@ public abstract class CharacterComponent
         _character = character;
         _characterEvent = character.CharacterEvent;
         Awake();
+        SetEvent();
     }
 
     public CharacterComponent(Character character, CharacterEvent characterEvent)
@@ -22,7 +23,10 @@ public abstract class CharacterComponent
         _character = character;
         _characterEvent = characterEvent;
         Awake();
+        SetEvent();
     }
+
+    protected virtual void SetEvent() { }
 
     protected virtual void Awake() { }
     public virtual void Start() { }

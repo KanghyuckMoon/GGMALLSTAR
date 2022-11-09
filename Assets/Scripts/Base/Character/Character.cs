@@ -2,24 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ComponentType
-{
-    Attack,
-    Move,
-    Input,
-    Jump,
-    Sprite,
-    Animation,
-    Gravity
-}
-
-public class Character : MonoBehaviour
+public abstract class Character : MonoBehaviour
 {
     [SerializeField]
-    private CharacterSO _characterSO = null;
+    protected CharacterSO _characterSO = null;
 
     [SerializeField]
-    private InputDataBaseSO _inputDataBaseSO = null;
+    protected InputDataBaseSO _inputDataBaseSO = null;
     public InputDataBaseSO InputDataBaseSO => _inputDataBaseSO;
 
     private Dictionary<ComponentType, CharacterComponent> _characterComponents = null;
@@ -36,8 +25,10 @@ public class Character : MonoBehaviour
         return null;
     }
 
-    private CharacterEvent _characterEvent = null;
+    protected CharacterEvent _characterEvent = null;
     public CharacterEvent CharacterEvent => _characterEvent;
+
+    #region Unity Methods
 
     private void Awake()
     {
@@ -47,13 +38,7 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
-        _characterComponents.Add(ComponentType.Input, new CharacterInput(this));
-        _characterComponents.Add(ComponentType.Move, new CharacterMove(this));
-        _characterComponents.Add(ComponentType.Attack, new CharacterAttack(this));
-        _characterComponents.Add(ComponentType.Jump, new CharacterJump(this));
-        _characterComponents.Add(ComponentType.Sprite, new CharacterSprite(this));
-        _characterComponents.Add(ComponentType.Animation, new CharacterAnimation(this));
-        _characterComponents.Add(ComponentType.Gravity, new CharacterGravity(this));
+        SetComponent();
     }
 
     private void Update()
@@ -94,5 +79,16 @@ public class Character : MonoBehaviour
         {
             characterComponent.OnCollisionExit(other);
         }
+    }
+    #endregion
+
+    protected void AddComponent(ComponentType componentType, CharacterComponent characterComponent)
+    {
+        _characterComponents.Add(componentType, characterComponent);
+    }
+
+    protected virtual void SetComponent()
+    {
+        _characterComponents.Add(ComponentType.Input, new CharacterInput(this));
     }
 }

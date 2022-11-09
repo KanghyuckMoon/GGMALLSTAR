@@ -21,8 +21,8 @@ public class CharacterInput : CharacterComponent
         }
     }
 
-    private InputData[] _inputData = null;
-    private Dictionary<KeyCode, bool> _wasInput = null;
+    protected InputData[] _inputData = null;
+    protected Dictionary<KeyCode, bool> _wasInput = null;
 
     public override void Update()
     {
