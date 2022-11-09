@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Pool
 {
-    public class PoolObj : MonoBehaviour, IPoolable
+    public class PoolObj : MonoBehaviour
     {
         [ContextMenu("OnPoolEnter")]
         public void OnPoolEnter()
         {
             gameObject.SetActive(false);
-            PoolManager.AddObjToPool<PoolObj>("PoolObj", this);
+            PoolManager.AddObjToPool("PoolObj", gameObject);
         }
 
         public void OnPoolOut()
