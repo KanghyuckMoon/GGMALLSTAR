@@ -197,6 +197,10 @@ MonoBehaviour:
     m_Address: I_WaterJetMan
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: d703bbe6d79d7f14b80709f3392439ce
+    m_Address: I_Mafioso
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
