@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5872689613304958307}
   - component: {fileID: 5872689613304958305}
   - component: {fileID: 5872689613304958306}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Jaeby
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5872689614172799373}
   - component: {fileID: 5872689614172799372}
   - component: {fileID: 5872689614172799371}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

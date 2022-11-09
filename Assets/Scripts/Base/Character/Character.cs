@@ -6,7 +6,6 @@ public enum ComponentType
 {
     Attack,
     Move,
-    Event,
     Input,
     Jump,
     Sprite,
@@ -24,7 +23,6 @@ public class Character : MonoBehaviour
     public InputDataBaseSO InputDataBaseSO => _inputDataBaseSO;
 
     private Dictionary<ComponentType, CharacterComponent> _characterComponents = null;
-
     public T GetCharacterComponent<T>() where T : CharacterComponent
     {
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
@@ -38,11 +36,17 @@ public class Character : MonoBehaviour
         return null;
     }
 
-    private void Start()
+    private CharacterEvent _characterEvent = null;
+    public CharacterEvent CharacterEvent => _characterEvent;
+
+    private void Awake()
     {
         _characterComponents = new();
+        _characterEvent = new CharacterEvent();
+    }
 
-        _characterComponents.Add(ComponentType.Event, new CharacterEvent(this));
+    private void Start()
+    {
         _characterComponents.Add(ComponentType.Input, new CharacterInput(this));
         _characterComponents.Add(ComponentType.Move, new CharacterMove(this));
         _characterComponents.Add(ComponentType.Attack, new CharacterAttack(this));
@@ -73,6 +77,14 @@ public class Character : MonoBehaviour
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
         {
             characterComponent.FixedUpdate();
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        foreach (CharacterComponent characterComponent in _characterComponents.Values)
+        {
+            characterComponent.OnCollisionEnter(other);
         }
     }
 

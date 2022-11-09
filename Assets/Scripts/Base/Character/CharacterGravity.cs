@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CharacterGravity : CharacterComponent
 {
-    public CharacterGravity(Character character, float gravityScale = 25f) : base(character)
+    public CharacterGravity(Character character, float gravityScale = 17.5f) : base(character)
     {
         _gravityScale = gravityScale;
     }
 
     private Rigidbody _rigidbody = null;
-    private float _gravityScale = 10.0f;
+    private float _gravityScale = 17.5f;
 
     protected override void Awake()
     {

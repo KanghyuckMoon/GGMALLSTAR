@@ -3,13 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterEvent : CharacterComponent
+public class CharacterEvent
 {
-    public CharacterEvent(Character character) : base(character)
-    {
-    }
-
-    protected override void Awake()
+    public CharacterEvent()
     {
         uint eventTypeLength = (uint)Enum.GetValues(typeof(EventType)).Length;
         _characterEvent = new Dictionary<string, System.Action>[eventTypeLength];

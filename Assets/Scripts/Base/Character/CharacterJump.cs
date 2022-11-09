@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CharacterJump : CharacterComponent
 {
-    public CharacterJump(Character character) : base(character)
+    public CharacterJump(Character character, float jumpPower = 50f) : base(character)
     {
-        CharacterEvent characterEvent = character.GetCharacterComponent<CharacterEvent>();
-        characterEvent.AddEvent(EventKeyWord.UP, OnJump, EventType.KEY_DOWN);
+        _jumpPower = jumpPower;
+
+        CharacterEvent.AddEvent(EventKeyWord.UP, OnJump, EventType.KEY_DOWN);
     }
 
     protected override void Awake()
@@ -18,12 +19,11 @@ public class CharacterJump : CharacterComponent
 
     private Rigidbody _rigidbody = null;
 
-    private float _jumpPower = 1500f;
+    private float _jumpPower = 50f;
 
     private bool _isGround = false;
 
     private LayerMask _groundLayerMask = default(LayerMask);
-
     public override void Update()
     {
         GroundCheck();
@@ -33,7 +33,8 @@ public class CharacterJump : CharacterComponent
     {
         if (_isGround)
         {
-            _rigidbody.AddForce(Vector3.up * _jumpPower);
+            _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, _rigidbody.velocity.z);
+            _rigidbody.AddForce(Vector3.up * _jumpPower, ForceMode.Impulse);
         }
     }
 
