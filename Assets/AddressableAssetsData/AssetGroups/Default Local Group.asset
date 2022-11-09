@@ -197,6 +197,26 @@ MonoBehaviour:
     m_Address: I_WaterJetMan
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: d703bbe6d79d7f14b80709f3392439ce
+    m_Address: I_Mafioso
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 03686a3c49f159147894558f127adef0
+    m_Address: I_DicePortal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2d744d14bc3979c45a2be17ede2d2ecd
+    m_Address: I_Soulluos
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8415f9549d946d44e9add85a70710bbb
+    m_Address: PoolObj
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b2bd50660848c3541a5145ffbf31ab49
+    m_Address: I_Checkmate
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

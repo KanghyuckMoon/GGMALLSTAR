@@ -1,0 +1,17 @@
+{
+    "name": "Setting",
+    "rootNamespace": "",
+    "references": [
+        "GUID:64e003bf8d95c4c4ea5675b564d99dbc",
+        "GUID:eb6f8c591c7b75c489b658fdf39f0b94"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
