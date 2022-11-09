@@ -81,7 +81,7 @@ namespace Sound
 			GameObject obj = new GameObject("EFF");
 			obj.transform.SetParent(transform);
 			AudioSource audioSource = obj.AddComponent<AudioSource>();
-			audioSource.outputAudioMixerGroup = _bgmAudioGroup;
+			audioSource.outputAudioMixerGroup = _effAudioGroup;
 			audioSource.clip = null;
 			audioSource.playOnAwake = true;
 			audioSource.loop = true;

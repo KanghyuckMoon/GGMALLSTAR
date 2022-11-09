@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class EFFSO : ScriptableObject
 {
-	private Dictionary<string, AudioClip> audioDictionary = new Dictionary<string, AudioClip>();
+	public Dictionary<string, AudioClip> audioDictionary = new Dictionary<string, AudioClip>();
 
 	public AudioClip[] effaudioClips;
 
@@ -14,7 +14,15 @@ public class EFFSO : ScriptableObject
 	public AudioClip GetEFFClip(string name)
 	{
 		AudioClip clip = null;
+		
 		if(audioDictionary.TryGetValue(name, out clip))
+		{
+			return clip;
+		}
+
+		SetEFFClips();
+		
+		if (audioDictionary.TryGetValue(name, out clip))
 		{
 			return clip;
 		}
