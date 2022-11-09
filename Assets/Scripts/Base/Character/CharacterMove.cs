@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class CharacterMove : CharacterComponent
 {
-    public CharacterMove(Character character) : base(character)
+    public CharacterMove(Character character, float speed = 10f) : base(character)
     {
         CharacterEvent characterEvent = character.GetCharacterComponent<CharacterEvent>();
+        _speed = speed;
 
         characterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
@@ -47,6 +48,7 @@ public class CharacterMove : CharacterComponent
 
     private Transform _transform = null;
     private Rigidbody _rigidbody = null;
+    private float _speed = 1f;
     private Vector2 _moveDirection = Vector2.zero;
 
     public override void Update()
@@ -56,7 +58,7 @@ public class CharacterMove : CharacterComponent
 
     public override void FixedUpdate()
     {
-        _rigidbody.velocity = new Vector3(_moveDirection.x * 10, 0, 0);
+        _rigidbody.velocity = new Vector3(_moveDirection.x * _speed, 0, 0);
         _moveDirection = Vector2.zero;
     }
 }
