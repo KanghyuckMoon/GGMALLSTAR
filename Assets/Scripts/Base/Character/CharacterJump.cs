@@ -6,7 +6,7 @@ public class CharacterJump : CharacterComponent
 {
     public CharacterJump(Character character) : base(character)
     {
-        character.GetCharacterComponent<CharacterEvent>().AddEvent(EventKeyWord.UP, OnJump);
+
     }
 
     private bool _isJump = false;
@@ -91,11 +91,6 @@ public class CharacterJump : CharacterComponent
         }
     }
 
-    private void OnJump()
-    {
-        _isJump = !_isJump;
-    }
-
     private void Jump(float accelerationJumpPower = 1f)
     {
         if (_isJumpable == false)
@@ -156,32 +151,5 @@ public class CharacterJump : CharacterComponent
             return;
 
         _currentJumpCnt++;
-    }
-
-    public void JumpEnable()
-    {
-        _isJumpable = true;
-    }
-
-    public void JumpDisable()
-    {
-        _isJumpable = false;
-    }
-
-    public void ForceJump(float amount, Vector3 dir, int jumpCnt = 1)
-    {
-        _currentJumpCnt = jumpCnt;
-        _isFirstJump = false;
-
-        float jumpPow = _currentJumpCnt > 0 ? amount * _secondJumpPower : amount;
-        if (_isDoubleJump)
-        {
-            jumpPow = amount * _secondJumpPower;
-        }
-
-        _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, 0f);
-        _rigidbody.AddForce(dir == Vector3.zero ? Vector3.up : dir * jumpPow, ForceMode.Impulse);
-
-        _isDoubleJump = false;
     }
 }

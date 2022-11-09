@@ -6,16 +6,37 @@ public class CharacterMove : CharacterComponent
 {
     public CharacterMove(Character character) : base(character)
     {
-        character.GetCharacterComponent<CharacterEvent>().AddEvent(EventKeyWord.LEFT, () =>
+        CharacterEvent characterEvent = character.GetCharacterComponent<CharacterEvent>();
+
+        characterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
-            _moveLeft = _moveLeft ? false : true;
-            _moveRight = false;
-        });
-        character.GetCharacterComponent<CharacterEvent>().AddEvent(EventKeyWord.RIGHT, () =>
+            _moveDirection.x = -1;
+        }, EventType.KEY_DOWN);
+
+        characterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
-            _moveRight = _moveRight ? false : true;
-            _moveLeft = false;
-        });
+            _moveDirection.x = 1;
+        }, EventType.KEY_DOWN);
+
+        characterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        {
+            _moveDirection.x = -1;
+        }, EventType.KEY_HOLD);
+
+        characterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        {
+            _moveDirection.x = 1;
+        }, EventType.KEY_HOLD);
+
+        characterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        {
+            _moveDirection.x = 0;
+        }, EventType.KEY_UP);
+
+        characterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        {
+            _moveDirection.x = 0;
+        }, EventType.KEY_UP);
     }
 
     protected override void Awake()
@@ -28,29 +49,14 @@ public class CharacterMove : CharacterComponent
     private Rigidbody _rigidbody = null;
     private Vector2 _moveDirection = Vector2.zero;
 
-    private bool _moveRight = false;
-    private bool _moveLeft = false;
-
     public override void Update()
     {
-        if (_moveRight)
-        {
-            _moveDirection.x = 1;
-        }
-        else if (_moveLeft)
-        {
-            _moveDirection.x = -1;
-        }
-        else
-        {
-            _moveDirection.x = 0;
-        }
         _moveDirection.y = _rigidbody.velocity.y;
     }
 
     public override void FixedUpdate()
     {
-        _rigidbody.velocity = new Vector3(_moveDirection.x, 0, 0);
+        _rigidbody.velocity = new Vector3(_moveDirection.x * 10, 0, 0);
         _moveDirection = Vector2.zero;
     }
 }

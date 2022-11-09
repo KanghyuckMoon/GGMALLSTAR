@@ -42,7 +42,8 @@ public class CharacterInput : CharacterComponent
                 _wasInput[keyCode] = true;
                 _characterEvent.EventTrigger(actionName, EventType.KEY_DOWN);
             }
-            else if (Input.GetKeyUp(keyCode))
+
+            if (Input.GetKeyUp(keyCode))
             {
                 _wasInput[keyCode] = false;
                 _characterEvent.EventTrigger(actionName, EventType.KEY_UP);

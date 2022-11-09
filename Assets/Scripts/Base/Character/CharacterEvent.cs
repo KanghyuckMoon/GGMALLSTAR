@@ -17,51 +17,61 @@ public class CharacterEvent : CharacterComponent
     {
     }
 
-    private Dictionary<string, System.Action>[] characterEvent = new Dictionary<string, System.Action>[Enum.GetValues(typeof(EventType)).Length];
+    protected override void Awake()
+    {
+        uint eventTypeLength = (uint)Enum.GetValues(typeof(EventType)).Length;
+        _characterEvent = new Dictionary<string, System.Action>[eventTypeLength];
+        for (uint i = 0; i < eventTypeLength; i++)
+        {
+            _characterEvent[i] = new Dictionary<string, System.Action>();
+        }
+    }
+
+    private Dictionary<string, System.Action>[] _characterEvent = null;
 
     public void AddEvent(string actionName, System.Action action, EventType eventType = EventType.DEFAULT)
     {
-        if (characterEvent[(uint)eventType].ContainsKey(actionName))
+        if (_characterEvent[(uint)eventType].ContainsKey(actionName))
         {
-            characterEvent[(uint)eventType][actionName] += action;
+            _characterEvent[(uint)eventType][actionName] += action;
         }
         else
         {
-            characterEvent[(uint)eventType].Add(actionName, action);
+            _characterEvent[(uint)eventType].Add(actionName, action);
         }
     }
 
     public void AddEvent(string actionName, EventType eventType = EventType.DEFAULT)
     {
-        if (characterEvent[(uint)eventType].ContainsKey(actionName))
+        if (_characterEvent[(uint)eventType].ContainsKey(actionName))
         {
-            characterEvent[(uint)eventType][actionName] += null;
+            _characterEvent[(uint)eventType][actionName] += null;
         }
         else
         {
-            characterEvent[(uint)eventType].Add(actionName, null);
+            _characterEvent[(uint)eventType].Add(actionName, null);
         }
     }
 
     public void EventTrigger(string actionName, EventType eventType = EventType.DEFAULT)
     {
-        if (characterEvent[(uint)eventType].ContainsKey(actionName))
+        if (_characterEvent[(uint)eventType].ContainsKey(actionName))
         {
-            characterEvent[(uint)eventType][actionName]?.Invoke();
+            _characterEvent[(uint)eventType][actionName]?.Invoke();
         }
     }
 
     public void RemoveEvent(string actionName, System.Action action = null, EventType eventType = EventType.DEFAULT)
     {
-        if (characterEvent[(uint)eventType].ContainsKey(actionName))
+        if (_characterEvent[(uint)eventType].ContainsKey(actionName))
         {
             if (action != null)
             {
-                characterEvent[(uint)eventType][actionName] -= action;
+                _characterEvent[(uint)eventType][actionName] -= action;
             }
             else
             {
-                characterEvent[(uint)eventType].Remove(actionName);
+                _characterEvent[(uint)eventType].Remove(actionName);
             }
         }
     }
