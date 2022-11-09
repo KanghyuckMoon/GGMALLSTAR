@@ -7,7 +7,8 @@ namespace Sound
 		QuietTown_BGM,
 		FoolCity_BGM,
 		Title_BGM,
-
+		Tower_BGM,
+		MainMenu_BGM,
 		Count,
 	}
 

@@ -225,6 +225,14 @@ MonoBehaviour:
     m_Address: Title_BGM
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 91d83c1e91ed082429296e98a8cb303b
+    m_Address: Tower_BGM
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c7c6e37bfaf75dc408f5494f17a65845
+    m_Address: MainMenu_BGM
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
