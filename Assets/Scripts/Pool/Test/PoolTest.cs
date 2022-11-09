@@ -9,7 +9,7 @@ namespace Pool
 		[ContextMenu("GetObj")]
 		public void GetObj()
 		{
-			PoolManager.GetItem("PoolObj");
+			PoolManager.GetItem<PoolObj>("PoolObj");
 		}
 	}
 
