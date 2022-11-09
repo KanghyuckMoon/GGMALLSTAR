@@ -16,6 +16,7 @@ namespace Setting
 		public void SetBgmAudio(float bgmValue)
 		{
 			_audioMixer.SetFloat("BGMVolume", Mathf.Log10(bgmValue) * 20);
+			SettingManager.Instance.SettingData.bgmValue = bgmValue;
 		}
 
 		/// <summary>
@@ -25,6 +26,7 @@ namespace Setting
 		public void SetEffAudio(float effValue)
 		{
 			_audioMixer.SetFloat("EFFVolume", Mathf.Log10(effValue) * 20);
+			SettingManager.Instance.SettingData.effValue = effValue;
 		}
 	}
 }

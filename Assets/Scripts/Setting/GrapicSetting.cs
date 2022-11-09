@@ -15,6 +15,7 @@ namespace Setting
 		public void ChangeGrapicSetting(int index)
 		{
 			QualitySettings.SetQualityLevel(index, true);
+			SettingManager.Instance.SettingData.grapicQualityIndex = index;
 		}
 
 		//전체화면 설정
@@ -22,15 +23,17 @@ namespace Setting
 		{
 			#if UNITY_EDITOR
 			EditorWindow.focusedWindow.maximized = isFullScreen;
-			#else
+#else
 				Screen.fullScreen = isFullScreen;
-			#endif
+#endif
+			SettingManager.Instance.SettingData.isFullScreen = isFullScreen;
 		}
 
 		//해상도 설정
 		public void ChangeResolutionSetting(int index)
 		{
 			Screen.SetResolution((int)resolutionList[index].x, (int)resolutionList[index].y, Screen.fullScreen);
+			SettingManager.Instance.SettingData.resolutionIndex = index;
 		}
 
 	}
