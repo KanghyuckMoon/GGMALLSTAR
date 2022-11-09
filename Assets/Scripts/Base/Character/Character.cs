@@ -11,6 +11,7 @@ public enum ComponentType
     Jump,
     Sprite,
     Animation,
+    Gravity
 }
 
 public class Character : MonoBehaviour
@@ -48,6 +49,7 @@ public class Character : MonoBehaviour
         _characterComponents.Add(ComponentType.Jump, new CharacterJump(this));
         _characterComponents.Add(ComponentType.Sprite, new CharacterSprite(this));
         _characterComponents.Add(ComponentType.Animation, new CharacterAnimation(this));
+        _characterComponents.Add(ComponentType.Gravity, new CharacterGravity(this));
     }
 
     private void Update()
