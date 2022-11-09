@@ -80,6 +80,14 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        foreach (CharacterComponent characterComponent in _characterComponents.Values)
+        {
+            characterComponent.OnCollisionEnter(other);
+        }
+    }
+
     private void OnCollisionExit(Collision other)
     {
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
