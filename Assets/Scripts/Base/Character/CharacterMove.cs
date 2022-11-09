@@ -6,35 +6,34 @@ public class CharacterMove : CharacterComponent
 {
     public CharacterMove(Character character, float speed = 10f) : base(character)
     {
-        CharacterEvent characterEvent = character.GetCharacterComponent<CharacterEvent>();
         _speed = speed;
 
-        characterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
             _moveDirection.x = -1;
         }, EventType.KEY_DOWN);
 
-        characterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
             _moveDirection.x = 1;
         }, EventType.KEY_DOWN);
 
-        characterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
             _moveDirection.x = -1;
         }, EventType.KEY_HOLD);
 
-        characterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
             _moveDirection.x = 1;
         }, EventType.KEY_HOLD);
 
-        characterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
             _moveDirection.x = 0;
         }, EventType.KEY_UP);
 
-        characterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
             _moveDirection.x = 0;
         }, EventType.KEY_UP);

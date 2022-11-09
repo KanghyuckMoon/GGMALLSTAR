@@ -4,12 +4,23 @@ using UnityEngine;
 
 public abstract class CharacterComponent
 {
-    private Character _character;
+    private Character _character = null;
     protected Character Character => _character;
+
+    private CharacterEvent _characterEvent = null;
+    protected CharacterEvent CharacterEvent => _characterEvent;
 
     public CharacterComponent(Character character)
     {
         _character = character;
+        _characterEvent = character.CharacterEvent;
+        Awake();
+    }
+
+    public CharacterComponent(Character character, CharacterEvent characterEvent)
+    {
+        _character = character;
+        _characterEvent = characterEvent;
         Awake();
     }
 

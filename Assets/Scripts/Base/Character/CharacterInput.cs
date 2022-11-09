@@ -8,7 +8,6 @@ public class CharacterInput : CharacterComponent
     public CharacterInput(Character character) : base(character)
     {
         _inputData = Character.InputDataBaseSO.GetInputData();
-        _characterEvent = Character.GetCharacterComponent<CharacterEvent>();
 
         _wasInput = new();
 
@@ -17,13 +16,12 @@ public class CharacterInput : CharacterComponent
             _wasInput.Add(input.keyCode, false);
             for (uint i = 0; i < Enum.GetValues(typeof(EventType)).Length; i++)
             {
-                _characterEvent.AddEvent(input.actionName, (EventType)i);
+                CharacterEvent.AddEvent(input.actionName, (EventType)i);
             }
         }
     }
 
     private InputData[] _inputData = null;
-    private CharacterEvent _characterEvent = null;
     private Dictionary<KeyCode, bool> _wasInput = null;
 
     public override void Update()
@@ -35,18 +33,18 @@ public class CharacterInput : CharacterComponent
 
             if (_wasInput[keyCode])
             {
-                _characterEvent.EventTrigger(actionName, EventType.KEY_HOLD);
+                CharacterEvent.EventTrigger(actionName, EventType.KEY_HOLD);
             }
             else if (Input.GetKeyDown(keyCode))
             {
                 _wasInput[keyCode] = true;
-                _characterEvent.EventTrigger(actionName, EventType.KEY_DOWN);
+                CharacterEvent.EventTrigger(actionName, EventType.KEY_DOWN);
             }
 
             if (Input.GetKeyUp(keyCode))
             {
                 _wasInput[keyCode] = false;
-                _characterEvent.EventTrigger(actionName, EventType.KEY_UP);
+                CharacterEvent.EventTrigger(actionName, EventType.KEY_UP);
             }
         }
     }

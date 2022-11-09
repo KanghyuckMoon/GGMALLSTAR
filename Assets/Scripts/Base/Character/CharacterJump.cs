@@ -6,8 +6,7 @@ public class CharacterJump : CharacterComponent
 {
     public CharacterJump(Character character) : base(character)
     {
-        CharacterEvent characterEvent = character.GetCharacterComponent<CharacterEvent>();
-        characterEvent.AddEvent(EventKeyWord.UP, OnJump, EventType.KEY_DOWN);
+        CharacterEvent.AddEvent(EventKeyWord.UP, OnJump, EventType.KEY_DOWN);
     }
 
     protected override void Awake()

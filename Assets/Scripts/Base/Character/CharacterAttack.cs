@@ -6,7 +6,7 @@ public class CharacterAttack : CharacterComponent
 {
     public CharacterAttack(Character character) : base(character)
     {
-        character.GetCharacterComponent<CharacterEvent>().AddEvent(EventKeyWord.ATTACK, OnAttack, EventType.KEY_DOWN);
+        CharacterEvent.AddEvent(EventKeyWord.ATTACK, OnAttack, EventType.KEY_DOWN);
     }
 
     private void OnAttack()

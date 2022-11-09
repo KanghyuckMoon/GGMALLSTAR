@@ -6,8 +6,8 @@ public class CharacterSprite : CharacterComponent
 {
     public CharacterSprite(Character character) : base(character)
     {
-        Character.GetCharacterComponent<CharacterEvent>().AddEvent(EventKeyWord.RIGHT, () => { _spriteRenderer.flipX = false; }, EventType.KEY_HOLD);
-        Character.GetCharacterComponent<CharacterEvent>().AddEvent(EventKeyWord.LEFT, () => { _spriteRenderer.flipX = true; }, EventType.KEY_HOLD);
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () => { _spriteRenderer.flipX = true; }, EventType.KEY_HOLD);
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () => { _spriteRenderer.flipX = false; }, EventType.KEY_HOLD);
     }
 
     protected override void Awake()
