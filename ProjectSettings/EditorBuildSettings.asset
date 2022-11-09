@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Stage/Well.unity
     guid: bc04b32bae6344748bc24f84e8dc2347
   - enabled: 1
+    path: Assets/Scenes/Stage/Tower.unity
+    guid: aa06a577737bf304aa6f222eebbbb4b6
+  - enabled: 1
     path: Assets/Scenes/Main/Main.unity
     guid: 66164b586e694a94f98fdd4a593f45ce
   - enabled: 1
