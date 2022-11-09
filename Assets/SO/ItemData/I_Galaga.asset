@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_Galaga
+  m_EditorClassIdentifier: 
+  itemName: "\uC6B0\uC8FC\uC120"
+  explanation: "\uBB34\uB824 \uC801\uC774 82\uB9C8\uB9AC??"
+  prefeb: {fileID: 619184981525376161, guid: ad279fb754c969e40bed8c973a0176a8, type: 3}

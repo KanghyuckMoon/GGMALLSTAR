@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_Elon
+  m_EditorClassIdentifier: 
+  itemName: "\uBD80\uC790"
+  explanation: "\uD654\uC131 \uAC08\uB044\uB2C8\uAE4C"
+  prefeb: {fileID: 2938496261957492360, guid: a5750a40ef856cb41b2b3ae607e44cb3, type: 3}

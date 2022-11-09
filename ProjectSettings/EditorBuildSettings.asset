@@ -23,6 +23,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage/Well.unity
     guid: bc04b32bae6344748bc24f84e8dc2347
+  - enabled: 1
+    path: Assets/Scenes/Main/Main.unity
+    guid: 66164b586e694a94f98fdd4a593f45ce
+  - enabled: 1
+    path: Assets/Scenes/Main/Title.unity
+    guid: adf9ac3ac024dd442aa855e545fdb416
+  - enabled: 1
+    path: Assets/Scenes/Main/CharacterSelect.unity
+    guid: 91db98191ad9d2945ad41c809772fc25
+  - enabled: 1
+    path: Assets/Scenes/Inventory/InventoryScene.unity
+    guid: d88a7ebacc155944ea906f35f33b095c
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 03db60e03b4afb844811c42aeae79d3f,
       type: 2}

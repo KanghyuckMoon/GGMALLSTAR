@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_Pisa
+  m_EditorClassIdentifier: 
+  itemName: "\uD53C\uC0AC\uC758 \uC0AC\uD0D1"
+  explanation: "\uBB50 \uD53C\uC0AC\uC758 \uC0AC\uD0D1 \uD558\uB098\uCBE4 \uAC00\uC838\uC640\uBCF4\uC2DC\uB358\uAC00\uC694"
+  prefeb: {fileID: 8420745913745793019, guid: 8dfda05b87ca3344494b7592146c78df, type: 3}

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_DarkWizard
+  m_EditorClassIdentifier: 
+  itemName: Dard Wizard
+  explanation: "\uBE5B\uC758 \uC138\uACC4\uB97C \uC704\uD611\uD558\uB294 \uC5B4\uB460\uC758
+    \uB9C8\uBC95\uC0AC"
+  prefeb: {fileID: 5243119482707448973, guid: 0eff9fce99bdd0f43a83553db382e4f3, type: 3}
