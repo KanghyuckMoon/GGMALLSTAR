@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pool;
 
 public class CharacterAttack : CharacterComponent
 {
@@ -15,6 +16,7 @@ public class CharacterAttack : CharacterComponent
 
     protected virtual void OnAttack()
     {
-        Debug.Log("Attack");
+        HitBox hitBox = PoolManager.GetItem<HitBox>("HitBox");
+        hitBox.transform.position = Character.transform.position;
     }
 }
