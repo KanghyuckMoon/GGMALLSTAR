@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMove : CharacterComponent
 {
-    public CharacterMove(Character character, float speed = 10f) : base(character)
+    public CharacterMove(Character character, float speed = 7.5f) : base(character)
     {
         _speed = speed;
 
@@ -47,7 +47,7 @@ public class CharacterMove : CharacterComponent
 
     private Transform _transform = null;
     private Rigidbody _rigidbody = null;
-    private float _speed = 1f;
+    private float _speed = 7.5f;
     private Vector2 _moveDirection = Vector2.zero;
 
     public override void FixedUpdate()
