@@ -1245,17 +1245,17 @@ PrefabInstance:
     - target: {fileID: 5558056873115632026, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_XDamping
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5558056873115632026, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_YDamping
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5558056873115632026, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_ZDamping
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5558056873115632026, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}

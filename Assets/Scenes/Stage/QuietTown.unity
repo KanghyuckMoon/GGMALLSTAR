@@ -446,17 +446,17 @@ PrefabInstance:
     - target: {fileID: 5558056872141614063, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09852527
+      value: 0.09852526
       objectReference: {fileID: 0}
     - target: {fileID: 5558056872141614063, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.017209472
+      value: 0.017209465
       objectReference: {fileID: 0}
     - target: {fileID: 5558056872141614063, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0017041151
+      value: -0.0017041144
       objectReference: {fileID: 0}
     - target: {fileID: 5558056872733334164, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
@@ -481,17 +481,17 @@ PrefabInstance:
     - target: {fileID: 5558056872733334164, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09852527
+      value: 0.09852526
       objectReference: {fileID: 0}
     - target: {fileID: 5558056872733334164, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.017209472
+      value: 0.017209465
       objectReference: {fileID: 0}
     - target: {fileID: 5558056872733334164, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0017041151
+      value: -0.0017041144
       objectReference: {fileID: 0}
     - target: {fileID: 5558056872733334165, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
@@ -596,17 +596,17 @@ PrefabInstance:
     - target: {fileID: 5558056873115632026, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_XDamping
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5558056873115632026, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_YDamping
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5558056873115632026, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
       propertyPath: m_ZDamping
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5558056873115632026, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
         type: 3}
