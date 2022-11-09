@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class CharacterComponent
 {
     private Character _character;
-    public Character Character => _character;
+    protected Character Character => _character;
 
     public CharacterComponent(Character character)
     {
@@ -18,4 +18,6 @@ public abstract class CharacterComponent
     public virtual void Update() { }
     public virtual void FixedUpdate() { }
     public virtual void LateUpdate() { }
+
+    public virtual void OnCollisionExit(Collision collision) { }
 }

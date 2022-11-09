@@ -7,7 +7,10 @@ public enum ComponentType
     Attack,
     Move,
     Event,
-    Input
+    Input,
+    Jump,
+    Sprite,
+    Animation,
 }
 
 public class Character : MonoBehaviour
@@ -42,6 +45,9 @@ public class Character : MonoBehaviour
         _characterComponents.Add(ComponentType.Input, new CharacterInput(this));
         _characterComponents.Add(ComponentType.Move, new CharacterMove(this));
         _characterComponents.Add(ComponentType.Attack, new CharacterAttack(this));
+        _characterComponents.Add(ComponentType.Jump, new CharacterJump(this));
+        _characterComponents.Add(ComponentType.Sprite, new CharacterSprite(this));
+        _characterComponents.Add(ComponentType.Animation, new CharacterAnimation(this));
     }
 
     private void Update()
@@ -65,6 +71,14 @@ public class Character : MonoBehaviour
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
         {
             characterComponent.FixedUpdate();
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        foreach (CharacterComponent characterComponent in _characterComponents.Values)
+        {
+            characterComponent.OnCollisionExit(other);
         }
     }
 }
