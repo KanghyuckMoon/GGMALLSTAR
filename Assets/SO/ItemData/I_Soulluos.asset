@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_Soulluos
+  m_EditorClassIdentifier: 
+  itemName: "\uC601\uD63C"
+  explanation: "Soulluos\uC5D0 \uB4F1\uC7A5\uD558\uB294 \uC601\uD63C. \uBAAC\uC2A4\uD130\uC5D0\uAC8C
+    \uBE59\uC758\uD574\uC11C \uBAAC\uC2A4\uD130\uCC98\uB7FC \uC2F8\uC6B4\uB2E4. \uC790\uC2E0\uBCF4\uB2E4
+    \uAC15\uD55C \uBAAC\uC2A4\uD130\uB294 \uBE59\uC758\uD558\uC9C0 \uBABB\uD558\uAE30\uB3C4
+    \uD55C\uB2E4."
+  prefeb: {fileID: 1678796978749414714, guid: ac3becccbb4bb6f48aac74d0bdd5bb27, type: 3}
