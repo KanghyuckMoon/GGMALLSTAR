@@ -7,24 +7,20 @@ public class CharacterJump : CharacterComponent
     public CharacterJump(Character character) : base(character)
     {
         CharacterEvent characterEvent = character.GetCharacterComponent<CharacterEvent>();
-
-
+        characterEvent.AddEvent(EventKeyWord.UP, OnJump, EventType.KEY_DOWN);
     }
 
     protected override void Awake()
     {
         _rigidbody = Character.GetComponent<Rigidbody>();
+        _groundLayerMask = LayerMask.GetMask("Ground");
     }
 
     private Rigidbody _rigidbody = null;
 
     private float _jumpPower = 100f;
 
-    private bool _isJumpable = true;
     private bool _isGround = false;
-
-    private float _maxAcceleration = 1f;
-    private float _accelerationPower = 0.06f;
 
     private LayerMask _groundLayerMask = default(LayerMask);
 
@@ -35,12 +31,16 @@ public class CharacterJump : CharacterComponent
 
     private void OnJump()
     {
-
+        if (_isGround)
+        {
+            Debug.Log("Jump");
+            _rigidbody.AddForce(Vector3.up * _jumpPower);
+        }
     }
 
     private void GroundCheck()
     {
-        Debug.DrawRay(Character.transform.position, Vector3.down, Color.red);
-        _isGround = Physics.Raycast(Character.transform.position, Vector3.down, -0.1f, LayerMask.GetMask("Ground"));
+        Debug.Log("GroundCheck " + _isGround);
+        _isGround = Physics.Raycast(Character.transform.position + new Vector3(0, 0.5f, 0), Vector3.down, 0.6f, _groundLayerMask);
     }
 }

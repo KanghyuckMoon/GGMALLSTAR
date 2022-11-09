@@ -51,11 +51,6 @@ public class CharacterMove : CharacterComponent
     private float _speed = 1f;
     private Vector2 _moveDirection = Vector2.zero;
 
-    public override void Update()
-    {
-        //_moveDirection.y = _rigidbody.velocity.y;
-    }
-
     public override void FixedUpdate()
     {
         _rigidbody.velocity = new Vector3(_moveDirection.x * _speed, 0, 0);
