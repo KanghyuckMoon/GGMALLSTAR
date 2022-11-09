@@ -6,6 +6,8 @@ namespace Sound
 		Well_BGM,
 		QuietTown_BGM,
 		FoolCity_BGM,
+		Title_BGM,
+
 		Count,
 	}
 
