@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,37 @@ public class CharacterJump : CharacterComponent
 {
     public CharacterJump(Character character) : base(character)
     {
+        CharacterEvent characterEvent = character.GetCharacterComponent<CharacterEvent>();
 
+        characterEvent.AddEvent(EventKeyWord.UP, () =>
+        {
+            _wasJump = true;
+            Jump(1f + _acceleration);
+            JumpRenewal();
+        }, EventType.KEY_DOWN);
+
+        characterEvent.AddEvent(EventKeyWord.UP, () =>
+        {
+            _curTime += Time.deltaTime;
+            if (_curTime < _timer)
+            {
+                return;
+            }
+            _acceleration += Time.deltaTime;
+            _acceleration = Mathf.Clamp(_acceleration, 0f, _maxAcceleration);
+
+            if (_acceleration < _maxAcceleration)
+            {
+                JumpProportion(_accelerationPower);
+            }
+        }, EventType.KEY_HOLD);
+
+        characterEvent.AddEvent(EventKeyWord.UP, () =>
+        {
+            _wasJump = false;
+            _acceleration = 0f;
+            _curTime = 0f;
+        }, EventType.KEY_UP);
     }
 
     private bool _isJump = false;
@@ -24,16 +55,12 @@ public class CharacterJump : CharacterComponent
     private Rigidbody _rigidbody = null;
     private Transform _transform = null;
 
-    [SerializeField]
-    private float _jumpPower = 10f;
+    private float _jumpPower = 100f;
 
-    [SerializeField]
     private float _secondJumpPower = 0.8f;
 
-    [SerializeField]
     private float _rayLength = 0.5f;
 
-    [SerializeField]
     private int _jumpCount = 2;
     private int _currentJumpCnt = 0;
 
@@ -62,33 +89,6 @@ public class CharacterJump : CharacterComponent
     public override void Update()
     {
         GroundCheck();
-        if (_isJump && !_wasJump)
-        {
-            _wasJump = true;
-            Jump(1f + _acceleration);
-            JumpRenewal();
-        }
-        else if (_isJump && _wasJump)
-        {
-            _curTime += Time.deltaTime;
-            if (_curTime < _timer)
-            {
-                return;
-            }
-            _acceleration += Time.deltaTime;
-            _acceleration = Mathf.Clamp(_acceleration, 0f, _maxAcceleration);
-
-            if (_acceleration < _maxAcceleration)
-            {
-                JumpProportion(_accelerationPower);
-            }
-        }
-        else if (!_isJump && _wasJump)
-        {
-            _wasJump = false;
-            _acceleration = 0f;
-            _curTime = 0f;
-        }
     }
 
     private void Jump(float accelerationJumpPower = 1f)
