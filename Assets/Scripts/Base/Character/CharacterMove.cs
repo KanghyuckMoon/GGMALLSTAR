@@ -53,7 +53,7 @@ public class CharacterMove : CharacterComponent
 
     public override void Update()
     {
-        _moveDirection.y = _rigidbody.velocity.y;
+        //_moveDirection.y = _rigidbody.velocity.y;
     }
 
     public override void FixedUpdate()
