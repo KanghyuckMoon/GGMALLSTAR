@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_TowerCrush
+  m_EditorClassIdentifier: 
+  itemName: "\uD0C0\uC6CC\uD06C\uB7EC\uC154"
+  explanation: "Tower Crush\uC5D0\uC11C \uD0C0\uC6CC\uB97C \uBD80\uC218\uB294 \uD0C0\uC6CC\uD06C\uB7EC\uC154,
+    \uAC15\uB825\uD55C \uBB34\uAE30\uB97C \uC0AC\uC6A9\uD560 \uC218\uB85D \uB354
+    \uC27D\uAC8C \uD0C0\uC6CC\uB97C \uBD80\uC2E4 \uC218 \uC788\uB2E4."
+  prefeb: {fileID: 1290291383222107994, guid: 0de5ce547f0cc914a96d858d8fcc13a8, type: 3}
