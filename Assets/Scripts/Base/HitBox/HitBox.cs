@@ -1,3 +1,4 @@
+using System.Runtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,41 +8,53 @@ using Pool;
 [RequireComponent(typeof(Collider))]
 public class HitBox : MonoBehaviour
 {
-    #region IPoolable
-    public void OnPoolOut()
-    {
-        gameObject.SetActive(true);
-        _collider.enabled = true;
-    }
+    private BoxCollider _boxCollider = null;
 
-    public void OnPoolEnter()
-    {
-        //PoolManager.AddObjToPool<HitBox>("HitBox", this);
-        _collider.enabled = false;
-        gameObject.SetActive(false);
-    }
-    #endregion
-
-    private Collider _collider = null;
-    private Vector3 _size = Vector3.zero;
-    private GameObject _owner = null;
-
-    public GameObject Owner { get => _owner; set => _owner = value; }
+    private CharacterAttack _owner = null;
+    public CharacterAttack Owner { get => _owner; set => _owner = value; }
 
     private Action _onHit = null;
     public Action OnHit { get => _onHit; set => _onHit = value; }
 
+    public void SetHitBox(CharacterAttack owner, Action onHit, Vector3 size = default, Vector3 offset = default)
+    {
+        _owner = owner;
+        _onHit = onHit;
+
+        transform.position = owner.Character.transform.position + offset;
+        _boxCollider.size = size;
+    }
+
     private void Awake()
     {
-        _collider = GetComponent<Collider>();
-        _collider.isTrigger = true;
+        _boxCollider = GetComponent<BoxCollider>();
+        _boxCollider.isTrigger = true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag(_owner.tag))
+        if (!other.gameObject.CompareTag(_owner.Character.tag))
         {
+            _owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
             OnHit?.Invoke();
         }
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(SetActiveCoroutine());
+    }
+
+    private void OnDisable()
+    {
+        _onHit = null;
+        _owner = null;
+    }
+
+    private IEnumerator SetActiveCoroutine(bool active = false)
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameObject.SetActive(active);
+        PoolManager.AddObjToPool("HitBox", gameObject);
     }
 }

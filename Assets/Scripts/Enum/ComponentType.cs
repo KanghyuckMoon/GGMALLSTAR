@@ -6,5 +6,7 @@ public enum ComponentType
     Jump,
     Sprite,
     Animation,
-    Gravity
+    Gravity,
+    Stat,
+    Damage
 }
