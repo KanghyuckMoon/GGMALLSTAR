@@ -6,9 +6,10 @@ using Loading;
 public class SceneMove : MonoBehaviour
 {
 	public string sceneName;
+	public LoadingScene.LoadingSceneType loadingSceneType = LoadingScene.LoadingSceneType.Normal;
 
 	public void LoadScene()
 	{
-		LoadingScene.Instance.LoadScene(sceneName);
+		LoadingScene.Instance.LoadScene(sceneName, loadingSceneType);
 	}
 }

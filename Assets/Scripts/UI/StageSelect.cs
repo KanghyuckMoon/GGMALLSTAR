@@ -7,6 +7,6 @@ public class StageSelect : MonoBehaviour
 {
 	public void LoadScene(string sceneName)
 	{
-		LoadingScene.Instance.LoadScene(sceneName);
+		LoadingScene.Instance.LoadScene(sceneName, LoadingScene.LoadingSceneType.Battle);
 	}
 }
