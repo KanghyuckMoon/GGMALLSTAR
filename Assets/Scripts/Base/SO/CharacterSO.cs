@@ -9,4 +9,8 @@ public class CharacterSO : ScriptableObject
 
     [Header("Character Stats")]
     public float MaxHP;
+
+    [Header("Character's HitBox Collision")]
+    public Vector3 HitBoxSize;
+    public Vector3 HitBoxOffset;
 }

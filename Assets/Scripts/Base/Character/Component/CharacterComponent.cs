@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class CharacterComponent
 {
     private Character _character = null;
-    protected Character Character => _character;
+    public Character Character => _character;
 
     private CharacterEvent _characterEvent = null;
-    protected CharacterEvent CharacterEvent => _characterEvent;
+    public CharacterEvent CharacterEvent => _characterEvent;
 
     public CharacterComponent(Character character)
     {
