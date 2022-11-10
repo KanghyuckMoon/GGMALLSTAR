@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 207234686}
   - component: {fileID: 207234689}
   - component: {fileID: 207234690}
+  - component: {fileID: 207234691}
   m_Layer: 5
   m_Name: QuitBtn
   m_TagString: Untagged
@@ -499,6 +500,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 207234691}
+        m_TargetAssemblyTypeName: Sound.ButtonSoundPlay, Sound
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &207234687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +582,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d721c82acd758bb42b2eddd102cbec3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &207234691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207234683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b85b472596e2244296a08ae67fa2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightedeffName: se_system_scrollbar
+  clickEffName: se_system_r2f
 --- !u!1 &311443732
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +801,7 @@ GameObject:
   - component: {fileID: 487986521}
   - component: {fileID: 487986520}
   - component: {fileID: 487986524}
+  - component: {fileID: 487986525}
   m_Layer: 5
   m_Name: VersusBtn
   m_TagString: Untagged
@@ -872,6 +900,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 487986525}
+        m_TargetAssemblyTypeName: Sound.ButtonSoundPlay, Sound
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &487986522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,6 +970,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &487986525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487986518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b85b472596e2244296a08ae67fa2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightedeffName: se_system_scrollbar
+  clickEffName: se_system_r2f
 --- !u!1 &635348536
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +998,7 @@ GameObject:
   - component: {fileID: 635348539}
   - component: {fileID: 635348538}
   - component: {fileID: 635348542}
+  - component: {fileID: 635348543}
   m_Layer: 5
   m_Name: InventoryBtn
   m_TagString: Untagged
@@ -1042,6 +1097,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 635348543}
+        m_TargetAssemblyTypeName: Sound.ButtonSoundPlay, Sound
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &635348540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1100,6 +1167,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &635348543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635348536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b85b472596e2244296a08ae67fa2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightedeffName: se_system_scrollbar
+  clickEffName: se_system_r2f
 --- !u!1 &740214055
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,6 +2622,7 @@ GameObject:
   - component: {fileID: 1757853508}
   - component: {fileID: 1757853507}
   - component: {fileID: 1757853511}
+  - component: {fileID: 1757853512}
   m_Layer: 5
   m_Name: SettingBtn
   m_TagString: Untagged
@@ -2639,6 +2721,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1757853512}
+        m_TargetAssemblyTypeName: Sound.ButtonSoundPlay, Sound
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1757853509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2697,6 +2791,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1757853512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757853505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b85b472596e2244296a08ae67fa2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightedeffName: se_system_scrollbar
+  clickEffName: se_system_r2f
 --- !u!1 &1777786116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,6 +2933,7 @@ GameObject:
   - component: {fileID: 1824214453}
   - component: {fileID: 1824214452}
   - component: {fileID: 1824214456}
+  - component: {fileID: 1824214457}
   m_Layer: 5
   m_Name: ArcadeBtn
   m_TagString: Untagged
@@ -2923,6 +3032,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1824214457}
+        m_TargetAssemblyTypeName: Sound.ButtonSoundPlay, Sound
+        m_MethodName: ClickSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1824214454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2981,6 +3102,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1824214457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824214450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b85b472596e2244296a08ae67fa2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightedeffName: se_system_scrollbar
+  clickEffName: se_system_r2f
 --- !u!1 &1830147656
 GameObject:
   m_ObjectHideFlags: 0
