@@ -2,6 +2,6 @@
 public enum CollaborationGame
 {
     ORIGINAL,
-    IWBTJ
-
+    IWBTJ,
+    Frog_in_the_well
 }
