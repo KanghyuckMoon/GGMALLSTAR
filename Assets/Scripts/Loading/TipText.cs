@@ -23,7 +23,7 @@ namespace Loading
 			while(true)
 			{
 				string text = tipSO.tiptexts[tipTextIndex];
-				tipText.text = tipSO.tiptexts[tipTextIndex];
+				tipText.text = $"TIP : {tipSO.tiptexts[tipTextIndex]}";
 
 				yield return new WaitForSeconds(text.Length);
 				

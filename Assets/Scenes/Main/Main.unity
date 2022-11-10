@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028386, g: 0.22571427, b: 0.3069231, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -412,8 +412,8 @@ GameObject:
   - component: {fileID: 207234688}
   - component: {fileID: 207234687}
   - component: {fileID: 207234686}
-  - component: {fileID: 207234685}
   - component: {fileID: 207234689}
+  - component: {fileID: 207234690}
   m_Layer: 5
   m_Name: QuitBtn
   m_TagString: Untagged
@@ -443,19 +443,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 70}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &207234685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207234683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c7f51822b49004b9e8a69bcdc27ba3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: CharacterSelect
 --- !u!114 &207234686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,9 +487,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 207234685}
-        m_TargetAssemblyTypeName: SceneMove, Assembly-CSharp
-        m_MethodName: LoadScene
+      - m_Target: {fileID: 207234690}
+        m_TargetAssemblyTypeName: Setting.QuitGame, Setting
+        m_MethodName: Quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -570,6 +557,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &207234690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207234683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d721c82acd758bb42b2eddd102cbec3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &311443732
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,7 +985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c7f51822b49004b9e8a69bcdc27ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: CharacterSelect
+  sceneName: InventoryScene
 --- !u!114 &635348539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2583,7 +2582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c7f51822b49004b9e8a69bcdc27ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: CharacterSelect
+  sceneName: Setting
 --- !u!114 &1757853508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2867,7 +2866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c7f51822b49004b9e8a69bcdc27ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: CharacterSelect
+  sceneName: StageSelect
 --- !u!114 &1824214453
 MonoBehaviour:
   m_ObjectHideFlags: 0
