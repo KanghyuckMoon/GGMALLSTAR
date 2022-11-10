@@ -261,6 +261,10 @@ MonoBehaviour:
     m_Address: I_Bartender
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 560ad92f0a9310d4f8deedebae99afdd
+    m_Address: I_MiningMaster
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
