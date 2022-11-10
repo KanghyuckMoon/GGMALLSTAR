@@ -241,6 +241,10 @@ MonoBehaviour:
     m_Address: Inventory_BGM
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 0beb14edf788ac14c810772e6250910a
+    m_Address: I_MBTIC
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

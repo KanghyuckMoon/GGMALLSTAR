@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_JaebySoul
+  m_EditorClassIdentifier: 
+  itemName: "\uD0A4\uC18C\uB77C\uCA29"
+  explanation: "JaebySoul\uC5D0 \uB4F1\uC7A5\uD558\uB294 \uC8FC\uC778\uACF5\uC73C\uB85C
+    \uD574\uACE8\uC774\uB098 \uB4DC\uB798\uACE4\uC744 \uC0AC\uB0E5\uD558\uB294 \uC9C4\uC815\uD55C
+    K-\uBAAC\uC2A4\uD130\uD5CC\uD130, \uAC70\uAE30\uB2E4 \uBBF8\uC18C\uB140\uB2E4."
+  prefeb: {fileID: 4563419019117283908, guid: e1ec53d2857f897438682882da9e8f71, type: 3}
