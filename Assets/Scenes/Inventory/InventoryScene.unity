@@ -374,6 +374,7 @@ MonoBehaviour:
     type: 3}
   namePanelHeightSize: 100
   viewPortHeightSize: 600
+  effName: se_system_scrollbar
 --- !u!1 &146691385
 GameObject:
   m_ObjectHideFlags: 0

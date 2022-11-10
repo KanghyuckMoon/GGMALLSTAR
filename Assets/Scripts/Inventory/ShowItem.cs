@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Sound;
 
 namespace Inventory
 {
@@ -15,6 +16,7 @@ namespace Inventory
 		public GameObject itemNamePanel;
 		public float namePanelHeightSize;
 		public float viewPortHeightSize;
+		public string effName;
 
 		private int testPreviousItemIndex;
 		private List<GameObject> namePanelObjectList = new List<GameObject>();
@@ -81,6 +83,7 @@ namespace Inventory
 			{
 				namePanelObjectList[testShowItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
 				namePanelObjectList[testPreviousItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
+				SoundManager.Instance.PlayEFF(effName);
 
 				var contentRect = contents.GetComponent<RectTransform>();
 				var contentPos = contentRect.anchoredPosition;
