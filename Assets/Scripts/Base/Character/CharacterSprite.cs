@@ -26,4 +26,5 @@ public class CharacterSprite : CharacterComponent
 
     private SpriteRenderer _spriteRenderer = null;
     private Direction _direction = Direction.RIGHT;
+    public Direction Direction => _direction;
 }

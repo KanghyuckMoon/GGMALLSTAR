@@ -218,7 +218,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 99dc72412ec5451459b1b32dabb246e7
-    m_Address: Assets/Prefabs/HitBox.prefab
+    m_Address: HitBox
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

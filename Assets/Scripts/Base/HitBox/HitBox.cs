@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class HitBox : MonoBehaviour, IPoolable
 
     public void OnPoolEnter()
     {
-        PoolManager.AddObjToPool<HitBox>("HitBox", this);
+        //PoolManager.AddObjToPool<HitBox>("HitBox", this);
         _collider.enabled = false;
         gameObject.SetActive(false);
     }
@@ -23,6 +24,12 @@ public class HitBox : MonoBehaviour, IPoolable
 
     private Collider _collider = null;
     private Vector3 _size = Vector3.zero;
+    private GameObject _owner = null;
+
+    public GameObject Owner { get => _owner; set => _owner = value; }
+
+    private Action _onHit = null;
+    public Action OnHit { get => _onHit; set => _onHit = value; }
 
     private void Awake()
     {
@@ -32,6 +39,9 @@ public class HitBox : MonoBehaviour, IPoolable
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Hit");
+        if (!other.gameObject.CompareTag(_owner.tag))
+        {
+            OnHit?.Invoke();
+        }
     }
 }
