@@ -1,9 +1,11 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utill;
 using Json;
 using Addressable;
+using System;
 
 namespace Inventory
 {
@@ -15,7 +17,7 @@ namespace Inventory
 		private bool isInit = false;
 		public void Awake()
 		{
-			Init();
+			Instance.Init();
 		}
 
 		private void Init()
@@ -29,7 +31,9 @@ namespace Inventory
 			foreach(string itemAddressName in inventoryData.itemAddressNames)
 			{
 				inventorySO.itemDatas.Add(AddressablesManager.Instance.GetResource<ItemDataSO>(itemAddressName));
+				allItemSO.allItemAddressNames.Remove(itemAddressName);
 			}
+			allItemSO.allItemAddressNames = allItemSO.allItemAddressNames.OrderBy(a => Guid.NewGuid()).ToList();
 		}
 
 		public void GetItem(string itemAdressName)
@@ -52,18 +56,11 @@ namespace Inventory
 		/// </summary>
 		public void RandomGetItem()
 		{
-			while(allItemSO.allItemAddressNames.Count > 0)
+			if(allItemSO.allItemAddressNames.Count > 0)
 			{
-				string addressName = allItemSO.allItemAddressNames[Random.Range(0, allItemSO.allItemAddressNames.Count - 1)];
-				if(inventoryData.itemAddressNames.Contains(addressName))
-				{
-					allItemSO.allItemAddressNames.Remove(addressName);
-				}
-				else
-				{
-					GetItem(addressName);
-					break;
-				}
+				string addressName = allItemSO.allItemAddressNames[0];
+				allItemSO.allItemAddressNames.Remove(addressName);
+				GetItem(addressName);
 			}
 
 		}
