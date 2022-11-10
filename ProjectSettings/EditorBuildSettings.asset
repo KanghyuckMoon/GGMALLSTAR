@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main/Main.unity
     guid: 66164b586e694a94f98fdd4a593f45ce
   - enabled: 1
+    path: Assets/Scenes/UI/ItemPopUp.unity
+    guid: 2a1e203b152c3e64f8ca6618923107de
+  - enabled: 1
     path: Assets/Scenes/Setting/InGameSetting.unity
     guid: 26228209f09091e48974dcce18ff2f19
   - enabled: 1

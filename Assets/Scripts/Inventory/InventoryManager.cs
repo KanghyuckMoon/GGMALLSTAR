@@ -15,9 +15,19 @@ namespace Inventory
 		private InventorySO inventorySO;
 		private AllItemSO allItemSO;
 		private bool isInit = false;
-		public void Awake()
+		public void Start()
 		{
-			Instance.Init();
+			if (!isInit)
+			{
+				if (Instance == this)
+				{
+					Init();
+				}
+				else
+				{
+					Instance.Init();
+				}
+			}
 		}
 
 		private void Init()
@@ -46,7 +56,9 @@ namespace Inventory
 			if(!inventoryData.itemAddressNames.Contains(itemAdressName))
 			{
 				inventoryData.itemAddressNames.Add(itemAdressName);
-				inventorySO.itemDatas.Add(AddressablesManager.Instance.GetResource<ItemDataSO>(itemAdressName));
+				ItemDataSO itemDataSO = AddressablesManager.Instance.GetResource<ItemDataSO>(itemAdressName);
+				inventorySO.itemDatas.Add(itemDataSO);
+				FindObjectOfType<ItemPopUpManager>(true).SetItemPopUp(itemDataSO.itemName);
 				SaveManager.Save<InventoryData>(ref inventoryData);
 			}
 		}
@@ -56,11 +68,20 @@ namespace Inventory
 		/// </summary>
 		public void RandomGetItem()
 		{
-			if(allItemSO.allItemAddressNames.Count > 0)
+			if (!isInit)
+			{
+				Init();
+			}
+
+			if (allItemSO.allItemAddressNames.Count > 0)
 			{
 				string addressName = allItemSO.allItemAddressNames[0];
 				allItemSO.allItemAddressNames.Remove(addressName);
 				GetItem(addressName);
+			}
+			else
+			{
+
 			}
 
 		}
