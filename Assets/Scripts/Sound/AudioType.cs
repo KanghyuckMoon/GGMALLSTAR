@@ -9,6 +9,7 @@ namespace Sound
 		Title_BGM,
 		Tower_BGM,
 		MainMenu_BGM,
+		Inventory_BGM,
 		Count,
 	}
 

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_Acupuncture
   m_EditorClassIdentifier: 
-  itemName: I_Acupuncture
+  itemName: "\uD55C\uC758\uC0AC"
   explanation: "\uCE68\uC220"
   prefeb: {fileID: 2431830743275516178, guid: cb8d26555bd535f47b2d238b32e8ea04, type: 3}
