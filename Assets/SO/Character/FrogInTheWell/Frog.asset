@@ -16,3 +16,4 @@ MonoBehaviour:
   Name: Frog
   CharacterImage: {fileID: 6670376781915665784, guid: 7dcdb735ac7fc5e40be1e15911fe2368,
     type: 3}
+  MaxHP: 125

@@ -34,15 +34,15 @@ public class CharacterAttack : CharacterComponent
         switch (_direction)
         {
             case Direction.LEFT:
-                hitBox.transform.position = Character.transform.position + new Vector3(-0.1f, 0.1f, 0);
+                hitBox.transform.position = Character.transform.position + new Vector3(-0.175f, 0.075f, 0);
                 break;
             case Direction.RIGHT:
-                hitBox.transform.position = Character.transform.position + new Vector3(0.1f, 0.1f, 0);
+                hitBox.transform.position = Character.transform.position + new Vector3(0.175f, 0.075f, 0);
                 break;
             default:
                 Debug.LogWarning("Not Define Direction");
                 break;
         }
-        GameObject.Destroy(hitBox.gameObject, 0.1f);
+        //GameObject.Destroy(hitBox.gameObject, 0.1f);
     }
 }
