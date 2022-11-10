@@ -245,6 +245,22 @@ MonoBehaviour:
     m_Address: I_MBTIC
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9fe759f8f4141a84486b2403e06e7982
+    m_Address: I_Suan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: faaf83c8cf76ece43b0dfe0effa7e41c
+    m_Address: I_TimeReaper
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 84d3fdfd62283444fa1d020cf5fbf07b
+    m_Address: I_JaebySoul
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fc1510dae5c376c428559d09ef47fd60
+    m_Address: I_Bartender
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
