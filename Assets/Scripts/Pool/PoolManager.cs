@@ -61,7 +61,7 @@ namespace Pool
                 Queue<GameObject> q = pool[name];
 
                 if (q.Count == 0)
-                {  //ù��° �������� �̹� ������̶��
+                {  //???�� ???????? ??? ?????????
                     GameObject prefab = prefabDictionary[name];
                     GameObject g = GameObject.Instantiate(prefab);
                     item = g;
