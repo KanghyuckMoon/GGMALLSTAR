@@ -8,6 +8,7 @@ namespace Inventory
 	{
 		public Transform pedestal;
 		public InventorySO inventorySO;
+		public TextMeshProUGUI nameText;
 		public TextMeshProUGUI captionText;
 		public int testShowItemIndex;
 		public Transform contents;
@@ -73,12 +74,13 @@ namespace Inventory
 				Destroy(itemObj);
 			}
 			itemObj = Instantiate(itemDataSO.prefeb, pedestal);
+			nameText.text = itemDataSO.itemName;
 			captionText.text = itemDataSO.explanation;
 
 			//테스트코드
 			{
-				namePanelObjectList[testShowItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.yellow;
-				namePanelObjectList[testPreviousItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.black;
+				namePanelObjectList[testShowItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
+				namePanelObjectList[testPreviousItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
 
 				var contentRect = contents.GetComponent<RectTransform>();
 				var contentPos = contentRect.anchoredPosition;
