@@ -8,5 +8,18 @@ public class CharacterStat : CharacterComponent
     {
     }
 
+    protected override void SetEvent()
+    {
+
+    }
+
     protected float _maxHP = 0;
+    public float MaxHP => _maxHP;
+
+    protected override void Awake()
+    {
+        CharacterSO characterSO = Character.CharacterSO;
+
+        _maxHP = characterSO.MaxHP;
+    }
 }

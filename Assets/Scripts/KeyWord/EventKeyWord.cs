@@ -9,4 +9,7 @@ public static class EventKeyWord
     public const string DOWN = "DOWN";
     public const string LEFT = "LEFT";
     public const string RIGHT = "RIGHT";
+
+    public const string DAMAGE = "DAMAGE";
+    public const string DEAD = "DEAD";
 }

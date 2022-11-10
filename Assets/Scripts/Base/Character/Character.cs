@@ -6,6 +6,7 @@ public abstract class Character : MonoBehaviour
 {
     [SerializeField]
     protected CharacterSO _characterSO = null;
+    public CharacterSO CharacterSO => _characterSO;
 
     [SerializeField]
     protected InputDataBaseSO _inputDataBaseSO = null;
@@ -87,8 +88,5 @@ public abstract class Character : MonoBehaviour
         _characterComponents.Add(componentType, characterComponent);
     }
 
-    protected virtual void SetComponent()
-    {
-        _characterComponents.Add(ComponentType.Input, new CharacterInput(this));
-    }
+    protected virtual void SetComponent() { }
 }

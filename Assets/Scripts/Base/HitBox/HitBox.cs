@@ -1,3 +1,4 @@
+using System.Runtime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,21 +8,6 @@ using Pool;
 [RequireComponent(typeof(Collider))]
 public class HitBox : MonoBehaviour
 {
-    #region IPoolable
-    public void OnPoolOut()
-    {
-        gameObject.SetActive(true);
-        _collider.enabled = true;
-    }
-
-    public void OnPoolEnter()
-    {
-        //PoolManager.AddObjToPool<HitBox>("HitBox", this);
-        _collider.enabled = false;
-        gameObject.SetActive(false);
-    }
-    #endregion
-
     private Collider _collider = null;
     private Vector3 _size = Vector3.zero;
     private GameObject _owner = null;
@@ -42,6 +28,24 @@ public class HitBox : MonoBehaviour
         if (!other.gameObject.CompareTag(_owner.tag))
         {
             OnHit?.Invoke();
+            other?.GetComponent<Character>()?.CharacterEvent?.EventTrigger(EventKeyWord.DAMAGE);
         }
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(SetActiveFalse());
+    }
+
+    private void OnDisable()
+    {
+
+    }
+
+    private IEnumerator SetActiveFalse()
+    {
+        yield return new WaitForSeconds(0.1f);
+        gameObject.SetActive(false);
+        PoolManager.AddObjToPool("HitBox", gameObject);
     }
 }

@@ -43,6 +43,5 @@ public class CharacterAttack : CharacterComponent
                 Debug.LogWarning("Not Define Direction");
                 break;
         }
-        //GameObject.Destroy(hitBox.gameObject, 0.1f);
     }
 }
