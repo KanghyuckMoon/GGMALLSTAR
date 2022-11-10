@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
-  m_Name: I_DarkWizard
+  m_Name: I_TaleOfCard
   m_EditorClassIdentifier: 
-  itemName: Dark Wizard
-  explanation: "\uBE5B\uC758 \uC138\uACC4\uB97C \uC704\uD611\uD558\uB294 \uC5B4\uB460\uC758
-    \uB9C8\uBC95\uC0AC"
-  prefeb: {fileID: 5243119482707448973, guid: 0eff9fce99bdd0f43a83553db382e4f3, type: 3}
+  itemName: "\uCE74\uB4DC\uC758 \uD798"
+  explanation: "\uC124\uBA85"
+  prefeb: {fileID: 8721569044559309390, guid: a1b9b15620b13504e991f2a4b5111fa3, type: 3}
