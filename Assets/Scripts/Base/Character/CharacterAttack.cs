@@ -24,7 +24,7 @@ public class CharacterAttack : CharacterComponent
 
     protected virtual void OnAttack()
     {
-        HitBox hitBox = PoolManager.GetItem<HitBox>("HitBox");
+        var hitBox = PoolManager.GetItem("HitBox").GetComponent<HitBox>();
         hitBox.Owner = Character.gameObject;
         hitBox.OnHit = () =>
         {

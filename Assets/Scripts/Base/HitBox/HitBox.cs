@@ -5,7 +5,7 @@ using UnityEngine;
 using Pool;
 
 [RequireComponent(typeof(Collider))]
-public class HitBox : MonoBehaviour, IPoolable
+public class HitBox : MonoBehaviour
 {
     #region IPoolable
     public void OnPoolOut()
