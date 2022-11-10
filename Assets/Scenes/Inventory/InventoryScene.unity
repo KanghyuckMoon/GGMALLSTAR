@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Main
+  loadingSceneType: 0
 --- !u!114 &111402551
 MonoBehaviour:
   m_ObjectHideFlags: 0

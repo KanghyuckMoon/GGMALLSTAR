@@ -269,6 +269,10 @@ MonoBehaviour:
     m_Address: I_TaleOfCard
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 79eab71bc02bc4f498e9124a975553b3
+    m_Address: I_TurningOribits
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
