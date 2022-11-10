@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main/Main.unity
     guid: 66164b586e694a94f98fdd4a593f45ce
   - enabled: 1
+    path: Assets/Scenes/Setting/InGameSetting.unity
+    guid: 26228209f09091e48974dcce18ff2f19
+  - enabled: 1
     path: Assets/Scenes/Setting/Setting.unity
     guid: bcd01f9ae5bd096409f27821ab7b680c
   - enabled: 1

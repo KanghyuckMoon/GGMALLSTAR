@@ -2405,6 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: Main
+  loadingSceneType: 0
 --- !u!1 &721648896
 GameObject:
   m_ObjectHideFlags: 0
@@ -6159,7 +6160,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 293.7343, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713777451
 MonoBehaviour:
@@ -6181,7 +6182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uADF8\uB798\uD53D \uD488\uC9C8"
+  m_text: "\uBC30\uACBD\uC74C\uC545 \uD06C\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8b1a1f9ccf61434ebb4ce639784d284, type: 2}
   m_sharedMaterial: {fileID: -3656589031002724397, guid: c8b1a1f9ccf61434ebb4ce639784d284,
@@ -6566,7 +6567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD574\uC0C1\uB3C4"
+  m_text: "\uD6A8\uACFC\uC74C \uD06C\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8b1a1f9ccf61434ebb4ce639784d284, type: 2}
   m_sharedMaterial: {fileID: -3656589031002724397, guid: c8b1a1f9ccf61434ebb4ce639784d284,
