@@ -21,6 +21,7 @@ namespace Inventory
 		private int testPreviousItemIndex;
 		private List<GameObject> namePanelObjectList = new List<GameObject>();
 		private GameObject itemObj = null;
+		private float posY;
 
 		#region TestCode
 
@@ -86,18 +87,28 @@ namespace Inventory
 				SoundManager.Instance.PlayEFF(effName);
 
 				var contentRect = contents.GetComponent<RectTransform>();
-				var contentPos = contentRect.anchoredPosition;
 				float addHeight = (testShowItemIndex - testPreviousItemIndex) * namePanelHeightSize;
 
 				if(Mathf.Abs(testShowItemIndex - testPreviousItemIndex) > 1)
 				{
-					contentPos.y += addHeight;
-					contentRect.anchoredPosition = contentPos;
+					if (testShowItemIndex > testPreviousItemIndex)
+					{
+						posY = namePanelObjectList.Count * 100 - viewPortHeightSize;
+					}
+					else
+					{
+						posY = 0;
+					}
+					var vec2 = contentRect.anchoredPosition;
+					vec2.y = posY;
+					contentRect.anchoredPosition = vec2;
 				}
-				if(contentPos.y + addHeight >= 0 && contentPos.y + addHeight <= contentRect.sizeDelta.y - viewPortHeightSize)
+				if(posY + addHeight >= 0 && posY + addHeight <= contentRect.sizeDelta.y - viewPortHeightSize)
 				{
-					contentPos.y += addHeight;
-					contentRect.anchoredPosition = contentPos;
+					posY += addHeight;
+					var vec2 = contentRect.anchoredPosition;
+					vec2.y = posY;
+					contentRect.anchoredPosition = vec2;
 				}
 
 				testPreviousItemIndex = testShowItemIndex;
