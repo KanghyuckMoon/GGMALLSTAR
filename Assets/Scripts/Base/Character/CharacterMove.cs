@@ -42,8 +42,8 @@ public class CharacterMove : CharacterComponent
 
     protected override void Awake()
     {
-        _rigidbody = Character.GetComponent<Rigidbody>();
-        _transform = Character.GetComponent<Transform>();
+        _rigidbody = Character.Rigidbody;
+        _transform = Character.transform;
     }
 
     private Transform _transform = null;

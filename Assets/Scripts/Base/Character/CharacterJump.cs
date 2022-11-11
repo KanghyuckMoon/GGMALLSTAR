@@ -12,6 +12,7 @@ public class CharacterJump : CharacterComponent
         CharacterEvent.AddEvent(EventKeyWord.UP, () =>
         {
             Debug.Log("Jump Start");
+
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.UP, () =>
@@ -27,11 +28,12 @@ public class CharacterJump : CharacterComponent
 
     protected override void Awake()
     {
-        _rigidbody = Character.GetComponent<Rigidbody>();
+        _rigidbody = Character.Rigidbody;
     }
 
     private Rigidbody _rigidbody = null;
-    protected Rigidbody Rigidbody => _rigidbody;
 
     private float _jumpPower = 0f;
+    private float _jumpTime = 0f;
+    private float _jumpTimeLimit = 0.5f;
 }

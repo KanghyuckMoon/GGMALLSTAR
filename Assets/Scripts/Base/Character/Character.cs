@@ -29,10 +29,18 @@ public abstract class Character : MonoBehaviour
     protected CharacterEvent _characterEvent = null;
     public CharacterEvent CharacterEvent => _characterEvent;
 
+    private Animator _animator = null;
+    public Animator Animator => _animator;
+
+    private Rigidbody _rigidbody = null;
+    public Rigidbody Rigidbody => _rigidbody;
+
     #region Unity Methods
 
     private void Awake()
     {
+        _animator = GetComponentInChildren<Animator>();
+        _rigidbody = GetComponent<Rigidbody>();
         _characterComponents = new();
         _characterEvent = new CharacterEvent();
     }
