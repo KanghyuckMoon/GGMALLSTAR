@@ -37,3 +37,18 @@ public class CharacterJump : CharacterComponent
     private float _jumpTime = 0f;
     private float _jumpTimeLimit = 0.5f;
 }
+
+/*
+
+땅에 쿹어있다.
+공중에 떠있다
+    점프하여 공중에 뜨
+
+isJump(bool)
+isJumping(bool)
+isGround(bool)
+isFall(bool)
+
+jumpCurrent(int)
+
+*/
