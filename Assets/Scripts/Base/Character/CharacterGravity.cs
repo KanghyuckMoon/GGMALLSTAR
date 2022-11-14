@@ -14,7 +14,7 @@ public class CharacterGravity : CharacterComponent
 
     protected override void Awake()
     {
-        _rigidbody = Character.GetComponent<Rigidbody>();
+        _rigidbody = Character.Rigidbody;
         _rigidbody.useGravity = false;
     }
 

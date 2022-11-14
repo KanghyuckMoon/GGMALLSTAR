@@ -15,7 +15,7 @@ public class CharacterAnimation : CharacterComponent
 
     protected override void Awake()
     {
-        _animator = Character.GetComponentInChildren<Animator>();
+        _animator = Character.Animator;
         _animationHash = new();
     }
 
