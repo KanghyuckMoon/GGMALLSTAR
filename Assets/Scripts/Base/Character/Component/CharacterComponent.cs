@@ -5,7 +5,7 @@ using KeyWord;
 
 public abstract class CharacterComponent
 {
-    private Character _character = null;
+    protected Character _character = null;
     public Character Character => _character;
 
     private CharacterEvent _characterEvent = null;
