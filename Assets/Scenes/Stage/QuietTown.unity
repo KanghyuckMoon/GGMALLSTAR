@@ -659,6 +659,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5558056873600083728, guid: 2e1dc0fdea0e5cd47857679c4547d5ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1dc0fdea0e5cd47857679c4547d5ba, type: 3}
 --- !u!1 &283190964
@@ -2561,6 +2566,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ItemBox (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304241303507723070, guid: 324087018f8664b438cea4e19386bcac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 324087018f8664b438cea4e19386bcac, type: 3}
@@ -5457,6 +5467,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ItemBox (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7304241303507723070, guid: 324087018f8664b438cea4e19386bcac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 324087018f8664b438cea4e19386bcac, type: 3}
