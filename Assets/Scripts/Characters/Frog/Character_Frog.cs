@@ -6,6 +6,7 @@ public class Character_Frog : Character
 {
     protected override void SetComponent()
     {
+        AddComponent(ComponentType.Input, new CharacterInput(this));
         AddComponent(ComponentType.Move, new CharacterMove(this));
         AddComponent(ComponentType.Animation, new CharacterAnimation_Frog(this));
         AddComponent(ComponentType.Sprite, new CharacterSprite(this));

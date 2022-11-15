@@ -10,6 +10,6 @@ public class CharacterSO : ScriptableObject
     public float MaxHP;
 
     [Header("Character's HitBox Collision")]
-    public Vector3 HitBoxSize;
     public Vector3 HitBoxOffset;
+    public Vector3 HitBoxSize;
 }

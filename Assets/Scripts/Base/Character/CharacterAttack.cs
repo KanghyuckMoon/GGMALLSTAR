@@ -19,10 +19,7 @@ public class CharacterAttack : CharacterComponent
     private CharacterDamage _targetCharacterDamage = null;
     public CharacterDamage TargetCharacterDamage
     {
-        get
-        {
-            return _targetCharacterDamage;
-        }
+        get => _targetCharacterDamage;
         set
         {
             _targetCharacterDamage = value;

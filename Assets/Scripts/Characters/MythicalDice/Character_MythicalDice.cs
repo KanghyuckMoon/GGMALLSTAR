@@ -10,5 +10,6 @@ public class Character_MythicalDice : Character
         AddComponent(ComponentType.Move, new CharacterMove(this));
         AddComponent(ComponentType.Animation, new CharacterAnimation_MythicalDice(this));
         AddComponent(ComponentType.Sprite, new CharacterSprite(this));
+        AddComponent(ComponentType.Attack, new CharacterAttack(this));
     }
 }
