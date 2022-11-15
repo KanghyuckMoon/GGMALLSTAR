@@ -26,7 +26,7 @@ public abstract class Character : MonoBehaviour
         return null;
     }
 
-    protected CharacterEvent _characterEvent = null;
+    private CharacterEvent _characterEvent = null;
     public CharacterEvent CharacterEvent => _characterEvent;
 
     private Animator _animator = null;

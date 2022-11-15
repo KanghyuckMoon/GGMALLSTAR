@@ -1,0 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Character_MythicalDice : Character
+{
+    protected override void SetComponent()
+    {
+        AddComponent(ComponentType.Input, new CharacterInput(this));
+        AddComponent(ComponentType.Move, new CharacterMove(this));
+        AddComponent(ComponentType.Animation, new CharacterAnimation_MythicalDice(this));
+        AddComponent(ComponentType.Sprite, new CharacterSprite(this));
+        AddComponent(ComponentType.Attack, new CharacterAttack(this));
+    }
+}

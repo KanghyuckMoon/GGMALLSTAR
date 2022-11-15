@@ -3,7 +3,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Character", menuName = "Character/New Character")]
 public class CharacterSO : ScriptableObject
 {
-    public CollaborationGame CollaborationGame;
     public string Name;
     public Sprite CharacterImage;
 
@@ -11,6 +10,6 @@ public class CharacterSO : ScriptableObject
     public float MaxHP;
 
     [Header("Character's HitBox Collision")]
-    public Vector3 HitBoxSize;
     public Vector3 HitBoxOffset;
+    public Vector3 HitBoxSize;
 }
