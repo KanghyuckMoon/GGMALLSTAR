@@ -321,6 +321,14 @@ MonoBehaviour:
     m_Address: I_FlowerHit
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: b446b159fbce17b41ab893f882bdc961
+    m_Address: I_ChickenFly
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f9e26ad94e906d349a3dc3c81140b809
+    m_Address: I_LR2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
