@@ -333,6 +333,14 @@ MonoBehaviour:
     m_Address: I_LoveAndPose
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 5d5d5bec2bd5d8246a1f13a5b12fd868
+    m_Address: I_Injection
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 22d2f82f12990e444947bbb2da681545
+    m_Address: I_StreamerClicker
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
