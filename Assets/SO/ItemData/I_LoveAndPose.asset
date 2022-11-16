@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_LoveAndPose
+  m_EditorClassIdentifier: 
+  itemName: "\uB7EC\uBE0C\uC564\uD3EC\uC988"
+  explanation: "[Love&Pose]\uC5D0 \uB4F1\uC7A5\uD558\uB294 \uC8FC\uC778\uACF5?! \uBAB8\uC5D0
+    \uC8FC\uB801\uC8FC\uB801 \uCD1D\uC744 \uB9E4\uB2EC\uACE0 \uB2E4\uB2CC\uB2E4.
+    \uD3EC\uC988\uB97C \uCDE8\uD558\uBA70 \uCD1D\uC744 \uC3D8\uB294 \uBAA8\uC2B5\uC744
+    \uBCF4\uC790\uBA74 \uC815\uB9D0 \uCD1D\uC744 \uC0AC\uB791\uD55C\uB2E4\uB294\uAC8C
+    \uB290\uAEF4\uC9C4\uB2E4. T \uD3EC\uC988, \uD478\uC2DC\uC5C5 \uD3EC\uC988 \uB4F1
+    \uB2E4\uC591\uD55C \uD3EC\uC988\uB85C \uCD1D\uC744 \uC3DC\uB2E4."
+  prefeb: {fileID: 7743881339326658081, guid: 512e2fbeef2dc5c4e9aab7084faf1a2b, type: 3}
