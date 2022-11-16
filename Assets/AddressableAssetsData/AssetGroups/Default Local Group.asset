@@ -273,6 +273,30 @@ MonoBehaviour:
     m_Address: I_TurningOribits
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: bf4da89971c93a34eb53aaacaf796a1c
+    m_Address: I_FightingShiba
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3f7b0e5f87612d84aa0b1ac055757306
+    m_Address: I_ProjectUri
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 281b2d2c0a3e9ad4e9a30ea56c964204
+    m_Address: I_Dongas
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d28cc9d0d14ddfc4c8b7d5856b89eed1
+    m_Address: I_BubbleGun
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 59155e3e7ab4d62448bd490a51cea9ac
+    m_Address: I_ZiZi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d4c452f881cc5974aa84845f86b2da45
+    m_Address: I_MysicalDice
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

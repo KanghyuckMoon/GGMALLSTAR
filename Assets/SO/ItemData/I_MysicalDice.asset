@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_MysicalDice
+  m_EditorClassIdentifier: 
+  itemName: "\uB2E4\uC774\uC2A4 \uB098\uC774\uCE20"
+  explanation: "[Mysical Dice]\uC5D0 \uB4F1\uC7A5\uD558\uB294 \uAE30\uC0AC\uB85C
+    \uC18C\uC6D0\uC744 \uBE4C \uC218 \uC788\uB294 \uC2E0\uC758 \uD0D1\uC5D0 \uC62C\uB77C
+    \uCC9C\uC0AC \uC11D\uC0C1\uC774\uB098 \uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4\uC640
+    \uC804\uD22C\uD55C\uB2E4. \uC8FC\uC0AC\uC704\uAC00 \uC5B4\uB5BB\uAC8C \uBCC0\uD558\uB294\uC9C0\uC5D0
+    \uB530\uB77C \uC801\uB4E4\uC5D0 \uACF5\uACA9\uC774 \uB2EC\uB77C\uC9C0\uB2C8 \uC8FC\uC0AC\uC704\uB97C
+    \uC720\uC2EC\uD788 \uBCFC \uAC83."
+  prefeb: {fileID: 9158263108201639752, guid: 4cf20ab86a9b8c641a47647a8327cfe8, type: 3}

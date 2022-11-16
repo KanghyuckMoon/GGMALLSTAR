@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_FightingShiba
+  m_EditorClassIdentifier: 
+  itemName: "\uC2DC\uBC14"
+  explanation: "[Fighting, Shiba!]\uC5D0\uC11C \uB4F1\uC7A5\uD558\uB294 \uC2DC\uBC14,
+    \uB204\uAD70\uAC00\uB97C \uC5F0\uC0C1\uCF00\uD558\uB294 \uAC15\uC544\uC9C0. \uAD50\uC7A5
+    \uC120\uC0DD\uB2D8\uC73C\uB85C\uBD80\uD130 \uC5B4\uB5A4 \uD559\uC0DD\uC744 \uB9CC\uC810\uC73C\uB85C
+    \uB9CC\uB4E4\uC5B4\uC57C\uD558\uB294 \uC9C0\uC2DC\uB97C \uBC1B\uB294\uB2E4."
+  prefeb: {fileID: 5187007773091168110, guid: a26fa9db7a6391c48bfe88cba1f1e478, type: 3}
