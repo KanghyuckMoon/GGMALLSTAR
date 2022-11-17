@@ -11,5 +11,7 @@ public class Character_MythicalDice : Character
         AddComponent(ComponentType.Animation, new CharacterAnimation_MythicalDice(this));
         AddComponent(ComponentType.Sprite, new CharacterSprite(this));
         AddComponent(ComponentType.Attack, new CharacterAttack(this));
+        AddComponent(ComponentType.Skill1, new CharacterSkill1_MythicalDice(this));
+        AddComponent(ComponentType.Skill2, new CharacterSkill2_MythicalDice(this));
     }
 }
