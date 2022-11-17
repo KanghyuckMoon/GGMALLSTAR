@@ -341,6 +341,38 @@ MonoBehaviour:
     m_Address: I_StreamerClicker
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: e8a5b171fde1ff544b5971c530b830ac
+    m_Address: I_CoinMiner
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d1b1979ee9204c3468045a25657427b5
+    m_Address: I_DungeonInRhythm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0184ddb0a1486e147b04dddfee6b0fd9
+    m_Address: I_FlightMaster
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: caa65c371dfe1fa46a1af9e0de17e6bc
+    m_Address: I_Hoshi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 61d96a15e0db7ea4a8db291563c0b5e4
+    m_Address: I_RedArca
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e2875f790c8459442b6b71a20087e278
+    m_Address: I_Robotoid
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a788317f13dcdb74f8e542e106c6568b
+    m_Address: I_RoomooR
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5b47a0888a0b8dc4aa53e5420c6c1e1e
+    m_Address: I_ShipIO
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
