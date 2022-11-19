@@ -3047,7 +3047,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5509,6 +5509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3d5e32690d2e24798145b9821864d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectDataSO: {fileID: 11400000, guid: 1c26f0c8994a16646818d97771c2fe76, type: 2}
   stageSelectUI: {fileID: 370359794}
   characterSelectUI: {fileID: 659586977}
 --- !u!1 &1626889739
@@ -5897,7 +5898,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7138,7 +7139,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

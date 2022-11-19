@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class SelectUI : MonoBehaviour
 {
-	private int choiceP1;
-	private int choiceP2;
-
 	private int choiceStage;
 
 	[SerializeField] private GameObject stageSelectUI;
@@ -31,11 +28,11 @@ public class SelectUI : MonoBehaviour
 
 	public void ChoiceP1(int p1)
 	{
-		choiceP1 = p1;
+		SelectDataSO.characterSelectP1 = (CharacterSelect)p1;
 	}
 	public void ChoiceP2(int p2)
 	{
-		choiceP2 = p2;
+		SelectDataSO.characterSelectP2 = (CharacterSelect)p2;
 	}
 
 	public void ChoiceStage(int stage)
