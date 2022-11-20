@@ -285,6 +285,38 @@ MonoBehaviour:
     m_Address: Frog
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 689ed908428fb5a4b95b23a0f570dcf5
+    m_Address: Jaeby_CImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1c353e25903ce484d8da72a55915fe7c
+    m_Address: Frog_CImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2b575aa460e67a74481e3035fe97fc01
+    m_Address: Dice_CImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 42668339d67f1ca438e24b0242126477
+    m_Address: Training_SImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f150915cad3dbed4f91262418098f06e
+    m_Address: FoolCity_SImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3bd43a4bbf5122a48b68c07d79e5f068
+    m_Address: Well_SImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e5058f59f3458d64688c450abb0a9d87
+    m_Address: QuietTown_SImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f5c03b6961564b2499e183e893b40449
+    m_Address: Tower_SImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

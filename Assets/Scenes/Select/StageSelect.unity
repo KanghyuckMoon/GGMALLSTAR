@@ -790,6 +790,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1595515940}
+        m_TargetAssemblyTypeName: SelectUI, Select.UI
+        m_MethodName: ChoiceStage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1595515938}
         m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
         m_MethodName: LoadScene
@@ -2286,6 +2298,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1595515940}
+        m_TargetAssemblyTypeName: SelectUI, Select.UI
+        m_MethodName: ChoiceStage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1595515938}
         m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
         m_MethodName: LoadScene
@@ -2298,7 +2322,7 @@ MonoBehaviour:
           m_StringArgument: QuietTown
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 614875574}
+      - m_Target: {fileID: 203313923}
         m_TargetAssemblyTypeName: Sound.ButtonSoundPlay, Sound
         m_MethodName: ClickSound
         m_Mode: 1
@@ -3178,6 +3202,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1595515940}
+        m_TargetAssemblyTypeName: SelectUI, Select.UI
+        m_MethodName: ChoiceStage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1595515938}
         m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
         m_MethodName: LoadScene
@@ -3190,7 +3226,7 @@ MonoBehaviour:
           m_StringArgument: Tower
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 734590521}
+      - m_Target: {fileID: 203313923}
         m_TargetAssemblyTypeName: Sound.ButtonSoundPlay, Sound
         m_MethodName: ClickSound
         m_Mode: 1
@@ -3514,6 +3550,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1595515940}
+        m_TargetAssemblyTypeName: SelectUI, Select.UI
+        m_MethodName: ChoiceStage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1595515938}
         m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
         m_MethodName: LoadScene
@@ -3526,7 +3574,7 @@ MonoBehaviour:
           m_StringArgument: Training
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 941197829}
+      - m_Target: {fileID: 203313923}
         m_TargetAssemblyTypeName: Sound.ButtonSoundPlay, Sound
         m_MethodName: ClickSound
         m_Mode: 1
@@ -4578,8 +4626,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -180, y: 190}
-  m_SizeDelta: {x: 324.0967, y: 168.281}
+  m_AnchoredPosition: {x: -250, y: 170}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1286353369
 MonoBehaviour:
@@ -4601,7 +4649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f22d2b6fdd0e2a548b1e604292b7821d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ef3f4c78081a6c49852095f9480ba50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4990,6 +5038,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1595515940}
+        m_TargetAssemblyTypeName: SelectUI, Select.UI
+        m_MethodName: ChoiceStage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1595515938}
         m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
         m_MethodName: LoadScene
@@ -5002,7 +5062,7 @@ MonoBehaviour:
           m_StringArgument: Well
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1458903963}
+      - m_Target: {fileID: 203313923}
         m_TargetAssemblyTypeName: Sound.ButtonSoundPlay, Sound
         m_MethodName: ClickSound
         m_Mode: 1
@@ -5509,7 +5569,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3d5e32690d2e24798145b9821864d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectDataSO: {fileID: 11400000, guid: 1c26f0c8994a16646818d97771c2fe76, type: 2}
+  characterP1: {fileID: 1683339205}
+  characterP2: {fileID: 1286353369}
   stageSelectUI: {fileID: 370359794}
   characterSelectUI: {fileID: 659586977}
 --- !u!1 &1626889739
@@ -5702,7 +5763,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: 130}
-  m_SizeDelta: {x: 324.0967, y: 168.281}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683339204
 MonoBehaviour:
@@ -5739,7 +5800,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f22d2b6fdd0e2a548b1e604292b7821d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7ef3f4c78081a6c49852095f9480ba50, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

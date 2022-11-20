@@ -77,7 +77,7 @@ public class CharacterMove : CharacterComponent
 		{
             _effDelay -= Time.deltaTime;
 
-            if (_rigidbody.velocity.y == 0f && _effDelay <= 0f && _isEffInput)
+            if (_rigidbody?.velocity.y == 0f && _effDelay <= 0f && _isEffInput)
 			{
                 _effDelay = 0.3f;
                 Sound.SoundManager.Instance.PlayEFF(_walkSound);

@@ -1,3 +1,17 @@
 {
-	"name": "Select.UI"
+    "name": "Select.UI",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d03b24c2782d46740964fb5a82782c6f",
+        "GUID:64e003bf8d95c4c4ea5675b564d99dbc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

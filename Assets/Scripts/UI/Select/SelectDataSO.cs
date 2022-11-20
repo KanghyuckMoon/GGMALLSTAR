@@ -11,8 +11,20 @@ public enum CharacterSelect
 	Count
 }
 
-public class SelectDataSO
+public enum StageSelect
+{
+	None = 0,
+	Training,
+	FoolCity,
+	Well,
+	QuietTown,
+	Tower,
+	Count
+}
+
+public static class SelectDataSO
 {
 	static public CharacterSelect characterSelectP1;
 	static public CharacterSelect characterSelectP2;
+	static public StageSelect stageSelect;
 }
