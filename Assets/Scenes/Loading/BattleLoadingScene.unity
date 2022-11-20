@@ -10475,6 +10475,8 @@ MonoBehaviour:
   characterImageP1: {fileID: 968047193}
   characterImageP2: {fileID: 1084610641}
   stageImage: {fileID: 1688212201}
+  player1Text: {fileID: 2113275911}
+  player2Text: {fileID: 2010166063}
 --- !u!4 &1165018926
 Transform:
   m_ObjectHideFlags: 0
