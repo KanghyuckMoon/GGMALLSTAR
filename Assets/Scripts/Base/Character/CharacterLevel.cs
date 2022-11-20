@@ -21,20 +21,52 @@ public class CharacterLevel
 	}
 
 	public CharacterLevelSO characterLevelSO;
-	public UnityEvent checkLevelEvent;
+	public UnityEvent changeExpEvent;
+	public UnityEvent changeLevelEvent;
 
+	private int _previousLevel = 1;
 	private int _level = 1;
 	private int _exp = 0;
 
-	public CharacterLevel(CharacterLevelSO levelSO, UnityEvent checkLevelEvent)
+	public CharacterLevel(CharacterLevelSO levelSO, UnityEvent changeExpEvent, UnityEvent changeLevelEvent)
 	{
 		this.characterLevelSO = levelSO;
-		this.checkLevelEvent = checkLevelEvent;
+		this.changeExpEvent = changeExpEvent;
+		this.changeLevelEvent = changeLevelEvent;
 	}
 
 	public void AddExp(int addExp)
 	{
 		_exp += addExp;
+		if (_exp >= characterLevelSO.NeedExpLevelMax)
+		{
+			_exp = characterLevelSO.NeedExpLevelMax;
+		}
+		CheckLevel();
+	}
+
+	public void ReturnPreviousLevel()
+	{
+		int removeExp = 0;
+		switch(_level)
+		{
+			default:
+			case 1:
+				_exp = 0;
+				CheckLevel();
+				return;
+			case 2:
+				removeExp = characterLevelSO.NeedExpLevel2;
+				break;
+			case 3:
+				removeExp = characterLevelSO.NeedExpLevel3 - characterLevelSO.NeedExpLevel2;
+				break;
+			case 4:
+				removeExp = characterLevelSO.NeedExpLevelMax - characterLevelSO.NeedExpLevel3;
+				break;
+		}
+		_exp -= removeExp;
+
 		CheckLevel();
 	}
 
@@ -44,15 +76,15 @@ public class CharacterLevel
 	/// <returns></returns>
 	public void CheckLevel()
 	{
-		if(_exp > characterLevelSO.NeedExpLevelMax)
+		if(_exp >= characterLevelSO.NeedExpLevelMax)
 		{
 			_level = 4;
 		}
-		else if (_exp < characterLevelSO.NeedExpLevel3)
+		else if (_exp >= characterLevelSO.NeedExpLevel3)
 		{
 			_level = 3;
 		}
-		else if (_exp < characterLevelSO.NeedExpLevel2)
+		else if (_exp >= characterLevelSO.NeedExpLevel2)
 		{
 			_level = 2;
 		}
@@ -60,7 +92,13 @@ public class CharacterLevel
 		{
 			_level = 1;
 		}
-		checkLevelEvent?.Invoke();
+		changeExpEvent?.Invoke();
+
+		if(_level != _previousLevel)
+		{
+			changeLevelEvent?.Invoke();
+			_previousLevel = _level;
+		}
 	}
 
 
