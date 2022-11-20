@@ -8,6 +8,17 @@ public class AITestInput : CharacterComponent
 {
     public AITestInput(Character character) : base(character)
     {
+        var characterSpawner = GameObject.FindObjectOfType<CharacterSpawner>();
+
+        if (characterSpawner.Player1 == Character.gameObject)
+        {
+            opponentCharacter = characterSpawner.Player2.GetComponent<Character>();
+        }
+        else
+        {
+            opponentCharacter = characterSpawner.Player1.GetComponent<Character>();
+        }
+
         _inputData = Character.InputDataBaseSO.GetInputData();
 
         _wasInput = new();
@@ -29,8 +40,10 @@ public class AITestInput : CharacterComponent
     protected Dictionary<KeyCode, bool> _wasInput = null;
     protected Dictionary<KeyCode, bool> _previousInput = null;
 
+    private Character opponentCharacter;
     private KeyCode inputKeyCode = KeyCode.A;
-    private int randomInput = 0;
+    private bool _isLoop = false;
+    private float _delay = 0.1f;
 
     public override void Update()
     {
@@ -40,8 +53,23 @@ public class AITestInput : CharacterComponent
         }
         else if (_wasInput[inputKeyCode] && !_previousInput[inputKeyCode])
         {
-            _wasInput[inputKeyCode] = true;
-            _previousInput[inputKeyCode] = true;
+            if (_isLoop)
+            {
+                _wasInput[inputKeyCode] = true;
+                _previousInput[inputKeyCode] = true;
+            }
+            else
+			{
+                _delay -= Time.deltaTime;
+                if (_delay < 0f)
+				{
+                    _delay = 0.1f;
+				}
+                else
+				{
+                    return;
+				}
+			}
             CharacterEvent.EventTrigger(GetActionName(inputKeyCode), EventType.KEY_DOWN);
         }
         else if (!_wasInput[inputKeyCode] && _previousInput[inputKeyCode])
@@ -57,15 +85,34 @@ public class AITestInput : CharacterComponent
         while (true)
         {
             _wasInput[inputKeyCode] = false;
-            randomInput = UnityEngine.Random.Range(0, 2);
-            if (randomInput == 0)
-            {
-                inputKeyCode = KeyCode.A;
+
+            if(opponentCharacter.transform.position.x > Character.transform.position.x)
+			{
+                if(Vector2.Distance(opponentCharacter.transform.position, Character.transform.position) < 0.2f)
+                {
+                    inputKeyCode = KeyCode.J;
+                    _isLoop = false;
+                }
+                else
+                {
+                    inputKeyCode = KeyCode.D;
+                    _isLoop = true;
+                }
             }
-            else
+            else if (opponentCharacter.transform.position.x < Character.transform.position.x)
             {
-                inputKeyCode = KeyCode.D;
+                if (Vector2.Distance(opponentCharacter.transform.position, Character.transform.position) < 0.2f)
+                {
+                    inputKeyCode = KeyCode.J;
+                    _isLoop = false;
+                }
+                else
+                {
+                    inputKeyCode = KeyCode.A;
+                    _isLoop = true;
+                }
             }
+
             _wasInput[inputKeyCode] = true;
             yield return new WaitForSeconds(1f);
         }
