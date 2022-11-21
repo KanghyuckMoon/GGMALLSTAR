@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utill;
 using Addressable;
+using static NodeUtill;
 
 public class BehaviourTest
 {
@@ -11,6 +12,7 @@ public class BehaviourTest
 	private Character opCharacter;
 	private Character mainCharacter;
 	private AITestInput aiTestInput;
+	private int random = 0;
 
 	public BehaviourTest(Character opCh, Character mainCh, AITestInput aiTestInput)
 	{
@@ -19,13 +21,25 @@ public class BehaviourTest
 		mainCharacter = mainCh;
 
 		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("TestComboSO");
-		SequenceNode sequenceNode = new SequenceNode();
-		ComboNode comboNode = new ComboNode(AttackCondition, comboSO, TapKey, FalseKey);
-		sequenceNode.Add(comboNode);
-
 		//NodeSetting
-		INode[] nodes = { sequenceNode, new IfActionNode(MoveCondition, Move), new IfActionNode(AttackCondition, Attack) };
-		_rootNode = new SelectorNode(nodes);
+		_rootNode = 
+			Selector
+			(
+				//ÀÌµ¿ ½ÃÄö½º
+				RandomChoice
+				(
+					IfAction(MoveCondition, CloseMove),
+					IfAction(MoveCondition, FerMove),
+					IfAction(MoveCondition, Jump)
+				),
+
+				//°ø°Ý ½ÃÄö½º
+				Sequence
+				(
+					new ComboNode(AttackCondition, comboSO, TapKey, FalseKey)
+					//IfAction(AttackCondition, Attack)
+				)
+			);
 	}
 
 	public void Update()
@@ -57,7 +71,7 @@ public class BehaviourTest
 		}
 	}
 
-	private void Move()
+	private void CloseMove()
 	{
 		if (opCharacter.transform.position.x < mainCharacter.transform.position.x)
 		{
@@ -68,6 +82,23 @@ public class BehaviourTest
 			aiTestInput.HoldInputKey(KeyCode.D);
 		}
 		Debug.Log("AI Move");
+	}
+	private void FerMove()
+	{
+		if (opCharacter.transform.position.x < mainCharacter.transform.position.x)
+		{
+			aiTestInput.HoldInputKey(KeyCode.D);
+		}
+		else if (opCharacter.transform.position.x > mainCharacter.transform.position.x)
+		{
+			aiTestInput.HoldInputKey(KeyCode.A);
+		}
+		Debug.Log("AI Move");
+	}
+	private void Jump()
+	{
+		aiTestInput.HoldInputKey(KeyCode.W);
+		Debug.Log("AI Jump");
 	}
 
 	private float _delay = 0.1f;
