@@ -19,6 +19,8 @@ public class AITestInput : CharacterComponent
             opponentCharacter = characterSpawner.Player1.GetComponent<Character>();
         }
 
+        behaviourTest = new BehaviourTest(opponentCharacter, Character, this);
+
         _inputData = Character.InputDataBaseSO.GetInputData();
 
         _wasInput = new();
@@ -33,7 +35,6 @@ public class AITestInput : CharacterComponent
                 CharacterEvent.AddEvent(input.actionName, (EventType)i);
             }
         }
-        StaticCoroutine.Instance.StartCoroutine(RandomInput());
     }
 
     protected InputData[] _inputData = null;
@@ -44,32 +45,20 @@ public class AITestInput : CharacterComponent
     private KeyCode inputKeyCode = KeyCode.A;
     private bool _isLoop = false;
     private float _delay = 0.1f;
+    private BehaviourTest behaviourTest;
 
     public override void Update()
     {
+        behaviourTest.Update();
+
         if (_wasInput[inputKeyCode] && _previousInput[inputKeyCode])
         {
             CharacterEvent.EventTrigger(GetActionName(inputKeyCode), EventType.KEY_HOLD);
         }
         else if (_wasInput[inputKeyCode] && !_previousInput[inputKeyCode])
         {
-            if (_isLoop)
-            {
-                _wasInput[inputKeyCode] = true;
-                _previousInput[inputKeyCode] = true;
-            }
-            else
-			{
-                _delay -= Time.deltaTime;
-                if (_delay < 0f)
-				{
-                    _delay = 0.1f;
-				}
-                else
-				{
-                    return;
-				}
-			}
+            _wasInput[inputKeyCode] = true;
+            _previousInput[inputKeyCode] = true;
             CharacterEvent.EventTrigger(GetActionName(inputKeyCode), EventType.KEY_DOWN);
         }
         else if (!_wasInput[inputKeyCode] && _previousInput[inputKeyCode])
@@ -80,42 +69,19 @@ public class AITestInput : CharacterComponent
         }
     }
 
-    public IEnumerator RandomInput()
-	{
-        while (true)
-        {
-            _wasInput[inputKeyCode] = false;
-
-            if(opponentCharacter.transform.position.x > Character.transform.position.x)
-			{
-                if(Vector2.Distance(opponentCharacter.transform.position, Character.transform.position) < 0.2f)
-                {
-                    inputKeyCode = KeyCode.J;
-                    _isLoop = false;
-                }
-                else
-                {
-                    inputKeyCode = KeyCode.D;
-                    _isLoop = true;
-                }
-            }
-            else if (opponentCharacter.transform.position.x < Character.transform.position.x)
-            {
-                if (Vector2.Distance(opponentCharacter.transform.position, Character.transform.position) < 0.2f)
-                {
-                    inputKeyCode = KeyCode.J;
-                    _isLoop = false;
-                }
-                else
-                {
-                    inputKeyCode = KeyCode.A;
-                    _isLoop = true;
-                }
-            }
-
-            _wasInput[inputKeyCode] = true;
-            yield return new WaitForSeconds(1f);
-        }
+    public void HoldInputKey(KeyCode keyCode)
+    {
+        _wasInput[inputKeyCode] = false;
+        inputKeyCode = keyCode;
+        _wasInput[inputKeyCode] = true;
+    }
+    public void FalseInputKey()
+    {
+        _wasInput[inputKeyCode] = false;
+    }
+    public void TapInputKey(KeyCode keyCode)
+    {
+        CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_DOWN);
     }
 
     private string GetActionName(KeyCode keyCode)
