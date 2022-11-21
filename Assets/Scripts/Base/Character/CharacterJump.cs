@@ -22,7 +22,12 @@ public class CharacterJump : CharacterComponent
 
         CharacterEvent.AddEvent(EventKeyWord.UP, () =>
         {
-            //if(Character.transform.position.y > )
+            if (Character.transform.position.y < 2f&&_jumpCount<=2)
+            {
+                Debug.Log("Jumping");
+                // TODO : 좌표 말고 시간으로 하는게 좋을 듯 체공 시간 구하기 필요 
+                _rigidbody.AddForce(Vector3.up * _jumpingPower, ForceMode.Impulse);
+            }
             
         }, EventType.KEY_HOLD);
 
