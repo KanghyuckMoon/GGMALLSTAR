@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Utill;
+using Addressable;
 
 public class BehaviourTest
 {
@@ -16,7 +17,14 @@ public class BehaviourTest
 		this.aiTestInput = aiTestInput;
 		opCharacter = opCh;
 		mainCharacter = mainCh;
-		  INode[] nodes = { new IfActionNode(MoveCondition, Move), new IfActionNode(AttackCondition, Attack) };
+
+		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("TestComboSO");
+		SequenceNode sequenceNode = new SequenceNode();
+		ComboNode comboNode = new ComboNode(AttackCondition, comboSO, TapKey, FalseKey);
+		sequenceNode.Add(comboNode);
+
+		//NodeSetting
+		INode[] nodes = { sequenceNode, new IfActionNode(MoveCondition, Move), new IfActionNode(AttackCondition, Attack) };
 		_rootNode = new SelectorNode(nodes);
 	}
 
@@ -78,5 +86,14 @@ public class BehaviourTest
 		aiTestInput.FalseInputKey();
 		aiTestInput.TapInputKey(KeyCode.J);
 		Debug.Log("AI Attack");
+	}
+
+	private void TapKey(KeyCode keyCode)
+	{
+		aiTestInput.HoldInputKey(keyCode);
+	}
+	private void FalseKey(KeyCode keyCode)
+	{
+		aiTestInput.FalseInputKey();
 	}
 }
