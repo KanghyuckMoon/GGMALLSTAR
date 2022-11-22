@@ -6,6 +6,7 @@ using KeyWord;
 using Effect;
 using Sound;
 using Utill;
+using DG.Tweening;
 
 public class CharacterDamage : CharacterComponent
 {
@@ -40,8 +41,33 @@ public class CharacterDamage : CharacterComponent
         _hp -= hitBoxData.damage;
         EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
         SoundManager.Instance.PlayEFF(hitBoxData.effSoundName);
+        Vector3 vector = Character.Rigidbody.velocity;
+        CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>();
+        characterGravity.SetHitTime(hitBoxData.hitTime);
+        Character.Rigidbody.velocity = Vector3.zero;
 
-        Character.Rigidbody.AddForce(DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180)) * hitBoxData.knockBack, ForceMode.Impulse);
+        CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>();
+        if(characterInput is not null)
+		{
+            characterInput.SetStunTime(hitBoxData.sturnTime + hitBoxData.hitTime);
+        }
+        else
+        {
+            AITestInput aITestInput = Character.GetCharacterComponent<AITestInput>();
+            if (aITestInput is not null)
+            {
+                aITestInput.SetStunTime(hitBoxData.sturnTime + hitBoxData.hitTime);
+            }
+		}
+
+        CharacterSprite characterSprite = Character.GetCharacterComponent<CharacterSprite>();
+        characterSprite.SpriteRenderer.transform.DOKill();
+        characterSprite.SpriteRenderer.transform.DOShakePosition(hitBoxData.hitTime, 0.05f, 20).OnComplete(() => 
+        {
+            characterSprite.ResetModelPosition();
+            Character.Rigidbody.AddForce(DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180)) * hitBoxData.knockBack, ForceMode.Impulse);
+        });
+
         if (_hp <= 0)
         {
             Debug.Log("Die");

@@ -46,9 +46,20 @@ public class AITestInput : CharacterComponent
     private bool _isLoop = false;
     private float _delay = 0.1f;
     private BehaviourTest behaviourTest;
+    private float _stunTime = 0f;
 
+    public void SetStunTime(float time)
+    {
+        _stunTime = time;
+    }
     public override void Update()
     {
+        if (_stunTime > 0f)
+        {
+            _stunTime -= Time.deltaTime;
+            return;
+        }
+
         behaviourTest.Update();
 
         if (_wasInput[inputKeyCode] && _previousInput[inputKeyCode])

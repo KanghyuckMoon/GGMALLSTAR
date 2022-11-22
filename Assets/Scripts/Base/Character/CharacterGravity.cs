@@ -11,6 +11,7 @@ public class CharacterGravity : CharacterComponent
 
     private Rigidbody _rigidbody = null;
     private readonly float _gravityScale = 0f;
+    private float _hitTime = 0f;
 
     protected override void Awake()
     {
@@ -18,8 +19,19 @@ public class CharacterGravity : CharacterComponent
         _rigidbody.useGravity = false;
     }
 
+    public void SetHitTime(float time)
+	{
+        this._hitTime = time;
+    }
+
     public override void FixedUpdate()
     {
+        if (_hitTime > 0f)
+		{
+            _hitTime -= Time.fixedDeltaTime;
+            return;
+		}
+
         base.FixedUpdate();
         Vector3 gravity = _gravityScale * Physics.gravity;
         _rigidbody.AddForce(gravity, ForceMode.Acceleration);

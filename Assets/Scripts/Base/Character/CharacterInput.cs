@@ -23,9 +23,17 @@ public class CharacterInput : CharacterComponent
 
     protected InputData[] _inputData = null;
     protected Dictionary<KeyCode, bool> _wasInput = null;
+    private float _stunTime = 0f;
+
 
     public override void Update()
     {
+        if (_stunTime > 0f)
+		{
+            _stunTime -= Time.deltaTime;
+            return;
+		}
+
         foreach (var input in _inputData)
         {
             KeyCode keyCode = input.keyCode;
@@ -47,5 +55,9 @@ public class CharacterInput : CharacterComponent
                 CharacterEvent.EventTrigger(actionName, EventType.KEY_UP);
             }
         }
+    }
+    public void SetStunTime(float time)
+    {
+        _stunTime = time;
     }
 }

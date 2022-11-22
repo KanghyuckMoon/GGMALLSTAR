@@ -5,6 +5,14 @@ using KeyWord;
 
 public class CharacterSprite : CharacterComponent
 {
+    public SpriteRenderer SpriteRenderer
+	{
+        get
+		{
+            return _spriteRenderer;
+        }
+	}
+
     public CharacterSprite(Character character) : base(character)
     {
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
@@ -20,11 +28,19 @@ public class CharacterSprite : CharacterComponent
         }, EventType.KEY_HOLD);
     }
 
+    public void ResetModelPosition()
+	{
+        SpriteRenderer.transform.localPosition = _originVector;
+
+    }
+
     protected override void Awake()
     {
         _spriteRenderer = Character.GetComponentInChildren<SpriteRenderer>();
+        _originVector = _spriteRenderer.transform.localPosition;
     }
 
+    private Vector3 _originVector;
     private SpriteRenderer _spriteRenderer = null;
     private Direction _direction = Direction.RIGHT;
     public Direction Direction => _direction;
