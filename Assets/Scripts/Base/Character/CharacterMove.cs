@@ -67,7 +67,7 @@ public class CharacterMove : CharacterComponent
 
     public override void FixedUpdate()
     {
-        _rigidbody.velocity = new Vector3(_moveDirection.x * _speed, 0, 0);
+        _rigidbody.velocity = new Vector3(_moveDirection.x * _speed, _rigidbody.velocity.y, 0);
         _moveDirection = Vector2.zero;
     }
 
