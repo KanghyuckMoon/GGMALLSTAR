@@ -10,10 +10,20 @@ public abstract class Character : MonoBehaviour
 
     [SerializeField]
     protected InputDataBaseSO _inputDataBaseSO = null;
-    public InputDataBaseSO InputDataBaseSO => _inputDataBaseSO;
+    public InputDataBaseSO InputDataBaseSO 
+    {
+        get
+		{
+            return _inputDataBaseSO;
+		}
+        set
+		{
+            _inputDataBaseSO = value;
+		}
+    }
 
 
-    [SerializeField]
+	[SerializeField]
     protected HitBoxDataSO _hitBoxDataSO = null;
     public HitBoxDataSO HitBoxDataSO => _hitBoxDataSO;
 

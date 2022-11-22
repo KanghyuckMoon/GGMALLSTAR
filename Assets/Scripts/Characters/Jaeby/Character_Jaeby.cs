@@ -13,6 +13,7 @@ public class Character_Jaeby : Character
         AddComponent(ComponentType.Gravity, new CharacterGravity(this, 1f));
         AddComponent(ComponentType.Animation, new CharacterAnimation_Jaeby(this));
         AddComponent(ComponentType.Move, new CharacterMove(this));
+        AddComponent(ComponentType.Damage, new CharacterDamage(this));
         AddComponent(ComponentType.Jump, new CharacterJump(this));
     }
 }

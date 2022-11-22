@@ -46,9 +46,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef560acd95de6b428c9be8434b3c0b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectDataSO: {fileID: 11400000, guid: 1c26f0c8994a16646818d97771c2fe76, type: 2}
+  cinemachineTargetGroup: {fileID: 0}
   spawnPositionP1: {fileID: 1817890782249570669}
   spawnPositionP2: {fileID: 1817890781684479566}
+  inputDataBaseSOP1: {fileID: 11400000, guid: 46bd95fd7549ed44e8c44b18738106d0, type: 2}
+  inputDataBaseSOP2: {fileID: 11400000, guid: f303ddb7419cd1c499bc10952f7598aa, type: 2}
 --- !u!1 &1817890781684479567
 GameObject:
   m_ObjectHideFlags: 0

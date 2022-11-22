@@ -321,6 +321,14 @@ MonoBehaviour:
     m_Address: TestComboSO
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 476c639fdd9108a43a14005592c12cd8
+    m_Address: Jaeby_AI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c64af1a6e8e8f0a48be2587f3ba64208
+    m_Address: Frog_AI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

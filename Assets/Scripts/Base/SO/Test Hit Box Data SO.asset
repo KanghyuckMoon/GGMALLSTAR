@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitBoxDatas:
   - damage: 10
-    knockBack: 10
+    knockBack: 2
     knockAngle: 50
     effectType: 0
     effSoundName: se_common_sword_hit_s

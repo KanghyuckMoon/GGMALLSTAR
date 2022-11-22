@@ -35,14 +35,22 @@ public class CharacterDamage : CharacterComponent
         }
     }
 
-    public void OnAttcked(HitBoxData hitBoxData, Vector3 collistionPoint)
+    public void OnAttcked(HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
     {
         _hp -= hitBoxData.damage;
         EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
         SoundManager.Instance.PlayEFF(hitBoxData.effSoundName);
+
+        Character.Rigidbody.AddForce(DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180)) * hitBoxData.knockBack, ForceMode.Impulse);
         if (_hp <= 0)
         {
             Debug.Log("Die");
         }
+    }
+
+
+    private Vector3 DegreeToVector3(float degree)
+    {
+        return new Vector3(Mathf.Cos(degree * Mathf.Deg2Rad), Mathf.Sin(degree * Mathf.Deg2Rad), 0);
     }
 }

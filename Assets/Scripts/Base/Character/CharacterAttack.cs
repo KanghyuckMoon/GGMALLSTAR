@@ -11,10 +11,19 @@ public class CharacterAttack : CharacterComponent
 
     }
 
+    public bool IsRight
+	{
+        get
+		{
+            return _isRight;
+		}
+	}
+
     private Direction _direction = Direction.RIGHT;
 
     private Vector3 _attackOffset = Vector3.zero;
     private Vector3 _attackSize = Vector3.zero;
+    private bool _isRight = false;
 
     private CharacterDamage _targetCharacterDamage = null;
 
@@ -41,11 +50,13 @@ public class CharacterAttack : CharacterComponent
 
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
+            _isRight = false;
             _attackOffset.x = -Mathf.Abs(_attackOffset.x);
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
+            _isRight = true;
             _attackOffset.x = Mathf.Abs(_attackOffset.x);
         }, EventType.KEY_DOWN);
     }

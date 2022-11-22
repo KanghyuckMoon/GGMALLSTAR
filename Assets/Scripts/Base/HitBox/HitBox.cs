@@ -39,7 +39,7 @@ public class HitBox : MonoBehaviour
         if (!other.gameObject.CompareTag(_owner.Character.tag))
         {
             _owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
-            _owner.TargetCharacterDamage.OnAttcked(hitBoxData, other.ClosestPoint(transform.position));
+            _owner.TargetCharacterDamage.OnAttcked(hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
             OnHit?.Invoke();
         }
     }
