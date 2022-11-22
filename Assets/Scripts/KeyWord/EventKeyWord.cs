@@ -7,6 +7,8 @@ namespace KeyWord
     public static class EventKeyWord
     {
         public const string ATTACK = "ATTACK";
+        public const string SKILL1 = "SKILL1";
+        public const string SKILL2 = "SKILL2";
         public const string UP = "UP";
         public const string DOWN = "DOWN";
         public const string LEFT = "LEFT";

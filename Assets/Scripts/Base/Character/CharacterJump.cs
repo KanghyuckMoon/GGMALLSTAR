@@ -5,24 +5,35 @@ using KeyWord;
 
 public class CharacterJump : CharacterComponent
 {
-    public CharacterJump(Character character, float jumpPower = 50f) : base(character)
+    public CharacterJump(Character character) : base(character)
     {
-        _jumpPower = jumpPower;
-
         CharacterEvent.AddEvent(EventKeyWord.UP, () =>
         {
-            Debug.Log("Jump Start");
-
+            if (_rigidbody&&_jumpCount == 0)
+            {
+                _rigidbody.AddForce(Vector3.up * _firstJumpPower, ForceMode.Impulse);
+                _jumpCount++;
+            }else if (_rigidbody&&_jumpCount == 1)
+            {
+                _rigidbody.AddForce(Vector3.up * _secondJumpPower, ForceMode.Impulse);
+                _jumpCount++;
+            }
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.UP, () =>
         {
-            Debug.Log("Jumping");
+            if (Character.transform.position.y < 2f&&_jumpCount<=2)
+            {
+                Debug.Log("Jumping");
+                // TODO : 좌표 말고 시간으로 하는게 좋을 듯 체공 시간 구하기 필요 
+                _rigidbody.AddForce(Vector3.up * _jumpingPower, ForceMode.Impulse);
+            }
+            
         }, EventType.KEY_HOLD);
 
         CharacterEvent.AddEvent(EventKeyWord.UP, () =>
         {
-            Debug.Log("Jump End");
+            
         }, EventType.KEY_UP);
     }
 
@@ -31,11 +42,24 @@ public class CharacterJump : CharacterComponent
         _rigidbody = Character.Rigidbody;
     }
 
+    public override void Update()
+    {
+        if(Physics.Raycast(Character.transform.position, Vector3.down, 0.1f, LayerMask.GetMask("Ground")))
+        {
+            _jumpCount = 0;
+        }
+    }
+
     private Rigidbody _rigidbody = null;
 
-    private float _jumpPower = 0f;
-    private float _jumpTime = 0f;
-    private float _jumpTimeLimit = 0.5f;
+    private float _firstJumpPower = 50f;
+    private float _secondJumpPower = 25f;
+    private float _jumpingPower = 10f;
+    
+    private float _maxFirstJumpPower = 35f;
+    private float _maxSecondJumpPower = 20f;
+    
+    private uint _jumpCount = 0;
 }
 
 /*
@@ -50,5 +74,4 @@ isGround(bool)
 isFall(bool)
 
 jumpCurrent(int)
-
 */
