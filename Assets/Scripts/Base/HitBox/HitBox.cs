@@ -16,10 +16,13 @@ public class HitBox : MonoBehaviour
     private Action _onHit = null;
     public Action OnHit { get => _onHit; set => _onHit = value; }
 
-    public void SetHitBox(CharacterAttack owner, Action onHit, Vector3 size = default, Vector3 offset = default)
+    public HitBoxData hitBoxData;
+    public void SetHitBox(HitBoxData hitBoxData, CharacterAttack owner, Action onHit, Vector3 size = default, Vector3 offset = default)
     {
         _owner = owner;
         _onHit = onHit;
+
+        this.hitBoxData = hitBoxData;
 
         transform.position = owner.Character.transform.position + offset;
         _boxCollider.size = size;
@@ -36,6 +39,7 @@ public class HitBox : MonoBehaviour
         if (!other.gameObject.CompareTag(_owner.Character.tag))
         {
             _owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
+            _owner.TargetCharacterDamage.OnAttcked(hitBoxData, other.ClosestPoint(transform.position));
             OnHit?.Invoke();
         }
     }

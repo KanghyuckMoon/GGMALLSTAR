@@ -17,6 +17,7 @@ public class CharacterAttack : CharacterComponent
     private Vector3 _attackSize = Vector3.zero;
 
     private CharacterDamage _targetCharacterDamage = null;
+
     public CharacterDamage TargetCharacterDamage
     {
         get => _targetCharacterDamage;
@@ -51,6 +52,6 @@ public class CharacterAttack : CharacterComponent
 
     protected virtual void OnAttack()
     {
-        PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(this, () => Debug.Log("Hit"), _attackSize, _attackOffset);
+        PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(Character.HitBoxDataSO.hitBoxDatas[0], this, () => Debug.Log("Hit"), _attackSize, _attackOffset);
     }
 }

@@ -12,6 +12,11 @@ public abstract class Character : MonoBehaviour
     protected InputDataBaseSO _inputDataBaseSO = null;
     public InputDataBaseSO InputDataBaseSO => _inputDataBaseSO;
 
+
+    [SerializeField]
+    protected HitBoxDataSO _hitBoxDataSO = null;
+    public HitBoxDataSO HitBoxDataSO => _hitBoxDataSO;
+
     private Dictionary<ComponentType, CharacterComponent> _characterComponents = null;
     public T GetCharacterComponent<T>() where T : CharacterComponent
     {
