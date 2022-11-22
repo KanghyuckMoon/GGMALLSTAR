@@ -5,62 +5,50 @@ using System;
 
 public class ComboNode : INode
 {
-    public Action<KeyCode> HoldAction { get; protected set; }
-    public Action<KeyCode> KeyUpAction { get; protected set; }
-    public Func<bool> Condition { get; private set; }
-    public ComboSO comboSO;
+    public List<INode> childNodeList { get; protected set; }
 
-    public ComboNode(Func<bool> condition, ComboSO comboSO, Action<KeyCode> holdAction, Action<KeyCode> keyUpAction)
+    public ComboNode(ComboSO comboSO, Action<KeyCode> holdAction, Action<KeyCode> keyUpAction, Action<KeyCode> tapAction)
     {
-        HoldAction = holdAction;
-        KeyUpAction = keyUpAction;
-        this.comboSO = comboSO;
-        Condition = condition;
+        childNodeList = new List<INode>();
+        for (int i = 0; i < comboSO.comboInputDatas.Length; ++i)
+		{
+            INode actionNode = null;
+
+            if (comboSO.comboInputDatas[i].isHold)
+            {
+                actionNode = new HoldNode(comboSO.comboInputDatas[i].holdTime, holdAction, keyUpAction, comboSO.comboInputDatas[i].keyCode);
+            }
+            else
+            {
+                actionNode = new TapNode(tapAction, comboSO.comboInputDatas[i].keyCode);
+            }
+
+            childNodeList.Add(actionNode);
+
+            INode waitNode = new WaitNode(comboSO.comboInputDatas[i].delay);
+            childNodeList.Add(waitNode);
+		}
     }
 
-    private int index = 0;
-    private float hold = 0f;
-    private float delay = 0f;
-    private bool isInput = false;
+    int index = 0;
 
+    //모든 노드가 True가 한번 씩 될 때까지 돌림
     public bool Run()
     {
-        if (!Condition.Invoke())
-		{
-            return false;
-		}
-
-        if (!isInput)
-		{
-            isInput = true;
-            HoldAction(comboSO.comboInputDatas[index].keyCode);
-            hold = comboSO.comboInputDatas[index].holdTime;
-            delay = comboSO.comboInputDatas[index].delay;
-        }
-
-        hold -= Time.deltaTime;
-		if (hold > 0f)
-		{
-			return true;
-        }
-        KeyUpAction(comboSO.comboInputDatas[index].keyCode);
-
-        delay -= Time.deltaTime;
-        if (delay > 0f)
+        bool result = childNodeList[index].Run();
+        if (result)
         {
-            return true;
+            index++;
         }
 
-        index += 1;
-        if(index == comboSO.comboInputDatas.Length)
+        if (index == childNodeList.Count)
 		{
             index = 0;
             return false;
 		}
-        else
-		{
-            isInput = false;
+		else
+        {
             return true;
-		}
+        }
     }
 }

@@ -75,9 +75,9 @@ public class AITestInput : CharacterComponent
         inputKeyCode = keyCode;
         _wasInput[inputKeyCode] = true;
     }
-    public void FalseInputKey()
+    public void FalseInputKey(KeyCode keyCode)
     {
-        _wasInput[inputKeyCode] = false;
+        _wasInput[keyCode] = false;
     }
     public void TapInputKey(KeyCode keyCode)
     {

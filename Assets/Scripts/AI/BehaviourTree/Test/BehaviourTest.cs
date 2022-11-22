@@ -33,12 +33,7 @@ public class BehaviourTest
 					IfAction(MoveCondition, Jump)
 				),
 
-				//°ø°Ý ½ÃÄö½º
-				Sequence
-				(
-					new ComboNode(AttackCondition, comboSO, TapKey, FalseKey)
-					//IfAction(AttackCondition, Attack)
-				)
+				new ConditionCheckNode(AttackCondition, new ComboNode(comboSO, HoldKey, UpKey, TapKey))
 			);
 	}
 
@@ -114,17 +109,22 @@ public class BehaviourTest
 		{
 			return;
 		}
-		aiTestInput.FalseInputKey();
+		//aiTestInput.FalseInputKey();
 		aiTestInput.TapInputKey(KeyCode.J);
 		Debug.Log("AI Attack");
 	}
 
 	private void TapKey(KeyCode keyCode)
 	{
-		aiTestInput.HoldInputKey(keyCode);
+		aiTestInput.TapInputKey(keyCode);
+		Debug.Log($"AI Input{keyCode}");
 	}
-	private void FalseKey(KeyCode keyCode)
+	private void UpKey(KeyCode keyCode)
 	{
-		aiTestInput.FalseInputKey();
+		aiTestInput.FalseInputKey(keyCode);
+	}
+	private void HoldKey(KeyCode keyCode)
+	{
+		aiTestInput.HoldInputKey(keyCode);
 	}
 }

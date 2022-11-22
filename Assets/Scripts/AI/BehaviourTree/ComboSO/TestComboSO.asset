@@ -14,11 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   comboInputDatas:
   - keyCode: 106
-    holdTime: 0.1
+    isHold: 0
+    holdTime: 0
     delay: 1
   - keyCode: 106
-    holdTime: 0.1
+    isHold: 0
+    holdTime: 0
     delay: 1
+  - keyCode: 106
+    isHold: 0
+    holdTime: 0
+    delay: 5
   - keyCode: 97
+    isHold: 1
     holdTime: 1
     delay: 0.1

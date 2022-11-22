@@ -12,6 +12,7 @@ public class ComboSO : ScriptableObject
 public class ComboInputData
 {
 	public KeyCode keyCode;
+	public bool isHold;
 	public float holdTime;
 	public float delay;
 }
