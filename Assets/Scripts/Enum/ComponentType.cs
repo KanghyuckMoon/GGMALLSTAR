@@ -11,4 +11,5 @@ public enum ComponentType
     Damage,
     Skill1,
     Skill2,
+    Level,
 }

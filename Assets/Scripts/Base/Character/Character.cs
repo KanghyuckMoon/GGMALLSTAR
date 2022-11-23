@@ -9,6 +9,12 @@ public abstract class Character : MonoBehaviour
     public CharacterSO CharacterSO => _characterSO;
 
     [SerializeField]
+    protected CharacterLevelSO _characterLevelSO = null;
+    
+    public CharacterLevelSO CharacterLevelSO => _characterLevelSO;
+
+
+    [SerializeField]
     protected InputDataBaseSO _inputDataBaseSO = null;
     public InputDataBaseSO InputDataBaseSO 
     {

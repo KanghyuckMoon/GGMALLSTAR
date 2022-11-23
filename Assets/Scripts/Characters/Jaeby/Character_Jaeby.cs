@@ -15,5 +15,6 @@ public class Character_Jaeby : Character
         AddComponent(ComponentType.Move, new CharacterMove(this));
         AddComponent(ComponentType.Damage, new CharacterDamage(this));
         AddComponent(ComponentType.Jump, new CharacterJump(this));
+        AddComponent(ComponentType.Level, new CharacterLevel(this));
     }
 }

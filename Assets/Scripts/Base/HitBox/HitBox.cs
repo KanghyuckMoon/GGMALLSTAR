@@ -64,6 +64,7 @@ public class HitBox : MonoBehaviour
             characterAnimation?.SetHitTime(hitBoxData.hitTime);
             StaticCoroutine.Instance.StartCoroutine(OwnerHitTimeEnd(Owner.Character, hitBoxData.hitTime, vector));
 
+            Owner.Character.GetCharacterComponent<CharacterLevel>().AddExp(hitBoxData.damage);
             OnHit?.Invoke();
         }
     }

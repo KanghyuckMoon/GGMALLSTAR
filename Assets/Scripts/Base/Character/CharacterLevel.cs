@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CharacterLevel
+public class CharacterLevel : CharacterComponent
 {
 	public int Level
 	{
@@ -20,27 +20,34 @@ public class CharacterLevel
 		}
 	}
 
-	public CharacterLevelSO characterLevelSO;
-	public UnityEvent changeExpEvent;
-	public UnityEvent changeLevelEvent;
+	private System.Action changeExpEvent;
+	private System.Action changeLevelEvent;
 
 	private int _previousLevel = 1;
 	private int _level = 1;
 	private int _exp = 0;
 
-	public CharacterLevel(CharacterLevelSO levelSO, UnityEvent changeExpEvent, UnityEvent changeLevelEvent)
+	public CharacterLevel(Character character) : base(character)
 	{
-		this.characterLevelSO = levelSO;
-		this.changeExpEvent = changeExpEvent;
-		this.changeLevelEvent = changeLevelEvent;
+
+	}
+
+	public void AddChangeExpEvent(System.Action action)
+	{
+		changeExpEvent += action;
+	}
+
+	public void AddChangeLevelEvent(System.Action action)
+	{
+		changeLevelEvent += action;
 	}
 
 	public void AddExp(int addExp)
 	{
 		_exp += addExp;
-		if (_exp >= characterLevelSO.NeedExpLevelMax)
+		if (_exp >= Character.CharacterLevelSO.NeedExpLevelMax)
 		{
-			_exp = characterLevelSO.NeedExpLevelMax;
+			_exp = Character.CharacterLevelSO.NeedExpLevelMax;
 		}
 		CheckLevel();
 	}
@@ -56,13 +63,13 @@ public class CharacterLevel
 				CheckLevel();
 				return;
 			case 2:
-				removeExp = characterLevelSO.NeedExpLevel2;
+				removeExp = Character.CharacterLevelSO.NeedExpLevel2;
 				break;
 			case 3:
-				removeExp = characterLevelSO.NeedExpLevel3 - characterLevelSO.NeedExpLevel2;
+				removeExp = Character.CharacterLevelSO.NeedExpLevel3 - Character.CharacterLevelSO.NeedExpLevel2;
 				break;
 			case 4:
-				removeExp = characterLevelSO.NeedExpLevelMax - characterLevelSO.NeedExpLevel3;
+				removeExp = Character.CharacterLevelSO.NeedExpLevelMax - Character.CharacterLevelSO.NeedExpLevel3;
 				break;
 		}
 		_exp -= removeExp;
@@ -76,15 +83,15 @@ public class CharacterLevel
 	/// <returns></returns>
 	public void CheckLevel()
 	{
-		if(_exp >= characterLevelSO.NeedExpLevelMax)
+		if(_exp >= Character.CharacterLevelSO.NeedExpLevelMax)
 		{
 			_level = 4;
 		}
-		else if (_exp >= characterLevelSO.NeedExpLevel3)
+		else if (_exp >= Character.CharacterLevelSO.NeedExpLevel3)
 		{
 			_level = 3;
 		}
-		else if (_exp >= characterLevelSO.NeedExpLevel2)
+		else if (_exp >= Character.CharacterLevelSO.NeedExpLevel2)
 		{
 			_level = 2;
 		}

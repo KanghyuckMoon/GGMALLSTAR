@@ -19,7 +19,7 @@ public class LevelTest : MonoBehaviour
 	{
 		changeLevel.AddListener(ChangeLevel);
 		changeExp.AddListener(ChangeExp);
-		characterLevel = new CharacterLevel(characterLevelSO, changeExp, changeLevel);
+		//characterLevel = new CharacterLevel(characterLevelSO, changeExp, changeLevel);
 
 		ChangeLevel();
 		ChangeExp();

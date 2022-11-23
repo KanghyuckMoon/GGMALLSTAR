@@ -13,6 +13,8 @@ public class CharacterStat : CharacterComponent
 
     }
 
+    private System.Action hpChangeEvent;
+
     protected float _hp = 0;
     protected float _maxHP = 0;
     public float MaxHP => _maxHP;
@@ -26,12 +28,19 @@ public class CharacterStat : CharacterComponent
         _hp = characterSO.MaxHP;
     }
 
+    public void AddHPEvent(System.Action action)
+    {
+        hpChangeEvent += action;
+    }
+
     public void SetHP(int hp)
 	{
         _hp = hp;
+        hpChangeEvent?.Invoke();
     }
     public void AddHP(int hp)
     {
         _hp += hp;
+        hpChangeEvent?.Invoke();
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3226454268469704984}
   - component: {fileID: 3226454268469704999}
   - component: {fileID: 7425700806012061979}
+  - component: {fileID: 3825907781712600347}
   m_Layer: 0
   m_Name: OtherSceneLoader
   m_TagString: Untagged
@@ -55,5 +56,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f4c66830a6b28d48bdcd5f8715ebf26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3825907781712600347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3226454268469704985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5932e12f243387f45b097475ca0a704d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -89,5 +89,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _characterSO: {fileID: 11400000, guid: 3f62b4359795bcc4eab5237435a180a2, type: 2}
+  _characterLevelSO: {fileID: 11400000, guid: 3fe9842786c27ba4a925c9258206415b, type: 2}
   _inputDataBaseSO: {fileID: 11400000, guid: 46bd95fd7549ed44e8c44b18738106d0, type: 2}
   _hitBoxDataSO: {fileID: 11400000, guid: 4917b9eb83628924d986bfdf78e277e3, type: 2}
