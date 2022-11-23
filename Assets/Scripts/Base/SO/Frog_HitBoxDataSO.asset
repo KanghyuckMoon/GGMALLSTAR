@@ -10,19 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b3a799da8efd8a4d9c110bc3a8cd6c4, type: 3}
-  m_Name: Test Hit Box Data SO
+  m_Name: Frog_HitBoxDataSO
   m_EditorClassIdentifier: 
   hitBoxDatasList:
   - hitBoxDatas:
     - damage: 10
       knockBack: 4
-      knockAngle: 50
+      knockAngle: 0
       hitTime: 0.1
       sturnTime: 0.3
-      _attackOffset: {x: 0.175, y: 0.075, z: 0}
+      _attackOffset: {x: 0.25, y: 0.12, z: 0}
       _attackSize: {x: 0.2, y: 0.15, z: 1}
-      shakePower: 5
+      shakePower: 3
       shakeTime: 0.3
       effectType: 0
-      hitEffSoundName: se_common_sword_hit_s
-      atkEffSoundName: se_common_sword_swing_s
+      hitEffSoundName: se_common_punch_hit_s
+      atkEffSoundName: se_common_swing_01
+  - hitBoxDatas:
+    - damage: 3
+      knockBack: 20
+      knockAngle: 5
+      hitTime: 0.2
+      sturnTime: 0.3
+      _attackOffset: {x: 0.32, y: 0.12, z: 0}
+      _attackSize: {x: 0.2, y: 0.15, z: 1}
+      shakePower: 5
+      shakeTime: 0.4
+      effectType: 0
+      hitEffSoundName: se_common_punch_hit_s
+      atkEffSoundName: 

@@ -13,6 +13,11 @@ public class CharacterSO : ScriptableObject
     public float MoveSpeed;
     public float GravityScale;
 
+    [Header("Attack Stats")]
+    public float attackDelay;
+    public float skill1Delay;
+    public float skill2Delay;
+
     [Header("Character's HitBox Collision")]
     public Vector3 HitBoxOffset;
     public Vector3 HitBoxSize;

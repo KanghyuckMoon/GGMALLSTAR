@@ -19,5 +19,8 @@ MonoBehaviour:
   SecondJumpPower: 2
   MoveSpeed: 2.5
   GravityScale: 1
+  attackDelay: 0.5
+  skill1Delay: 1
+  skill2Delay: 1
   HitBoxOffset: {x: 0.175, y: 0.075, z: 0}
   HitBoxSize: {x: 0.2, y: 0.15, z: 1}

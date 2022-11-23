@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterSO: {fileID: 11400000, guid: 3c17a1f64c1743d4ba2617a5f616bf9b, type: 2}
   _inputDataBaseSO: {fileID: 11400000, guid: 46bd95fd7549ed44e8c44b18738106d0, type: 2}
-  _hitBoxDataSO: {fileID: 11400000, guid: 4917b9eb83628924d986bfdf78e277e3, type: 2}
+  _hitBoxDataSO: {fileID: 11400000, guid: 8753fd9793f505a43ba3fd33c86515d1, type: 2}
 --- !u!54 &7575581589347579072
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 7575581590248848135}
   - component: {fileID: 7575581590248848136}
   - component: {fileID: 7575581590248848137}
+  - component: {fileID: 6035778070711950931}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -185,3 +186,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6035778070711950931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575581590248848134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448d1257539b48e49bb409741f467481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -24,6 +24,7 @@ public class CharacterInput : CharacterComponent
     protected InputData[] _inputData = null;
     protected Dictionary<KeyCode, bool> _wasInput = null;
     private float _stunTime = 0f;
+    private float _inputDelayTime = 0f;
 
 
     public override void Update()
@@ -31,32 +32,51 @@ public class CharacterInput : CharacterComponent
         if (_stunTime > 0f)
 		{
             _stunTime -= Time.deltaTime;
+            _inputDelayTime = 0;
             return;
 		}
+
+        if (_inputDelayTime > 0f)
+        {
+            _inputDelayTime -= Time.deltaTime;
+            return;
+        }
+
 
         foreach (var input in _inputData)
         {
             KeyCode keyCode = input.keyCode;
             string actionName = input.actionName;
 
-            if (Input.GetKeyDown(keyCode))
+            if (Input.GetKey(keyCode))
             {
-                _wasInput[keyCode] = true;
-                CharacterEvent.EventTrigger(actionName, EventType.KEY_DOWN);
-            }
-            else if (Input.GetKey(keyCode))
-            {
-                CharacterEvent.EventTrigger(actionName, EventType.KEY_HOLD);
+                if (_wasInput[keyCode] is false)
+                {
+                    _wasInput[keyCode] = true;
+                    CharacterEvent.EventTrigger(actionName, EventType.KEY_DOWN);
+                }
+                else
+                {
+                    CharacterEvent.EventTrigger(actionName, EventType.KEY_HOLD);
+                }
             }
             else if (Input.GetKeyUp(keyCode))
             {
                 _wasInput[keyCode] = false;
                 CharacterEvent.EventTrigger(actionName, EventType.KEY_UP);
             }
+            else
+            {
+                _wasInput[keyCode] = false;
+            }
         }
     }
     public void SetStunTime(float time)
     {
         _stunTime = time;
+    }
+    public void SetInputDelayTime(float time)
+    {
+        _inputDelayTime = time;
     }
 }

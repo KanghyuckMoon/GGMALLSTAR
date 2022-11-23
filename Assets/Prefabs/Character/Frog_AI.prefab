@@ -90,4 +90,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterSO: {fileID: 11400000, guid: 3c17a1f64c1743d4ba2617a5f616bf9b, type: 2}
   _inputDataBaseSO: {fileID: 11400000, guid: 46bd95fd7549ed44e8c44b18738106d0, type: 2}
-  _hitBoxDataSO: {fileID: 11400000, guid: 4917b9eb83628924d986bfdf78e277e3, type: 2}
+  _hitBoxDataSO: {fileID: 11400000, guid: 8753fd9793f505a43ba3fd33c86515d1, type: 2}

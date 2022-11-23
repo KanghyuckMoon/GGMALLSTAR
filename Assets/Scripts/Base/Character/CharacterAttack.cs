@@ -21,8 +21,6 @@ public class CharacterAttack : CharacterComponent
 
     private Direction _direction = Direction.RIGHT;
 
-    private Vector3 _attackOffset = Vector3.zero;
-    private Vector3 _attackSize = Vector3.zero;
     private bool _isRight = false;
 
     private CharacterDamage _targetCharacterDamage = null;
@@ -40,33 +38,49 @@ public class CharacterAttack : CharacterComponent
     protected override void Awake()
     {
         _direction = Character.GetCharacterComponent<CharacterSprite>().Direction;
-        _attackOffset = Character.CharacterSO.HitBoxOffset;
-        _attackSize = Character.CharacterSO.HitBoxSize;
     }
 
     protected override void SetEvent()
     {
-        //CharacterEvent.AddEvent(EventKeyWord.ATTACK, OnAttack, EventType.KEY_DOWN);
+        CharacterEvent.AddEvent(EventKeyWord.ATTACK, SetInputDelay, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
             _isRight = false;
-            _attackOffset.x = -Mathf.Abs(_attackOffset.x);
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
             _isRight = true;
-            _attackOffset.x = Mathf.Abs(_attackOffset.x);
         }, EventType.KEY_DOWN);
+    }
+
+    public void SetInputDelay()
+	{
+        var characterInput = Character.GetCharacterComponent<CharacterInput>();
+        if (characterInput is not null)
+		{
+            characterInput.SetInputDelayTime(Character.CharacterSO.attackDelay);
+        }
+        else
+        {
+            var aiInput = Character.GetCharacterComponent<AITestInput>();
+            aiInput.SetInputDelayTime(Character.CharacterSO.attackDelay);
+        }
     }
 
     public void OnAttack(int hitBoxIndex)
     {
         foreach (var hitboxData in Character.HitBoxDataSO.hitBoxDatasList[hitBoxIndex].hitBoxDatas)
         {
-            Sound.SoundManager.Instance.PlayEFF(hitboxData.atkEffSoundName);
-            PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(hitboxData, this, () => Debug.Log("Hit"), _attackSize, _attackOffset);
+            if (hitboxData.atkEffSoundName != "")
+			{
+                Sound.SoundManager.Instance.PlayEFF(hitboxData.atkEffSoundName);
+			}
+
+            Vector3 attackOffset = hitboxData._attackOffset;
+            attackOffset.x *= IsRight ? 1 : -1;
+            PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(hitboxData, this, () => Debug.Log("Hit"), hitboxData._attackSize, attackOffset);
         }
     }
 }

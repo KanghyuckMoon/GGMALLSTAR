@@ -47,10 +47,16 @@ public class AITestInput : CharacterComponent
     private float _delay = 0.1f;
     private BehaviourTest behaviourTest;
     private float _stunTime = 0f;
+    private float _inputDelayTime = 0f;
 
     public void SetStunTime(float time)
     {
         _stunTime = time;
+    }
+
+    public void SetInputDelayTime(float time)
+    {
+        _inputDelayTime = time;
     }
     public override void Update()
     {
@@ -59,6 +65,13 @@ public class AITestInput : CharacterComponent
             _stunTime -= Time.deltaTime;
             return;
         }
+
+        if (_inputDelayTime > 0f)
+        {
+            _inputDelayTime -= Time.deltaTime;
+            return;
+        }
+
 
         behaviourTest.Update();
 
