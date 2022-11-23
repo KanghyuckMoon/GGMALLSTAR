@@ -88,7 +88,6 @@ public class CharacterAnimation : CharacterComponent
 	{
         _animator.speed = 0;
         Utill.StaticCoroutine.Instance.StartCoroutine(EndHitTime(hitTime));
-
     }
 
     private IEnumerator EndHitTime(float hitTime)

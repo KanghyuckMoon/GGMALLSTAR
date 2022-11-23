@@ -107,6 +107,14 @@ public abstract class Character : MonoBehaviour
             characterComponent.OnCollisionEnter(other);
         }
     }
+	private void OnCollisionStay(Collision other)
+    {
+        foreach (CharacterComponent characterComponent in _characterComponents.Values)
+        {
+            characterComponent.OnCollisionStay(other);
+        }
+    }
+
 
     private void OnCollisionExit(Collision other)
     {

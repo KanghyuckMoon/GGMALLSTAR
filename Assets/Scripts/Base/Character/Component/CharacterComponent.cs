@@ -36,5 +36,6 @@ public abstract class CharacterComponent
     public virtual void LateUpdate() { }
 
     public virtual void OnCollisionEnter(Collision other) { }
+    public virtual void OnCollisionStay(Collision other) { }
     public virtual void OnCollisionExit(Collision other) { }
 }
