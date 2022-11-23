@@ -25,7 +25,22 @@ public class CharacterDamage : CharacterComponent
         CharacterEvent.AddEvent(EventKeyWord.DAMAGE, OnDamage, EventType.DEFAULT);
     }
 
-    private float _hp = 0;
+	public override void Update()
+	{
+		base.Update();
+
+        if (_stunTime > 0f)
+		{
+            _stunTime -= Time.deltaTime;
+        }
+        else
+		{
+            _comboCount = 0;
+        }
+	}
+
+	private float _hp = 0;
+    private int _comboCount = 0;
 
     private void OnDamage()
     {
@@ -36,11 +51,18 @@ public class CharacterDamage : CharacterComponent
         }
     }
 
+    private float _stunTime;
+
     public void OnAttcked(HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
     {
         //Hp
         _hp -= hitBoxData.damage;
-        
+
+        //ComboCount
+        _comboCount++;
+        _stunTime = hitBoxData.sturnTime + hitBoxData.hitTime;
+        EffectManager.Instance.SetComboCountEffect(_comboCount, hitBoxData.sturnTime + hitBoxData.hitTime, collistionPoint);
+
         //Effect & Sound
         EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
         SoundManager.Instance.PlayEFF(hitBoxData.hitEffSoundName);
