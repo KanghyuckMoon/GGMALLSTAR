@@ -8,6 +8,7 @@ public class CharacterMove : CharacterComponent
     private const string _walkSound = "se_common_step_carpet";
     private float _effDelay = 1f;
     private bool _isEffInput = false;
+    private CharacterAnimation characterAnimation = null;
 
     public CharacterMove(Character character) : base(character)
     {
@@ -57,6 +58,7 @@ public class CharacterMove : CharacterComponent
     {
         _rigidbody = Character.Rigidbody;
         _transform = Character.transform;
+        characterAnimation = Character.GetCharacterComponent<CharacterAnimation>();
     }
 
     private Transform _transform = null;
@@ -69,6 +71,18 @@ public class CharacterMove : CharacterComponent
         if (_rigidbody.velocity.y == 0f)
 		{
             _moveDirection = _inputDirection;
+            if(_inputDirection.x != 0)
+			{
+                characterAnimation.SetAnimationBool(AnimationType.Run, true);
+			}
+            else
+            {
+                characterAnimation.SetAnimationBool(AnimationType.Run, false);
+            }
+        }
+        else
+        {
+            characterAnimation.SetAnimationBool(AnimationType.Run, false);
         }
 
         Vector3 pos = Character.transform.position + Character.Collider.center;

@@ -32,15 +32,20 @@ public class CharacterJump : CharacterComponent
 
     private bool isTap;
     private bool isHold;
+    private CharacterAnimation characterAnimation = null;
 
     protected override void Awake()
     {
         _rigidbody = Character.Rigidbody;
+        characterAnimation = Character.GetCharacterComponent<CharacterAnimation>();
     }
 
     public override void FixedUpdate()
     {
-        if(Physics.Raycast(Character.transform.position, Vector3.down, 0.1f, LayerMask.GetMask("Ground")))
+        Vector3 pos = Character.transform.position + Character.Collider.center;
+        pos.y += (-Character.Collider.size.y * 0.5f);
+
+        if (Physics.Raycast(pos, Vector3.down, 0.1f, LayerMask.GetMask("Ground")) && _rigidbody.velocity.y <= 0)
         {
             _jumpCount = 0;
         }
@@ -52,11 +57,7 @@ public class CharacterJump : CharacterComponent
             {
                 _rigidbody.AddForce(Vector3.up * Character.CharacterSO.FirstJumpPower, ForceMode.Impulse);
                 _jumpCount++;
-            }
-            else if (_rigidbody && _jumpCount == 1)
-            {
-                _rigidbody.AddForce(Vector3.up * Character.CharacterSO.SecondJumpPower, ForceMode.Impulse);
-                _jumpCount++;
+                characterAnimation.SetAnimationTrigger(AnimationType.Jump);
             }
         }
     }

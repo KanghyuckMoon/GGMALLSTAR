@@ -24,6 +24,7 @@ public class CharacterAttack : CharacterComponent
     private bool _isRight = false;
 
     private CharacterDamage _targetCharacterDamage = null;
+    private CharacterAnimation characterAnimation = null;
 
     public CharacterDamage TargetCharacterDamage
     {
@@ -42,8 +43,11 @@ public class CharacterAttack : CharacterComponent
 
     protected override void SetEvent()
     {
-        CharacterEvent.AddEvent(EventKeyWord.ATTACK, SetInputDelay, EventType.KEY_DOWN);
-
+        CharacterEvent.AddEvent(EventKeyWord.ATTACK, () => 
+        { 
+            SetInputDelay();
+            AttackAnimation();
+        }, EventType.KEY_DOWN);
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
             _isRight = false;
@@ -53,6 +57,12 @@ public class CharacterAttack : CharacterComponent
         {
             _isRight = true;
         }, EventType.KEY_DOWN);
+    }
+
+    private void AttackAnimation()
+    {
+        characterAnimation ??= Character.GetCharacterComponent<CharacterAnimation>();
+        characterAnimation.SetAnimationTrigger(AnimationType.Attack);
     }
 
     public void SetInputDelay()
