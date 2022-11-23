@@ -5,6 +5,12 @@ using UnityEngine;
 [CreateAssetMenu]
 public class HitBoxDataSO : ScriptableObject
 {
+	public HitBoxDatas[] hitBoxDatasList;
+}
+
+[System.Serializable]
+public class HitBoxDatas
+{
 	public HitBoxData[] hitBoxDatas;
 }
 
@@ -17,6 +23,10 @@ public class HitBoxData
 	public float knockAngle = 50;
 	public float hitTime = 0.3f;
 	public float sturnTime = 0.3f;
+
+	//pos scale
+	public Vector3 _attackOffset = Vector3.zero;
+	public Vector3 _attackSize = Vector3.zero;
 
 	//Shake
 	public float shakePower = 20f;

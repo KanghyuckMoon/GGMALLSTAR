@@ -112,4 +112,10 @@ public abstract class Character : MonoBehaviour
     }
 
     protected virtual void SetComponent() { }
+
+    public void OnAttack(int hitBoxIndex)
+	{
+        CharacterAttack characterAttack = _characterComponents[ComponentType.Attack] as CharacterAttack;
+        characterAttack.OnAttack(hitBoxIndex);
+    }
 }

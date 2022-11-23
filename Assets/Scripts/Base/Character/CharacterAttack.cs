@@ -46,7 +46,7 @@ public class CharacterAttack : CharacterComponent
 
     protected override void SetEvent()
     {
-        CharacterEvent.AddEvent(EventKeyWord.ATTACK, OnAttack, EventType.KEY_DOWN);
+        //CharacterEvent.AddEvent(EventKeyWord.ATTACK, OnAttack, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
@@ -61,9 +61,12 @@ public class CharacterAttack : CharacterComponent
         }, EventType.KEY_DOWN);
     }
 
-    protected virtual void OnAttack()
+    public void OnAttack(int hitBoxIndex)
     {
-        Sound.SoundManager.Instance.PlayEFF(Character.HitBoxDataSO.hitBoxDatas[0].atkEffSoundName);
-        PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(Character.HitBoxDataSO.hitBoxDatas[0], this, () => Debug.Log("Hit"), _attackSize, _attackOffset);
+        foreach (var hitboxData in Character.HitBoxDataSO.hitBoxDatasList[hitBoxIndex].hitBoxDatas)
+        {
+            Sound.SoundManager.Instance.PlayEFF(hitboxData.atkEffSoundName);
+            PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(hitboxData, this, () => Debug.Log("Hit"), _attackSize, _attackOffset);
+        }
     }
 }

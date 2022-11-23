@@ -58,6 +58,10 @@ public class HitBox : MonoBehaviour
                     aITestInput.SetStunTime(hitBoxData.hitTime);
                 }
             }
+
+
+            CharacterAnimation characterAnimation = Owner.Character.GetCharacterComponent<CharacterAnimation>();
+            characterAnimation?.SetHitTime(hitBoxData.hitTime);
             StaticCoroutine.Instance.StartCoroutine(OwnerHitTimeEnd(Owner.Character, hitBoxData.hitTime, vector));
 
             OnHit?.Invoke();
