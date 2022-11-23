@@ -17,7 +17,8 @@ public class CharacterDamage : CharacterComponent
 
     protected override void Awake()
     {
-        _hp = Character.GetCharacterComponent<CharacterStat>().MaxHP;
+        //_hp = Character.GetCharacterComponent<CharacterStat>().MaxHP;
+        characterStat = Character.GetCharacterComponent<CharacterStat>();
     }
 
     protected override void SetEvent()
@@ -39,24 +40,23 @@ public class CharacterDamage : CharacterComponent
         }
 	}
 
-	private float _hp = 0;
+	//private float _hp = 0;
     private int _comboCount = 0;
+    private CharacterStat characterStat;
 
     private void OnDamage()
     {
-        _hp -= 10;
-        if (_hp <= 0)
-        {
-            Debug.Log("Die");
-        }
+        //_hp -= 10;
+        //if (_hp <= 0)
+        //{
+        //    Debug.Log("Die");
+        //}
     }
 
     private float _stunTime;
 
     public void OnAttcked(HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
     {
-        //Hp
-        _hp -= hitBoxData.damage;
 
         //ComboCount
         _comboCount++;
@@ -99,10 +99,13 @@ public class CharacterDamage : CharacterComponent
         //CameraShake
         CameraManager.SetShake(hitBoxData.shakeTime, hitBoxData.shakePower);
 
+        //Hp
+        characterStat.AddHP(-hitBoxData.damage);
+
         //Die
-        if (_hp <= 0)
+        if (characterStat.HP <= 0)
         {
-            Debug.Log("Die");
+            RoundManager.RoundEnd(Character);
         }
     }
 

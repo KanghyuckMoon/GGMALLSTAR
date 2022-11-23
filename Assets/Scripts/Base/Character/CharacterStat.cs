@@ -13,13 +13,25 @@ public class CharacterStat : CharacterComponent
 
     }
 
+    protected float _hp = 0;
     protected float _maxHP = 0;
     public float MaxHP => _maxHP;
+    public float HP => _hp;
 
     protected override void Awake()
     {
         CharacterSO characterSO = Character.CharacterSO;
 
         _maxHP = characterSO.MaxHP;
+        _hp = characterSO.MaxHP;
+    }
+
+    public void SetHP(int hp)
+	{
+        _hp = hp;
+    }
+    public void AddHP(int hp)
+    {
+        _hp += hp;
     }
 }

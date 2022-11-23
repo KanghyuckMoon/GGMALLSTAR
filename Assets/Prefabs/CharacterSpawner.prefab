@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1817890781473925578}
   - component: {fileID: 1817890781473925573}
+  - component: {fileID: 7331089209562192110}
   m_Layer: 0
   m_Name: CharacterSpawner
   m_TagString: Untagged
@@ -51,6 +52,21 @@ MonoBehaviour:
   spawnPositionP2: {fileID: 1817890781684479566}
   inputDataBaseSOP1: {fileID: 11400000, guid: 46bd95fd7549ed44e8c44b18738106d0, type: 2}
   inputDataBaseSOP2: {fileID: 11400000, guid: f303ddb7419cd1c499bc10952f7598aa, type: 2}
+--- !u!114 &7331089209562192110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817890781473925579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85be94155e590cc4d801db111ddbc054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterSpawner: {fileID: 1817890781473925573}
+  spawnPosP1: {fileID: 1817890782249570669}
+  spawnPosP2: {fileID: 1817890781684479566}
 --- !u!1 &1817890781684479567
 GameObject:
   m_ObjectHideFlags: 0
