@@ -49,19 +49,6 @@ public class CharacterJump : CharacterComponent
         {
             _jumpCount = 0;
         }
-        pos.y += Character.Collider.size.y;
-        RaycastHit raycastHit;
-        if (Physics.Raycast(pos, Vector3.up, out raycastHit, 0.1f, LayerMask.GetMask("Player")))
-        {
-            if (raycastHit.collider.transform.position.x < Character.transform.position.x)
-			{
-                _rigidbody.AddForce(Vector3.left * 10, ForceMode.Impulse);
-			}
-            else
-            {
-                _rigidbody.AddForce(Vector3.right * 10, ForceMode.Impulse);
-            }
-        }
 
         if (isTap && !isHold)
         {

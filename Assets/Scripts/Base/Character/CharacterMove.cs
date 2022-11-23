@@ -114,4 +114,25 @@ public class CharacterMove : CharacterComponent
             yield return null;
 		}
 	}
+
+	public override void OnCollisionStay(Collision other)
+	{
+		base.OnCollisionStay(other);
+
+        //if(other.collider.gameObject.CompareTag("Player") || other.collider.gameObject.CompareTag("Player2"))
+        //{
+        //    if (other.transform.position.y > Character.transform.position.y)
+        //    {
+        //        if (other.transform.position.x < Character.transform.position.x)
+        //        {
+        //            _rigidbody.AddForce(Vector3.left * 10, ForceMode.Impulse);
+        //        }
+        //        else
+        //        {
+        //            _rigidbody.AddForce(Vector3.right * 10, ForceMode.Impulse);
+        //        }
+        //    }
+        //
+        //}
+    }
 }
