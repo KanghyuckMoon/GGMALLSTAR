@@ -45,7 +45,7 @@ public class CharacterJump : CharacterComponent
             _jumpCount = 0;
         }
 
-        if(isTap && !isHold)
+        if (isTap && !isHold)
         {
             isHold = true;
             if (_rigidbody && _jumpCount == 0)

@@ -70,7 +70,17 @@ public class CharacterMove : CharacterComponent
 		{
             _moveDirection = _inputDirection;
         }
-        _rigidbody.velocity = new Vector3(_moveDirection.x * Character.CharacterSO.MoveSpeed, _rigidbody.velocity.y, 0);
+
+
+        if (Physics.Raycast(Character.transform.position, _moveDirection, 0.1f, LayerMask.GetMask("Wall")))
+        {
+            _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
+        }
+		else
+        {
+            _rigidbody.velocity = new Vector3(_moveDirection.x * Character.CharacterSO.MoveSpeed, _rigidbody.velocity.y, 0);
+        }
+
         _inputDirection = Vector2.zero;
     }
 
