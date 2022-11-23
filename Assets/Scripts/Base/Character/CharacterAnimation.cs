@@ -83,4 +83,17 @@ public class CharacterAnimation : CharacterComponent
     {
         _animator.SetInteger(Animator.StringToHash(animationName), value);
     }
+
+    public void SetHitTime(float hitTime)
+	{
+        _animator.speed = 0;
+        Utill.StaticCoroutine.Instance.StartCoroutine(EndHitTime(hitTime));
+
+    }
+
+    private IEnumerator EndHitTime(float hitTime)
+	{
+        yield return new WaitForSeconds(hitTime);
+        _animator.speed = 1;
+	}
 }

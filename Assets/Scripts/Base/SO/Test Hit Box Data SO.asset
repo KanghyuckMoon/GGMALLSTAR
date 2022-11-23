@@ -12,34 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3a799da8efd8a4d9c110bc3a8cd6c4, type: 3}
   m_Name: Test Hit Box Data SO
   m_EditorClassIdentifier: 
-  hitBoxDatas:
-  - damage: 10
-    knockBack: 4
-    knockAngle: 50
-    hitTime: 0.1
-    sturnTime: 1
-    shakePower: 20
-    shakeTime: 0.3
-    effectType: 0
-    hitEffSoundName: se_common_sword_hit_s
-    atkEffSoundName: se_common_sword_swing_s
-  - damage: 0
-    knockBack: 0
-    knockAngle: 0
-    hitTime: 0.3
-    sturnTime: 0.3
-    shakePower: 20
-    shakeTime: 0.3
-    effectType: 0
-    hitEffSoundName: 
-    atkEffSoundName: 
-  - damage: 0
-    knockBack: 0
-    knockAngle: 0
-    hitTime: 0.3
-    sturnTime: 0.3
-    shakePower: 20
-    shakeTime: 0.3
-    effectType: 0
-    hitEffSoundName: 
-    atkEffSoundName: 
+  hitBoxDatasList:
+  - hitBoxDatas:
+    - damage: 10
+      knockBack: 4
+      knockAngle: 50
+      hitTime: 0.1
+      sturnTime: 0.3
+      _attackOffset: {x: 0.175, y: 0.075, z: 0}
+      _attackSize: {x: 0.2, y: 0.15, z: 1}
+      shakePower: 5
+      shakeTime: 0.3
+      effectType: 0
+      hitEffSoundName: se_common_sword_hit_s
+      atkEffSoundName: se_common_sword_swing_s
