@@ -55,6 +55,9 @@ public class CharacterJump : CharacterComponent
             isHold = true;
             if (_rigidbody && _jumpCount == 0)
             {
+                var vel = _rigidbody.velocity;
+                vel.y = 0;
+                _rigidbody.velocity = vel;
                 _rigidbody.AddForce(Vector3.up * Character.CharacterSO.FirstJumpPower, ForceMode.Impulse);
                 _jumpCount++;
                 characterAnimation.SetAnimationTrigger(AnimationType.Jump);
