@@ -68,10 +68,12 @@ public class CharacterMove : CharacterComponent
 
     public override void FixedUpdate()
     {
+        float speed = 0f;
         if (_rigidbody.velocity.y == 0f)
 		{
             _moveDirection = _inputDirection;
-            if(_inputDirection.x != 0)
+            speed = Character.CharacterSO.MoveSpeed;
+            if (_inputDirection.x != 0)
 			{
                 characterAnimation.SetAnimationBool(AnimationType.Run, true);
 			}
@@ -82,6 +84,7 @@ public class CharacterMove : CharacterComponent
         }
         else
         {
+            speed = Character.CharacterSO.AirMoveSpeed;
             characterAnimation.SetAnimationBool(AnimationType.Run, false);
         }
 
@@ -93,7 +96,7 @@ public class CharacterMove : CharacterComponent
         }
 		else
         {
-            _rigidbody.velocity = new Vector3(_moveDirection.x * Character.CharacterSO.MoveSpeed, _rigidbody.velocity.y, 0);
+            _rigidbody.velocity = new Vector3(_moveDirection.x * speed, _rigidbody.velocity.y, 0);
         }
 
         _inputDirection = Vector2.zero;
