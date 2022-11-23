@@ -38,14 +38,18 @@ public class CharacterDamage : CharacterComponent
 
     public void OnAttcked(HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
     {
+        //Hp
         _hp -= hitBoxData.damage;
+        
+        //Effect & Sound
         EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
         SoundManager.Instance.PlayEFF(hitBoxData.hitEffSoundName);
+
+        //Set HitTime & StunTime
         Vector3 vector = Character.Rigidbody.velocity;
         CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>();
         characterGravity.SetHitTime(hitBoxData.hitTime);
         Character.Rigidbody.velocity = Vector3.zero;
-
         CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>();
         if(characterInput is not null)
 		{
@@ -60,6 +64,7 @@ public class CharacterDamage : CharacterComponent
             }
 		}
 
+        //CharacterShake
         CharacterSprite characterSprite = Character.GetCharacterComponent<CharacterSprite>();
         characterSprite.SpriteRenderer.transform.DOKill();
         characterSprite.SpriteRenderer.transform.DOShakePosition(hitBoxData.hitTime, 0.05f, 20).OnComplete(() => 
@@ -68,6 +73,11 @@ public class CharacterDamage : CharacterComponent
             Character.Rigidbody.AddForce(DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180)) * hitBoxData.knockBack, ForceMode.Impulse);
         });
 
+
+        //CameraShake
+        CameraManager.SetShake(hitBoxData.shakeTime, hitBoxData.shakePower);
+
+        //Die
         if (_hp <= 0)
         {
             Debug.Log("Die");
