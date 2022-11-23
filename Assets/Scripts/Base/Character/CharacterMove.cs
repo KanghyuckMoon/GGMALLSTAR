@@ -16,39 +16,39 @@ public class CharacterMove : CharacterComponent
 
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
-            _moveDirection.x = -1;
+            _inputDirection.x = -1;
             _effDelay = 0f;
             _isEffInput = true;
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
-            _moveDirection.x = 1;
+            _inputDirection.x = 1;
             _effDelay = 0f;
             _isEffInput = true;
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
-            _moveDirection.x = -1;
+            _inputDirection.x = -1;
             _isEffInput = true;
         }, EventType.KEY_HOLD);
 
         CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
-            _moveDirection.x = 1;
+            _inputDirection.x = 1;
             _isEffInput = true;
         }, EventType.KEY_HOLD);
 
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
-            _moveDirection.x = 0;
+            _inputDirection.x = 0;
             _isEffInput = false;
         }, EventType.KEY_UP);
 
         CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
-            _moveDirection.x = 0;
+            _inputDirection.x = 0;
             _isEffInput = false;
         }, EventType.KEY_UP);
     }
@@ -61,12 +61,17 @@ public class CharacterMove : CharacterComponent
 
     private Transform _transform = null;
     private Rigidbody _rigidbody = null;
+    private Vector2 _inputDirection = Vector2.zero;
     private Vector2 _moveDirection = Vector2.zero;
 
     public override void FixedUpdate()
     {
+        if (_rigidbody.velocity.y == 0f)
+		{
+            _moveDirection = _inputDirection;
+        }
         _rigidbody.velocity = new Vector3(_moveDirection.x * Character.CharacterSO.MoveSpeed, _rigidbody.velocity.y, 0);
-        _moveDirection = Vector2.zero;
+        _inputDirection = Vector2.zero;
     }
 
     private IEnumerator PlayWalkEFF()
