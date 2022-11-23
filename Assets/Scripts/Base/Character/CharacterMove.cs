@@ -71,8 +71,9 @@ public class CharacterMove : CharacterComponent
             _moveDirection = _inputDirection;
         }
 
-
-        if (Physics.Raycast(Character.transform.position, _moveDirection, 0.1f, LayerMask.GetMask("Wall")))
+        Vector3 pos = Character.transform.position + Character.Collider.center;
+        pos.x += (Character.Collider.size.x * _moveDirection.x);
+        if (Physics.Raycast(pos, _moveDirection, 0.1f, LayerMask.GetMask("Wall")))
         {
             _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
         }

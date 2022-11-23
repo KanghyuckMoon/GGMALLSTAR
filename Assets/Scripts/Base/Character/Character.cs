@@ -50,12 +50,17 @@ public abstract class Character : MonoBehaviour
     private Rigidbody _rigidbody = null;
     public Rigidbody Rigidbody => _rigidbody;
 
+    private BoxCollider _collider = null;
+    public BoxCollider Collider => _collider;
+
+
     #region Unity Methods
 
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<BoxCollider>();
         _characterComponents = new();
         _characterEvent = new CharacterEvent();
     }
