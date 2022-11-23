@@ -18,5 +18,6 @@ public class HitBoxData
 	public float sturnTime = 0.3f;
 
 	public Effect.EffectType effectType;
-	public string effSoundName;
+	public string hitEffSoundName;
+	public string atkEffSoundName;
 }

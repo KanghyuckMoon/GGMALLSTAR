@@ -16,21 +16,24 @@ MonoBehaviour:
   - damage: 10
     knockBack: 4
     knockAngle: 50
-    hitTime: 1
+    hitTime: 0.1
     sturnTime: 1
     effectType: 0
-    effSoundName: se_common_sword_hit_s
+    hitEffSoundName: se_common_sword_hit_s
+    atkEffSoundName: se_common_sword_swing_s
   - damage: 0
     knockBack: 0
     knockAngle: 0
     hitTime: 0.3
     sturnTime: 0.3
     effectType: 0
-    effSoundName: 
+    hitEffSoundName: 
+    atkEffSoundName: 
   - damage: 0
     knockBack: 0
     knockAngle: 0
     hitTime: 0.3
     sturnTime: 0.3
     effectType: 0
-    effSoundName: 
+    hitEffSoundName: 
+    atkEffSoundName: 

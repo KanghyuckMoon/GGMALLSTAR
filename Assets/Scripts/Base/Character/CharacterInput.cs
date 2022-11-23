@@ -39,17 +39,16 @@ public class CharacterInput : CharacterComponent
             KeyCode keyCode = input.keyCode;
             string actionName = input.actionName;
 
-            if (_wasInput[keyCode])
-            {
-                CharacterEvent.EventTrigger(actionName, EventType.KEY_HOLD);
-            }
-            else if (Input.GetKeyDown(keyCode))
+            if (Input.GetKeyDown(keyCode))
             {
                 _wasInput[keyCode] = true;
                 CharacterEvent.EventTrigger(actionName, EventType.KEY_DOWN);
             }
-
-            if (Input.GetKeyUp(keyCode))
+            else if (Input.GetKey(keyCode))
+            {
+                CharacterEvent.EventTrigger(actionName, EventType.KEY_HOLD);
+            }
+            else if (Input.GetKeyUp(keyCode))
             {
                 _wasInput[keyCode] = false;
                 CharacterEvent.EventTrigger(actionName, EventType.KEY_UP);

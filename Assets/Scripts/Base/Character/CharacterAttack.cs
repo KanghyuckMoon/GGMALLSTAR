@@ -63,6 +63,7 @@ public class CharacterAttack : CharacterComponent
 
     protected virtual void OnAttack()
     {
+        Sound.SoundManager.Instance.PlayEFF(Character.HitBoxDataSO.hitBoxDatas[0].atkEffSoundName);
         PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(Character.HitBoxDataSO.hitBoxDatas[0], this, () => Debug.Log("Hit"), _attackSize, _attackOffset);
     }
 }

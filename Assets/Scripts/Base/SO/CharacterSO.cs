@@ -8,6 +8,10 @@ public class CharacterSO : ScriptableObject
 
     [Header("Character Stats")]
     public float MaxHP;
+    public float FirstJumpPower;
+    public float SecondJumpPower;
+    public float MoveSpeed;
+    public float GravityScale;
 
     [Header("Character's HitBox Collision")]
     public Vector3 HitBoxOffset;

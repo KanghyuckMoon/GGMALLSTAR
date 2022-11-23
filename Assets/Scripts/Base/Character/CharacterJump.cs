@@ -50,12 +50,12 @@ public class CharacterJump : CharacterComponent
             isHold = true;
             if (_rigidbody && _jumpCount == 0)
             {
-                _rigidbody.AddForce(Vector3.up * _firstJumpPower, ForceMode.Impulse);
+                _rigidbody.AddForce(Vector3.up * Character.CharacterSO.FirstJumpPower, ForceMode.Impulse);
                 _jumpCount++;
             }
             else if (_rigidbody && _jumpCount == 1)
             {
-                _rigidbody.AddForce(Vector3.up * _secondJumpPower, ForceMode.Impulse);
+                _rigidbody.AddForce(Vector3.up * Character.CharacterSO.SecondJumpPower, ForceMode.Impulse);
                 _jumpCount++;
             }
         }
@@ -63,8 +63,6 @@ public class CharacterJump : CharacterComponent
 
     private Rigidbody _rigidbody = null;
 
-    private float _firstJumpPower = 5f;
-    private float _secondJumpPower = 3f;
     private float _jumpingPower = 10f;
     
     private float _maxFirstJumpPower = 35f;

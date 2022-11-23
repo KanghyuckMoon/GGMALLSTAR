@@ -9,9 +9,8 @@ public class CharacterMove : CharacterComponent
     private float _effDelay = 1f;
     private bool _isEffInput = false;
 
-    public CharacterMove(Character character, float speed = 7.5f) : base(character)
+    public CharacterMove(Character character) : base(character)
     {
-        _speed = speed;
         Utill.StaticCoroutine.Instance.StartCoroutine(PlayWalkEFF());
 
 
@@ -62,12 +61,11 @@ public class CharacterMove : CharacterComponent
 
     private Transform _transform = null;
     private Rigidbody _rigidbody = null;
-    private float _speed = 7.5f;
     private Vector2 _moveDirection = Vector2.zero;
 
     public override void FixedUpdate()
     {
-        _rigidbody.velocity = new Vector3(_moveDirection.x * _speed, _rigidbody.velocity.y, 0);
+        _rigidbody.velocity = new Vector3(_moveDirection.x * Character.CharacterSO.MoveSpeed, _rigidbody.velocity.y, 0);
         _moveDirection = Vector2.zero;
     }
 

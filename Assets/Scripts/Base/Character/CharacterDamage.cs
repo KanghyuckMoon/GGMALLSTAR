@@ -40,7 +40,7 @@ public class CharacterDamage : CharacterComponent
     {
         _hp -= hitBoxData.damage;
         EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
-        SoundManager.Instance.PlayEFF(hitBoxData.effSoundName);
+        SoundManager.Instance.PlayEFF(hitBoxData.hitEffSoundName);
         Vector3 vector = Character.Rigidbody.velocity;
         CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>();
         characterGravity.SetHitTime(hitBoxData.hitTime);

@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CharacterGravity : CharacterComponent
 {
-    public CharacterGravity(Character character, float gravityScale = 9.8f) : base(character)
+    public CharacterGravity(Character character) : base(character)
     {
-        _gravityScale = gravityScale;
+
     }
 
     private Rigidbody _rigidbody = null;
-    private readonly float _gravityScale = 0f;
     private float _hitTime = 0f;
 
     protected override void Awake()
@@ -33,7 +32,7 @@ public class CharacterGravity : CharacterComponent
 		}
 
         base.FixedUpdate();
-        Vector3 gravity = _gravityScale * Physics.gravity;
+        Vector3 gravity = Character.CharacterSO.GravityScale * Physics.gravity;
         _rigidbody.AddForce(gravity, ForceMode.Acceleration);
     }
 }
