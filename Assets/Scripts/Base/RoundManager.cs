@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Loading;
 using Sound;
 
@@ -16,6 +17,72 @@ public class RoundManager : MonoBehaviour
 	private int winCountP1 = 0;
 	private int winCountP2 = 0;
 	private bool isSetting = false;
+
+	private System.Action roundSetEvent;
+	private System.Action roundReadyEvent;
+	private System.Action roundStartEvent;
+	private System.Action roundEndEvent;
+	private System.Action gameEndEvent;
+
+	public System.Action RoundSetEvent
+	{
+		get
+		{
+			return roundSetEvent;
+		}
+		set
+		{
+			roundSetEvent = value;
+		}
+	}
+
+	public System.Action RoundReadyEvent
+	{
+		get
+		{
+			return roundReadyEvent;
+		}
+		set
+		{
+			roundReadyEvent = value;
+		}
+	}
+
+	public System.Action RoundStartEvent
+	{
+		get
+		{
+			return roundStartEvent;
+		}
+		set
+		{
+			roundStartEvent = value;
+		}
+	}
+
+	public System.Action RoundEndEvent
+	{
+		get
+		{
+			return roundEndEvent;
+		}
+		set
+		{
+			roundEndEvent = value;
+		}
+	}
+	public System.Action GameEndEvent
+	{
+		get
+		{
+			return gameEndEvent;
+		}
+		set
+		{
+			gameEndEvent = value;
+		}
+	}
+	public int RoundNumber => roundNumber;
 
 	private IEnumerator Start()
 	{
@@ -114,8 +181,9 @@ public class RoundManager : MonoBehaviour
 		{
 			Debug.Log($"Round {roundNumber}");
 		}
+		roundSetEvent?.Invoke();
 
-		switch(roundNumber)
+		switch (roundNumber)
 		{
 			default:
 			case 1:
@@ -149,13 +217,15 @@ public class RoundManager : MonoBehaviour
 
 	private IEnumerator NextRound(float time)
 	{
-		yield return new WaitForSeconds(time);
+		roundEndEvent?.Invoke();
+		   yield return new WaitForSeconds(time);
 		HPFullSetting();
 		PostionSetting();
 		RoundSetting();
 	}
 	private IEnumerator GameEnd(float time)
 	{
+		gameEndEvent?.Invoke();
 		yield return new WaitForSeconds(time);
 		LoadingScene.Instance.LoadScene("Main", LoadingScene.LoadingSceneType.Normal);
 	}
@@ -164,11 +234,13 @@ public class RoundManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(readyTime);
 		SoundManager.Instance.PlayEFF("vc_narration_ready");
+		roundReadyEvent?.Invoke();
 
 		yield return new WaitForSeconds(fightTime);
 		Debug.Log("Fight");
 		SoundManager.Instance.PlayEFF("vc_narration_go");
 		isSetting = true;
+		roundStartEvent?.Invoke();
 	}
 
 }
