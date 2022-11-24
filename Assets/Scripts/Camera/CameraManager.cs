@@ -58,8 +58,8 @@ public class CameraManager : MonoBehaviour
 		cinemachineVirtualCameras[(int)CameraType.Zoom].LookAt = transform;
 		var transpoer = cinemachineVirtualCameras[(int)CameraType.Zoom].GetCinemachineComponent<CinemachineTransposer>();
 		float killTotalTime = killTime;
-		Vector3 startOffset = new Vector3(-5, 0.5f, -2.5f);
-		Vector3 endOffset = new Vector3(3, 0.5f, -2.5f);
+		Vector3 startOffset = new Vector3(-3, 0.5f, -2.5f);
+		Vector3 endOffset = new Vector3(1.3f, 0.5f, -2.5f);
 
 		SetCamera(CameraType.Zoom);
 
