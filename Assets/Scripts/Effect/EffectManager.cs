@@ -15,9 +15,19 @@ namespace Effect
         private Dictionary<EffectType, GameObject> _effectPrefebs = new Dictionary<EffectType, GameObject>();
         private bool _isInit = false;
 
-        public void Awake()
+        public void Start()
         {
-            Init();
+            if (!_isInit)
+            {
+                if (Instance == this)
+                {
+                    Init();
+                }
+                else
+                {
+                    Instance.Init();
+                }
+            }
         }
 
 
