@@ -142,19 +142,19 @@ public class RoundManager : MonoBehaviour
 				Debug.Log("Game End P2 Win");
 			}
 			SoundManager.Instance.PlayEFF("vc_narration_gameset_CN-JP-KR");
-			StartCoroutine(GameEnd(1f));
+			StartCoroutine(GameEnd(6f));
 		}
 		else
 		{
-			CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
-			characterInputP1.SetStunTime(1f);
-
-			CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
-			characterInputP2.SetStunTime(1f);
+			//CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
+			//characterInputP1.SetStunTime(1f);
+			//
+			//CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
+			//characterInputP2.SetStunTime(1f);
 
 			SoundManager.Instance.PlayEFF("vc_narration_gameset");
 
-			StartCoroutine(NextRound(1f));
+			StartCoroutine(NextRound(6f));
 		}
 	}
 

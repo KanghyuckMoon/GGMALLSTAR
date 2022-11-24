@@ -55,13 +55,37 @@ public class CharacterDamage : CharacterComponent
 
     private float _stunTime;
 
-    public void OnAttcked(HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
+    public void OnAttcked(HitBox hitBox, HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
     {
+        if(!characterStat.IsAlive)
+		{
+            return;
+		}
+
+        float stunHitTime = hitBoxData.sturnTime + hitBoxData.hitTime;
+
+        //Hp
+        characterStat.AddHP(-hitBoxData.damage);
+
+        //Die
+        if (characterStat.HP <= 0)
+        {
+            stunHitTime += 5f;
+            RoundManager.RoundEnd(Character);
+            CameraManager.SetKO(Character.transform, 3f);
+            hitBox.OwnerHitTime(5f);
+        }
+        else
+        {
+            //CameraShake
+            CameraManager.SetShake(hitBoxData.shakeTime, hitBoxData.shakePower);
+            hitBox.OwnerHitTime(hitBoxData.hitTime);
+        }
 
         //ComboCount
         _comboCount++;
-        _stunTime = hitBoxData.sturnTime + hitBoxData.hitTime;
-        EffectManager.Instance.SetComboCountEffect(_comboCount, hitBoxData.sturnTime + hitBoxData.hitTime, collistionPoint);
+        _stunTime = stunHitTime;
+        EffectManager.Instance.SetComboCountEffect(_comboCount, stunHitTime, collistionPoint);
 
         //Effect & Sound
         EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
@@ -71,20 +95,20 @@ public class CharacterDamage : CharacterComponent
         Vector3 vector = Character.Rigidbody.velocity;
         CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>();
         CharacterMove characterMove = Character.GetCharacterComponent<CharacterMove>();
-        characterMove.SetSturnTime(hitBoxData.sturnTime + hitBoxData.hitTime);
-        characterGravity.SetHitTime(hitBoxData.sturnTime + hitBoxData.hitTime);
+        characterMove.SetSturnTime(stunHitTime);
+        characterGravity.SetHitTime(stunHitTime);
         Character.Rigidbody.velocity = Vector3.zero;
         CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>();
         if(characterInput is not null)
 		{
-            characterInput.SetStunTime(hitBoxData.sturnTime + hitBoxData.hitTime);
+            characterInput.SetStunTime(stunHitTime);
         }
         else
         {
             AITestInput aITestInput = Character.GetCharacterComponent<AITestInput>();
             if (aITestInput is not null)
             {
-                aITestInput.SetStunTime(hitBoxData.sturnTime + hitBoxData.hitTime);
+                aITestInput.SetStunTime(stunHitTime);
             }
 		}
 
@@ -94,23 +118,14 @@ public class CharacterDamage : CharacterComponent
         characterSprite.SpriteRenderer.transform.DOShakePosition(hitBoxData.hitTime, 0.05f, 20).OnComplete(() => 
         {
             characterSprite.ResetModelPosition();
-            Vector3 knockBackVector3 = DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180));
-            Debug.Log(knockBackVector3);
-            Character.Rigidbody.AddForce(knockBackVector3 * hitBoxData.knockBack, ForceMode.Impulse);
+
+            if(characterStat.HP > 0)
+            {
+                Vector3 knockBackVector3 = DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180));
+                Character.Rigidbody.AddForce(knockBackVector3 * hitBoxData.knockBack, ForceMode.Impulse);
+            }
         });
 
-
-        //CameraShake
-        CameraManager.SetShake(hitBoxData.shakeTime, hitBoxData.shakePower);
-
-        //Hp
-        characterStat.AddHP(-hitBoxData.damage);
-
-        //Die
-        if (characterStat.HP <= 0)
-        {
-            RoundManager.RoundEnd(Character);
-        }
     }
 
 
