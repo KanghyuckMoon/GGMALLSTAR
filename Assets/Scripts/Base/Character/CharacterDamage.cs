@@ -74,22 +74,26 @@ public class CharacterDamage : CharacterComponent
             RoundManager.RoundEnd(Character);
             CameraManager.SetKO(Character.transform, 3f);
             hitBox.OwnerHitTime(5f);
+
+            //Effect & Sound
+            SoundManager.Instance.PlayEFF("se_common_finishhit");
+            EffectManager.Instance.SetEffect(EffectType.FinalHit, collistionPoint);
         }
         else
         {
             //CameraShake
             CameraManager.SetShake(hitBoxData.shakeTime, hitBoxData.shakePower);
             hitBox.OwnerHitTime(hitBoxData.hitTime);
+
+            //Effect & Sound
+            EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
+            SoundManager.Instance.PlayEFF(hitBoxData.hitEffSoundName);
         }
 
         //ComboCount
         _comboCount++;
         _stunTime = stunHitTime;
         EffectManager.Instance.SetComboCountEffect(_comboCount, stunHitTime, collistionPoint);
-
-        //Effect & Sound
-        EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
-        SoundManager.Instance.PlayEFF(hitBoxData.hitEffSoundName);
 
         //Set HitTime & StunTime
         Vector3 vector = Character.Rigidbody.velocity;
