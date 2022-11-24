@@ -123,7 +123,7 @@ public class CharacterDamage : CharacterComponent
         {
             characterSprite.ResetModelPosition();
 
-            if(characterStat.HP > 0)
+            if(characterStat.IsAlive)
             {
                 Vector3 knockBackVector3 = DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180));
                 Character.Rigidbody.AddForce(knockBackVector3 * hitBoxData.knockBack, ForceMode.Impulse);
