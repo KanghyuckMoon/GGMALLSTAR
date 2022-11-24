@@ -66,7 +66,7 @@ public class CharacterJump : CharacterComponent
         if (isTap && !isHold)
         {
             isHold = true;
-            if (_rigidbody && _jumpCount == 0)
+            if (_rigidbody && _jumpCount < 2)
             {
                 var vel = _rigidbody.velocity;
                 vel.y = 0;
@@ -87,17 +87,3 @@ public class CharacterJump : CharacterComponent
     
     private uint _jumpCount = 0;
 }
-
-/*
-
-땅에 쿹어있다.
-공중에 떠있다
-    점프하여 공중에 뜨
-
-isJump(bool)
-isJumping(bool)
-isGround(bool)
-isFall(bool)
-
-jumpCurrent(int)
-*/
