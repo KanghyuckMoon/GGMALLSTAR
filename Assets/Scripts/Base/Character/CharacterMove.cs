@@ -74,6 +74,7 @@ public class CharacterMove : CharacterComponent
 
     public override void FixedUpdate()
     {
+
         if (_sturnTime > 0f)
         {
             _sturnTime -= Time.fixedDeltaTime;
@@ -100,13 +101,14 @@ public class CharacterMove : CharacterComponent
             characterAnimation.SetAnimationBool(AnimationType.Run, false);
         }
 
+        //Wall Check
         Vector3 pos = Character.transform.position + Character.Collider.center;
-        pos.x += (Character.Collider.size.x * _moveDirection.x);
+        pos.x += Character.Collider.size.x * 0.5f * _moveDirection.x;
         if (Physics.Raycast(pos, _moveDirection, 0.1f, LayerMask.GetMask("Wall", "Player")))
         {
             _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
         }
-		else
+        else
         {
             Vector3 vel = _rigidbody.velocity;
             vel.x = Mathf.Lerp(vel.x, _moveDirection.x * speed, Time.fixedDeltaTime * 10);
@@ -132,24 +134,21 @@ public class CharacterMove : CharacterComponent
 		}
 	}
 
-	public override void OnCollisionStay(Collision other)
-	{
-		base.OnCollisionStay(other);
 
-        //if(other.collider.gameObject.CompareTag("Player") || other.collider.gameObject.CompareTag("Player2"))
-        //{
-        //    if (other.transform.position.y > Character.transform.position.y)
-        //    {
-        //        if (other.transform.position.x < Character.transform.position.x)
-        //        {
-        //            _rigidbody.AddForce(Vector3.left * 10, ForceMode.Impulse);
-        //        }
-        //        else
-        //        {
-        //            _rigidbody.AddForce(Vector3.right * 10, ForceMode.Impulse);
-        //        }
-        //    }
-        //
-        //}
-    }
+	public override void OnCollisionEnter(Collision other)
+	{
+		base.OnCollisionEnter(other);
+        //Wall Check
+        if (other.gameObject.layer == 8)
+        {
+            if (other.transform.position.x > Character.transform.position.x)
+			{
+                _rigidbody.velocity = new Vector3(-1f, _rigidbody.velocity.y, 0);
+			}
+            else
+            {
+                _rigidbody.velocity = new Vector3(1f, _rigidbody.velocity.y, 0);
+            }
+        }
+	}
 }
