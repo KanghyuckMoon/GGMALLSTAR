@@ -25,8 +25,8 @@ public class CharacterJump : CharacterComponent
 
         CharacterEvent.AddEvent(EventKeyWord.UP, () =>
         {
-            isTap = false;
-            isHold = false;
+            //isTap = false;
+            //isHold = false;
         }, EventType.KEY_UP);
     }
 
@@ -50,9 +50,9 @@ public class CharacterJump : CharacterComponent
             _jumpCount = 0;
         }
 
-        if (isTap && !isHold)
+        if (isTap)
         {
-            isHold = true;
+            isTap = false;
             if (_rigidbody && _jumpCount == 0)
             {
                 var vel = _rigidbody.velocity;

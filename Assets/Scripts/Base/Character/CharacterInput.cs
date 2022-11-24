@@ -25,21 +25,28 @@ public class CharacterInput : CharacterComponent
     protected Dictionary<KeyCode, bool> _wasInput = null;
     private float _stunTime = 0f;
     private float _inputDelayTime = 0f;
+    private InputData fastInputData = null;
 
 
     public override void Update()
     {
         if (_stunTime > 0f)
-		{
+        {
             _stunTime -= Time.deltaTime;
             _inputDelayTime = 0;
-            return;
-		}
+        }
 
-        if (_inputDelayTime > 0f)
+        if (_stunTime <= 0f && _inputDelayTime > 0f)
         {
             _inputDelayTime -= Time.deltaTime;
-            return;
+        }
+
+        if (_stunTime <= 0f && _inputDelayTime <= 0f && fastInputData != null)
+		{
+            //InputAction(fastInputData);
+            _wasInput[fastInputData.keyCode] = true;
+            CharacterEvent.EventTrigger(fastInputData.actionName, EventType.KEY_DOWN);
+            fastInputData = null;
         }
 
 
@@ -47,30 +54,46 @@ public class CharacterInput : CharacterComponent
         {
             KeyCode keyCode = input.keyCode;
             string actionName = input.actionName;
-
-            if (Input.GetKey(keyCode))
-            {
-                if (_wasInput[keyCode] is false)
+            
+            if (_stunTime > 0f || _inputDelayTime > 0f)
+			{
+                if(Input.GetKeyDown(input.keyCode))
                 {
-                    _wasInput[keyCode] = true;
-                    CharacterEvent.EventTrigger(actionName, EventType.KEY_DOWN);
+                    fastInputData = input;
                 }
-                else
-                {
-                    CharacterEvent.EventTrigger(actionName, EventType.KEY_HOLD);
-                }
-            }
-            else if (Input.GetKeyUp(keyCode))
-            {
-                _wasInput[keyCode] = false;
-                CharacterEvent.EventTrigger(actionName, EventType.KEY_UP);
             }
             else
             {
-                _wasInput[keyCode] = false;
+                InputAction(input);
             }
         }
     }
+
+    private void InputAction(InputData inputData)
+    {
+        if (Input.GetKey(inputData.keyCode))
+        {
+            if (_wasInput[inputData.keyCode] is false)
+            {
+                _wasInput[inputData.keyCode] = true;
+                CharacterEvent.EventTrigger(inputData.actionName, EventType.KEY_DOWN);
+            }
+            else
+            {
+                CharacterEvent.EventTrigger(inputData.actionName, EventType.KEY_HOLD);
+            }
+        }
+        else if (Input.GetKeyUp(inputData.keyCode))
+        {
+            _wasInput[inputData.keyCode] = false;
+            CharacterEvent.EventTrigger(inputData.actionName, EventType.KEY_UP);
+        }
+        else
+        {
+            _wasInput[inputData.keyCode] = false;
+        }
+    }
+
     public void SetStunTime(float time)
     {
         _stunTime = time;
