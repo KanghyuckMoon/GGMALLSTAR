@@ -10,7 +10,7 @@ namespace Pool
     {
         public static Dictionary<string, Queue<GameObject>> pool = new Dictionary<string, Queue<GameObject>>();
         public static Dictionary<string, GameObject> prefabDictionary = new Dictionary<string, GameObject>();
-
+        private static List<string> nameList = new List<string>();
 
         private static void CreatePool(string name)
         {
@@ -20,6 +20,7 @@ namespace Pool
             try
             {
                 pool.Add(name, q);
+                nameList.Add(name);
                 prefabDictionary.Add(name, prefab.gameObject);
             }
             catch (ArgumentException e)
@@ -29,6 +30,7 @@ namespace Pool
                 pool.Clear();
                 prefabDictionary.Clear();
                 pool.Add(name, q);
+                nameList.Add(name);
                 prefabDictionary.Add(name, prefab.gameObject);
             }
         }
@@ -44,7 +46,15 @@ namespace Pool
 
         public static void DeleteAllPool()
         {
-            pool.Clear();
+            for (int i = 0; i < nameList.Count; ++i)
+            {
+                var q = pool[nameList[i]];
+                while (q.Count > 0)
+				{
+                    GameObject.Destroy(q.Dequeue());
+                }
+            }
+            GC.Collect();
         }
 
         public static GameObject GetItem(string name)
