@@ -59,8 +59,10 @@ public class CharacterMove : CharacterComponent
         _rigidbody = Character.Rigidbody;
         _transform = Character.transform;
         characterAnimation = Character.GetCharacterComponent<CharacterAnimation>();
+        characterStat = Character.GetCharacterComponent<CharacterStat>();
     }
 
+    private CharacterStat characterStat;
     private Transform _transform = null;
     private Rigidbody _rigidbody = null;
     private Vector2 _inputDirection = Vector2.zero;
@@ -141,13 +143,16 @@ public class CharacterMove : CharacterComponent
         //Wall Check
         if (other.gameObject.layer == 8)
         {
-            if (other.transform.position.x > Character.transform.position.x)
-			{
-                _rigidbody.velocity = new Vector3(-1f, _rigidbody.velocity.y, 0);
-			}
-            else
+            if (characterStat.IsAlive)
             {
-                _rigidbody.velocity = new Vector3(1f, _rigidbody.velocity.y, 0);
+                if (other.transform.position.x > Character.transform.position.x)
+                {
+                    _rigidbody.velocity = new Vector3(-1f, _rigidbody.velocity.y, 0);
+                }
+                else
+                {
+                    _rigidbody.velocity = new Vector3(1f, _rigidbody.velocity.y, 0);
+                }
             }
         }
 	}

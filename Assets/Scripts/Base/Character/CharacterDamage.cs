@@ -109,7 +109,7 @@ public class CharacterDamage : CharacterComponent
         }
         else
         {
-            AITestInput aITestInput = Character.GetCharacterComponent<AITestInput>();
+            CharacterAIInput aITestInput = Character.GetCharacterComponent<CharacterAIInput>();
             if (aITestInput is not null)
             {
                 aITestInput.SetStunTime(stunHitTime);

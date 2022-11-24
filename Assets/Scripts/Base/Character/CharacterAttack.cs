@@ -74,7 +74,7 @@ public class CharacterAttack : CharacterComponent
         }
         else
         {
-            var aiInput = Character.GetCharacterComponent<AITestInput>();
+            var aiInput = Character.GetCharacterComponent<CharacterAIInput>();
             aiInput.SetInputDelayTime(Character.CharacterSO.attackDelay);
         }
     }

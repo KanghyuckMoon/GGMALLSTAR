@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utill;
 
-public class AITestInput : CharacterComponent
+public class CharacterAIInput : CharacterComponent
 {
-    public AITestInput(Character character) : base(character)
+    public CharacterAIInput(Character character) : base(character)
     {
         var characterSpawner = GameObject.FindObjectOfType<CharacterSpawner>();
 
@@ -19,7 +19,8 @@ public class AITestInput : CharacterComponent
             opponentCharacter = characterSpawner.Player1.GetComponent<Character>();
         }
 
-        behaviourTest = new BehaviourTest(opponentCharacter, Character, this);
+        _behaviourTree = new BehaviourTree();
+        _behaviourTree.Init(opponentCharacter, Character, this);
 
         _inputData = Character.InputDataBaseSO.GetInputData();
 
@@ -45,7 +46,7 @@ public class AITestInput : CharacterComponent
     private KeyCode inputKeyCode = KeyCode.A;
     private bool _isLoop = false;
     private float _delay = 0.1f;
-    private BehaviourTest behaviourTest;
+    private BehaviourTree _behaviourTree;
     private float _stunTime = 0f;
     private float _inputDelayTime = 0f;
 
@@ -73,7 +74,7 @@ public class AITestInput : CharacterComponent
         }
 
 
-        behaviourTest.Update();
+        _behaviourTree.Update();
 
         if (_wasInput[inputKeyCode] && _previousInput[inputKeyCode])
         {
@@ -95,14 +96,15 @@ public class AITestInput : CharacterComponent
 
     public void HoldInputKey(KeyCode keyCode)
     {
-        _wasInput[inputKeyCode] = false;
         inputKeyCode = keyCode;
         _wasInput[inputKeyCode] = true;
     }
+
     public void FalseInputKey(KeyCode keyCode)
     {
         _wasInput[keyCode] = false;
     }
+
     public void TapInputKey(KeyCode keyCode)
     {
         CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_DOWN);

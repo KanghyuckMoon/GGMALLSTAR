@@ -207,10 +207,26 @@ public class RoundManager : MonoBehaviour
 		}
 
 		CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
-		characterInputP1.SetStunTime(2f);
+		if (characterInputP1 != null)
+		{
+			characterInputP1.SetStunTime(2f);
+		}
+		else
+		{
+			var aITestInputP1 = characterP1.GetCharacterComponent<CharacterAIInput>();
+			aITestInputP1.SetStunTime(2f);
+		}
 
 		CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
-		characterInputP2.SetStunTime(2f);
+		if (characterInputP2 != null)
+		{
+			characterInputP2.SetStunTime(2f);
+		}
+		else
+		{
+			var aITestInputP2 = characterP2.GetCharacterComponent<CharacterAIInput>();
+			aITestInputP2.SetStunTime(2f);
+		}
 
 		StartCoroutine(Fight(1f, 1f));
 

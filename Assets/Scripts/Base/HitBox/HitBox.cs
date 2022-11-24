@@ -47,7 +47,7 @@ public class HitBox : MonoBehaviour
         }
         else
         {
-            AITestInput aITestInput = Owner.Character.GetCharacterComponent<AITestInput>();
+            CharacterAIInput aITestInput = Owner.Character.GetCharacterComponent<CharacterAIInput>();
             if (aITestInput is not null)
             {
                 aITestInput.SetStunTime(hitTime);

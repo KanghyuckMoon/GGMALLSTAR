@@ -5,16 +5,16 @@ using Utill;
 using Addressable;
 using static NodeUtill;
 
-public class BehaviourTest
+public class BehaviourTree
 {
 	private INode _rootNode;
 
 	private Character opCharacter;
 	private Character mainCharacter;
-	private AITestInput aiTestInput;
+	private CharacterAIInput aiTestInput;
 	private int random = 0;
 
-	public BehaviourTest(Character opCh, Character mainCh, AITestInput aiTestInput)
+	public void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput)
 	{
 		this.aiTestInput = aiTestInput;
 		opCharacter = opCh;
@@ -22,7 +22,7 @@ public class BehaviourTest
 
 		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("TestComboSO");
 		//NodeSetting
-		_rootNode = 
+		_rootNode =
 			Selector
 			(
 				//ÀÌµ¿ ½ÃÄö½º
