@@ -8,6 +8,23 @@ public class CharacterAIInput : CharacterComponent
 {
     public CharacterAIInput(Character character) : base(character)
     {
+        Init();
+    }
+
+    protected InputData[] _inputData = null;
+    protected Dictionary<KeyCode, bool> _wasInput = null;
+    protected Dictionary<KeyCode, bool> _previousInput = null;
+
+    protected Character opponentCharacter;
+    protected KeyCode inputKeyCode = KeyCode.A;
+    protected bool _isLoop = false;
+    protected float _delay = 0.1f;
+    protected BehaviourTree _behaviourTree;
+    protected float _stunTime = 0f;
+    protected float _inputDelayTime = 0f;
+
+    protected virtual void Init()
+    {
         var characterSpawner = GameObject.FindObjectOfType<CharacterSpawner>();
 
         if (characterSpawner.Player1 == Character.gameObject)
@@ -18,10 +35,6 @@ public class CharacterAIInput : CharacterComponent
         {
             opponentCharacter = characterSpawner.Player1.GetComponent<Character>();
         }
-
-        _behaviourTree = new BehaviourTree();
-        _behaviourTree.Init(opponentCharacter, Character, this);
-
         _inputData = Character.InputDataBaseSO.GetInputData();
 
         _wasInput = new();
@@ -36,19 +49,14 @@ public class CharacterAIInput : CharacterComponent
                 CharacterEvent.AddEvent(input.actionName, (EventType)i);
             }
         }
+        SetBehaviourTree();
     }
 
-    protected InputData[] _inputData = null;
-    protected Dictionary<KeyCode, bool> _wasInput = null;
-    protected Dictionary<KeyCode, bool> _previousInput = null;
-
-    private Character opponentCharacter;
-    private KeyCode inputKeyCode = KeyCode.A;
-    private bool _isLoop = false;
-    private float _delay = 0.1f;
-    private BehaviourTree _behaviourTree;
-    private float _stunTime = 0f;
-    private float _inputDelayTime = 0f;
+    protected virtual void SetBehaviourTree()
+    {
+        _behaviourTree = new BehaviourTree();
+        _behaviourTree.Init(opponentCharacter, Character, this);
+    }
 
     public void SetStunTime(float time)
     {
