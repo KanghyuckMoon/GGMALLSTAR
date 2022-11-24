@@ -24,6 +24,9 @@ public class RoundManager : MonoBehaviour
 	private System.Action roundEndEvent;
 	private System.Action gameEndEvent;
 
+	public int WinCountP1 => winCountP1;
+	public int WinCountP2 => winCountP2;
+
 	public System.Action RoundSetEvent
 	{
 		get
