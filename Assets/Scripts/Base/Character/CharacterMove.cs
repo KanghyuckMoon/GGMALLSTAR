@@ -65,9 +65,21 @@ public class CharacterMove : CharacterComponent
     private Rigidbody _rigidbody = null;
     private Vector2 _inputDirection = Vector2.zero;
     private Vector2 _moveDirection = Vector2.zero;
+    private float _sturnTime = 0f;
+
+    public void SetSturnTime(float time)
+	{
+        _sturnTime = time;
+	}
 
     public override void FixedUpdate()
     {
+        if (_sturnTime > 0f)
+        {
+            _sturnTime -= Time.fixedDeltaTime;
+            return;
+		}
+
         float speed = 0f;
         if (_rigidbody.velocity.y == 0f)
 		{
@@ -96,7 +108,9 @@ public class CharacterMove : CharacterComponent
         }
 		else
         {
-            _rigidbody.velocity = new Vector3(_moveDirection.x * speed, _rigidbody.velocity.y, 0);
+            Vector3 vel = _rigidbody.velocity;
+            vel.x = Mathf.Lerp(vel.x, _moveDirection.x * speed, Time.fixedDeltaTime * 10);
+            _rigidbody.velocity = vel;
         }
 
         _inputDirection = Vector2.zero;

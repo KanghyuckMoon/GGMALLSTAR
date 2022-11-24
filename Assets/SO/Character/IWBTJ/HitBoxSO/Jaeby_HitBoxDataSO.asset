@@ -15,8 +15,8 @@ MonoBehaviour:
   hitBoxDatasList:
   - hitBoxDatas:
     - damage: 10
-      knockBack: 4
-      knockAngle: 50
+      knockBack: 3
+      knockAngle: 70
       hitTime: 0.1
       sturnTime: 0.3
       _attackOffset: {x: 0.175, y: 0.075, z: 0}

@@ -16,9 +16,9 @@ MonoBehaviour:
   CharacterImage: {fileID: 6670376781915665784, guid: 7dcdb735ac7fc5e40be1e15911fe2368,
     type: 3}
   MaxHP: 200
-  FirstJumpPower: 4
+  FirstJumpPower: 5
   SecondJumpPower: 2
-  MoveSpeed: 2.5
+  MoveSpeed: 3
   AirMoveSpeed: 1.5
   GravityScale: 1
   attackDelay: 1

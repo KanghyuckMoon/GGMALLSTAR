@@ -70,6 +70,8 @@ public class CharacterDamage : CharacterComponent
         //Set HitTime & StunTime
         Vector3 vector = Character.Rigidbody.velocity;
         CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>();
+        CharacterMove characterMove = Character.GetCharacterComponent<CharacterMove>();
+        characterMove.SetSturnTime(hitBoxData.sturnTime + hitBoxData.hitTime);
         characterGravity.SetHitTime(hitBoxData.sturnTime + hitBoxData.hitTime);
         Character.Rigidbody.velocity = Vector3.zero;
         CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>();
@@ -92,8 +94,9 @@ public class CharacterDamage : CharacterComponent
         characterSprite.SpriteRenderer.transform.DOShakePosition(hitBoxData.hitTime, 0.05f, 20).OnComplete(() => 
         {
             characterSprite.ResetModelPosition();
-            Vector3 knockBackVector3 = DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180)) * hitBoxData.knockBack;
-            Character.Rigidbody.AddForce(knockBackVector3, ForceMode.Impulse);
+            Vector3 knockBackVector3 = DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180));
+            Debug.Log(knockBackVector3);
+            Character.Rigidbody.AddForce(knockBackVector3 * hitBoxData.knockBack, ForceMode.Impulse);
         });
 
 

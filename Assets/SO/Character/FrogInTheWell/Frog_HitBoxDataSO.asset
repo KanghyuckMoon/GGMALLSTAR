@@ -28,8 +28,8 @@ MonoBehaviour:
       atkEffSoundName: se_common_swing_01
   - hitBoxDatas:
     - damage: 3
-      knockBack: 20
-      knockAngle: 5
+      knockBack: 5
+      knockAngle: 10
       hitTime: 0.2
       sturnTime: 0.3
       _attackOffset: {x: 0.32, y: 0.12, z: 0}
