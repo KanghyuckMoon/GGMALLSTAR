@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitBoxDatasList:
   - hitBoxDatas:
-    - damage: 10
+    - actionName: Attack1
+      damage: 10
       knockBack: 4
       knockAngle: 0
       hitTime: 0.1
@@ -27,7 +28,8 @@ MonoBehaviour:
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: se_common_swing_01
   - hitBoxDatas:
-    - damage: 3
+    - actionName: Attack2
+      damage: 3
       knockBack: 5
       knockAngle: 10
       hitTime: 0.4

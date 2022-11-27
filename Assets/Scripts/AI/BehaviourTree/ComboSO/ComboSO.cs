@@ -11,7 +11,7 @@ public class ComboSO : ScriptableObject
 [System.Serializable]
 public class ComboInputData
 {
-	public KeyCode keyCode;
+	public KeyCode[] keyCode;
 	public bool isHold;
 	public float holdTime;
 	public float delay;

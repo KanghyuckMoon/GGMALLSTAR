@@ -70,6 +70,14 @@ public class HitBox : MonoBehaviour
 
             Owner.Character.GetCharacterComponent<CharacterLevel>().AddExp(hitBoxData.damage);
             OnHit?.Invoke();
+
+            //AI
+            CharacterAIInput aiInput = Owner.Character.GetCharacterComponent<CharacterAIInput>();
+            if (aiInput is not null)
+			{
+                aiInput.IsHit(hitBoxData.actionName);
+            }
+
         }
     }
 

@@ -52,6 +52,11 @@ public class CharacterAIInput : CharacterComponent
         SetBehaviourTree();
     }
 
+    public void IsHit(string actionName)
+	{
+        _behaviourTree.IsHit(actionName);
+	}
+
     protected virtual void SetBehaviourTree()
     {
         _behaviourTree = new BehaviourTree();
@@ -72,6 +77,7 @@ public class CharacterAIInput : CharacterComponent
         if (_stunTime > 0f)
         {
             _stunTime -= Time.deltaTime;
+            _inputDelayTime = 0f;
             return;
         }
 
@@ -102,7 +108,20 @@ public class CharacterAIInput : CharacterComponent
         }
     }
 
-    public void HoldInputKey(KeyCode keyCode)
+    public void MultipleHoldInputKey(KeyCode keyCode)
+    {
+        if (_wasInput[keyCode])
+        {
+            CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_HOLD);
+        }
+        else
+        {
+            _wasInput[keyCode] = true;
+            _previousInput[keyCode] = true;
+            CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_DOWN);
+        }
+    }
+    public void SingleHoldInputKey(KeyCode keyCode)
     {
         inputKeyCode = keyCode;
         _wasInput[inputKeyCode] = true;
@@ -111,10 +130,14 @@ public class CharacterAIInput : CharacterComponent
     public void FalseInputKey(KeyCode keyCode)
     {
         _wasInput[keyCode] = false;
+        _previousInput[keyCode] = false;
+        CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_UP);
     }
 
     public void TapInputKey(KeyCode keyCode)
     {
+        _wasInput[keyCode] = true;
+        _previousInput[keyCode] = true;
         CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_DOWN);
     }
 

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitBoxDatasList:
   - hitBoxDatas:
-    - damage: 10
+    - actionName: Attack
+      damage: 10
       knockBack: 3
       knockAngle: 70
       hitTime: 0.1

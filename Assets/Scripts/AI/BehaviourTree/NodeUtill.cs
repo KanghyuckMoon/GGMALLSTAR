@@ -10,6 +10,7 @@ public static class NodeUtill
     public static ParallelNode Parallel(params INode[] nodes) => new ParallelNode(nodes);
     public static RandomChoiceNode RandomChoice(params INode[] nodes) => new RandomChoiceNode(nodes);
     public static ActionNode Action(Action action) => new ActionNode(action);
+    public static IgnoreActionNode IgnoreAction(Action action) => new IgnoreActionNode(action);
 
     public static IfActionNode IfAction(Func<bool> condition, Action action)
         => new IfActionNode(condition, action);

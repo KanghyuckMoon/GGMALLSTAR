@@ -19,7 +19,7 @@ public class ConditionCheckNode : INode
         bool result = Condition();
         if (result)
 		{
-            node.Run();
+            return node.Run();
 		}
         return result;
     }

@@ -318,7 +318,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: b2600fae3c78abf43ab8c14bc8d12fbe
-    m_Address: TestComboSO
+    m_Address: JaebyComboSO
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 476c639fdd9108a43a14005592c12cd8

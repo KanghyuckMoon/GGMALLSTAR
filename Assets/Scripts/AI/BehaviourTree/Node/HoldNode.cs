@@ -9,27 +9,34 @@ public class HoldNode : INode
     private float currentTime = 0f;
     private Action<KeyCode> holdAction;
     private Action<KeyCode> upAction;
-    private KeyCode keyCode;
+    private KeyCode[] keyCodes;
 
-    public HoldNode(float time, Action<KeyCode> holdAction, Action<KeyCode> upAction, KeyCode keyCode)
+    public HoldNode(float time, Action<KeyCode> holdAction, Action<KeyCode> upAction, KeyCode[] keyCodes)
     {
         this.originTime = time;
+        currentTime = this.originTime;
         this.holdAction = holdAction;
         this.upAction = upAction;
-        this.keyCode = keyCode;
+        this.keyCodes = keyCodes;
     }
 
     public bool Run()
     {
         if (currentTime > 0f)
         {
-            holdAction.Invoke(keyCode);
+            foreach (var keyCode in keyCodes)
+			{
+                holdAction.Invoke(keyCode);
+			}
             currentTime -= Time.deltaTime;
             return false;
         }
         else
         {
-            upAction.Invoke(keyCode);
+            foreach (var keyCode in keyCodes)
+            {
+                upAction.Invoke(keyCode);
+            }
             currentTime = originTime;
             return true;
         }

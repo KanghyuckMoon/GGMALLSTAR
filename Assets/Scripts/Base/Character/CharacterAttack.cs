@@ -57,6 +57,15 @@ public class CharacterAttack : CharacterComponent
         {
             _isRight = true;
         }, EventType.KEY_DOWN);
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        {
+            _isRight = false;
+        }, EventType.KEY_HOLD);
+
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        {
+            _isRight = true;
+        }, EventType.KEY_HOLD);
     }
 
     private void AttackAnimation()

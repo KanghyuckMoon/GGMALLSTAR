@@ -7,20 +7,26 @@ using static NodeUtill;
 
 public class BehaviourTree
 {
-	private INode _rootNode;
+	protected INode _rootNode;
+	protected Character opCharacter;
+	protected Character mainCharacter;
+	protected CharacterAIInput aiTestInput;
+	protected Dictionary<string, bool> isHitBoxHit = new Dictionary<string, bool>();
+	protected List<string> isHitBoxActionNames = new List<string>();
+	protected int random = 0;
+	protected bool isComboOn = false;
 
-	private Character opCharacter;
-	private Character mainCharacter;
-	private CharacterAIInput aiTestInput;
-	private int random = 0;
-
-	public void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput)
+	public virtual void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput)
 	{
 		this.aiTestInput = aiTestInput;
 		opCharacter = opCh;
 		mainCharacter = mainCh;
+		SetNode();
+	}
 
-		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("TestComboSO");
+	public virtual void SetNode()
+	{
+		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("TestComboSO");
 		//NodeSetting
 		_rootNode =
 			Selector
@@ -31,10 +37,23 @@ public class BehaviourTree
 					IfAction(MoveCondition, CloseMove),
 					IfAction(MoveCondition, FerMove),
 					IfAction(MoveCondition, Jump)
-				),
+				)
 
-				new ConditionCheckNode(AttackCondition, new ComboNode(comboSO, HoldKey, UpKey, TapKey))
+				//new ConditionCheckNode(AttackCondition, new ComboNode(comboSO, HoldKey, UpKey, TapKey))
 			);
+	}
+
+	public void IsHit(string actionName)
+	{
+		if (isHitBoxHit.TryGetValue(actionName, out bool value))
+		{
+			isHitBoxHit[actionName] = true;
+		}
+		else
+		{
+			isHitBoxHit.Add(actionName, false);
+			isHitBoxActionNames.Add(actionName);
+		}
 	}
 
 	public void Update()
@@ -42,7 +61,7 @@ public class BehaviourTree
 		_rootNode.Run();
 	}
 
-	private bool MoveCondition()
+	protected bool MoveCondition()
 	{
 		if(Vector2.Distance(opCharacter.transform.position, mainCharacter.transform.position) < 0.5f)
 		{
@@ -54,51 +73,73 @@ public class BehaviourTree
 		}
 	}
 
-	private bool AttackCondition()
+	protected void MoveFalse()
 	{
-		if (Vector2.Distance(opCharacter.transform.position, mainCharacter.transform.position) < 0.5f)
+		aiTestInput.FalseInputKey(KeyCode.D);
+		aiTestInput.FalseInputKey(KeyCode.A);
+	}
+
+	
+	protected void IsComboFalse()
+	{
+		isComboOn = false;
+	}
+
+	protected void IsHitFalse()
+	{
+		for (int i = 0; i < isHitBoxActionNames.Count; ++i)
 		{
-			return true;
+			isHitBoxHit[isHitBoxActionNames[i]] = false;
+		}
+	}
+
+	protected bool AttackCondition(string actionName)
+	{
+		if (isHitBoxHit.TryGetValue(actionName, out bool value))
+		{
+			return value;
 		}
 		else
 		{
-			return false;
+			isHitBoxHit.Add(actionName, false);
+			isHitBoxActionNames.Add(actionName);
 		}
+		return false;
 	}
 
-	private void CloseMove()
+	protected void CloseMove()
 	{
 		if (opCharacter.transform.position.x < mainCharacter.transform.position.x)
 		{
-			aiTestInput.HoldInputKey(KeyCode.A);
+			aiTestInput.SingleHoldInputKey(KeyCode.A);
 		}
 		else if(opCharacter.transform.position.x > mainCharacter.transform.position.x)
 		{
-			aiTestInput.HoldInputKey(KeyCode.D);
+			aiTestInput.SingleHoldInputKey(KeyCode.D);
 		}
-		Debug.Log("AI Move");
+		Debug.Log("AI Close Move");
 	}
-	private void FerMove()
+	protected void FerMove()
 	{
 		if (opCharacter.transform.position.x < mainCharacter.transform.position.x)
 		{
-			aiTestInput.HoldInputKey(KeyCode.D);
+			aiTestInput.SingleHoldInputKey(KeyCode.D);
 		}
 		else if (opCharacter.transform.position.x > mainCharacter.transform.position.x)
 		{
-			aiTestInput.HoldInputKey(KeyCode.A);
+			aiTestInput.SingleHoldInputKey(KeyCode.A);
 		}
-		Debug.Log("AI Move");
+		Debug.Log("AI Fer Move");
 	}
-	private void Jump()
+	protected void Jump()
 	{
-		aiTestInput.HoldInputKey(KeyCode.W);
+		aiTestInput.TapInputKey(KeyCode.W);
 		Debug.Log("AI Jump");
 	}
 
-	private float _delay = 0.1f;
+	protected float _delay = 0.1f;
 
-	private void Attack()
+	protected void Attack()
 	{
 		_delay -= Time.deltaTime;
 		if (_delay < 0f)
@@ -114,17 +155,17 @@ public class BehaviourTree
 		Debug.Log("AI Attack");
 	}
 
-	private void TapKey(KeyCode keyCode)
+	protected void TapKey(KeyCode keyCode)
 	{
 		aiTestInput.TapInputKey(keyCode);
 		Debug.Log($"AI Input{keyCode}");
 	}
-	private void UpKey(KeyCode keyCode)
+	protected void UpKey(KeyCode keyCode)
 	{
 		aiTestInput.FalseInputKey(keyCode);
 	}
-	private void HoldKey(KeyCode keyCode)
+	protected void HoldKey(KeyCode keyCode)
 	{
-		aiTestInput.HoldInputKey(keyCode);
+		aiTestInput.MultipleHoldInputKey(keyCode);
 	}
 }
