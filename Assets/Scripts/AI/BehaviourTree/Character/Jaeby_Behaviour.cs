@@ -34,16 +34,34 @@ public class Jaeby_Behaviour : BehaviourTree
 
 	protected bool AttackJCondition()
 	{
-		float randomDistance = Random.Range(0.3f, 0.6f);
+		float randomDistance = Random.Range(0.1f, 1f);
+		bool distanceCondition = false;
+		bool directionCondition = false;
 
+
+		//거리
 		if (Mathf.Abs( opCharacter.transform.position.x - mainCharacter.transform.position.x) < randomDistance)
 		{
-			return true;
+			distanceCondition = true;
 		}
 		else
 		{
-			return false;
+			distanceCondition = false;
 		}
+
+
+		if (opCharacter.transform.position.x < mainCharacter.transform.position.x && !isRight)
+		{
+			directionCondition = true;
+		}
+		else if (opCharacter.transform.position.x > mainCharacter.transform.position.x && isRight)
+		{
+			directionCondition = true;
+		}
+
+		//방향
+
+		return distanceCondition && directionCondition;
 	}
 
 	protected void AttackJ()

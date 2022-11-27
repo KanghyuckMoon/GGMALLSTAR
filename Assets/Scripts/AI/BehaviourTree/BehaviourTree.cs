@@ -15,6 +15,8 @@ public class BehaviourTree
 	protected List<string> isHitBoxActionNames = new List<string>();
 	protected int random = 0;
 	protected bool isComboOn = false;
+	protected bool isRight;
+
 
 	public virtual void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput)
 	{
@@ -112,10 +114,12 @@ public class BehaviourTree
 		if (opCharacter.transform.position.x < mainCharacter.transform.position.x)
 		{
 			aiTestInput.SingleHoldInputKey(KeyCode.A);
+			isRight = false;
 		}
 		else if(opCharacter.transform.position.x > mainCharacter.transform.position.x)
 		{
 			aiTestInput.SingleHoldInputKey(KeyCode.D);
+			isRight = true;
 		}
 		Debug.Log("AI Close Move");
 	}
@@ -124,10 +128,12 @@ public class BehaviourTree
 		if (opCharacter.transform.position.x < mainCharacter.transform.position.x)
 		{
 			aiTestInput.SingleHoldInputKey(KeyCode.D);
+			isRight = true;
 		}
 		else if (opCharacter.transform.position.x > mainCharacter.transform.position.x)
 		{
 			aiTestInput.SingleHoldInputKey(KeyCode.A);
+			isRight = false;
 		}
 		Debug.Log("AI Fer Move");
 	}

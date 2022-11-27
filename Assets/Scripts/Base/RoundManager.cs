@@ -127,11 +127,7 @@ public class RoundManager : MonoBehaviour
 
 		if (winCountP1 >= 3 || winCountP2 >= 3)
 		{
-			CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
-			characterInputP1.SetStunTime(1f);
-
-			CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
-			characterInputP2.SetStunTime(1f);
+			SetInputSturnTime(2f);
 
 			if (winCountP1 >= 3)
 			{
@@ -146,12 +142,6 @@ public class RoundManager : MonoBehaviour
 		}
 		else
 		{
-			//CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
-			//characterInputP1.SetStunTime(1f);
-			//
-			//CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
-			//characterInputP2.SetStunTime(1f);
-
 			SoundManager.Instance.PlayEFF("vc_narration_gameset");
 
 			StartCoroutine(NextRound(6f));
@@ -205,29 +195,7 @@ public class RoundManager : MonoBehaviour
 				SoundManager.Instance.PlayEFF("vc_narration_five");
 				break;
 		}
-
-		CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
-		if (characterInputP1 != null)
-		{
-			characterInputP1.SetStunTime(2f);
-		}
-		else
-		{
-			var aITestInputP1 = characterP1.GetCharacterComponent<CharacterAIInput>();
-			aITestInputP1.SetStunTime(2f);
-		}
-
-		CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
-		if (characterInputP2 != null)
-		{
-			characterInputP2.SetStunTime(2f);
-		}
-		else
-		{
-			var aITestInputP2 = characterP2.GetCharacterComponent<CharacterAIInput>();
-			aITestInputP2.SetStunTime(2f);
-		}
-
+		SetInputSturnTime(2f);
 		StartCoroutine(Fight(1f, 1f));
 
 		roundNumber++;
@@ -260,6 +228,32 @@ public class RoundManager : MonoBehaviour
 		SoundManager.Instance.PlayEFF("vc_narration_go");
 		isSetting = true;
 		roundStartEvent?.Invoke();
+	}
+
+	private void SetInputSturnTime(float time)
+	{
+		CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
+		if (characterInputP1 != null)
+		{
+			characterInputP1.SetStunTime(time);
+		}
+		else
+		{
+			var aITestInputP1 = characterP1.GetCharacterComponent<CharacterAIInput>();
+			aITestInputP1.SetStunTime(time);
+		}
+
+		CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
+		if (characterInputP2 != null)
+		{
+			characterInputP2.SetStunTime(time);
+		}
+		else
+		{
+			var aITestInputP2 = characterP2.GetCharacterComponent<CharacterAIInput>();
+			aITestInputP2.SetStunTime(time);
+		}
+
 	}
 
 }
