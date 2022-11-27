@@ -126,13 +126,21 @@ public class CharacterMove : CharacterComponent
 		{
             _effDelay -= Time.deltaTime;
 
-            if (_rigidbody?.velocity.y == 0f && _effDelay <= 0f && _isEffInput)
+			try
 			{
-                _effDelay = 0.3f;
-                Sound.SoundManager.Instance.PlayEFF(_walkSound);
-                Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Dirty_01, _character.transform.position);
-            }
-            yield return null;
+				if (_rigidbody?.velocity.y == 0f && _effDelay <= 0f && _isEffInput)
+				{
+					_effDelay = 0.3f;
+					Sound.SoundManager.Instance.PlayEFF(_walkSound);
+					Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Dirty_01, _character.transform.position);
+				}
+			}
+			catch
+			{
+                yield break;
+			}
+
+			yield return null;
 		}
 	}
 

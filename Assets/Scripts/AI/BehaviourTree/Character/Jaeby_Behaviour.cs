@@ -25,16 +25,14 @@ public class Jaeby_Behaviour : BehaviourTree
 				RandomChoice
 				(
 					IfAction(MoveCondition, CloseMove),
-					//IfAction(MoveCondition, FerMove),
 					IfAction(MoveCondition, Jump)
 				)
-
 			);
 	}
 
 	protected bool AttackJCondition()
 	{
-		float randomDistance = Random.Range(0.1f, 1f);
+		float randomDistance = 0.3f; //Random.Range(0.1f, 1f);
 		bool distanceCondition = false;
 		bool directionCondition = false;
 

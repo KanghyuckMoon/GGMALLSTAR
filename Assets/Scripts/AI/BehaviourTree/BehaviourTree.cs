@@ -13,7 +13,6 @@ public class BehaviourTree
 	protected CharacterAIInput aiTestInput;
 	protected Dictionary<string, bool> isHitBoxHit = new Dictionary<string, bool>();
 	protected List<string> isHitBoxActionNames = new List<string>();
-	protected int random = 0;
 	protected bool isComboOn = false;
 	protected bool isRight;
 
