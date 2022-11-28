@@ -9,27 +9,63 @@ public class StarEffect : MonoBehaviour
 	private LevelHUD levelHUD;
 	[SerializeField] private AnimationCurve moveCurve;
 
-	public void SetEffect(bool isPlayer1, Vector3 startPos, CharacterLevel characterLevel, int addExp)
+	public void SetEffect(Vector3 startPos, CharacterLevel characterLevel, int addExp)
 	{
+		transform.rotation = Quaternion.identity;
 		levelHUD ??= FindObjectOfType<LevelHUD>();
 		transform.position = startPos;
-
-		StartCoroutine(MoveToTarget(isPlayer1, startPos, characterLevel, addExp));
+		StartCoroutine(MoveToTarget(startPos, characterLevel, addExp));
 	}
 
-	private IEnumerator MoveToTarget(bool isPlayer1, Vector3 startPos, CharacterLevel characterLevel, int addExp)
+	private IEnumerator MoveToTarget(Vector3 startPos, CharacterLevel characterLevel, int addExp)
 	{
-		float time = 0f;
-		float speed = 1f;
-		while(time < 1f)
+
+		float startAngle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+		transform.rotation = Quaternion.AngleAxis(startAngle, Vector3.forward);
+		Vector3 spreadPos = startPos + new Vector3(Mathf.Cos(startAngle), Mathf.Sin(startAngle), 0);
+		spreadPos.z = startPos.z;
+
+		float delay = 1f + Random.Range(0.3f, 0.5f);
+		float delayCurernt = 0f;
+		while (delayCurernt < delay)
 		{
 			yield return null;
-			Vector3 pos = isPlayer1 ? levelHUD.LevelTextP1.position : levelHUD.LevelTextP2.position;
-			pos.z = startPos.z;
-			//Vector3 viewPos = Camera.main.WorldToViewportPoint(pos);
-			//Vector3 targetPos = Camera.main.ViewportToWorldPoint(viewPos);
-			transform.position = LinearBezierPoint(moveCurve.Evaluate(time), startPos, pos);
+			transform.position = LinearBezierPoint(moveCurve.Evaluate(delayCurernt), startPos, spreadPos);
+			delayCurernt += Time.deltaTime;
+		}
+
+		transform.DOKill();
+
+		float time = 0f;
+		float speed = 1f;
+
+		float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
+		Vector3 shotPos = transform.position;
+		Vector3 prevPoint = startPos;
+		Vector3 dir = Vector3.zero;
+
+		while (time < 1f)
+		{
+			yield return null;
+			
+			//Position
+			Vector3 targetPos = characterLevel.Character.transform.position;
+			transform.position = LinearBezierPoint(moveCurve.Evaluate(time), shotPos, targetPos);
+
+			//Rotate
+			if (time > 0.01f)
+			{
+				dir = transform.position - prevPoint;
+				angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+				transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+				prevPoint = transform.position;
+			}
+
 			time += Time.deltaTime * speed;
+
+
 		}
 
 		characterLevel.AddExp(addExp);

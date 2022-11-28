@@ -78,7 +78,13 @@ public class HitBox : MonoBehaviour
 
             //Exp
             StarEffect starEffect = PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
-            starEffect.SetEffect(Owner.Character.GetCharacterComponent<CharacterStat>().IsPlayerP1, transform.position, Owner.Character.GetCharacterComponent<CharacterLevel>(), hitBoxData.addExp);
+
+            int expCount = (hitBoxData.addExp / 5) + 1;
+
+            for (int i = 0; i < expCount; ++i)
+			{
+                starEffect.SetEffect(transform.position, Owner.Character.GetCharacterComponent<CharacterLevel>(), hitBoxData.addExp / expCount);
+			}
 
         }
     }
