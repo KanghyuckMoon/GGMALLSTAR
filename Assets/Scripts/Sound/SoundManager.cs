@@ -19,9 +19,19 @@ namespace Sound
 		private EFFSO _effSO;
 		private bool _isInit = false;
 
-		public void Awake()
+		public void Start()
 		{
-			Init();
+			if (!_isInit)
+			{
+				if (Instance == this)
+				{
+					Init();
+				}
+				else
+				{
+					Instance.Init();
+				}
+			}
 		}
 
 		/// <summary>

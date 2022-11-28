@@ -8,5 +8,9 @@ public enum ComponentType
     Animation,
     Gravity,
     Stat,
-    Damage
+    Damage,
+    Skill1,
+    Skill2,
+    Level,
+    Color,
 }

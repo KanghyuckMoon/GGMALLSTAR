@@ -24,7 +24,7 @@ public class CharacterAnimation : CharacterComponent
         _animationHash.Add(animationType, Animator.StringToHash(animationName));
     }
 
-    protected void SetAnimationTrigger(AnimationType animationType)
+    public void SetAnimationTrigger(AnimationType animationType)
     {
         _animator.SetTrigger(AnimationHash[animationType]);
     }
@@ -39,7 +39,7 @@ public class CharacterAnimation : CharacterComponent
         _animator.SetTrigger(Animator.StringToHash(animationName));
     }
 
-    protected void SetAnimationBool(AnimationType animationType, bool value)
+    public void SetAnimationBool(AnimationType animationType, bool value)
     {
         _animator.SetBool(AnimationHash[animationType], value);
     }
@@ -54,7 +54,7 @@ public class CharacterAnimation : CharacterComponent
         _animator.SetBool(Animator.StringToHash(animationName), value);
     }
 
-    protected void SetAnimationFloat(AnimationType animationType, float value)
+    public void SetAnimationFloat(AnimationType animationType, float value)
     {
         _animator.SetFloat(AnimationHash[animationType], value);
     }
@@ -69,7 +69,7 @@ public class CharacterAnimation : CharacterComponent
         _animator.SetFloat(Animator.StringToHash(animationName), value);
     }
 
-    protected void SetAnimationInt(AnimationType animationType, int value)
+    public void SetAnimationInt(AnimationType animationType, int value)
     {
         _animator.SetInteger(AnimationHash[animationType], value);
     }
@@ -83,4 +83,16 @@ public class CharacterAnimation : CharacterComponent
     {
         _animator.SetInteger(Animator.StringToHash(animationName), value);
     }
+
+    public void SetHitTime(float hitTime)
+	{
+        _animator.speed = 0;
+        Utill.StaticCoroutine.Instance.StartCoroutine(EndHitTime(hitTime));
+    }
+
+    private IEnumerator EndHitTime(float hitTime)
+	{
+        yield return new WaitForSeconds(hitTime);
+        _animator.speed = 1;
+	}
 }

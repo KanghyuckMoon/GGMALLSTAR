@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utill;
+using Pool;
 using Addressable;
 
 namespace Effect
@@ -14,9 +15,19 @@ namespace Effect
         private Dictionary<EffectType, GameObject> _effectPrefebs = new Dictionary<EffectType, GameObject>();
         private bool _isInit = false;
 
-        public void Awake()
+        public void Start()
         {
-            Init();
+            if (!_isInit)
+            {
+                if (Instance == this)
+                {
+                    Init();
+                }
+                else
+                {
+                    Instance.Init();
+                }
+            }
         }
 
 
@@ -57,6 +68,17 @@ namespace Effect
             GameObject effect = Pool(effectType);
             effect.transform.position = pos;
             effect.gameObject.SetActive(true);
+        }
+
+        /// <summary>
+        /// ÄÞº¸Ä«¿îÆ®ÀÌÆåÆ®
+        /// </summary>
+        /// <param name="count"></param>
+        /// <param name="stunTime"></param>
+        /// <param name="pos"></param>
+        public void SetComboCountEffect(int count, float stunTime, Vector3 pos)
+		{
+            PoolManager.GetItem("ComboCountEff").GetComponent<ComboCountEffect>().SetComboCount(count, stunTime, pos);
         }
 
         /// <summary>

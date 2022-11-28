@@ -9,8 +9,29 @@ public abstract class Character : MonoBehaviour
     public CharacterSO CharacterSO => _characterSO;
 
     [SerializeField]
+    protected CharacterLevelSO _characterLevelSO = null;
+    
+    public CharacterLevelSO CharacterLevelSO => _characterLevelSO;
+
+
+    [SerializeField]
     protected InputDataBaseSO _inputDataBaseSO = null;
-    public InputDataBaseSO InputDataBaseSO => _inputDataBaseSO;
+    public InputDataBaseSO InputDataBaseSO 
+    {
+        get
+		{
+            return _inputDataBaseSO;
+		}
+        set
+		{
+            _inputDataBaseSO = value;
+		}
+    }
+
+
+	[SerializeField]
+    protected HitBoxDataSO _hitBoxDataSO = null;
+    public HitBoxDataSO HitBoxDataSO => _hitBoxDataSO;
 
     private Dictionary<ComponentType, CharacterComponent> _characterComponents = null;
     public T GetCharacterComponent<T>() where T : CharacterComponent
@@ -35,12 +56,17 @@ public abstract class Character : MonoBehaviour
     private Rigidbody _rigidbody = null;
     public Rigidbody Rigidbody => _rigidbody;
 
+    private BoxCollider _collider = null;
+    public BoxCollider Collider => _collider;
+
+
     #region Unity Methods
 
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<BoxCollider>();
         _characterComponents = new();
         _characterEvent = new CharacterEvent();
     }
@@ -81,6 +107,14 @@ public abstract class Character : MonoBehaviour
             characterComponent.OnCollisionEnter(other);
         }
     }
+	private void OnCollisionStay(Collision other)
+    {
+        foreach (CharacterComponent characterComponent in _characterComponents.Values)
+        {
+            characterComponent.OnCollisionStay(other);
+        }
+    }
+
 
     private void OnCollisionExit(Collision other)
     {
@@ -97,4 +131,10 @@ public abstract class Character : MonoBehaviour
     }
 
     protected virtual void SetComponent() { }
+
+    public void OnAttack(int hitBoxIndex)
+	{
+        CharacterAttack characterAttack = _characterComponents[ComponentType.Attack] as CharacterAttack;
+        characterAttack.OnAttack(hitBoxIndex);
+    }
 }

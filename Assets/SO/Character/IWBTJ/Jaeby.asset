@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20706b1d959698943be01a895736c47d, type: 3}
   m_Name: Jaeby
   m_EditorClassIdentifier: 
-  CollaborationGame: 1
   Name: Jaeby
   CharacterImage: {fileID: 21300000, guid: 95c805c053d7049499c2e71b9a7c31ce, type: 3}
   MaxHP: 100
-  HitBoxSize: {x: 0.2, y: 0.15, z: 1}
+  FirstJumpPower: 4
+  SecondJumpPower: 2
+  MoveSpeed: 4
+  AirMoveSpeed: 1.5
+  GravityScale: 1
+  attackDelay: 0.35
+  skill1Delay: 1
+  skill2Delay: 1
   HitBoxOffset: {x: 0.175, y: 0.075, z: 0}
+  HitBoxSize: {x: 0.2, y: 0.15, z: 1}

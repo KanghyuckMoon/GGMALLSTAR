@@ -15,4 +15,8 @@ MonoBehaviour:
   InputData:
   - keyCode: 106
     actionName: ATTACK
+  - keyCode: 107
+    actionName: SKILL1
+  - keyCode: 108
+    actionName: SKILL2
   MoveInput: {fileID: 11400000, guid: a6ae7e71176e28246a8fac854f46b2bf, type: 2}

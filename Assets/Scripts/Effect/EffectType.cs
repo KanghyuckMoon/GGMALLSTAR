@@ -7,6 +7,8 @@ namespace Effect
         Hit_2,
         Hit_3,
         Hit_4,
+        Dirty_01,
+        FinalHit,
         Count,
     }
 }

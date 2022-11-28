@@ -11,12 +11,21 @@ public class CharacterAttack : CharacterComponent
 
     }
 
+    public bool IsRight
+	{
+        get
+		{
+            return _isRight;
+		}
+	}
+
     private Direction _direction = Direction.RIGHT;
 
-    private Vector3 _attackOffset = Vector3.zero;
-    private Vector3 _attackSize = Vector3.zero;
+    private bool _isRight = false;
 
     private CharacterDamage _targetCharacterDamage = null;
+    private CharacterAnimation characterAnimation = null;
+
     public CharacterDamage TargetCharacterDamage
     {
         get => _targetCharacterDamage;
@@ -30,27 +39,67 @@ public class CharacterAttack : CharacterComponent
     protected override void Awake()
     {
         _direction = Character.GetCharacterComponent<CharacterSprite>().Direction;
-        _attackOffset = Character.CharacterSO.HitBoxOffset;
-        _attackSize = Character.CharacterSO.HitBoxSize;
     }
 
     protected override void SetEvent()
     {
-        CharacterEvent.AddEvent(EventKeyWord.ATTACK, OnAttack, EventType.KEY_DOWN);
-
+        CharacterEvent.AddEvent(EventKeyWord.ATTACK, () => 
+        { 
+            SetInputDelay();
+            AttackAnimation();
+        }, EventType.KEY_DOWN);
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
-            _attackOffset.x = -Mathf.Abs(_attackOffset.x);
+            _isRight = false;
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
         {
-            _attackOffset.x = Mathf.Abs(_attackOffset.x);
+            _isRight = true;
         }, EventType.KEY_DOWN);
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        {
+            _isRight = false;
+        }, EventType.KEY_HOLD);
+
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        {
+            _isRight = true;
+        }, EventType.KEY_HOLD);
     }
 
-    protected virtual void OnAttack()
+    private void AttackAnimation()
     {
-        PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(this, () => Debug.Log("Hit"), _attackSize, _attackOffset);
+        characterAnimation ??= Character.GetCharacterComponent<CharacterAnimation>();
+        characterAnimation.SetAnimationTrigger(AnimationType.Attack);
+    }
+
+    public void SetInputDelay()
+	{
+        var characterInput = Character.GetCharacterComponent<CharacterInput>();
+        if (characterInput is not null)
+		{
+            characterInput.SetInputDelayTime(Character.CharacterSO.attackDelay);
+        }
+        else
+        {
+            var aiInput = Character.GetCharacterComponent<CharacterAIInput>();
+            aiInput.SetInputDelayTime(Character.CharacterSO.attackDelay);
+        }
+    }
+
+    public void OnAttack(int hitBoxIndex)
+    {
+        foreach (var hitboxData in Character.HitBoxDataSO.hitBoxDatasList[hitBoxIndex].hitBoxDatas)
+        {
+            if (hitboxData.atkEffSoundName != "")
+			{
+                Sound.SoundManager.Instance.PlayEFF(hitboxData.atkEffSoundName);
+			}
+
+            Vector3 attackOffset = hitboxData._attackOffset;
+            attackOffset.x *= IsRight ? 1 : -1;
+            PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(hitboxData, this, () => Debug.Log("Hit"), hitboxData._attackSize, attackOffset);
+        }
     }
 }
