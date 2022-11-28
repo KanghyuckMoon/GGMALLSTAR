@@ -15,6 +15,21 @@ public class LevelHUD : MonoBehaviour
 	private CharacterLevel characterLevelP1;
 	private CharacterLevel characterLevelP2;
 
+	public RectTransform LevelTextP1
+	{
+		get
+		{
+			return levelTextP1.rectTransform;
+		}
+	}
+	public RectTransform LevelTextP2
+	{
+		get
+		{
+			return levelTextP2.rectTransform;
+		}
+	}
+
 	private void Start()
 	{
 		CharacterSpawner characterSpawner = FindObjectOfType<CharacterSpawner>();

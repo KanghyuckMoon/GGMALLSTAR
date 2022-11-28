@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 2479365}
   - component: {fileID: 2479367}
   - component: {fileID: 2479366}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HPTextP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 15623014}
   - component: {fileID: 15623016}
   - component: {fileID: 15623015}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HPTextP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,6 +393,124 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15623013}
   m_CullTransparentMesh: 1
+--- !u!1 &110620053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 110620057}
+  - component: {fileID: 110620056}
+  - component: {fileID: 110620055}
+  - component: {fileID: 110620054}
+  m_Layer: 0
+  m_Name: HUDCamaera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &110620054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110620053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 1
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 0
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+--- !u!81 &110620055
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110620053}
+  m_Enabled: 1
+--- !u!20 &110620056
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110620053}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 4
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -0.04
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 512
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &110620057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110620053}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &131782236
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,7 +522,7 @@ GameObject:
   - component: {fileID: 131782237}
   - component: {fileID: 131782239}
   - component: {fileID: 131782238}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: P2Count3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +598,7 @@ GameObject:
   - component: {fileID: 447534961}
   - component: {fileID: 447534963}
   - component: {fileID: 447534962}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: TimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +734,7 @@ GameObject:
   - component: {fileID: 649767575}
   - component: {fileID: 649767577}
   - component: {fileID: 649767576}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: ExpTextP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +869,7 @@ GameObject:
   - component: {fileID: 660095716}
   - component: {fileID: 660095718}
   - component: {fileID: 660095717}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: P1Count1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -827,7 +945,7 @@ GameObject:
   - component: {fileID: 780390983}
   - component: {fileID: 780390985}
   - component: {fileID: 780390984}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HPBarImageP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +1021,7 @@ GameObject:
   - component: {fileID: 1039885578}
   - component: {fileID: 1039885580}
   - component: {fileID: 1039885579}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: P2Count2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -980,7 +1098,7 @@ GameObject:
   - component: {fileID: 1098821760}
   - component: {fileID: 1098821759}
   - component: {fileID: 1098821758}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HUDCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1016,10 +1134,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1036,17 +1154,17 @@ Canvas:
   m_GameObject: {fileID: 1098821757}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 110620056}
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 2138343247
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!224 &1098821761
 RectTransform:
@@ -1083,7 +1201,7 @@ GameObject:
   - component: {fileID: 1175089082}
   - component: {fileID: 1175089084}
   - component: {fileID: 1175089083}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: HPBarImageP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1159,7 +1277,7 @@ GameObject:
   - component: {fileID: 1223661782}
   - component: {fileID: 1223661784}
   - component: {fileID: 1223661783}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: P2Count1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1233,7 +1351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1300912690}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Stat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1279,7 +1397,7 @@ GameObject:
   - component: {fileID: 1366566733}
   - component: {fileID: 1366566735}
   - component: {fileID: 1366566734}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: Round Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,7 +1532,7 @@ GameObject:
   - component: {fileID: 1409703877}
   - component: {fileID: 1409703879}
   - component: {fileID: 1409703878}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: LevelTextP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1549,7 +1667,7 @@ GameObject:
   - component: {fileID: 1454907897}
   - component: {fileID: 1454907899}
   - component: {fileID: 1454907898}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: P1Count2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1623,7 +1741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1699127391}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: RoundCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1667,7 +1785,7 @@ GameObject:
   - component: {fileID: 1707100287}
   - component: {fileID: 1707100289}
   - component: {fileID: 1707100288}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: P1Count3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1745,6 +1863,7 @@ GameObject:
   - component: {fileID: 1852666237}
   - component: {fileID: 1852666239}
   - component: {fileID: 1852666240}
+  - component: {fileID: 1852666241}
   m_Layer: 0
   m_Name: HUDSetting
   m_TagString: Untagged
@@ -1833,6 +1952,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 447534962}
+--- !u!114 &1852666241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852666235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b7199bc9f4b774f95181527eaa2fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hudCanvas: {fileID: 1098821760}
+  hudCamera: {fileID: 110620056}
 --- !u!1 &2038685960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,7 +1977,7 @@ GameObject:
   - component: {fileID: 2038685961}
   - component: {fileID: 2038685963}
   - component: {fileID: 2038685962}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: ExpTextP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1979,7 +2112,7 @@ GameObject:
   - component: {fileID: 2131353714}
   - component: {fileID: 2131353716}
   - component: {fileID: 2131353715}
-  m_Layer: 5
+  m_Layer: 9
   m_Name: LevelTextP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

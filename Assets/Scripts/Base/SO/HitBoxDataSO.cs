@@ -39,4 +39,7 @@ public class HitBoxData
 	public Effect.EffectType effectType;
 	public string hitEffSoundName;
 	public string atkEffSoundName;
+
+	//Exp
+	public int addExp;
 }

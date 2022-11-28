@@ -67,8 +67,6 @@ public class HitBox : MonoBehaviour
         {
             Owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
             Owner.TargetCharacterDamage.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
-
-            Owner.Character.GetCharacterComponent<CharacterLevel>().AddExp(hitBoxData.damage);
             OnHit?.Invoke();
 
             //AI
@@ -77,6 +75,10 @@ public class HitBox : MonoBehaviour
 			{
                 aiInput.IsHit(hitBoxData.actionName);
             }
+
+            //Exp
+            StarEffect starEffect = PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
+            starEffect.SetEffect(Owner.Character.GetCharacterComponent<CharacterStat>().IsPlayerP1, transform.position, Owner.Character.GetCharacterComponent<CharacterLevel>(), hitBoxData.addExp);
 
         }
     }

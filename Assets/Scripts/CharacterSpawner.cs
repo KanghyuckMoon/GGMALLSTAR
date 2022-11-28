@@ -68,6 +68,7 @@ public class CharacterSpawner : MonoBehaviour
 		{
 			player2.GetComponent<Character>().GetCharacterComponent<CharacterP2Color>().SetP2Color();
 		}
+		player1.GetComponent<Character>().GetCharacterComponent<CharacterStat>().IsPlayerP1 = true;
 	}
 
 
