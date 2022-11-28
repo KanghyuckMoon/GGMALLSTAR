@@ -23,9 +23,14 @@ public class RoundManager : MonoBehaviour
 	private System.Action roundStartEvent;
 	private System.Action roundEndEvent;
 	private System.Action gameEndEvent;
+	private System.Action timeChangeEvent;
 
 	public int WinCountP1 => winCountP1;
 	public int WinCountP2 => winCountP2;
+
+	private float time = 0f;
+	public float Time => time;
+
 
 	public System.Action RoundSetEvent
 	{
@@ -83,6 +88,17 @@ public class RoundManager : MonoBehaviour
 		set
 		{
 			gameEndEvent = value;
+		}
+	}
+	public System.Action TimeChangeEvent
+	{
+		get
+		{
+			return timeChangeEvent;
+		}
+		set
+		{
+			timeChangeEvent = value;
 		}
 	}
 	public int RoundNumber => roundNumber;
@@ -222,6 +238,7 @@ public class RoundManager : MonoBehaviour
 		yield return new WaitForSeconds(readyTime);
 		SoundManager.Instance.PlayEFF("vc_narration_ready");
 		roundReadyEvent?.Invoke();
+		time = 99f;
 
 		yield return new WaitForSeconds(fightTime);
 		Debug.Log("Fight");
@@ -254,6 +271,32 @@ public class RoundManager : MonoBehaviour
 			aITestInputP2.SetStunTime(time);
 		}
 
+	}
+
+	private void Update()
+	{
+		if (isSetting)
+		{
+			if (time > 0f)
+			{
+				time -= UnityEngine.Time.deltaTime;
+				timeChangeEvent?.Invoke();
+			}
+			else
+			{
+				CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
+				CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>();
+
+				if (characterStatP1.HP / characterStatP1.MaxHP > characterStatP2.HP / characterStatP2.MaxHP)
+				{
+					RoundEndSetting(characterP2);
+				}
+				else
+				{
+					RoundEndSetting(characterP1);
+				}
+			}
+		}
 	}
 
 }
