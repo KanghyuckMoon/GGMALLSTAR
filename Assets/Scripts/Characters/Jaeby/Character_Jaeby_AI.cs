@@ -16,5 +16,6 @@ public class Character_Jaeby_AI : Character
         AddComponent(ComponentType.Damage, new CharacterDamage(this));
         AddComponent(ComponentType.Jump, new CharacterJump(this));
         AddComponent(ComponentType.Level, new CharacterLevel(this));
+        AddComponent(ComponentType.Color, new CharacterP2Color_Jaeby(this));
     }
 }
