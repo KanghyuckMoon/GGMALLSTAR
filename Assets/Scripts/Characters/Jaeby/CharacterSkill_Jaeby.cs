@@ -10,7 +10,6 @@ public class CharacterSkill_Jaeby : CharacterSkill
     {
         CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
         {
-            Debug.Log("Skill1");
             PoolManager.GetItem("Assets/Prefabs/SkillProjectile_Jaeby.prefab").GetComponent<SkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>().Direction);
         }, EventType.KEY_DOWN);
 

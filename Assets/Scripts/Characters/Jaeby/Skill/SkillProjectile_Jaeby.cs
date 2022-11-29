@@ -17,11 +17,9 @@ public class SkillProjectile_Jaeby : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
-        if (_character.gameObject.CompareTag(other.gameObject.tag))
-        {
+        if (other.gameObject == _character.gameObject)
             return;
-        }
+
         gameObject.SetActive(false);
         Pool.PoolManager.AddObjToPool("Assets/Prefabs/SkillProjectile_Jaeby.prefab", gameObject);
     }
@@ -33,12 +31,12 @@ public class SkillProjectile_Jaeby : MonoBehaviour
             switch (_direction)
             {
                 case Direction.LEFT:
-                    transform.Translate(Vector3.left * 0.1f);
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
                     break;
                 case Direction.RIGHT:
-                    transform.Translate(Vector3.right * 0.1f);
                     break;
             }
+            transform.Translate(Vector3.right * 5f * Time.deltaTime);
             yield return null;
         }
     }
