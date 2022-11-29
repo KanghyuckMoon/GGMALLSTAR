@@ -222,15 +222,39 @@ public class RoundManager : MonoBehaviour
 	{
 		roundEndEvent?.Invoke();
 		   yield return new WaitForSeconds(time);
-		HPFullSetting();
-		PostionSetting();
-		RoundSetting();
+		if (SelectDataSO.isArcade)
+		{
+			if(winCountP1 > 0)
+			{
+				SelectDataSO.winCount++;
+				LoadingScene.Instance.LoadScene("Arcade", LoadingScene.LoadingSceneType.Normal);
+			}
+			else
+			{
+				LoadingScene.Instance.LoadScene("Main", LoadingScene.LoadingSceneType.Normal);
+			}
+		}
+		else
+		{
+			HPFullSetting();
+			PostionSetting();
+			RoundSetting();
+		}
+
 	}
 	private IEnumerator GameEnd(float time)
 	{
 		gameEndEvent?.Invoke();
 		yield return new WaitForSeconds(time);
-		LoadingScene.Instance.LoadScene("Main", LoadingScene.LoadingSceneType.Normal);
+		if (SelectDataSO.isArcade && winCountP1 > 0)
+		{
+			SelectDataSO.winCount++;
+			LoadingScene.Instance.LoadScene("Arcade", LoadingScene.LoadingSceneType.Normal);
+		}
+		else
+		{
+			LoadingScene.Instance.LoadScene("Main", LoadingScene.LoadingSceneType.Normal);
+		}
 	}
 
 	private IEnumerator Fight(float readyTime, float fightTime)

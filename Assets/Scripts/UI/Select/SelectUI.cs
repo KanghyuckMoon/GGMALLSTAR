@@ -35,6 +35,24 @@ public class SelectUI : MonoBehaviour
 			isChoiceP2 = true;
 			ChoiceP1(character);
 		}
+
+		SelectDataSO.isArcade = false;
+	}
+
+	public void ArcadeChoiceCharacter(int character)
+	{
+		ChoiceP1(character);
+
+		SelectDataSO.winCount = 0;
+		SelectDataSO.isArcade = true;
+		SelectDataSO.isAICharacterP2 = true;
+	}
+
+	private void ArcadeCharacterChoice(int p1)
+	{
+		SelectDataSO.characterSelectP1 = (CharacterSelect)p1;
+		characterP1.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{((CharacterSelect)p1).ToString()}_CImage");
+
 	}
 
 	public void ChoiceP1(int p1)
