@@ -7,11 +7,11 @@ public class SkillProjectile_Jaeby : MonoBehaviour
     private Character _character = null;
     private Direction _direction = Direction.NONE;
 
-    public void SetSkillProjectile(Character character, Direction direction)
+    public void SetSkillProjectile(Character character, Direction direction, Vector3 position)
     {
         _character = character;
         _direction = direction;
-        transform.position = character.transform.position;
+        transform.position = position;
         StartCoroutine(Move());
     }
 
