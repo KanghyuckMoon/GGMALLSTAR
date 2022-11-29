@@ -15,10 +15,7 @@ public class CharacterSkill_Jaeby : CharacterSkill
 
         CharacterEvent.AddEvent(EventKeyWord.SKILL_2, () =>
         {
-            Debug.Log("Skill2");
+            PoolManager.GetItem("Assets/Prefabs/SkillSpike_Jaeby.prefab").GetComponent<SkillSpike_Jaeby>().SetSkillSpike(Character.transform.position + new Vector3(0, 0.09f, 0));
         }, EventType.KEY_DOWN);
     }
-
-    private SkillProjectile_Jaeby _skill1 = null;
-    private Skill _skill2 = null;
 }
