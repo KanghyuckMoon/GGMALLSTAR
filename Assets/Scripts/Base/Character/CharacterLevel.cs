@@ -141,6 +141,11 @@ public class CharacterLevel : CharacterComponent
 
 		if(_level != _previousLevel)
 		{
+			if(_level > _previousLevel)
+			{
+				Sound.SoundManager.Instance.PlayEFF("se_common_final_cutin");
+			}
+
 			changeLevelEvent?.Invoke();
 			_previousLevel = _level;
 		}

@@ -25,7 +25,7 @@ public class StarEffect : MonoBehaviour
 		Vector3 spreadPos = startPos + new Vector3(Mathf.Cos(startAngle), Mathf.Sin(startAngle), 0);
 		spreadPos.z = startPos.z;
 
-		float delay = 1f + Random.Range(0.3f, 0.5f);
+		float delay = Random.Range(0.5f, 0.7f);
 		float delayCurernt = 0f;
 		while (delayCurernt < delay)
 		{
@@ -36,8 +36,9 @@ public class StarEffect : MonoBehaviour
 
 		transform.DOKill();
 
+		float distance = Vector2.Distance(transform.position, characterLevel.Character.transform.position);
+		float speed = 2f;
 		float time = 0f;
-		float speed = 1f;
 
 		float angle = Random.Range(0f, 360f) * Mathf.Deg2Rad;
 		Vector3 shotPos = transform.position;
@@ -50,7 +51,7 @@ public class StarEffect : MonoBehaviour
 			
 			//Position
 			Vector3 targetPos = characterLevel.Character.transform.position;
-			transform.position = LinearBezierPoint(moveCurve.Evaluate(time), shotPos, targetPos);
+			transform.position = Vector3.Slerp(shotPos, targetPos, moveCurve.Evaluate(time));// LinearBezierPoint(moveCurve.Evaluate(time), shotPos, targetPos);
 
 			//Rotate
 			if (time > 0.01f)
@@ -64,12 +65,12 @@ public class StarEffect : MonoBehaviour
 			}
 
 			time += Time.deltaTime * speed;
-
-
 		}
 
 		characterLevel.AddExp(addExp);
 		PoolManager.AddObjToPool("StarEff", gameObject);
+		Sound.SoundManager.Instance.PlayEFF("se_item_superstar_get");
+		Effect.EffectManager.Instance.SetEffect(Effect.EffectType.StarGetEff, transform.position);
 		gameObject.SetActive(false);
 	}
 
