@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitBoxDatasList:
   - hitBoxDatas:
-    - damage: 10
-      knockBack: 4
-      knockAngle: 50
+    - actionName: Attack
+      damage: 10
+      knockBack: 3
+      knockAngle: 70
       hitTime: 0.1
       sturnTime: 0.3
       _attackOffset: {x: 0.175, y: 0.075, z: 0}
@@ -26,3 +27,4 @@ MonoBehaviour:
       effectType: 0
       hitEffSoundName: se_common_sword_hit_s
       atkEffSoundName: se_common_sword_swing_s
+      addExp: 10

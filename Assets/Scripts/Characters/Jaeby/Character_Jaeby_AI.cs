@@ -6,7 +6,7 @@ public class Character_Jaeby_AI : Character
 {
     protected override void SetComponent()
     {
-        AddComponent(ComponentType.Input, new AITestInput(this));
+        AddComponent(ComponentType.Input, new CharacterAIInput_Jaeby(this));
         AddComponent(ComponentType.Stat, new CharacterStat(this));
         AddComponent(ComponentType.Sprite, new CharacterSprite(this));
         AddComponent(ComponentType.Attack, new CharacterAttack(this));
@@ -15,5 +15,7 @@ public class Character_Jaeby_AI : Character
         AddComponent(ComponentType.Move, new CharacterMove(this));
         AddComponent(ComponentType.Damage, new CharacterDamage(this));
         AddComponent(ComponentType.Jump, new CharacterJump(this));
+        AddComponent(ComponentType.Level, new CharacterLevel(this));
+        AddComponent(ComponentType.Color, new CharacterP2Color_Jaeby(this));
     }
 }

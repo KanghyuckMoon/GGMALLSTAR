@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Loading;
 using Sound;
 
@@ -16,6 +17,91 @@ public class RoundManager : MonoBehaviour
 	private int winCountP1 = 0;
 	private int winCountP2 = 0;
 	private bool isSetting = false;
+
+	private System.Action roundSetEvent;
+	private System.Action roundReadyEvent;
+	private System.Action roundStartEvent;
+	private System.Action roundEndEvent;
+	private System.Action gameEndEvent;
+	private System.Action timeChangeEvent;
+
+	public int WinCountP1 => winCountP1;
+	public int WinCountP2 => winCountP2;
+
+	private float time = 0f;
+	public float Time => time;
+
+
+	public System.Action RoundSetEvent
+	{
+		get
+		{
+			return roundSetEvent;
+		}
+		set
+		{
+			roundSetEvent = value;
+		}
+	}
+
+	public System.Action RoundReadyEvent
+	{
+		get
+		{
+			return roundReadyEvent;
+		}
+		set
+		{
+			roundReadyEvent = value;
+		}
+	}
+
+	public System.Action RoundStartEvent
+	{
+		get
+		{
+			return roundStartEvent;
+		}
+		set
+		{
+			roundStartEvent = value;
+		}
+	}
+
+	public System.Action RoundEndEvent
+	{
+		get
+		{
+			return roundEndEvent;
+		}
+		set
+		{
+			roundEndEvent = value;
+		}
+	}
+	public System.Action GameEndEvent
+	{
+		get
+		{
+			return gameEndEvent;
+		}
+		set
+		{
+			gameEndEvent = value;
+		}
+	}
+	public System.Action TimeChangeEvent
+	{
+		get
+		{
+			return timeChangeEvent;
+		}
+		set
+		{
+			timeChangeEvent = value;
+		}
+	}
+	public int RoundNumber => roundNumber;
 
 	private IEnumerator Start()
 	{
@@ -57,11 +143,7 @@ public class RoundManager : MonoBehaviour
 
 		if (winCountP1 >= 3 || winCountP2 >= 3)
 		{
-			CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
-			characterInputP1.SetStunTime(1f);
-
-			CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
-			characterInputP2.SetStunTime(1f);
+			SetInputSturnTime(2f);
 
 			if (winCountP1 >= 3)
 			{
@@ -72,19 +154,13 @@ public class RoundManager : MonoBehaviour
 				Debug.Log("Game End P2 Win");
 			}
 			SoundManager.Instance.PlayEFF("vc_narration_gameset_CN-JP-KR");
-			StartCoroutine(GameEnd(1f));
+			StartCoroutine(GameEnd(6f));
 		}
 		else
 		{
-			CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
-			characterInputP1.SetStunTime(1f);
-
-			CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
-			characterInputP2.SetStunTime(1f);
-
 			SoundManager.Instance.PlayEFF("vc_narration_gameset");
 
-			StartCoroutine(NextRound(1f));
+			StartCoroutine(NextRound(6f));
 		}
 	}
 
@@ -114,8 +190,9 @@ public class RoundManager : MonoBehaviour
 		{
 			Debug.Log($"Round {roundNumber}");
 		}
+		roundSetEvent?.Invoke();
 
-		switch(roundNumber)
+		switch (roundNumber)
 		{
 			default:
 			case 1:
@@ -134,13 +211,7 @@ public class RoundManager : MonoBehaviour
 				SoundManager.Instance.PlayEFF("vc_narration_five");
 				break;
 		}
-
-		CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
-		characterInputP1.SetStunTime(2f);
-
-		CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
-		characterInputP2.SetStunTime(2f);
-
+		SetInputSturnTime(2f);
 		StartCoroutine(Fight(1f, 1f));
 
 		roundNumber++;
@@ -149,13 +220,15 @@ public class RoundManager : MonoBehaviour
 
 	private IEnumerator NextRound(float time)
 	{
-		yield return new WaitForSeconds(time);
+		roundEndEvent?.Invoke();
+		   yield return new WaitForSeconds(time);
 		HPFullSetting();
 		PostionSetting();
 		RoundSetting();
 	}
 	private IEnumerator GameEnd(float time)
 	{
+		gameEndEvent?.Invoke();
 		yield return new WaitForSeconds(time);
 		LoadingScene.Instance.LoadScene("Main", LoadingScene.LoadingSceneType.Normal);
 	}
@@ -164,11 +237,66 @@ public class RoundManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds(readyTime);
 		SoundManager.Instance.PlayEFF("vc_narration_ready");
+		roundReadyEvent?.Invoke();
+		time = 99f;
 
 		yield return new WaitForSeconds(fightTime);
 		Debug.Log("Fight");
 		SoundManager.Instance.PlayEFF("vc_narration_go");
 		isSetting = true;
+		roundStartEvent?.Invoke();
+	}
+
+	private void SetInputSturnTime(float time)
+	{
+		CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
+		if (characterInputP1 != null)
+		{
+			characterInputP1.SetStunTime(time);
+		}
+		else
+		{
+			var aITestInputP1 = characterP1.GetCharacterComponent<CharacterAIInput>();
+			aITestInputP1.SetStunTime(time);
+		}
+
+		CharacterInput characterInputP2 = characterP2.GetCharacterComponent<CharacterInput>();
+		if (characterInputP2 != null)
+		{
+			characterInputP2.SetStunTime(time);
+		}
+		else
+		{
+			var aITestInputP2 = characterP2.GetCharacterComponent<CharacterAIInput>();
+			aITestInputP2.SetStunTime(time);
+		}
+
+	}
+
+	private void Update()
+	{
+		if (isSetting)
+		{
+			if (time > 0f)
+			{
+				time -= UnityEngine.Time.deltaTime;
+				timeChangeEvent?.Invoke();
+			}
+			else
+			{
+				CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
+				CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>();
+
+				if (characterStatP1.HP / characterStatP1.MaxHP > characterStatP2.HP / characterStatP2.MaxHP)
+				{
+					RoundEndSetting(characterP2);
+				}
+				else
+				{
+					RoundEndSetting(characterP1);
+				}
+			}
+		}
 	}
 
 }

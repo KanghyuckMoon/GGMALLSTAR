@@ -17,6 +17,9 @@ public class HitBoxDatas
 [System.Serializable]
 public class HitBoxData
 {
+	//Action Name
+	public string actionName = "";
+
 	//Stat
 	public int damage = 10;
 	public float knockBack = 10;
@@ -36,4 +39,7 @@ public class HitBoxData
 	public Effect.EffectType effectType;
 	public string hitEffSoundName;
 	public string atkEffSoundName;
+
+	//Exp
+	public int addExp;
 }

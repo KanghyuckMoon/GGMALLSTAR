@@ -4,9 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using Utill;
 
-public class AITestInput : CharacterComponent
+public class CharacterAIInput : CharacterComponent
 {
-    public AITestInput(Character character) : base(character)
+    public CharacterAIInput(Character character) : base(character)
+    {
+        Init();
+    }
+
+    protected InputData[] _inputData = null;
+    protected Dictionary<KeyCode, bool> _wasInput = null;
+    protected Dictionary<KeyCode, bool> _previousInput = null;
+
+    protected Character opponentCharacter;
+    protected KeyCode inputKeyCode = KeyCode.A;
+    protected bool _isLoop = false;
+    protected float _delay = 0.1f;
+    protected BehaviourTree _behaviourTree;
+    protected float _stunTime = 0f;
+    protected float _inputDelayTime = 0f;
+
+    protected virtual void Init()
     {
         var characterSpawner = GameObject.FindObjectOfType<CharacterSpawner>();
 
@@ -18,9 +35,6 @@ public class AITestInput : CharacterComponent
         {
             opponentCharacter = characterSpawner.Player1.GetComponent<Character>();
         }
-
-        behaviourTest = new BehaviourTest(opponentCharacter, Character, this);
-
         _inputData = Character.InputDataBaseSO.GetInputData();
 
         _wasInput = new();
@@ -35,19 +49,19 @@ public class AITestInput : CharacterComponent
                 CharacterEvent.AddEvent(input.actionName, (EventType)i);
             }
         }
+        SetBehaviourTree();
     }
 
-    protected InputData[] _inputData = null;
-    protected Dictionary<KeyCode, bool> _wasInput = null;
-    protected Dictionary<KeyCode, bool> _previousInput = null;
+    public void IsHit(string actionName)
+	{
+        _behaviourTree.IsHit(actionName);
+	}
 
-    private Character opponentCharacter;
-    private KeyCode inputKeyCode = KeyCode.A;
-    private bool _isLoop = false;
-    private float _delay = 0.1f;
-    private BehaviourTest behaviourTest;
-    private float _stunTime = 0f;
-    private float _inputDelayTime = 0f;
+    protected virtual void SetBehaviourTree()
+    {
+        _behaviourTree = new BehaviourTree();
+        _behaviourTree.Init(opponentCharacter, Character, this);
+    }
 
     public void SetStunTime(float time)
     {
@@ -63,6 +77,7 @@ public class AITestInput : CharacterComponent
         if (_stunTime > 0f)
         {
             _stunTime -= Time.deltaTime;
+            _inputDelayTime = 0f;
             return;
         }
 
@@ -73,7 +88,7 @@ public class AITestInput : CharacterComponent
         }
 
 
-        behaviourTest.Update();
+        _behaviourTree.Update();
 
         if (_wasInput[inputKeyCode] && _previousInput[inputKeyCode])
         {
@@ -93,18 +108,36 @@ public class AITestInput : CharacterComponent
         }
     }
 
-    public void HoldInputKey(KeyCode keyCode)
+    public void MultipleHoldInputKey(KeyCode keyCode)
     {
-        _wasInput[inputKeyCode] = false;
+        if (_wasInput[keyCode])
+        {
+            CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_HOLD);
+        }
+        else
+        {
+            _wasInput[keyCode] = true;
+            _previousInput[keyCode] = true;
+            CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_DOWN);
+        }
+    }
+    public void SingleHoldInputKey(KeyCode keyCode)
+    {
         inputKeyCode = keyCode;
         _wasInput[inputKeyCode] = true;
     }
+
     public void FalseInputKey(KeyCode keyCode)
     {
         _wasInput[keyCode] = false;
+        _previousInput[keyCode] = false;
+        CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_UP);
     }
+
     public void TapInputKey(KeyCode keyCode)
     {
+        _wasInput[keyCode] = true;
+        _previousInput[keyCode] = true;
         CharacterEvent.EventTrigger(GetActionName(keyCode), EventType.KEY_DOWN);
     }
 

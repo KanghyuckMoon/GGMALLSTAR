@@ -20,13 +20,13 @@ public class CharacterJump : CharacterComponent
             //    // TODO : 좌표 말고 시간으로 하는게 좋을 듯 체공 시간 구하기 필요 
             //    _rigidbody.AddForce(Vector3.up * _jumpingPower, ForceMode.Impulse);
             //}
-            
+
         }, EventType.KEY_HOLD);
 
         CharacterEvent.AddEvent(EventKeyWord.UP, () =>
         {
-            isTap = false;
-            isHold = false;
+            //isTap = false;
+            //isHold = false;
         }, EventType.KEY_UP);
     }
 
@@ -49,24 +49,11 @@ public class CharacterJump : CharacterComponent
         {
             _jumpCount = 0;
         }
-        pos.y += Character.Collider.size.y;
-        RaycastHit raycastHit;
-        if (Physics.Raycast(pos, Vector3.up, out raycastHit, 0.1f, LayerMask.GetMask("Player")))
-        {
-            if (raycastHit.collider.transform.position.x < Character.transform.position.x)
-			{
-                _rigidbody.AddForce(Vector3.left * 10, ForceMode.Impulse);
-			}
-            else
-            {
-                _rigidbody.AddForce(Vector3.right * 10, ForceMode.Impulse);
-            }
-        }
 
-        if (isTap && !isHold)
+        if (isTap)
         {
-            isHold = true;
-            if (_rigidbody && _jumpCount < 2)
+            isTap = false;
+            if (_rigidbody && _jumpCount == 0)
             {
                 var vel = _rigidbody.velocity;
                 vel.y = 0;
@@ -81,9 +68,9 @@ public class CharacterJump : CharacterComponent
     private Rigidbody _rigidbody = null;
 
     private float _jumpingPower = 10f;
-    
+
     private float _maxFirstJumpPower = 35f;
     private float _maxSecondJumpPower = 20f;
-    
+
     private uint _jumpCount = 0;
 }

@@ -6,9 +6,9 @@ using System;
 public class TapNode : INode
 {
     private Action<KeyCode> tapAction;
-    private KeyCode keyCode;
+    private KeyCode[] keyCode;
 
-    public TapNode(Action<KeyCode> tapAction, KeyCode keyCode)
+    public TapNode(Action<KeyCode> tapAction, KeyCode[] keyCode)
     {
         this.tapAction = tapAction;
         this.keyCode = keyCode;
@@ -16,7 +16,10 @@ public class TapNode : INode
 
     public bool Run()
     {
-        tapAction.Invoke(keyCode);
+        foreach(var keyCode in keyCode)
+		{
+            tapAction.Invoke(keyCode);
+		}
         return true;
     }
 }

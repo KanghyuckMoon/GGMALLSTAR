@@ -7,12 +7,14 @@ public enum CameraType
 {
 	Normal,
 	Shake,
+	Zoom,
 }
 
 public class CameraManager : MonoBehaviour
 {
 	[SerializeField] private List<CinemachineVirtualCamera> cinemachineVirtualCameras;
 	private CinemachineBrain cinemachineBrains;
+	private static Coroutine shakeCoroutine;
 
 	public void Start()
 	{
@@ -49,10 +51,44 @@ public class CameraManager : MonoBehaviour
 		SetCamera(CameraType.Normal);
 	}
 
+	public IEnumerator StartKO(Transform transform, float killTime)
+	{
+
+		cinemachineVirtualCameras[(int)CameraType.Zoom].Follow = transform;
+		cinemachineVirtualCameras[(int)CameraType.Zoom].LookAt = transform;
+		var transpoer = cinemachineVirtualCameras[(int)CameraType.Zoom].GetCinemachineComponent<CinemachineTransposer>();
+		float killTotalTime = killTime;
+		Vector3 startOffset = new Vector3(-3, 0.5f, -2.5f);
+		Vector3 endOffset = new Vector3(1.3f, 0.5f, -2.5f);
+
+		SetCamera(CameraType.Zoom);
+
+		while (killTime > 0)
+		{
+			killTime -= Time.deltaTime;
+			transpoer.m_FollowOffset = Vector3.Lerp(endOffset, startOffset, killTime / killTotalTime);
+			yield return new WaitForEndOfFrame();
+		}
+
+		SetCamera(CameraType.Normal);
+		shakeCoroutine = null;
+	}
+
 	public static void SetShake(float shakeTime, float shakePower)
 	{
 		CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
-		cameraManager.StartCoroutine(cameraManager.StartShake(shakeTime, shakePower));
+		shakeCoroutine = cameraManager.StartCoroutine(cameraManager.StartShake(shakeTime, shakePower));
+	}
+
+	public static void SetKO(Transform transform, float killTime)
+	{
+		CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
+		if (shakeCoroutine is not null)
+		{
+			cameraManager.StopCoroutine(shakeCoroutine);
+		}
+		cameraManager.StartCoroutine(cameraManager.StartKO(transform, killTime));
+		
 	}
 
 }

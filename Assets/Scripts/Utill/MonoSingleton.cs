@@ -19,6 +19,7 @@ namespace Utill
 
                     DontDestroyOnLoad(obj);
                 }
+                DontDestroyOnLoad(instance);
 
                 return instance;
             });

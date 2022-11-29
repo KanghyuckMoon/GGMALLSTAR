@@ -3963,6 +3963,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1817890781684479566, guid: 7499240e2011a1046bb78bc916bd8048,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817890782249570669, guid: 7499240e2011a1046bb78bc916bd8048,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7499240e2011a1046bb78bc916bd8048, type: 3}
 --- !u!1001 &6071100908195362561

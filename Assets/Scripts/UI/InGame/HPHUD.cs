@@ -6,8 +6,8 @@ using TMPro;
 
 public class HPHUD : MonoBehaviour
 {
-	[SerializeField] private TextMeshProUGUI hpTextP1;
-	[SerializeField] private TextMeshProUGUI hpTextP2;
+	[SerializeField] private Image hpBarIamgeP1;
+	[SerializeField] private Image hpBarIamgeP2;
 
 	private CharacterStat characterStatP1;
 	private CharacterStat characterStatP2;
@@ -31,11 +31,13 @@ public class HPHUD : MonoBehaviour
 
 	private void ChangeHPP1()
 	{
-		hpTextP1.text = $"{characterStatP1.HP}";
+		//hpTextP1.text = $"{characterStatP1.HP}";
+		hpBarIamgeP1.fillAmount = characterStatP1.HP / characterStatP1.MaxHP;
 	}
 	private void ChangeHPP2()
 	{
-		hpTextP2.text = $"{characterStatP2.HP}";
+		//hpTextP2.text = $"{characterStatP2.HP}";
+		hpBarIamgeP2.fillAmount = characterStatP2.HP / characterStatP2.MaxHP;
 	}
 
 }

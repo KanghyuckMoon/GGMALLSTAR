@@ -60,4 +60,16 @@ public class CharacterSpawner : MonoBehaviour
 		cinemachineTargetGroup.AddMember(player1.transform, 1, 1);
 		cinemachineTargetGroup.AddMember(player2.transform, 1, 1);
 	}
+
+	private IEnumerator Start()
+	{
+		yield return new WaitForEndOfFrame();
+		if(SelectDataSO.characterSelectP1 == SelectDataSO.characterSelectP2)
+		{
+			player2.GetComponent<Character>().GetCharacterComponent<CharacterP2Color>().SetP2Color();
+		}
+		player1.GetComponent<Character>().GetCharacterComponent<CharacterStat>().IsPlayerP1 = true;
+	}
+
+
 }

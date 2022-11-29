@@ -35,37 +35,57 @@ public class HitBox : MonoBehaviour
         _boxCollider.isTrigger = true;
     }
 
+    public void OwnerHitTime(float hitTime)
+    {
+        Owner.Character.GetCharacterComponent<CharacterGravity>().SetHitTime(hitTime);
+        Vector3 vector = Owner.Character.Rigidbody.velocity;
+        Owner.Character.Rigidbody.velocity = Vector3.zero;
+        CharacterInput characterInput = Owner.Character.GetCharacterComponent<CharacterInput>();
+        if (characterInput is not null)
+        {
+            characterInput.SetStunTime(hitTime);
+        }
+        else
+        {
+            CharacterAIInput aITestInput = Owner.Character.GetCharacterComponent<CharacterAIInput>();
+            if (aITestInput is not null)
+            {
+                aITestInput.SetStunTime(hitTime);
+            }
+        }
+
+
+        CharacterAnimation characterAnimation = Owner.Character.GetCharacterComponent<CharacterAnimation>();
+        characterAnimation?.SetHitTime(hitTime);
+        StaticCoroutine.Instance.StartCoroutine(OwnerHitTimeEnd(Owner.Character, hitTime, vector));
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag(_owner.Character.tag))
         {
             Owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
-            Owner.TargetCharacterDamage.OnAttcked(hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
-
-            Owner.Character.GetCharacterComponent<CharacterGravity>().SetHitTime(hitBoxData.hitTime);
-            Vector3 vector = Owner.Character.Rigidbody.velocity;
-            Owner.Character.Rigidbody.velocity = Vector3.zero;
-            CharacterInput characterInput = Owner.Character.GetCharacterComponent<CharacterInput>();
-            if (characterInput is not null)
-            {
-                characterInput.SetStunTime(hitBoxData.hitTime);
-            }
-            else
-            {
-                AITestInput aITestInput = Owner.Character.GetCharacterComponent<AITestInput>();
-                if (aITestInput is not null)
-                {
-                    aITestInput.SetStunTime(hitBoxData.hitTime);
-                }
-            }
-
-
-            CharacterAnimation characterAnimation = Owner.Character.GetCharacterComponent<CharacterAnimation>();
-            characterAnimation?.SetHitTime(hitBoxData.hitTime);
-            StaticCoroutine.Instance.StartCoroutine(OwnerHitTimeEnd(Owner.Character, hitBoxData.hitTime, vector));
-
-            Owner.Character.GetCharacterComponent<CharacterLevel>().AddExp(hitBoxData.damage);
+            Owner.TargetCharacterDamage.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
             OnHit?.Invoke();
+
+            //AI
+            CharacterAIInput aiInput = Owner.Character.GetCharacterComponent<CharacterAIInput>();
+            if (aiInput is not null)
+			{
+                aiInput.IsHit(hitBoxData.actionName);
+            }
+
+            //Exp
+
+            int expCount = (hitBoxData.addExp / 5) + 1;
+
+            for (int i = 0; i < expCount; ++i)
+            {
+                StarEffect starEffect = PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
+                starEffect.SetEffect(transform.position, Owner.Character.GetCharacterComponent<CharacterLevel>(), hitBoxData.addExp / expCount);
+			}
+
         }
     }
 
