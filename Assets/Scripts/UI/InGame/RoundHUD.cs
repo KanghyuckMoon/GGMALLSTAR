@@ -10,6 +10,7 @@ public class RoundHUD : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI roundtext;
 	[SerializeField] private Image[] roundCountP1;
 	[SerializeField] private Image[] roundCountP2;
+	[SerializeField] private Sprite winSprite;
 
 	private RoundManager roundManager;
 
@@ -68,12 +69,12 @@ public class RoundHUD : MonoBehaviour
 	{
 		for (int i = 0; i < roundManager.WinCountP1; ++i)
 		{
-			roundCountP1[i].color = Color.white;
+			roundCountP1[i].sprite = winSprite;
 		}
 
 		for (int i = 0; i < roundManager.WinCountP2; ++i)
 		{
-			roundCountP2[i].color = Color.white;
+			roundCountP2[i].sprite = winSprite;
 		}
 	}
 

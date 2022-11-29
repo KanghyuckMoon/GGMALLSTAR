@@ -27,6 +27,44 @@ public class CharacterLevel : CharacterComponent
 	private int _level = 1;
 	private int _exp = 0;
 
+	public int NeedExp
+	{
+		get
+		{
+			switch (_level)
+			{
+				default:
+				case 1:
+					return Character.CharacterLevelSO.NeedExpLevel2;
+				case 2:
+					return Character.CharacterLevelSO.NeedExpLevel3;
+				case 3:
+					return Character.CharacterLevelSO.NeedExpLevelMax;
+				case 4:
+					return 0;
+			}
+		}
+	}
+	public int PreviouseExp
+	{
+		get
+		{
+			switch (_level)
+			{
+				default:
+				case 1:
+					return 0;
+				case 2:
+					return Character.CharacterLevelSO.NeedExpLevel2;
+				case 3:
+					return Character.CharacterLevelSO.NeedExpLevel3;
+				case 4:
+					return Character.CharacterLevelSO.NeedExpLevelMax;
+			}
+		}
+	}
+
+
 	public CharacterLevel(Character character) : base(character)
 	{
 
