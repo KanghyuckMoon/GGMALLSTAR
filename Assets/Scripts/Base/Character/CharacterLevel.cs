@@ -37,9 +37,9 @@ public class CharacterLevel : CharacterComponent
 				case 1:
 					return Character.CharacterLevelSO.NeedExpLevel2;
 				case 2:
-					return Character.CharacterLevelSO.NeedExpLevel3;
+					return Character.CharacterLevelSO.NeedExpLevel3 - Character.CharacterLevelSO.NeedExpLevel2;
 				case 3:
-					return Character.CharacterLevelSO.NeedExpLevelMax;
+					return Character.CharacterLevelSO.NeedExpLevelMax - Character.CharacterLevelSO.NeedExpLevel3;
 				case 4:
 					return 0;
 			}

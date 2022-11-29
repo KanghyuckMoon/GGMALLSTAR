@@ -53,27 +53,41 @@ public class LevelHUD : MonoBehaviour
 
 	private void ChangeLevelHUDP1()
 	{
-		levelTextP1.text = $"{characterLevelP1.Level}Star";
-	}
-	private void ChangeExpHUDP1()
-	{
-		if(characterLevelP1.Level < 4)
+		if(characterLevelP1.Level == 4)
 		{
-			expImageP1.fillAmount = ((float)characterLevelP1.Exp - characterLevelP1.PreviouseExp) / characterLevelP1.NeedExp;
+			levelTextP1.text = "ALL Star";
 		}
 		else
 		{
+			levelTextP1.text = $"{characterLevelP1.Level}Star";
+		}
+	}
+	private void ChangeExpHUDP1()
+	{
+		if(characterLevelP1.Level == 4)
+		{
 			expImageP1.fillAmount = 1f;
+		}
+		else
+		{
+			expImageP1.fillAmount = ((float)characterLevelP1.Exp - characterLevelP1.PreviouseExp) / characterLevelP1.NeedExp;
 		}
 	}
 
 	private void ChangeLevelHUDP2()
 	{
-		levelTextP2.text = $"{characterLevelP2.Level}Star";
+		if (characterLevelP2.Level == 4)
+		{
+			levelTextP2.text = "ALL Star";
+		}
+		else
+		{
+			levelTextP2.text = $"{characterLevelP2.Level}Star";
+		}
 	}
 	private void ChangeExpHUDP2()
 	{
-		if (characterLevelP1.Level < 4)
+		if (characterLevelP2.Level < 4)
 		{
 			expImageP2.fillAmount = ((float)characterLevelP2.Exp - characterLevelP2.PreviouseExp) / characterLevelP2.NeedExp;
 		}
