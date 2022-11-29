@@ -10,6 +10,7 @@ namespace Sound
 		Tower_BGM,
 		MainMenu_BGM,
 		Inventory_BGM,
+		Credit_BGM,
 		Count,
 	}
 
