@@ -25,6 +25,13 @@ public class RoundManager : MonoBehaviour
 	private System.Action gameEndEvent;
 	private System.Action timeChangeEvent;
 
+	public bool IsSetting
+	{
+		get
+		{
+			return isSetting;
+		}
+	}
 	public int WinCountP1 => winCountP1;
 	public int WinCountP2 => winCountP2;
 
@@ -119,6 +126,12 @@ public class RoundManager : MonoBehaviour
 	{
 		RoundManager roundManager = FindObjectOfType<RoundManager>();
 		roundManager.RoundEndSetting(loser);
+	}
+
+	public static bool ReturnIsSetting()
+	{
+		RoundManager roundManager = FindObjectOfType<RoundManager>();
+		return roundManager.isSetting;
 	}
 
 	private void RoundEndSetting(Character loser)

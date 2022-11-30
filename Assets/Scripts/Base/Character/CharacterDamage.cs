@@ -57,7 +57,7 @@ public class CharacterDamage : CharacterComponent
 
     public void OnAttcked(HitBox hitBox, HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
     {
-        if(!characterStat.IsAlive)
+        if(!characterStat.IsAlive || !RoundManager.ReturnIsSetting())
 		{
             return;
 		}
