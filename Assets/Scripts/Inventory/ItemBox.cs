@@ -8,6 +8,7 @@ namespace Inventory
 	public class ItemBox : MonoBehaviour
 	{
 		[SerializeField] private GameObject model;
+		private bool isGet = false;
 
 		private void OnEnable()
 		{
@@ -18,8 +19,15 @@ namespace Inventory
 
 		private void OnTriggerEnter(Collider other)
 		{
+			if(isGet)
+			{
+				return;
+			}
+
+			isGet = true;
 			model.transform.DOKill();
 			model.transform.DOScale(Vector3.zero, 1f).OnComplete(() => gameObject.SetActive(false)).SetEase(Ease.InElastic);
+			Sound.SoundManager.Instance.PlayEFF("se_item_genesis_get");
 			InventoryManager.Instance.RandomGetItem();
 		}
 	}
