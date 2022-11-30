@@ -37,6 +37,11 @@ public class HitBox : MonoBehaviour
 
     public void OwnerHitTime(float hitTime)
     {
+        if (!RoundManager.ReturnIsSetting())
+		{
+            return;
+		}
+
         Owner.Character.GetCharacterComponent<CharacterGravity>().SetHitTime(hitTime);
         Vector3 vector = Owner.Character.Rigidbody.velocity;
         Owner.Character.Rigidbody.velocity = Vector3.zero;
@@ -57,7 +62,11 @@ public class HitBox : MonoBehaviour
 
         CharacterAnimation characterAnimation = Owner.Character.GetCharacterComponent<CharacterAnimation>();
         characterAnimation?.SetHitTime(hitTime);
-        StaticCoroutine.Instance.StartCoroutine(OwnerHitTimeEnd(Owner.Character, hitTime, vector));
+
+        if (Owner.TargetCharacterDamage.Character.GetCharacterComponent<CharacterStat>().IsAlive)
+        {
+            StaticCoroutine.Instance.StartCoroutine(OwnerHitTimeEnd(Owner.Character, hitTime, vector));
+        }
 
     }
 
@@ -66,7 +75,7 @@ public class HitBox : MonoBehaviour
         if (!other.gameObject.CompareTag(_owner.Character.tag))
         {
             Owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
-            Owner.TargetCharacterDamage.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
+            Owner.TargetCharacterDamage?.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
             OnHit?.Invoke();
 
             //AI
@@ -92,7 +101,7 @@ public class HitBox : MonoBehaviour
     private IEnumerator OwnerHitTimeEnd(Character character, float hitTime, Vector3 vec)
 	{
         yield return new WaitForSeconds(hitTime);
-        if (character is not null)
+        if (character is not null && RoundManager.ReturnIsSetting())
 		{
             character.Rigidbody.velocity = vec;
 		}

@@ -58,37 +58,35 @@ public class CharacterDamage : CharacterComponent
     public void OnAttcked(HitBox hitBox, HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
     {
         if(!characterStat.IsAlive || !RoundManager.ReturnIsSetting())
-		{
+        {
+            Character.Rigidbody.velocity = Vector3.zero;
             return;
 		}
-
-        float stunHitTime = hitBoxData.sturnTime + hitBoxData.hitTime;
 
         //Hp
         characterStat.AddHP(-hitBoxData.damage);
 
         //Die
-        if (characterStat.HP <= 0)
+        if (!characterStat.IsAlive)
         {
-            stunHitTime += 5f;
             RoundManager.RoundEnd(Character);
-            CameraManager.SetKO(Character.transform, 3f);
-            hitBox.OwnerHitTime(5f);
 
             //Effect & Sound
             SoundManager.Instance.PlayEFF("se_common_finishhit");
             EffectManager.Instance.SetEffect(EffectType.FinalHit, collistionPoint);
-        }
-        else
-        {
-            //CameraShake
-            CameraManager.SetShake(hitBoxData.shakeTime, hitBoxData.shakePower);
-            hitBox.OwnerHitTime(hitBoxData.hitTime);
 
-            //Effect & Sound
-            EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
-            SoundManager.Instance.PlayEFF(hitBoxData.hitEffSoundName);
+            return;
         }
+
+        float stunHitTime = hitBoxData.sturnTime + hitBoxData.hitTime;
+
+        //CameraShake
+        CameraManager.SetShake(hitBoxData.shakeTime, hitBoxData.shakePower);
+        hitBox.OwnerHitTime(hitBoxData.hitTime);
+
+        //Effect & Sound
+        EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
+        SoundManager.Instance.PlayEFF(hitBoxData.hitEffSoundName);
 
         //ComboCount
         _comboCount++;
@@ -123,7 +121,7 @@ public class CharacterDamage : CharacterComponent
         {
             characterSprite.ResetModelPosition();
 
-            if(characterStat.IsAlive)
+            if(characterStat.IsAlive || !RoundManager.ReturnIsSetting())
             {
                 Vector3 knockBackVector3 = DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180));
                 Character.Rigidbody.AddForce(knockBackVector3 * hitBoxData.knockBack, ForceMode.Impulse);

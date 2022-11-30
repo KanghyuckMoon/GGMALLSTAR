@@ -140,8 +140,12 @@ public class RoundManager : MonoBehaviour
 		{
 			return;
 		}
-
 		isSetting = false;
+
+		CameraManager.SetKO(loser.transform, 3f);
+		SetInputSturnTime(6f);
+		StopMove(6f);
+
 
 		if (loser == characterP1)
 		{
@@ -156,8 +160,6 @@ public class RoundManager : MonoBehaviour
 
 		if (winCountP1 >= 3 || winCountP2 >= 3)
 		{
-			SetInputSturnTime(2f);
-
 			if (winCountP1 >= 3)
 			{
 				Debug.Log("Game End P1 Win");
@@ -307,8 +309,33 @@ public class RoundManager : MonoBehaviour
 			var aITestInputP2 = characterP2.GetCharacterComponent<CharacterAIInput>();
 			aITestInputP2.SetStunTime(time);
 		}
-
 	}
+
+	private void StopMove(float time)
+	{
+
+		CharacterGravity characterGravityP1 = characterP1.GetCharacterComponent<CharacterGravity>();
+		CharacterMove characterMoveP1 = characterP1.GetCharacterComponent<CharacterMove>();
+		CharacterAnimation characterAnimationP1 = characterP1.GetCharacterComponent<CharacterAnimation>();
+
+		characterGravityP1.SetHitTime(time);
+		characterMoveP1.SetSturnTime(time);
+		characterAnimationP1.SetHitTime(time);
+
+
+		CharacterGravity characterGravityP2 = characterP2.GetCharacterComponent<CharacterGravity>();
+		CharacterMove characterMoveP2 = characterP2.GetCharacterComponent<CharacterMove>();
+		CharacterAnimation characterAnimationP2 = characterP2.GetCharacterComponent<CharacterAnimation>();
+
+		characterGravityP2.SetHitTime(time);
+		characterMoveP2.SetSturnTime(time);
+		characterAnimationP2.SetHitTime(time);
+
+
+		characterP1.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		characterP2.GetComponent<Rigidbody>().velocity = Vector3.zero;
+	}
+
 
 	private void Update()
 	{
