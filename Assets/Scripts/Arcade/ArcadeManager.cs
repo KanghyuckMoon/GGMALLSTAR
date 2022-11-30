@@ -64,11 +64,13 @@ public class ArcadeManager : MonoBehaviour
 	{
 		clearRewardCount = 3;
 		clearPanel.gameObject.SetActive(true);
+		Sound.SoundManager.Instance.PlayEFF("vc_narration_result_victory");
 	}
 
 	public void OpenItemBox()
 	{
 		clearRewardCount--;
+		Sound.SoundManager.Instance.PlayEFF("se_item_genesis_get");
 		Inventory.InventoryManager.Instance.RandomGetItem();
 		if(clearRewardCount == 0)
 		{
