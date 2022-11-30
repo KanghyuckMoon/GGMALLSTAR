@@ -7,7 +7,7 @@ public class CharacterSkill1_MythicalDice : CharacterSkill
 {
     public CharacterSkill1_MythicalDice(Character character) : base(character)
     {
-        CharacterEvent.AddEvent(EventKeyWord.SKILL1, () =>
+        CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
         {
             Debug.Log("Skill1");
         }, EventType.KEY_DOWN);
