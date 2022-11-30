@@ -19,6 +19,17 @@ public class CharacterSprite : CharacterComponent
         {
             _spriteRenderer.flipX = true;
             _direction = Direction.LEFT;
+        }, EventType.KEY_DOWN);
+
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        {
+            _spriteRenderer.flipX = false;
+            _direction = Direction.RIGHT;
+        }, EventType.KEY_DOWN);
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        {
+            _spriteRenderer.flipX = true;
+            _direction = Direction.LEFT;
         }, EventType.KEY_HOLD);
 
         CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>

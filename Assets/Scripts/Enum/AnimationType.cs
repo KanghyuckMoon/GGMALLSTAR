@@ -7,5 +7,8 @@ public enum AnimationType
     Fall,
     Attack,
     Damage,
-    Dead
+    Dead,
+    Skill1,
+    Skill2,
+    AllStarSkill,
 }
