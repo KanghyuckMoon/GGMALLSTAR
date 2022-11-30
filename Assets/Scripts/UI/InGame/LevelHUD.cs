@@ -3,17 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class LevelHUD : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI levelTextP1;
 	[SerializeField] private TextMeshProUGUI levelTextP2;
 
-	[SerializeField] private TextMeshProUGUI expTextP1;
-	[SerializeField] private TextMeshProUGUI expTextP2;
+	[SerializeField] private Image expImageP1;
+	[SerializeField] private Image expImageP2;
 
 	private CharacterLevel characterLevelP1;
 	private CharacterLevel characterLevelP2;
+
+	public RectTransform LevelTextP1
+	{
+		get
+		{
+			return levelTextP1.rectTransform;
+		}
+	}
+	public RectTransform LevelTextP2
+	{
+		get
+		{
+			return levelTextP2.rectTransform;
+		}
+	}
 
 	private void Start()
 	{
@@ -38,19 +54,47 @@ public class LevelHUD : MonoBehaviour
 
 	private void ChangeLevelHUDP1()
 	{
-		levelTextP1.text = $"{characterLevelP1.Level}";
+		if(characterLevelP1.Level == 4)
+		{
+			levelTextP1.text = "ALL STAR";
+		}
+		else
+		{
+			levelTextP1.text = $"{characterLevelP1.Level}STAR";
+		}
 	}
 	private void ChangeExpHUDP1()
 	{
-		expTextP1.text = $"{characterLevelP1.Exp}";
+		if(characterLevelP1.Level == 4)
+		{
+			expImageP1.fillAmount = 1f;
+		}
+		else
+		{
+			expImageP1.fillAmount = ((float)characterLevelP1.Exp - characterLevelP1.PreviouseExp) / characterLevelP1.NeedExp;
+		}
 	}
 
 	private void ChangeLevelHUDP2()
 	{
-		levelTextP2.text = $"{characterLevelP2.Level}";
+		if (characterLevelP2.Level == 4)
+		{
+			levelTextP2.text = "ALL STAR";
+		}
+		else
+		{
+			levelTextP2.text = $"{characterLevelP2.Level}STAR";
+		}
 	}
 	private void ChangeExpHUDP2()
 	{
-		expTextP2.text = $"{characterLevelP2.Exp}";
+		if (characterLevelP2.Level < 4)
+		{
+			expImageP2.fillAmount = ((float)characterLevelP2.Exp - characterLevelP2.PreviouseExp) / characterLevelP2.NeedExp;
+		}
+		else
+		{
+			expImageP2.fillAmount = 1f;
+		}
 	}
 }

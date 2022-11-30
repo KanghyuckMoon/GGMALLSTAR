@@ -10,6 +10,7 @@ public class RoundHUD : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI roundtext;
 	[SerializeField] private Image[] roundCountP1;
 	[SerializeField] private Image[] roundCountP2;
+	[SerializeField] private Sprite winSprite;
 
 	private RoundManager roundManager;
 
@@ -21,6 +22,15 @@ public class RoundHUD : MonoBehaviour
 		roundManager.RoundStartEvent += RoundStart;
 		roundManager.RoundEndEvent += RoundEnd;
 		roundManager.GameEndEvent += GameEnd;
+
+		if (SelectDataSO.isArcade)
+		{
+			roundCountP1[1].gameObject.SetActive(false);
+			roundCountP1[2].gameObject.SetActive(false);
+			roundCountP2[1].gameObject.SetActive(false);
+			roundCountP2[2].gameObject.SetActive(false);
+		}
+
 	}
 
 	private void RoundSet()
@@ -68,12 +78,12 @@ public class RoundHUD : MonoBehaviour
 	{
 		for (int i = 0; i < roundManager.WinCountP1; ++i)
 		{
-			roundCountP1[i].color = Color.white;
+			roundCountP1[i].sprite = winSprite;
 		}
 
 		for (int i = 0; i < roundManager.WinCountP2; ++i)
 		{
-			roundCountP2[i].color = Color.white;
+			roundCountP2[i].sprite = winSprite;
 		}
 	}
 

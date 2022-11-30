@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - HitBox
   - Wall
-  - 
+  - HUD
   - 
   - 
   - 
@@ -45,4 +45,7 @@ TagManager:
     locked: 0
   - name: Effect
     uniqueID: 80326057
+    locked: 0
+  - name: HUD
+    uniqueID: 2138343247
     locked: 0

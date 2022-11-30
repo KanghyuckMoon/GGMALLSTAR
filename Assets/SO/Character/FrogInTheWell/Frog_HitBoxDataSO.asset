@@ -27,6 +27,7 @@ MonoBehaviour:
       effectType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: se_common_swing_01
+      addExp: 100
   - hitBoxDatas:
     - actionName: Attack2
       damage: 3
@@ -41,3 +42,4 @@ MonoBehaviour:
       effectType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: 
+      addExp: 30

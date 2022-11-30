@@ -23,9 +23,21 @@ public class RoundManager : MonoBehaviour
 	private System.Action roundStartEvent;
 	private System.Action roundEndEvent;
 	private System.Action gameEndEvent;
+	private System.Action timeChangeEvent;
 
+	public bool IsSetting
+	{
+		get
+		{
+			return isSetting;
+		}
+	}
 	public int WinCountP1 => winCountP1;
 	public int WinCountP2 => winCountP2;
+
+	private float time = 0f;
+	public float Time => time;
+
 
 	public System.Action RoundSetEvent
 	{
@@ -85,6 +97,17 @@ public class RoundManager : MonoBehaviour
 			gameEndEvent = value;
 		}
 	}
+	public System.Action TimeChangeEvent
+	{
+		get
+		{
+			return timeChangeEvent;
+		}
+		set
+		{
+			timeChangeEvent = value;
+		}
+	}
 	public int RoundNumber => roundNumber;
 
 	private IEnumerator Start()
@@ -105,14 +128,24 @@ public class RoundManager : MonoBehaviour
 		roundManager.RoundEndSetting(loser);
 	}
 
+	public static bool ReturnIsSetting()
+	{
+		RoundManager roundManager = FindObjectOfType<RoundManager>();
+		return roundManager.isSetting;
+	}
+
 	private void RoundEndSetting(Character loser)
 	{
 		if (isSetting is false)
 		{
 			return;
 		}
-
 		isSetting = false;
+
+		CameraManager.SetKO(loser.transform, 3f);
+		SetInputSturnTime(6f);
+		StopMove(6f);
+
 
 		if (loser == characterP1)
 		{
@@ -127,8 +160,6 @@ public class RoundManager : MonoBehaviour
 
 		if (winCountP1 >= 3 || winCountP2 >= 3)
 		{
-			SetInputSturnTime(2f);
-
 			if (winCountP1 >= 3)
 			{
 				Debug.Log("Game End P1 Win");
@@ -206,15 +237,39 @@ public class RoundManager : MonoBehaviour
 	{
 		roundEndEvent?.Invoke();
 		   yield return new WaitForSeconds(time);
-		HPFullSetting();
-		PostionSetting();
-		RoundSetting();
+		if (SelectDataSO.isArcade)
+		{
+			if(winCountP1 > 0)
+			{
+				SelectDataSO.winCount++;
+				LoadingScene.Instance.LoadScene("Arcade", LoadingScene.LoadingSceneType.Normal);
+			}
+			else
+			{
+				LoadingScene.Instance.LoadScene("Main", LoadingScene.LoadingSceneType.Normal);
+			}
+		}
+		else
+		{
+			HPFullSetting();
+			PostionSetting();
+			RoundSetting();
+		}
+
 	}
 	private IEnumerator GameEnd(float time)
 	{
 		gameEndEvent?.Invoke();
 		yield return new WaitForSeconds(time);
-		LoadingScene.Instance.LoadScene("Main", LoadingScene.LoadingSceneType.Normal);
+		if (SelectDataSO.isArcade && winCountP1 > 0)
+		{
+			SelectDataSO.winCount++;
+			LoadingScene.Instance.LoadScene("Arcade", LoadingScene.LoadingSceneType.Normal);
+		}
+		else
+		{
+			LoadingScene.Instance.LoadScene("Main", LoadingScene.LoadingSceneType.Normal);
+		}
 	}
 
 	private IEnumerator Fight(float readyTime, float fightTime)
@@ -222,6 +277,7 @@ public class RoundManager : MonoBehaviour
 		yield return new WaitForSeconds(readyTime);
 		SoundManager.Instance.PlayEFF("vc_narration_ready");
 		roundReadyEvent?.Invoke();
+		time = 99f;
 
 		yield return new WaitForSeconds(fightTime);
 		Debug.Log("Fight");
@@ -253,7 +309,58 @@ public class RoundManager : MonoBehaviour
 			var aITestInputP2 = characterP2.GetCharacterComponent<CharacterAIInput>();
 			aITestInputP2.SetStunTime(time);
 		}
+	}
 
+	private void StopMove(float time)
+	{
+
+		CharacterGravity characterGravityP1 = characterP1.GetCharacterComponent<CharacterGravity>();
+		CharacterMove characterMoveP1 = characterP1.GetCharacterComponent<CharacterMove>();
+		CharacterAnimation characterAnimationP1 = characterP1.GetCharacterComponent<CharacterAnimation>();
+
+		characterGravityP1.SetHitTime(time);
+		characterMoveP1.SetSturnTime(time);
+		characterAnimationP1.SetHitTime(time);
+
+
+		CharacterGravity characterGravityP2 = characterP2.GetCharacterComponent<CharacterGravity>();
+		CharacterMove characterMoveP2 = characterP2.GetCharacterComponent<CharacterMove>();
+		CharacterAnimation characterAnimationP2 = characterP2.GetCharacterComponent<CharacterAnimation>();
+
+		characterGravityP2.SetHitTime(time);
+		characterMoveP2.SetSturnTime(time);
+		characterAnimationP2.SetHitTime(time);
+
+
+		characterP1.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		characterP2.GetComponent<Rigidbody>().velocity = Vector3.zero;
+	}
+
+
+	private void Update()
+	{
+		if (isSetting)
+		{
+			if (time > 0f)
+			{
+				time -= UnityEngine.Time.deltaTime;
+				timeChangeEvent?.Invoke();
+			}
+			else
+			{
+				CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
+				CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>();
+
+				if (characterStatP1.HP / characterStatP1.MaxHP > characterStatP2.HP / characterStatP2.MaxHP)
+				{
+					RoundEndSetting(characterP2);
+				}
+				else
+				{
+					RoundEndSetting(characterP1);
+				}
+			}
+		}
 	}
 
 }

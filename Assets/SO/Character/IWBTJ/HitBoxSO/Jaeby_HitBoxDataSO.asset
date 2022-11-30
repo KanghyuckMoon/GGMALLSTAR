@@ -27,3 +27,4 @@ MonoBehaviour:
       effectType: 0
       hitEffSoundName: se_common_sword_hit_s
       atkEffSoundName: se_common_sword_swing_s
+      addExp: 10

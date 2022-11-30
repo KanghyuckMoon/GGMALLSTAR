@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 109159574544936940}
   - component: {fileID: 109159574544936941}
   m_Layer: 0
-  m_Name: I_OylmpianChess
+  m_Name: I_OlympianChess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

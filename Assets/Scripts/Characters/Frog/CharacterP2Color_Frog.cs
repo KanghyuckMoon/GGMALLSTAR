@@ -11,6 +11,7 @@ public class CharacterP2Color_Frog : CharacterP2Color
 
 	public override void SetP2Color()
 	{
-		Character.GetComponentInChildren<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
+		Character.GetComponentInChildren<SpriteRenderer>().material = Addressable.AddressablesManager.Instance.GetResource<Material>("SpriteShadowP2");
+		//Character.GetComponentInChildren<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
 	}
 }

@@ -9,6 +9,7 @@ namespace Effect
         Hit_4,
         Dirty_01,
         FinalHit,
+        StarGetEff,
         Count,
     }
 }

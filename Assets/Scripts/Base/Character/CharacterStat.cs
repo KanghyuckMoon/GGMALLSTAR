@@ -17,6 +17,7 @@ public class CharacterStat : CharacterComponent
 
     protected float _hp = 0;
     protected float _maxHP = 0;
+    protected bool _isPlayerP1 = false;
     public float MaxHP => _maxHP;
     public float HP => _hp;
     public bool IsAlive
@@ -26,6 +27,18 @@ public class CharacterStat : CharacterComponent
             return _hp > 0f;
 		}
 	}
+    public bool IsPlayerP1
+	{
+        get
+		{
+            return _isPlayerP1;
+		}
+        set
+		{
+            _isPlayerP1 = value;
+		}
+	}
+
 	protected override void Awake()
     {
         CharacterSO characterSO = Character.CharacterSO;
