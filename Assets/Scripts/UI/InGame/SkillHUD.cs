@@ -25,15 +25,6 @@ public class SkillHUD : MonoBehaviour
 
 	private void Start()
 	{
-		//skillImagesP1[0].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
-		//skillImagesP1[1].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
-		//skillImagesP1[2].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
-
-		//skillImagesP2[0].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
-		//skillImagesP2[1].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
-		//skillImagesP2[2].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
-
-
 		CharacterSpawner characterSpawner = FindObjectOfType<CharacterSpawner>();
 		var characterP1 = characterSpawner.Player1.GetComponent<Character>();
 		var characterP2 = characterSpawner.Player2.GetComponent<Character>();
@@ -72,6 +63,18 @@ public class SkillHUD : MonoBehaviour
 			ChangeSkill2_P2();
 			ChangeSkill3_P2();
 		}
+
+		//SkillImage
+
+		skillImagesP1[0].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_SkillImage1");
+		skillImagesP1[1].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_SkillImage2");
+		//skillImagesP1[2].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
+
+		//skillImagesP2[0].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
+		//skillImagesP2[1].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
+		//skillImagesP2[2].sprite = AddressablesManager.Instance.GetResource<Sprite>(SelectDataSO.characterSelectP1.ToString());
+
+
 	}
 
 	private void ChangeSkill1_P1()
