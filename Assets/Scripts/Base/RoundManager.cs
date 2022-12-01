@@ -174,7 +174,6 @@ public class RoundManager : MonoBehaviour
 		else
 		{
 			SoundManager.Instance.PlayEFF("vc_narration_gameset");
-
 			StartCoroutine(NextRound(6f));
 		}
 	}
@@ -251,6 +250,7 @@ public class RoundManager : MonoBehaviour
 		}
 		else
 		{
+			SoundManager.Instance.SetBGMSpeed(SoundManager.Instance.Pitch + 0.1f);
 			HPFullSetting();
 			PostionSetting();
 			RoundSetting();
@@ -261,6 +261,7 @@ public class RoundManager : MonoBehaviour
 	{
 		gameEndEvent?.Invoke();
 		yield return new WaitForSeconds(time);
+		SoundManager.Instance.SetBGMSpeed(1.0f);
 		if (SelectDataSO.isArcade && winCountP1 > 0)
 		{
 			SelectDataSO.winCount++;

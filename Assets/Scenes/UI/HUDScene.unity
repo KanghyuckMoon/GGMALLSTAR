@@ -5929,6 +5929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBarIamgeP1: {fileID: 780390984}
   hpBarIamgeP2: {fileID: 1771858902}
+  characterImageP1: {fileID: 1208156211}
+  characterImageP2: {fileID: 1127727845}
 --- !u!114 &1852666239
 MonoBehaviour:
   m_ObjectHideFlags: 0

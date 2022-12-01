@@ -9,5 +9,6 @@ public class LoadingMemoryClean : MonoBehaviour
     void Start()
     {
         PoolManager.DeleteAllPool();
+        Sound.SoundManager.Instance.SetBGMSpeed(1.0f);
     }
 }
