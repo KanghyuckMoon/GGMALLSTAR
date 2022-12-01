@@ -155,7 +155,7 @@ MonoBehaviour:
   _characterSO: {fileID: 11400000, guid: 13c31aa1d084ab54eaeaf3181defd58a, type: 2}
   _characterLevelSO: {fileID: 0}
   _inputDataBaseSO: {fileID: 11400000, guid: 46bd95fd7549ed44e8c44b18738106d0, type: 2}
-  _hitBoxDataSO: {fileID: 0}
+  _hitBoxDataSO: {fileID: 11400000, guid: 7a52aeaf808bcd94fad7ce34f5517304, type: 2}
 --- !u!54 &7389603660710272984
 Rigidbody:
   m_ObjectHideFlags: 0
