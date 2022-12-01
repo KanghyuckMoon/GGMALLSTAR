@@ -19,6 +19,17 @@ public class CharacterLevel : CharacterComponent
 			return _exp;
 		}
 	}
+	public bool IsAllStarSkillUse
+	{
+		get
+		{
+			return isAllStarSkillUse;
+		}
+		set
+		{
+			isAllStarSkillUse = value;
+		}
+	}
 
 	private System.Action changeExpEvent;
 	private System.Action changeLevelEvent;
@@ -26,6 +37,7 @@ public class CharacterLevel : CharacterComponent
 	private int _previousLevel = 1;
 	private int _level = 1;
 	private int _exp = 0;
+	private bool isAllStarSkillUse;
 
 	public int NeedExp
 	{
