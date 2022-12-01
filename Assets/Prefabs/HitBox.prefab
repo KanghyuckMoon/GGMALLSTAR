@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.15, z: 1}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3109366243718116312
 MonoBehaviour:
@@ -58,3 +58,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9085c40b96d874daca2ee65a524521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxData:
+    actionName: 
+    damage: 10
+    knockBack: 10
+    knockAngle: 50
+    hitTime: 0.3
+    sturnTime: 0.3
+    _attackOffset: {x: 0, y: 0, z: 0}
+    _attackSize: {x: 0, y: 0, z: 0}
+    shakePower: 20
+    shakeTime: 0.3
+    effectType: 0
+    hitEffSoundName: 
+    atkEffSoundName: 
+    addExp: 0

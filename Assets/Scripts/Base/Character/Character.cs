@@ -5,17 +5,17 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [SerializeField]
-    protected CharacterSO _characterSO = null;
+    private CharacterSO _characterSO = null;
     public CharacterSO CharacterSO => _characterSO;
 
     [SerializeField]
-    protected CharacterLevelSO _characterLevelSO = null;
+    private CharacterLevelSO _characterLevelSO = null;
 
     public CharacterLevelSO CharacterLevelSO => _characterLevelSO;
 
 
     [SerializeField]
-    protected InputDataBaseSO _inputDataBaseSO = null;
+    private InputDataBaseSO _inputDataBaseSO = null;
     public InputDataBaseSO InputDataBaseSO
     {
         get
@@ -30,7 +30,7 @@ public abstract class Character : MonoBehaviour
 
 
     [SerializeField]
-    protected HitBoxDataSO _hitBoxDataSO = null;
+    private HitBoxDataSO _hitBoxDataSO = null;
     public HitBoxDataSO HitBoxDataSO => _hitBoxDataSO;
 
     private Dictionary<ComponentType, CharacterComponent> _characterComponents = null;
