@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpriteShadw
+  m_Name: SpriteShadow
   m_Shader: {fileID: -6465566751694194690, guid: b3dc4bf69e8772948b3e10476843004d,
     type: 3}
   m_ValidKeywords: []

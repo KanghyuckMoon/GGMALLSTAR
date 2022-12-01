@@ -11,17 +11,7 @@ public class CharacterAttack : CharacterComponent
 
     }
 
-    public bool IsRight
-	{
-        get
-		{
-            return _isRight;
-		}
-	}
-
     private Direction _direction = Direction.RIGHT;
-
-    private bool _isRight = false;
 
     private CharacterDamage _targetCharacterDamage = null;
     private CharacterAnimation characterAnimation = null;
@@ -36,10 +26,22 @@ public class CharacterAttack : CharacterComponent
         }
     }
 
+    public bool IsRight
+	{
+        get
+        {
+            characterMove ??= Character.GetCharacterComponent<CharacterMove>();
+            return characterMove.IsRight;
+        }
+	}
+
     protected override void Awake()
     {
         _direction = Character.GetCharacterComponent<CharacterSprite>().Direction;
+
     }
+
+	CharacterMove characterMove = null;
 
     protected override void SetEvent()
     {
@@ -48,24 +50,6 @@ public class CharacterAttack : CharacterComponent
             SetInputDelay();
             AttackAnimation();
         }, EventType.KEY_DOWN);
-        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
-        {
-            _isRight = false;
-        }, EventType.KEY_DOWN);
-
-        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
-        {
-            _isRight = true;
-        }, EventType.KEY_DOWN);
-        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
-        {
-            _isRight = false;
-        }, EventType.KEY_HOLD);
-
-        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
-        {
-            _isRight = true;
-        }, EventType.KEY_HOLD);
     }
 
     private void AttackAnimation()

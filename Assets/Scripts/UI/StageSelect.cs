@@ -9,4 +9,8 @@ public class StageSelect : MonoBehaviour
 	{
 		LoadingScene.Instance.LoadScene(sceneName, LoadingScene.LoadingSceneType.Battle);
 	}
+	public void ArcadeLoadScene()
+	{
+		LoadingScene.Instance.LoadScene("Arcade", LoadingScene.LoadingSceneType.Normal);
+	}
 }

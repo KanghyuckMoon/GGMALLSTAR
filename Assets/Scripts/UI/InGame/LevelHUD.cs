@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class LevelHUD : MonoBehaviour
 {
@@ -55,11 +56,11 @@ public class LevelHUD : MonoBehaviour
 	{
 		if(characterLevelP1.Level == 4)
 		{
-			levelTextP1.text = "ALL Star";
+			levelTextP1.text = "ALL STAR";
 		}
 		else
 		{
-			levelTextP1.text = $"{characterLevelP1.Level}Star";
+			levelTextP1.text = $"{characterLevelP1.Level}STAR";
 		}
 	}
 	private void ChangeExpHUDP1()
@@ -78,11 +79,11 @@ public class LevelHUD : MonoBehaviour
 	{
 		if (characterLevelP2.Level == 4)
 		{
-			levelTextP2.text = "ALL Star";
+			levelTextP2.text = "ALL STAR";
 		}
 		else
 		{
-			levelTextP2.text = $"{characterLevelP2.Level}Star";
+			levelTextP2.text = $"{characterLevelP2.Level}STAR";
 		}
 	}
 	private void ChangeExpHUDP2()

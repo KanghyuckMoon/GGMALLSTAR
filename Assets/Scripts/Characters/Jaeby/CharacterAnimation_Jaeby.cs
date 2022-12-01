@@ -8,6 +8,9 @@ public class CharacterAnimation_Jaeby : CharacterAnimation
     {
         base.Awake();
         AddAnimationHash(AnimationType.Attack, AnimationKeyWord.ATTACK);
+        AddAnimationHash(AnimationType.Skill1, AnimationKeyWord.ATTACK);
+        AddAnimationHash(AnimationType.Skill2, AnimationKeyWord.ATTACK);
+        AddAnimationHash(AnimationType.AllStarSkill, AnimationKeyWord.ATTACK);
         AddAnimationHash(AnimationType.Run, AnimationKeyWord.RUN);
         AddAnimationHash(AnimationType.Jump, AnimationKeyWord.JUMP);
     }

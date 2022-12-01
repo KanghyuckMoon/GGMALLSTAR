@@ -19,11 +19,16 @@ public class CameraManager : MonoBehaviour
 	public void Start()
 	{
 		cinemachineBrains = GetComponent<CinemachineBrain>();
-		SetCamera(CameraType.Normal);
+		SetCamera(CameraType.Normal, true);
 	}
 
-	public void SetCamera(CameraType cameraType)
+	public void SetCamera(CameraType cameraType, bool isRoundNotMatter = false, bool isRoundSetting = true)
 	{
+		if(!isRoundNotMatter && isRoundSetting != RoundManager.ReturnIsSetting())
+		{
+			return;
+		}
+
 		foreach (var cam in cinemachineVirtualCameras)
 		{
 			cam.gameObject.SetActive(false);
@@ -39,7 +44,7 @@ public class CameraManager : MonoBehaviour
 		float totalShakeTime = shakeTime;
 		cinemachineBasicMultiChannelPerlin.m_FrequencyGain = 5;
 
-		SetCamera(CameraType.Shake);
+		SetCamera(CameraType.Shake, false, true);
 
 		while (shakeTime > 0)
 		{
@@ -48,7 +53,7 @@ public class CameraManager : MonoBehaviour
 			yield return new WaitForSeconds(Time.deltaTime);
 		}
 
-		SetCamera(CameraType.Normal);
+		SetCamera(CameraType.Normal, false, true);
 	}
 
 	public IEnumerator StartKO(Transform transform, float killTime)
@@ -61,7 +66,7 @@ public class CameraManager : MonoBehaviour
 		Vector3 startOffset = new Vector3(-3, 0.5f, -2.5f);
 		Vector3 endOffset = new Vector3(1.3f, 0.5f, -2.5f);
 
-		SetCamera(CameraType.Zoom);
+		SetCamera(CameraType.Zoom, true);
 
 		while (killTime > 0)
 		{
@@ -70,7 +75,7 @@ public class CameraManager : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 		}
 
-		SetCamera(CameraType.Normal);
+		SetCamera(CameraType.Normal, true);
 		shakeCoroutine = null;
 	}
 

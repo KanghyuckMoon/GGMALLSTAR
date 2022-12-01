@@ -79,9 +79,13 @@ namespace Inventory
 				allItemSO.allItemAddressNames.Remove(addressName);
 				GetItem(addressName);
 			}
-			else
+			else if (!inventoryData.itemAddressNames.Contains("I_GGMALLSTAR"))
 			{
-
+				inventoryData.itemAddressNames.Add("I_GGMALLSTAR");
+				ItemDataSO itemDataSO = AddressablesManager.Instance.GetResource<ItemDataSO>("I_GGMALLSTAR");
+				inventorySO.itemDatas.Add(itemDataSO);
+				FindObjectOfType<ItemPopUpManager>(true).SetItemPopUp(itemDataSO.itemName);
+				SaveManager.Save<InventoryData>(ref inventoryData);
 			}
 
 		}

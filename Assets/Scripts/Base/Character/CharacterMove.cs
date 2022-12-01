@@ -62,12 +62,44 @@ public class CharacterMove : CharacterComponent
         characterStat = Character.GetCharacterComponent<CharacterStat>();
     }
 
-    private CharacterStat characterStat;
+	protected override void SetEvent()
+	{
+		base.SetEvent();
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        {
+            _isRight = false;
+        }, EventType.KEY_DOWN);
+
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        {
+            _isRight = true;
+        }, EventType.KEY_DOWN);
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        {
+            _isRight = false;
+        }, EventType.KEY_HOLD);
+
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        {
+            _isRight = true;
+        }, EventType.KEY_HOLD);
+    }
+
+	private CharacterStat characterStat;
     private Transform _transform = null;
     private Rigidbody _rigidbody = null;
     private Vector2 _inputDirection = Vector2.zero;
     private Vector2 _moveDirection = Vector2.zero;
     private float _sturnTime = 0f;
+
+    private bool _isRight = false;
+    public bool IsRight
+    {
+        get
+        {
+            return _isRight;
+        }
+    }
 
     public void SetSturnTime(float time)
     {
