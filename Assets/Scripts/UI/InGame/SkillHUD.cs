@@ -16,6 +16,8 @@ public class SkillHUD : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI[] skillCoolTimeTextP1;
 	[SerializeField] private TextMeshProUGUI[] skillCoolTimeTextP2;
 
+	[SerializeField] private Sprite lockImage;
+
 
 	private CharacterLevel characterLevelP1;
 	private CharacterLevel characterLevelP2;
@@ -125,6 +127,10 @@ public class SkillHUD : MonoBehaviour
 	{
 		if (characterLevelP1.Level > 3)
 		{
+			if (characterLevelP1.IsAllStarSkillUse)
+			{
+				skillImagesP1[2].sprite = lockImage;
+			}
 			skillImagesP1[2].gameObject.SetActive(true);
 		}
 		else
@@ -181,6 +187,10 @@ public class SkillHUD : MonoBehaviour
 	{
 		if (characterLevelP2.Level > 3)
 		{
+			if(characterLevelP2.IsAllStarSkillUse)
+			{
+				skillImagesP2[2].sprite = lockImage;
+			}
 			skillImagesP2[2].gameObject.SetActive(true);
 		}
 		else
