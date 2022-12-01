@@ -287,7 +287,12 @@ public class RoundManager : MonoBehaviour
 		roundStartEvent?.Invoke();
 	}
 
-	private void SetInputSturnTime(float time)
+	public static void StaticSetInputSturnTime(float time)
+	{
+		FindObjectOfType<RoundManager>().SetInputSturnTime(time);
+	}
+
+	public void SetInputSturnTime(float time)
 	{
 		CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
 		if (characterInputP1 != null)
@@ -311,8 +316,12 @@ public class RoundManager : MonoBehaviour
 			aITestInputP2.SetStunTime(time);
 		}
 	}
+	public static void StaticStopMove(float time)
+	{
+		FindObjectOfType<RoundManager>().StopMove(time);
+	}
 
-	private void StopMove(float time)
+	public void StopMove(float time)
 	{
 
 		CharacterGravity characterGravityP1 = characterP1.GetCharacterComponent<CharacterGravity>();

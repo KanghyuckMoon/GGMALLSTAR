@@ -41,9 +41,11 @@ public abstract class CharacterSkill : CharacterComponent
 
     protected System.Action skill1CoolTimeChange;
     protected System.Action skill2CoolTimeChange;
+    protected System.Action allStarSkillUse;
 
     public System.Action Skill1CoolTimeChange => skill1CoolTimeChange;
     public System.Action Skill2CoolTimeChange => skill2CoolTimeChange;
+    protected System.Action AllStarSkillUse => allStarSkillUse;
 
     public CharacterSkill(Character character) : base(character)
     {
@@ -57,6 +59,10 @@ public abstract class CharacterSkill : CharacterComponent
     public void AddSkill2CoolTimeChange(System.Action action)
     {
         skill2CoolTimeChange += action;
+    }
+    public void AddAllStarSkillUse(System.Action action)
+    {
+        allStarSkillUse += action;
     }
 
 }

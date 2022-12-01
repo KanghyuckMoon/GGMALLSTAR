@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Addressable;
 using TMPro;
+using DG.Tweening;
 
 public class SkillHUD : MonoBehaviour
 {
@@ -23,6 +24,13 @@ public class SkillHUD : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI[] skillCoolTimeTextP2;
 
 	[SerializeField] private Sprite lockImage;
+
+	[SerializeField] private RectTransform allStarSkillCutObjP1;
+	[SerializeField] private RectTransform allStarSkillCutObjP2;
+	[SerializeField] private Image allStarSkillCutP1;
+	[SerializeField] private Image allStarSkillCutP2;
+	private Vector3 originAllStarSkillCutPosP1;
+	private Vector3 originAllStarSkillCutPosP2;
 
 
 	private CharacterLevel characterLevelP1;
@@ -58,6 +66,8 @@ public class SkillHUD : MonoBehaviour
 		{
 			characterSkillP1?.AddSkill1CoolTimeChange(ChangeSkill1_P1);
 			characterSkillP1?.AddSkill2CoolTimeChange(ChangeSkill2_P1);
+			characterSkillP1?.AddAllStarSkillUse(ChangeSkill3_P1);
+			characterSkillP1?.AddAllStarSkillUse(UseAllStarSkillP1);
 			characterLevelP1?.AddChangeLevelEvent(ChangeSkill1_P1);
 			characterLevelP1?.AddChangeLevelEvent(ChangeSkill2_P1);
 			characterLevelP1?.AddChangeLevelEvent(ChangeSkill3_P1);
@@ -71,6 +81,8 @@ public class SkillHUD : MonoBehaviour
 		{
 			characterSkillP2?.AddSkill1CoolTimeChange(ChangeSkill1_P2);
 			characterSkillP2?.AddSkill2CoolTimeChange(ChangeSkill2_P2);
+			characterSkillP2?.AddAllStarSkillUse(ChangeSkill3_P2);
+			characterSkillP2?.AddAllStarSkillUse(UseAllStarSkillP2);
 			characterLevelP2?.AddChangeLevelEvent(ChangeSkill1_P2);
 			characterLevelP2?.AddChangeLevelEvent(ChangeSkill2_P2);
 			characterLevelP2?.AddChangeLevelEvent(ChangeSkill3_P2);
@@ -85,11 +97,14 @@ public class SkillHUD : MonoBehaviour
 		skillImagesP1[0].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_SkillImage1");
 		skillImagesP1[1].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_SkillImage2");
 		skillImagesP1[2].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_AllStarSkillImage");
+		allStarSkillCutP1.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_AllStarSkillImage");
 
 		skillImagesP2[0].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_SkillImage1");
 		skillImagesP2[1].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_SkillImage2");
-		skillImagesP2[2].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_AllStarSkillImage");
+		allStarSkillCutP2.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_AllStarSkillImage");
 
+		originAllStarSkillCutPosP1 = allStarSkillCutObjP1.localPosition;
+		originAllStarSkillCutPosP2 = allStarSkillCutObjP2.localPosition;
 
 	}
 
@@ -108,6 +123,26 @@ public class SkillHUD : MonoBehaviour
 			CheckCanUseSkill(characterSkillP1.Skill2RemainCoolTime, ref isNowCanUseSkill2P1, skillCoolTimeParticleP1[1]);
 		}
 	}
+
+	private void UseAllStarSkillP1()
+	{
+		allStarSkillCutObjP1.gameObject.SetActive(true);
+		allStarSkillCutObjP1.DOShakePosition(1f, 6f).OnComplete(() =>
+		{
+			allStarSkillCutObjP1.localPosition = originAllStarSkillCutPosP1;
+			allStarSkillCutObjP1.gameObject.SetActive(false);
+		});
+	}
+	private void UseAllStarSkillP2()
+	{
+		allStarSkillCutObjP2.gameObject.SetActive(true);
+		allStarSkillCutObjP2.DOShakePosition(1f, 6f).OnComplete(() =>
+		{
+			allStarSkillCutObjP2.localPosition = originAllStarSkillCutPosP2;
+			allStarSkillCutObjP2.gameObject.SetActive(false);
+		});
+	}
+
 	private void ChangeSkill3_P1()
 	{
 		if (characterLevelP1.Level > 3)
@@ -115,7 +150,7 @@ public class SkillHUD : MonoBehaviour
 			if (characterLevelP1.IsAllStarSkillUse)
 			{
 				skillImagesP1[2].sprite = lockImage;
-				allStarSkillEffectP1.gameObject.SetActive(true);
+				allStarSkillEffectP1.gameObject.SetActive(false);
 			}
 			else
 			{

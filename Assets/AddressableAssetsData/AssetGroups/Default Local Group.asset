@@ -405,6 +405,10 @@ MonoBehaviour:
     m_Address: CoolTimeEndEff
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4da79225b93910a4dab6c9f6646b1667
+    m_Address: Assets/Prefabs/ALL_STAR_SKILL_Projectile_Jaeby.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

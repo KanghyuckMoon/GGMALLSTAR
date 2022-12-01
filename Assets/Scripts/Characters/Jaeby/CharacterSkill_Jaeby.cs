@@ -52,8 +52,12 @@ public class CharacterSkill_Jaeby : CharacterSkill
             if (CharacterLevel.Level > 3 && !characterLevel.IsAllStarSkillUse)
             {
                 characterLevel.IsAllStarSkillUse = true;
-
-                PoolManager.GetItem("Assets/Prefabs/ALL_STAR_SKILL_Projectile_Jaeby.prefab").GetComponent<AllStarSkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>().Direction, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]);
+                Sound.SoundManager.Instance.PlayEFF("se_common_boss_core_hit");
+                CameraManager.SetAllStar(Character.transform);
+                RoundManager.StaticSetInputSturnTime(1f);
+                RoundManager.StaticStopMove(1f);
+                AllStarSkillUse?.Invoke();
+                Character.StartCoroutine(AllStarSkill());
             }
         }, EventType.KEY_DOWN);
     }
@@ -73,5 +77,15 @@ public class CharacterSkill_Jaeby : CharacterSkill
             skill2CoolTimeChange?.Invoke();
         }
 
+    }
+
+    private IEnumerator AllStarSkill()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if(RoundManager.ReturnIsSetting())
+        {
+            PoolManager.GetItem("Assets/Prefabs/ALL_STAR_SKILL_Projectile_Jaeby.prefab").GetComponent<AllStarSkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>().Direction, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]);
+		}
     }
 }
