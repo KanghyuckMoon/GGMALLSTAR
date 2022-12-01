@@ -1,4 +1,3 @@
-using System.Diagnostics.Tracing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +9,7 @@ public class CharacterSkill_Frog : CharacterSkill
     {
         CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
         {
-            Debug.Log("Skill 1");
+
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.SKILL_2, () =>
