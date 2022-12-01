@@ -58,3 +58,18 @@ MonoBehaviour:
       hitEffSoundName: se_common_sword_hit_s
       atkEffSoundName: JaebyAttack
       addExp: 25
+  - hitBoxDatas:
+    - actionName: ALL_STAR_SKILL
+      damage: 50
+      knockBack: 1
+      knockAngle: 85
+      hitTime: 1
+      sturnTime: 0.5
+      _attackOffset: {x: 0, y: 0, z: 0}
+      _attackSize: {x: 0.1, y: 0.16, z: 1}
+      shakePower: 5
+      shakeTime: 0.7
+      effectType: 0
+      hitEffSoundName: se_common_sword_hit_s
+      atkEffSoundName: JaebyAttack
+      addExp: 0

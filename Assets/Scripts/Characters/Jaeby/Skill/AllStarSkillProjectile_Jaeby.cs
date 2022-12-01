@@ -14,12 +14,11 @@ public class AllStarSkillProjectile_Jaeby : MonoBehaviour
         _direction = direction;
         _hitBoxData = hitBoxData;
         transform.position = position;
-        Debug.Log("SetSkillProjectile");
 
-        // if (_hitBoxData.atkEffSoundName != "")
-        // {
-        //     Sound.SoundManager.Instance.PlayEFF(_hitBoxData.atkEffSoundName);
-        // }
+        if (_hitBoxData.atkEffSoundName != "")
+        {
+            Sound.SoundManager.Instance.PlayEFF(_hitBoxData.atkEffSoundName);
+        }
 
         StartCoroutine(Move());
     }
@@ -36,28 +35,25 @@ public class AllStarSkillProjectile_Jaeby : MonoBehaviour
         {
             CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>();
             characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
-            //characterAttack.TargetCharacterDamage?.OnAttcked(null, _hitBoxData, other.ClosestPoint(transform.position), characterAttack.IsRight);
+            characterAttack.TargetCharacterDamage?.OnAttcked(null, _hitBoxData, other.ClosestPoint(transform.position), characterAttack.IsRight);
 
             //AI
             CharacterAIInput aiInput = characterAttack.Character.GetCharacterComponent<CharacterAIInput>();
             if (aiInput is not null)
             {
-                //aiInput.IsHit(_hitBoxData.actionName);
+                aiInput.IsHit(_hitBoxData.actionName);
             }
 
             //Exp
 
-            // int expCount = (_hitBoxData.addExp / 5) + 1;
+            int expCount = (_hitBoxData.addExp / 5) + 1;
 
-            // for (int i = 0; i < expCount; ++i)
-            // {
-            //     StarEffect starEffect = Pool.PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
-            //     starEffect.SetEffect(transform.position, _character.GetCharacterComponent<CharacterLevel>(), _hitBoxData.addExp / expCount);
-            // }
+            for (int i = 0; i < expCount; ++i)
+            {
+                StarEffect starEffect = Pool.PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
+                starEffect.SetEffect(transform.position, _character.GetCharacterComponent<CharacterLevel>(), _hitBoxData.addExp / expCount);
+            }
         }
-
-        gameObject.SetActive(false);
-        Pool.PoolManager.AddObjToPool("Assets/Prefabs/ALL_STAR_SKILL_Projectile_Jaeby.prefab", gameObject);
     }
 
     private IEnumerator Move()

@@ -50,7 +50,7 @@ public class CharacterSkill_Jaeby : CharacterSkill
         CharacterEvent.AddEvent(EventKeyWord.ALL_STAR_SKILL, () =>
         {
             Debug.Log("ALL_STAR_SKILL");
-            PoolManager.GetItem("Assets/Prefabs/ALL_STAR_SKILL_Projectile_Jaeby.prefab").GetComponent<AllStarSkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>().Direction, Character.transform.position + new Vector3(0, 0.09f, 0), null);
+            PoolManager.GetItem("Assets/Prefabs/ALL_STAR_SKILL_Projectile_Jaeby.prefab").GetComponent<AllStarSkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>().Direction, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]);
         }, EventType.KEY_DOWN);
     }
 
