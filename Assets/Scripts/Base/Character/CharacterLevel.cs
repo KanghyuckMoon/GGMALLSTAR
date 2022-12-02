@@ -163,5 +163,13 @@ public class CharacterLevel : CharacterComponent
         }
     }
 
-
+    //디버그용 코드
+	//public override void Update()
+	//{
+	//	base.Update();
+    //    if(Input.GetKeyDown(KeyCode.P))
+	//	{
+    //        AddExp(10);
+	//	}
+	//}
 }

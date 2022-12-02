@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Addressable;
 using TMPro;
+using DG.Tweening;
 
 public class SkillHUD : MonoBehaviour
 {
@@ -13,16 +14,37 @@ public class SkillHUD : MonoBehaviour
 	[SerializeField] private Image[] skillHideImagesP1;
 	[SerializeField] private Image[] skillHideImagesP2;
 
+	[SerializeField] private GameObject allStarSkillEffectP1;
+	[SerializeField] private GameObject allStarSkillEffectP2;
+
+	[SerializeField] private GameObject[] skillCoolTimeParticleP1;
+	[SerializeField] private GameObject[] skillCoolTimeParticleP2;
+
 	[SerializeField] private TextMeshProUGUI[] skillCoolTimeTextP1;
 	[SerializeField] private TextMeshProUGUI[] skillCoolTimeTextP2;
 
 	[SerializeField] private Sprite lockImage;
+
+	[SerializeField] private RectTransform allStarSkillCutObjP1;
+	[SerializeField] private RectTransform allStarSkillCutObjP2;
+	[SerializeField] private Image allStarSkillCutP1;
+	[SerializeField] private Image allStarSkillCutP2;
+	private Vector3 originAllStarSkillCutPosP1;
+	private Vector3 originAllStarSkillCutPosP2;
 
 
 	private CharacterLevel characterLevelP1;
 	private CharacterLevel characterLevelP2;
 	private CharacterSkill characterSkillP1;
 	private CharacterSkill characterSkillP2;
+
+	private bool isNowCanUseSkill1P1;
+	private bool isNowCanUseSkill2P1;
+	private bool isNowCanUseAllStarSkillP1;
+
+	private bool isNowCanUseSkill1P2;
+	private bool isNowCanUseSkill2P2;
+	private bool isNowCanUseAllStarSkillP2;
 
 
 	private void Start()
@@ -44,6 +66,8 @@ public class SkillHUD : MonoBehaviour
 		{
 			characterSkillP1?.AddSkill1CoolTimeChange(ChangeSkill1_P1);
 			characterSkillP1?.AddSkill2CoolTimeChange(ChangeSkill2_P1);
+			characterSkillP1?.AddAllStarSkillUse(ChangeSkill3_P1);
+			characterSkillP1?.AddAllStarSkillUse(UseAllStarSkillP1);
 			characterLevelP1?.AddChangeLevelEvent(ChangeSkill1_P1);
 			characterLevelP1?.AddChangeLevelEvent(ChangeSkill2_P1);
 			characterLevelP1?.AddChangeLevelEvent(ChangeSkill3_P1);
@@ -57,6 +81,8 @@ public class SkillHUD : MonoBehaviour
 		{
 			characterSkillP2?.AddSkill1CoolTimeChange(ChangeSkill1_P2);
 			characterSkillP2?.AddSkill2CoolTimeChange(ChangeSkill2_P2);
+			characterSkillP2?.AddAllStarSkillUse(ChangeSkill3_P2);
+			characterSkillP2?.AddAllStarSkillUse(UseAllStarSkillP2);
 			characterLevelP2?.AddChangeLevelEvent(ChangeSkill1_P2);
 			characterLevelP2?.AddChangeLevelEvent(ChangeSkill2_P2);
 			characterLevelP2?.AddChangeLevelEvent(ChangeSkill3_P2);
@@ -71,58 +97,52 @@ public class SkillHUD : MonoBehaviour
 		skillImagesP1[0].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_SkillImage1");
 		skillImagesP1[1].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_SkillImage2");
 		skillImagesP1[2].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_AllStarSkillImage");
+		allStarSkillCutP1.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_AllStarSkillImage");
 
 		skillImagesP2[0].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_SkillImage1");
 		skillImagesP2[1].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_SkillImage2");
-		skillImagesP2[2].sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_AllStarSkillImage");
+		allStarSkillCutP2.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_AllStarSkillImage");
 
+		originAllStarSkillCutPosP1 = allStarSkillCutObjP1.localPosition;
+		originAllStarSkillCutPosP2 = allStarSkillCutObjP2.localPosition;
 
 	}
 
 	private void ChangeSkill1_P1()
 	{
-		if(characterLevelP1.Level > 1)
+		if(SetCoolTimeAndImage(characterLevelP1.Level, 1, characterSkillP1.Skill1RemainCoolTime, characterSkillP1.Skill1CoolTimeRatio, skillCoolTimeTextP1[0], skillHideImagesP1[0], skillImagesP1[0].gameObject))
 		{
-			if(characterSkillP1.Skill1RemainCoolTime > 0f)
-			{
-				skillCoolTimeTextP1[0].gameObject.SetActive(true);
-				skillHideImagesP1[0].gameObject.SetActive(true);
-				skillHideImagesP1[0].fillAmount = 1f - characterSkillP1.Skill1CoolTimeRatio;
-				skillCoolTimeTextP1[0].text = $"{(int)characterSkillP1.Skill1RemainCoolTime}";
-			}
-			else
-			{
-				skillCoolTimeTextP1[0].gameObject.SetActive(false);
-			}
-			skillImagesP1[0].gameObject.SetActive(true);
-		}
-		else
-		{
-			skillImagesP1[0].gameObject.SetActive(false);
+			CheckCanUseSkill(characterSkillP1.Skill1RemainCoolTime, ref isNowCanUseSkill1P1, skillCoolTimeParticleP1[0]);
 		}
 	}
+
 	private void ChangeSkill2_P1()
 	{
-		if (characterLevelP1.Level > 2)
+		if(SetCoolTimeAndImage(characterLevelP1.Level, 2, characterSkillP1.Skill2RemainCoolTime, characterSkillP1.Skill2CoolTimeRatio, skillCoolTimeTextP1[1], skillHideImagesP1[1], skillImagesP1[1].gameObject))
 		{
-			if (characterSkillP1.Skill2RemainCoolTime > 0f)
-			{
-				skillCoolTimeTextP1[1].gameObject.SetActive(true);
-				skillHideImagesP1[1].gameObject.SetActive(true);
-				skillHideImagesP1[1].fillAmount = 1f - characterSkillP1.Skill2CoolTimeRatio;
-				skillCoolTimeTextP1[1].text = $"{(int)characterSkillP1.Skill2RemainCoolTime}";
-			}
-			else
-			{
-				skillCoolTimeTextP1[1].gameObject.SetActive(false);
-			}
-			skillImagesP1[1].gameObject.SetActive(true);
-		}
-		else
-		{
-			skillImagesP1[1].gameObject.SetActive(false);
+			CheckCanUseSkill(characterSkillP1.Skill2RemainCoolTime, ref isNowCanUseSkill2P1, skillCoolTimeParticleP1[1]);
 		}
 	}
+
+	private void UseAllStarSkillP1()
+	{
+		allStarSkillCutObjP1.gameObject.SetActive(true);
+		allStarSkillCutObjP1.DOShakePosition(1f, 6f).OnComplete(() =>
+		{
+			allStarSkillCutObjP1.localPosition = originAllStarSkillCutPosP1;
+			allStarSkillCutObjP1.gameObject.SetActive(false);
+		});
+	}
+	private void UseAllStarSkillP2()
+	{
+		allStarSkillCutObjP2.gameObject.SetActive(true);
+		allStarSkillCutObjP2.DOShakePosition(1f, 6f).OnComplete(() =>
+		{
+			allStarSkillCutObjP2.localPosition = originAllStarSkillCutPosP2;
+			allStarSkillCutObjP2.gameObject.SetActive(false);
+		});
+	}
+
 	private void ChangeSkill3_P1()
 	{
 		if (characterLevelP1.Level > 3)
@@ -130,6 +150,11 @@ public class SkillHUD : MonoBehaviour
 			if (characterLevelP1.IsAllStarSkillUse)
 			{
 				skillImagesP1[2].sprite = lockImage;
+				allStarSkillEffectP1.gameObject.SetActive(false);
+			}
+			else
+			{
+				allStarSkillEffectP1.gameObject.SetActive(true);
 			}
 			skillImagesP1[2].gameObject.SetActive(true);
 		}
@@ -141,48 +166,19 @@ public class SkillHUD : MonoBehaviour
 
 	private void ChangeSkill1_P2()
 	{
-		if (characterLevelP2.Level > 1)
+		if(SetCoolTimeAndImage(characterLevelP2.Level, 1, characterSkillP2.Skill1RemainCoolTime, characterSkillP2.Skill1CoolTimeRatio, skillCoolTimeTextP2[0], skillHideImagesP2[0], skillImagesP2[0].gameObject))
 		{
-			if (characterSkillP2.Skill1RemainCoolTime > 0f)
-			{
-				skillCoolTimeTextP2[0].gameObject.SetActive(true);
-				skillHideImagesP2[0].gameObject.SetActive(true);
-				skillHideImagesP2[0].fillAmount = 1f - characterSkillP2.Skill1CoolTimeRatio;
-				skillCoolTimeTextP2[0].text = $"{(int)characterSkillP2.Skill1RemainCoolTime}";
-			}
-			else
-			{
-				skillCoolTimeTextP2[0].gameObject.SetActive(false);
-			}
-			skillImagesP2[0].gameObject.SetActive(true);
-		}
-		else
-		{
-			skillImagesP2[0].gameObject.SetActive(false);
+			CheckCanUseSkill(characterSkillP2.Skill1RemainCoolTime, ref isNowCanUseSkill1P2, skillCoolTimeParticleP2[0]);
 		}
 	}
 	private void ChangeSkill2_P2()
 	{
-		if (characterLevelP2.Level > 2)
+		if(SetCoolTimeAndImage(characterLevelP2.Level, 2, characterSkillP2.Skill2RemainCoolTime, characterSkillP2.Skill2CoolTimeRatio, skillCoolTimeTextP2[1], skillHideImagesP2[1], skillImagesP2[1].gameObject))
 		{
-			if (characterSkillP2.Skill2RemainCoolTime > 0f)
-			{
-				skillCoolTimeTextP2[1].gameObject.SetActive(true);
-				skillHideImagesP2[1].gameObject.SetActive(true);
-				skillHideImagesP2[1].fillAmount = 1f - characterSkillP2.Skill2CoolTimeRatio;
-				skillCoolTimeTextP2[1].text = $"{(int)characterSkillP2.Skill2RemainCoolTime}";
-			}
-			else
-			{
-				skillCoolTimeTextP2[1].gameObject.SetActive(false);
-			}
-			skillImagesP2[1].gameObject.SetActive(true);
-		}
-		else
-		{
-			skillImagesP2[1].gameObject.SetActive(false);
+			CheckCanUseSkill(characterSkillP2.Skill2RemainCoolTime, ref isNowCanUseSkill2P2, skillCoolTimeParticleP2[1]);
 		}
 	}
+
 	private void ChangeSkill3_P2()
 	{
 		if (characterLevelP2.Level > 3)
@@ -190,6 +186,11 @@ public class SkillHUD : MonoBehaviour
 			if(characterLevelP2.IsAllStarSkillUse)
 			{
 				skillImagesP2[2].sprite = lockImage;
+				allStarSkillEffectP2.gameObject.SetActive(false);
+			}
+			else
+			{
+				allStarSkillEffectP2.gameObject.SetActive(true);
 			}
 			skillImagesP2[2].gameObject.SetActive(true);
 		}
@@ -198,4 +199,47 @@ public class SkillHUD : MonoBehaviour
 			skillImagesP2[2].gameObject.SetActive(false);
 		}
 	}
+
+	private bool SetCoolTimeAndImage(int level, int needLevel, float remainTime, float ratioCoolTime, TextMeshProUGUI text, Image image, GameObject skill)
+	{
+		if (level > needLevel)
+		{
+			if (remainTime > 0f)
+			{
+				text.gameObject.SetActive(true);
+				image.gameObject.SetActive(true);
+				image.fillAmount = 1f - ratioCoolTime;
+				text.text = $"{(int)remainTime}";
+			}
+			else
+			{
+				text.gameObject.SetActive(false);
+			}
+			skill.SetActive(true);
+			return true;
+		}
+		else
+		{
+			skill.SetActive(false);
+			return false;
+		}
+	}
+
+	private void CheckCanUseSkill(float remianCoolTime, ref bool isCanUse, GameObject effect)
+	{
+		if (remianCoolTime > 0f)
+		{
+			isCanUse = false;
+		}
+		else
+		{
+			if (!isCanUse)
+			{
+				isCanUse = true;
+				effect.SetActive(true);
+				Sound.SoundManager.Instance.PlayEFF("se_common_offset");
+			}
+		}
+	}
+
 }
