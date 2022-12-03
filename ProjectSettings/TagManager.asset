@@ -49,3 +49,6 @@ TagManager:
   - name: HUD
     uniqueID: 2138343247
     locked: 0
+  - name: HUDEffect
+    uniqueID: 600526919
+    locked: 0

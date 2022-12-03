@@ -174,7 +174,6 @@ public class RoundManager : MonoBehaviour
 		else
 		{
 			SoundManager.Instance.PlayEFF("vc_narration_gameset");
-
 			StartCoroutine(NextRound(6f));
 		}
 	}
@@ -251,6 +250,7 @@ public class RoundManager : MonoBehaviour
 		}
 		else
 		{
+			SoundManager.Instance.SetBGMSpeed(SoundManager.Instance.Pitch + 0.1f);
 			HPFullSetting();
 			PostionSetting();
 			RoundSetting();
@@ -261,6 +261,7 @@ public class RoundManager : MonoBehaviour
 	{
 		gameEndEvent?.Invoke();
 		yield return new WaitForSeconds(time);
+		SoundManager.Instance.SetBGMSpeed(1.0f);
 		if (SelectDataSO.isArcade && winCountP1 > 0)
 		{
 			SelectDataSO.winCount++;
@@ -286,7 +287,12 @@ public class RoundManager : MonoBehaviour
 		roundStartEvent?.Invoke();
 	}
 
-	private void SetInputSturnTime(float time)
+	public static void StaticSetInputSturnTime(float time)
+	{
+		FindObjectOfType<RoundManager>().SetInputSturnTime(time);
+	}
+
+	public void SetInputSturnTime(float time)
 	{
 		CharacterInput characterInputP1 = characterP1.GetCharacterComponent<CharacterInput>();
 		if (characterInputP1 != null)
@@ -310,8 +316,12 @@ public class RoundManager : MonoBehaviour
 			aITestInputP2.SetStunTime(time);
 		}
 	}
+	public static void StaticStopMove(float time)
+	{
+		FindObjectOfType<RoundManager>().StopMove(time);
+	}
 
-	private void StopMove(float time)
+	public void StopMove(float time)
 	{
 
 		CharacterGravity characterGravityP1 = characterP1.GetCharacterComponent<CharacterGravity>();

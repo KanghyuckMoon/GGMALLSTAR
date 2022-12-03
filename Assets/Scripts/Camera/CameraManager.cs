@@ -8,6 +8,7 @@ public enum CameraType
 	Normal,
 	Shake,
 	Zoom,
+	AllStar,
 }
 
 public class CameraManager : MonoBehaviour
@@ -79,6 +80,30 @@ public class CameraManager : MonoBehaviour
 		shakeCoroutine = null;
 	}
 
+	public IEnumerator StartAllStar(Transform transform, float killTime)
+	{
+
+		cinemachineVirtualCameras[(int)CameraType.AllStar].Follow = transform;
+		cinemachineVirtualCameras[(int)CameraType.AllStar].LookAt = transform;
+		//var transpoer = cinemachineVirtualCameras[(int)CameraType.Zoom].GetCinemachineComponent<CinemachineTransposer>();
+		//float killTotalTime = killTime;
+		//Vector3 startOffset = new Vector3(-3, 0.5f, -2.5f);
+		//Vector3 endOffset = new Vector3(1.3f, 0.5f, -2.5f);
+
+		SetCamera(CameraType.AllStar, false, true);
+
+		while (killTime > 0)
+		{
+			killTime -= Time.deltaTime;
+			//transpoer.m_FollowOffset = Vector3.Lerp(endOffset, startOffset, killTime / killTotalTime);
+
+			yield return new WaitForEndOfFrame();
+		}
+
+		SetCamera(CameraType.Normal, false, true);
+		shakeCoroutine = null;
+	}
+
 	public static void SetShake(float shakeTime, float shakePower)
 	{
 		CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
@@ -94,6 +119,16 @@ public class CameraManager : MonoBehaviour
 		}
 		cameraManager.StartCoroutine(cameraManager.StartKO(transform, killTime));
 		
+	}
+
+	public static void SetAllStar(Transform transform)
+	{
+		CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
+		if (shakeCoroutine is not null)
+		{
+			cameraManager.StopCoroutine(shakeCoroutine);
+		}
+		cameraManager.StartCoroutine(cameraManager.StartAllStar(transform, 1f));
 	}
 
 }

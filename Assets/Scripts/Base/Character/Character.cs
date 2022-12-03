@@ -5,32 +5,32 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     [SerializeField]
-    protected CharacterSO _characterSO = null;
+    private CharacterSO _characterSO = null;
     public CharacterSO CharacterSO => _characterSO;
 
     [SerializeField]
-    protected CharacterLevelSO _characterLevelSO = null;
-    
+    private CharacterLevelSO _characterLevelSO = null;
+
     public CharacterLevelSO CharacterLevelSO => _characterLevelSO;
 
 
     [SerializeField]
-    protected InputDataBaseSO _inputDataBaseSO = null;
-    public InputDataBaseSO InputDataBaseSO 
+    private InputDataBaseSO _inputDataBaseSO = null;
+    public InputDataBaseSO InputDataBaseSO
     {
         get
-		{
+        {
             return _inputDataBaseSO;
-		}
+        }
         set
-		{
+        {
             _inputDataBaseSO = value;
-		}
+        }
     }
 
 
-	[SerializeField]
-    protected HitBoxDataSO _hitBoxDataSO = null;
+    [SerializeField]
+    private HitBoxDataSO _hitBoxDataSO = null;
     public HitBoxDataSO HitBoxDataSO => _hitBoxDataSO;
 
     private Dictionary<ComponentType, CharacterComponent> _characterComponents = null;
@@ -80,7 +80,7 @@ public abstract class Character : MonoBehaviour
     {
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
         {
-            characterComponent.Update();
+            characterComponent?.Update();
         }
     }
 
@@ -88,7 +88,7 @@ public abstract class Character : MonoBehaviour
     {
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
         {
-            characterComponent.LateUpdate();
+            characterComponent?.LateUpdate();
         }
     }
 
@@ -96,7 +96,7 @@ public abstract class Character : MonoBehaviour
     {
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
         {
-            characterComponent.FixedUpdate();
+            characterComponent?.FixedUpdate();
         }
     }
 
@@ -104,14 +104,14 @@ public abstract class Character : MonoBehaviour
     {
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
         {
-            characterComponent.OnCollisionEnter(other);
+            characterComponent?.OnCollisionEnter(other);
         }
     }
-	private void OnCollisionStay(Collision other)
+    private void OnCollisionStay(Collision other)
     {
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
         {
-            characterComponent.OnCollisionStay(other);
+            characterComponent?.OnCollisionStay(other);
         }
     }
 
@@ -120,7 +120,7 @@ public abstract class Character : MonoBehaviour
     {
         foreach (CharacterComponent characterComponent in _characterComponents.Values)
         {
-            characterComponent.OnCollisionExit(other);
+            characterComponent?.OnCollisionExit(other);
         }
     }
     #endregion
@@ -133,7 +133,7 @@ public abstract class Character : MonoBehaviour
     protected virtual void SetComponent() { }
 
     public void OnAttack(int hitBoxIndex)
-	{
+    {
         CharacterAttack characterAttack = _characterComponents[ComponentType.Attack] as CharacterAttack;
         characterAttack.OnAttack(hitBoxIndex);
     }

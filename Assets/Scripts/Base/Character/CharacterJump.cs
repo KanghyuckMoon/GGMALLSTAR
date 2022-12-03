@@ -20,7 +20,7 @@ public class CharacterJump : CharacterComponent
             //    // TODO : 좌표 말고 시간으로 하는게 좋을 듯 체공 시간 구하기 필요 
             //    _rigidbody.AddForce(Vector3.up * _jumpingPower, ForceMode.Impulse);
             //}
-            
+
         }, EventType.KEY_HOLD);
 
         CharacterEvent.AddEvent(EventKeyWord.UP, () =>
@@ -68,23 +68,9 @@ public class CharacterJump : CharacterComponent
     private Rigidbody _rigidbody = null;
 
     private float _jumpingPower = 10f;
-    
+
     private float _maxFirstJumpPower = 35f;
     private float _maxSecondJumpPower = 20f;
-    
+
     private uint _jumpCount = 0;
 }
-
-/*
-
-땅에 쿹어있다.
-공중에 떠있다
-    점프하여 공중에 뜨
-
-isJump(bool)
-isJumping(bool)
-isGround(bool)
-isFall(bool)
-
-jumpCurrent(int)
-*/

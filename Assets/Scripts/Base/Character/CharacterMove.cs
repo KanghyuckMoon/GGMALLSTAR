@@ -62,17 +62,49 @@ public class CharacterMove : CharacterComponent
         characterStat = Character.GetCharacterComponent<CharacterStat>();
     }
 
-    private CharacterStat characterStat;
+	protected override void SetEvent()
+	{
+		base.SetEvent();
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        {
+            _isRight = false;
+        }, EventType.KEY_DOWN);
+
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        {
+            _isRight = true;
+        }, EventType.KEY_DOWN);
+        CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
+        {
+            _isRight = false;
+        }, EventType.KEY_HOLD);
+
+        CharacterEvent.AddEvent(EventKeyWord.RIGHT, () =>
+        {
+            _isRight = true;
+        }, EventType.KEY_HOLD);
+    }
+
+	private CharacterStat characterStat;
     private Transform _transform = null;
     private Rigidbody _rigidbody = null;
     private Vector2 _inputDirection = Vector2.zero;
     private Vector2 _moveDirection = Vector2.zero;
     private float _sturnTime = 0f;
 
+    private bool _isRight = false;
+    public bool IsRight
+    {
+        get
+        {
+            return _isRight;
+        }
+    }
+
     public void SetSturnTime(float time)
-	{
+    {
         _sturnTime = time;
-	}
+    }
 
     public override void FixedUpdate()
     {
@@ -81,17 +113,17 @@ public class CharacterMove : CharacterComponent
         {
             _sturnTime -= Time.fixedDeltaTime;
             return;
-		}
+        }
 
         float speed = 0f;
         if (_rigidbody.velocity.y == 0f)
-		{
+        {
             _moveDirection = _inputDirection;
             speed = Character.CharacterSO.MoveSpeed;
             if (_inputDirection.x != 0)
-			{
+            {
                 characterAnimation.SetAnimationBool(AnimationType.Run, true);
-			}
+            }
             else
             {
                 characterAnimation.SetAnimationBool(AnimationType.Run, false);
@@ -116,38 +148,37 @@ public class CharacterMove : CharacterComponent
             vel.x = Mathf.Lerp(vel.x, _moveDirection.x * speed, Time.fixedDeltaTime * 10);
             _rigidbody.velocity = vel;
         }
-
         _inputDirection = Vector2.zero;
     }
 
     private IEnumerator PlayWalkEFF()
-	{
+    {
         while (true)
-		{
+        {
             _effDelay -= Time.deltaTime;
 
-			try
-			{
-				if (_rigidbody?.velocity.y == 0f && _effDelay <= 0f && _isEffInput)
-				{
-					_effDelay = 0.3f;
-					Sound.SoundManager.Instance.PlayEFF(_walkSound);
-					Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Dirty_01, _character.transform.position);
-				}
-			}
-			catch
-			{
+            try
+            {
+                if (_rigidbody?.velocity.y == 0f && _effDelay <= 0f && _isEffInput)
+                {
+                    _effDelay = 0.3f;
+                    Sound.SoundManager.Instance.PlayEFF(_walkSound);
+                    Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Dirty_01, _character.transform.position);
+                }
+            }
+            catch
+            {
                 yield break;
-			}
+            }
 
-			yield return null;
-		}
-	}
+            yield return null;
+        }
+    }
 
 
-	public override void OnCollisionEnter(Collision other)
-	{
-		base.OnCollisionEnter(other);
+    public override void OnCollisionEnter(Collision other)
+    {
+        base.OnCollisionEnter(other);
         //Wall Check
         if (other.gameObject.layer == 8)
         {
@@ -163,5 +194,5 @@ public class CharacterMove : CharacterComponent
                 }
             }
         }
-	}
+    }
 }

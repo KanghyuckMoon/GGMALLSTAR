@@ -82,7 +82,7 @@ public class CharacterDamage : CharacterComponent
 
         //CameraShake
         CameraManager.SetShake(hitBoxData.shakeTime, hitBoxData.shakePower);
-        hitBox.OwnerHitTime(hitBoxData.hitTime);
+        hitBox?.OwnerHitTime(hitBoxData.hitTime);
 
         //Effect & Sound
         EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);

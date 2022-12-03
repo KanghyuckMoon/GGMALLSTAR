@@ -18,6 +18,14 @@ namespace Sound
 		private AudioBGMType _currentBGMType = AudioBGMType.Count;
 		private EFFSO _effSO;
 		private bool _isInit = false;
+		private float _pitch = 1.0f;
+		public float Pitch
+		{
+			get
+			{
+				return _pitch;
+			}
+		}
 
 		public void Start()
 		{
@@ -155,6 +163,17 @@ namespace Sound
 			_bgmAudioSource.clip = _bgmAudioClips[audioBGMType];
 			_bgmAudioSource.Play();
 		}
+
+		/// <summary>
+		/// BGM 속도 설정
+		/// </summary>
+		/// <param name="speed"></param>
+		public void SetBGMSpeed(float speed)
+		{
+			_pitch = speed;
+			_bgmAudioSource.pitch = speed;
+		}
+
 	}
 
 }
