@@ -21,7 +21,7 @@ public class SkillSpike_Jaeby : MonoBehaviour
         if (other.gameObject == _character.gameObject)
             return;
 
-        if (!other.gameObject.CompareTag(_character.tag))
+        if (!other.gameObject.CompareTag(_character.tag) && !other.gameObject.CompareTag("Invincibility"))
         {
             CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>();
             characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();

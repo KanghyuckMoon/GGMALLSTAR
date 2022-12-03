@@ -73,7 +73,7 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag(_owner.Character.tag))
+        if (!other.gameObject.CompareTag(_owner.Character.tag) && !other.gameObject.CompareTag("Invincibility"))
         {
             Owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
             Owner.TargetCharacterDamage?.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
