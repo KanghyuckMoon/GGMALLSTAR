@@ -29,7 +29,7 @@ public class PressSpace : MonoBehaviour
     {
 		if (!isInput)
 		{
-			if (Input.GetKeyDown(KeyCode.Space))
+			if (Input.anyKeyDown)
 			{
 				if (currentTime.Year != 2022 && currentTime.Month != 12 && currentTime.Day > 5)
 				{
