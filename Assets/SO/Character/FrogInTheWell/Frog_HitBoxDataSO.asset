@@ -27,7 +27,7 @@ MonoBehaviour:
       effectType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: se_common_swing_01
-      addExp: 100
+      addExp: 5
   - hitBoxDatas:
     - actionName: Skill1
       damage: 3
@@ -42,7 +42,7 @@ MonoBehaviour:
       effectType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: 
-      addExp: 30
+      addExp: 20
   - hitBoxDatas:
     - actionName: Skill2
       damage: 5
@@ -57,7 +57,7 @@ MonoBehaviour:
       effectType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: se_common_swing_01
-      addExp: 10
+      addExp: 5
   - hitBoxDatas:
     - actionName: ALL_STAR_SKILL
       damage: 40

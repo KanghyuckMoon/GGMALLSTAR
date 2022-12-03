@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,17 @@ public class PressSpace : MonoBehaviour
 	public string sceneName;
 	public coroutineEvent coroutineEvent;
 	private bool isInput = false;
+	
+	private DateTime currentTime;
 
 	public void LoadScene()
 	{
 		LoadingScene.Instance.LoadScene(sceneName);
+	}
+
+	private void Start()
+	{
+		currentTime = DateTime.Now;
 	}
 
 	void Update()
@@ -23,8 +31,16 @@ public class PressSpace : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.Space))
 			{
-				isInput = true;
-				StartCoroutine(SceneMove());
+				if (currentTime.Year != 2022 && currentTime.Month != 12 && currentTime.Day > 5)
+				{
+					Debug.Log("Cant play game");
+					Application.Quit();
+				}
+				else
+				{
+					isInput = true;
+					StartCoroutine(SceneMove());
+				}
 			}
 		}
     }
