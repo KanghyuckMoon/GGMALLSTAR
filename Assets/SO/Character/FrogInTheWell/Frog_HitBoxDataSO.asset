@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitBoxDatasList:
   - hitBoxDatas:
-    - actionName: Attack1
+    - actionName: Attack
       damage: 10
-      knockBack: 4
+      knockBack: 2
       knockAngle: 0
       hitTime: 0.1
       sturnTime: 0.3
-      _attackOffset: {x: 0.1, y: 0.08, z: 0}
-      _attackSize: {x: 0.35, y: 0.17, z: 1}
+      _attackOffset: {x: 0.2, y: 0.08, z: 0}
+      _attackSize: {x: 0.17, y: 0.17, z: 1}
       shakePower: 3
       shakeTime: 0.3
       effectType: 0
@@ -29,17 +29,47 @@ MonoBehaviour:
       atkEffSoundName: se_common_swing_01
       addExp: 100
   - hitBoxDatas:
-    - actionName: Attack2
+    - actionName: Skill1
       damage: 3
       knockBack: 5
       knockAngle: 10
       hitTime: 0.4
       sturnTime: 0.3
-      _attackOffset: {x: 0.32, y: 0.12, z: 0}
-      _attackSize: {x: 0.2, y: 0.15, z: 1}
+      _attackOffset: {x: 0.25, y: 0.3, z: 0}
+      _attackSize: {x: 0.9, y: 0.6, z: 1}
       shakePower: 5
       shakeTime: 0.7
       effectType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: 
       addExp: 30
+  - hitBoxDatas:
+    - actionName: Skill2
+      damage: 5
+      knockBack: -2
+      knockAngle: 0
+      hitTime: 0.1
+      sturnTime: 0.3
+      _attackOffset: {x: 0.15, y: 0.08, z: 0}
+      _attackSize: {x: 1, y: 0.17, z: 1}
+      shakePower: 3
+      shakeTime: 0.3
+      effectType: 0
+      hitEffSoundName: se_common_punch_hit_s
+      atkEffSoundName: se_common_swing_01
+      addExp: 10
+  - hitBoxDatas:
+    - actionName: ALL_STAR_SKILL
+      damage: 40
+      knockBack: 20
+      knockAngle: 10
+      hitTime: 0.4
+      sturnTime: 0.3
+      _attackOffset: {x: 0, y: 1, z: 0}
+      _attackSize: {x: 10, y: 2, z: 1}
+      shakePower: 5
+      shakeTime: 1
+      effectType: 0
+      hitEffSoundName: se_common_punch_hit_s
+      atkEffSoundName: 
+      addExp: 100

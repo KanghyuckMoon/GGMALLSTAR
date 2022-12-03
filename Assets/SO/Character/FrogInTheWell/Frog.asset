@@ -22,7 +22,7 @@ MonoBehaviour:
   AirMoveSpeed: 1.5
   GravityScale: 1
   attackDelay: 0.8
-  skill1Delay: 0
-  skill2Delay: 0
+  skill1Delay: 3.5
+  skill2Delay: 5
   HitBoxOffset: {x: 0, y: 0, z: 0}
   HitBoxSize: {x: 0, y: 0, z: 0}

@@ -46,6 +46,8 @@ public class HitBox : MonoBehaviour
         Vector3 vector = Owner.Character.Rigidbody.velocity;
         Owner.Character.Rigidbody.velocity = Vector3.zero;
         CharacterInput characterInput = Owner.Character.GetCharacterComponent<CharacterInput>();
+        
+        // 캐릭터 경직
         if (characterInput is not null)
         {
             characterInput.SetStunTime(hitTime);
@@ -58,7 +60,6 @@ public class HitBox : MonoBehaviour
                 aITestInput.SetStunTime(hitTime);
             }
         }
-
 
         CharacterAnimation characterAnimation = Owner.Character.GetCharacterComponent<CharacterAnimation>();
         characterAnimation?.SetHitTime(hitTime);
@@ -77,6 +78,8 @@ public class HitBox : MonoBehaviour
             Owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
             Owner.TargetCharacterDamage?.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
             OnHit?.Invoke();
+
+            Debug.Log(hitBoxData.knockBack);
 
             //AI
             CharacterAIInput aiInput = Owner.Character.GetCharacterComponent<CharacterAIInput>();
