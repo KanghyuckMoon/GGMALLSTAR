@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Arcade Select
+  m_text: Versus Select
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc2f9f58c3c8cf842a695a62d5a262b0, type: 2}
   m_sharedMaterial: {fileID: 3881316068502450491, guid: fc2f9f58c3c8cf842a695a62d5a262b0,

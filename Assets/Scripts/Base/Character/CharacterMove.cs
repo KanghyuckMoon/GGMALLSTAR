@@ -116,6 +116,7 @@ public class CharacterMove : CharacterComponent
         }
 
         float speed = 0f;
+
         if (_rigidbody.velocity.y == 0f)
         {
             _moveDirection = _inputDirection;
@@ -192,6 +193,19 @@ public class CharacterMove : CharacterComponent
                 {
                     _rigidbody.velocity = new Vector3(1f, _rigidbody.velocity.y, 0);
                 }
+            }
+        }
+    }
+
+	public override void OnCollisionStay(Collision other)
+    {
+        base.OnCollisionEnter(other);
+        //Ground Check
+        if (other.gameObject.layer == 6)
+        {
+            if (characterStat.IsAlive && _rigidbody.velocity.y < 0f)
+            {
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
             }
         }
     }
