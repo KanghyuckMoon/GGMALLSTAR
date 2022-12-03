@@ -7,6 +7,20 @@ using static NodeUtill;
 
 public class Frog_Behaviour : BehaviourTree
 {
+
+	private CharacterSkill_Frog characterSkill_Frog;
+	private CharacterSkill_Frog CharacterSkill_Frog
+	{
+		get
+		{
+			characterSkill_Frog ??= mainCharacter.GetCharacterComponent<CharacterSkill_Frog>();
+			return characterSkill_Frog;
+		}
+	}
+	public override void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput)
+	{
+		base.Init(opCh, mainCh, aiTestInput);
+	}
 	public override void SetNode()
 	{
 		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
@@ -17,6 +31,9 @@ public class Frog_Behaviour : BehaviourTree
 				//new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(FoolActionCondition, FoolAction),
 				IfAction(JumpCondition, Jump),
+				IfAction(Skill1Condition, UseSkill1),
+				IfAction(Skill2Condition, UseSkill2),
+				IfAction(AllStarSkillCondition, UseAllStarSkill),
 				IfAction(AttackJCondition, AttackJ),
 
 				IgnoreAction(IsHitFalse),
@@ -132,6 +149,60 @@ public class Frog_Behaviour : BehaviourTree
 	protected void FoolAction()
 	{
 		AttackJ();
+	}
+
+	protected bool Skill1Condition()
+	{
+		return CharacterSkill_Frog.IsCanUseSkill1;
+	}
+	protected bool Skill2Condition()
+	{
+		//float randomDistance = Random.Range(0.1f, 1f);
+		float attackDistance = 0.8f;
+		bool distanceCondition = false;
+		bool directionCondition = false;
+
+
+		//거리
+		if (Mathf.Abs(opCharacter.transform.position.x - mainCharacter.transform.position.x) < attackDistance)
+		{
+			distanceCondition = true;
+		}
+		else
+		{
+			distanceCondition = false;
+		}
+
+
+		if (opCharacter.transform.position.x < mainCharacter.transform.position.x && !isRight)
+		{
+			directionCondition = true;
+		}
+		else if (opCharacter.transform.position.x > mainCharacter.transform.position.x && isRight)
+		{
+			directionCondition = true;
+		}
+
+		//방향
+
+		return distanceCondition && CharacterSkill_Frog.IsCanUseSkill2;
+	}
+	protected bool AllStarSkillCondition()
+	{
+		return CharacterSkill_Frog.IsCanUseSkill3;
+	}
+
+	protected void UseSkill1()
+	{
+		TapKey(KeyCode.U);
+	}
+	protected void UseSkill2()
+	{
+		TapKey(KeyCode.I);
+	}
+	protected void UseAllStarSkill()
+	{
+		TapKey(KeyCode.O);
 	}
 
 }

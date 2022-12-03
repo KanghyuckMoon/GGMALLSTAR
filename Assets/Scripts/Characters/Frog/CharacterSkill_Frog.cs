@@ -37,17 +37,17 @@ public class CharacterSkill_Frog : CharacterSkill
             {
                 skillCoolTime2 = 0;
                 
-                Transform enemyTransform = null;
-                var characterAtk = character.GetCharacterComponent<CharacterAttack>();
-                PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(
-                    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0],
-                    characterAtk,
-                    () => { },
-                    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackSize,
-                    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackOffset +
-                    (character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT
-                        ? new Vector3(0.15f, 0, 0)
-                        : new Vector3(-0.15f, 0, 0)));
+                //Transform enemyTransform = null;
+                //var characterAtk = character.GetCharacterComponent<CharacterAttack>();
+                //PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(
+                //    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0],
+                //    characterAtk,
+                //    () => { },
+                //    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackSize,
+                //    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackOffset +
+                //    (character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT
+                //        ? new Vector3(0.15f, 0, 0)
+                //        : new Vector3(-0.15f, 0, 0)));
                 character.GetCharacterComponent<CharacterAnimation>().SetAnimationTrigger(AnimationType.Skill2);
             }
         }, EventType.KEY_DOWN);
@@ -56,6 +56,7 @@ public class CharacterSkill_Frog : CharacterSkill
         {
             if (CharacterLevel.Level > 3 && !characterLevel.IsAllStarSkillUse)
             {
+                isCanUseSkill3 = false;
                 characterLevel.IsAllStarSkillUse = true;
                 Transform enemyTransform = character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage
                     .Character.transform;
@@ -76,12 +77,28 @@ public class CharacterSkill_Frog : CharacterSkill
         {
             skillCoolTime1 += Time.deltaTime;
             skill1CoolTimeChange?.Invoke();
+            isCanUseSkill1 = false;
         }
+        else if(CharacterLevel.Level > 1)
+		{
+            isCanUseSkill1 = true;
+		}
 
         if (skillCoolTime2 < Character.CharacterSO.skill2Delay)
         {
             skillCoolTime2 += Time.deltaTime;
             skill2CoolTimeChange?.Invoke();
+            isCanUseSkill2 = false;
+        }
+        else if (CharacterLevel.Level > 2)
+        {
+            isCanUseSkill2 = true;
+        }
+
+
+        if (!CharacterLevel.IsAllStarSkillUse && CharacterLevel.Level > 3)
+        {
+            isCanUseSkill3 = true;
         }
 
     }
@@ -94,10 +111,17 @@ public class CharacterSkill_Frog : CharacterSkill
     
     private IEnumerator AllStarSkill(Transform trm)
     {
-        Character.transform.DOJump(trm.position, 0.5f, 1, 1f);
+        string tag = Character.tag;
+        Character.tag = "Invincibility";
         yield return new WaitForSeconds(1f);
+        Character.GetComponentInChildren<SpriteRenderer>().transform.DOScale(3f, 1f).OnComplete(() =>
+        {
+            Character.tag = tag;
+            Character.GetComponentInChildren<SpriteRenderer>().transform.DOScale(1f, 0.3f);
+        });
+        Character.transform.DOJump(trm.position, 0.5f, 1, 1f);
 
-        if(RoundManager.ReturnIsSetting())
+        if (RoundManager.ReturnIsSetting())
         {
             PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0], Character.GetCharacterComponent<CharacterAttack>(), null, Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]._attackSize, Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]._attackOffset);
         }

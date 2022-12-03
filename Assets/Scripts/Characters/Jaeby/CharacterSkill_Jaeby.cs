@@ -49,8 +49,9 @@ public class CharacterSkill_Jaeby : CharacterSkill
 
         CharacterEvent.AddEvent(EventKeyWord.ALL_STAR_SKILL, () =>
         {
-            if (CharacterLevel.Level > 3 && !characterLevel.IsAllStarSkillUse)
+            if (CharacterLevel.Level > 3 && !CharacterLevel.IsAllStarSkillUse)
             {
+                isCanUseSkill3 = false;
                 characterLevel.IsAllStarSkillUse = true;
                 Sound.SoundManager.Instance.PlayEFF("se_common_boss_core_hit");
                 CameraManager.SetAllStar(Character.transform);
@@ -69,12 +70,28 @@ public class CharacterSkill_Jaeby : CharacterSkill
         {
             skillCoolTime1 += Time.deltaTime;
             skill1CoolTimeChange?.Invoke();
+            isCanUseSkill1 = false;
+        }
+        else if (CharacterLevel.Level > 1)
+        {
+            isCanUseSkill1 = true;
         }
 
         if (skillCoolTime2 < Character.CharacterSO.skill2Delay)
         {
             skillCoolTime2 += Time.deltaTime;
             skill2CoolTimeChange?.Invoke();
+            isCanUseSkill2 = false;
+        }
+        else if (CharacterLevel.Level > 2)
+        {
+            isCanUseSkill2 = true;
+        }
+
+
+        if (!CharacterLevel.IsAllStarSkillUse && CharacterLevel.Level > 3)
+        {
+            isCanUseSkill3 = true;
         }
 
     }

@@ -5,6 +5,13 @@ using KeyWord;
 
 public abstract class CharacterSkill : CharacterComponent
 {
+    protected bool isCanUseSkill1;
+    protected bool isCanUseSkill2;
+    protected bool isCanUseSkill3;
+    public bool IsCanUseSkill1 => isCanUseSkill1;
+    public bool IsCanUseSkill2 => isCanUseSkill2;
+    public bool IsCanUseSkill3 => isCanUseSkill3;
+
     protected CharacterLevel characterLevel;
     protected float skillCoolTime1 = 0f;
     protected float skillCoolTime2 = 0f;

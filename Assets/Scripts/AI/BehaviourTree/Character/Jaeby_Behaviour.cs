@@ -8,6 +8,20 @@ using static NodeUtill;
 
 public class Jaeby_Behaviour : BehaviourTree
 {
+	private CharacterSkill_Jaeby characterSkill_Jaeby;
+	private CharacterSkill_Jaeby CharacterAIInput_Jaeby
+	{
+		get
+		{
+			characterSkill_Jaeby ??= mainCharacter.GetCharacterComponent<CharacterSkill_Jaeby>();
+			return characterSkill_Jaeby;
+		}
+	}
+
+	public override void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput)
+	{
+		base.Init(opCh, mainCh, aiTestInput);
+	}
 	public override void SetNode()
 	{
 		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
@@ -16,6 +30,9 @@ public class Jaeby_Behaviour : BehaviourTree
 			Selector
 			(
 				new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
+				IfAction(Skill1Condition, UseSkill1),
+				IfAction(Skill2Condition, UseSkill2),
+				IfAction(AllStarSkillCondition, UseAllStarSkill),
 				IfAction(AttackJCondition, AttackJ),
 
 				IgnoreAction(IsHitFalse),
@@ -84,5 +101,31 @@ public class Jaeby_Behaviour : BehaviourTree
 			return true;
 		}
 		return false;
+	}
+
+	protected bool Skill1Condition()
+	{
+		return CharacterAIInput_Jaeby.IsCanUseSkill1;
+	}
+	protected bool Skill2Condition()
+	{
+		return CharacterAIInput_Jaeby.IsCanUseSkill2;
+	}
+	protected bool AllStarSkillCondition()
+	{
+		return CharacterAIInput_Jaeby.IsCanUseSkill3;
+	}
+
+	protected void UseSkill1()
+	{
+		TapKey(KeyCode.U);
+	}
+	protected void UseSkill2()
+	{
+		TapKey(KeyCode.I);
+	}
+	protected void UseAllStarSkill()
+	{
+		TapKey(KeyCode.O);
 	}
 }

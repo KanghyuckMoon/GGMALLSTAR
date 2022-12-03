@@ -10,5 +10,6 @@ namespace KeyWord
         public const string RUN = "IsRun";
         public const string WALK = "IsWalk";
         public const string JUMP = "Jump";
+        public const string SKILL2 = "Skill2";
     }
 }

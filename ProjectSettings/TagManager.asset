@@ -6,6 +6,12 @@ TagManager:
   tags:
   - HitBox
   - Player2
+  - Tv
+  - Speaker
+  - Wall
+  - Drawer
+  - Door
+  - Invincibility
   layers:
   - Default
   - TransparentFX

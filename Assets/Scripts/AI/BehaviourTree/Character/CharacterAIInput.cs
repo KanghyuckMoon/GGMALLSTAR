@@ -22,6 +22,7 @@ public class CharacterAIInput : CharacterComponent
     protected BehaviourTree _behaviourTree;
     protected float _stunTime = 0f;
     protected float _inputDelayTime = 0f;
+    protected CharacterSkill characterSkill;
 
     protected virtual void Init()
     {
@@ -152,5 +153,6 @@ public class CharacterAIInput : CharacterComponent
 		}
         return null;
     }
+
 }
 

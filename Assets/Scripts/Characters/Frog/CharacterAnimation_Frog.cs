@@ -15,7 +15,7 @@ public class CharacterAnimation_Frog : CharacterAnimation
         AddAnimationHash(AnimationType.Run, AnimationKeyWord.RUN);
         AddAnimationHash(AnimationType.Jump, AnimationKeyWord.JUMP);
         AddAnimationHash(AnimationType.Attack, AnimationKeyWord.ATTACK);
-        AddAnimationHash(AnimationType.Skill2, AnimationKeyWord.ATTACK);
+        AddAnimationHash(AnimationType.Skill2, AnimationKeyWord.SKILL2);
     }
 
     protected override void SetEvent()
