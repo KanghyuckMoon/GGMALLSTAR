@@ -30,7 +30,7 @@ MonoBehaviour:
       addExp: 5
   - hitBoxDatas:
     - actionName: Skill1
-      damage: 3
+      damage: 10
       knockBack: 5
       knockAngle: 10
       hitTime: 0.4
