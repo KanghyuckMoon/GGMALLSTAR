@@ -9,4 +9,12 @@ namespace Inventory
         public List<ItemDataSO> itemDatas;
     }
 
+    [CreateAssetMenu]
+    public static class InventoryStaticSO
+    {
+        public static List<ItemDataSO> itemDatas = new List<ItemDataSO>();
+    }
+
+
+
 }

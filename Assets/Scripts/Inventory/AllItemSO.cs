@@ -8,16 +8,21 @@ namespace Inventory
 	public class AllItemSO : ScriptableObject
 	{
 		public List<ItemDataSO> itemDataSOs = new List<ItemDataSO>();
-		public List<string> allItemAddressNames = new List<string>();
+		public AllItemStaticSO allItemStaticSO = new AllItemStaticSO();
 
 		[ContextMenu("ItemDataSOToAllItemAddressName")]
 		public void ItemDataSOToAllItemAddressName()
 		{
-			foreach(ItemDataSO itemDataSO in itemDataSOs)
+			allItemStaticSO.allItemAddressNames.Clear();
+			foreach (ItemDataSO itemDataSO in itemDataSOs)
 			{
-				allItemAddressNames.Add(itemDataSO.name);
+				allItemStaticSO.allItemAddressNames.Add(itemDataSO.name);
 			}
 		}
+	}
 
+	public class AllItemStaticSO
+	{
+		public List<string> allItemAddressNames = new List<string>();
 	}
 }

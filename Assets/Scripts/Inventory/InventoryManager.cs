@@ -12,7 +12,6 @@ namespace Inventory
 	public class InventoryManager : MonoSingleton<InventoryManager>
 	{
 		private InventoryData inventoryData = new InventoryData();
-		private InventorySO inventorySO;
 		private AllItemSO allItemSO;
 		private bool isInit = false;
 		public void Start()
@@ -34,16 +33,17 @@ namespace Inventory
 		{
 			isInit = true;
 
-			inventorySO = AddressablesManager.Instance.GetResource<InventorySO>("InventorySO");
+			//inventorySO = AddressablesManager.Instance.GetResource<InventorySO>("InventorySO");
 			allItemSO = AddressablesManager.Instance.GetResource<AllItemSO>("AllItemSO");
+			allItemSO.ItemDataSOToAllItemAddressName();
 			SaveManager.Load<InventoryData>(ref inventoryData);
 
 			foreach(string itemAddressName in inventoryData.itemAddressNames)
 			{
-				inventorySO.itemDatas.Add(AddressablesManager.Instance.GetResource<ItemDataSO>(itemAddressName));
-				allItemSO.allItemAddressNames.Remove(itemAddressName);
+				InventoryStaticSO.itemDatas.Add(AddressablesManager.Instance.GetResource<ItemDataSO>(itemAddressName));
+				allItemSO.allItemStaticSO.allItemAddressNames.Remove(itemAddressName);
 			}
-			allItemSO.allItemAddressNames = allItemSO.allItemAddressNames.OrderBy(a => Guid.NewGuid()).ToList();
+			allItemSO.allItemStaticSO.allItemAddressNames = allItemSO.allItemStaticSO.allItemAddressNames.OrderBy(a => Guid.NewGuid()).ToList();
 		}
 
 		public void GetItem(string itemAdressName)
@@ -57,7 +57,7 @@ namespace Inventory
 			{
 				inventoryData.itemAddressNames.Add(itemAdressName);
 				ItemDataSO itemDataSO = AddressablesManager.Instance.GetResource<ItemDataSO>(itemAdressName);
-				inventorySO.itemDatas.Add(itemDataSO);
+				InventoryStaticSO.itemDatas.Add(itemDataSO);
 				FindObjectOfType<ItemPopUpManager>(true).SetItemPopUp(itemDataSO.itemName);
 				SaveManager.Save<InventoryData>(ref inventoryData);
 			}
@@ -73,17 +73,17 @@ namespace Inventory
 				Init();
 			}
 
-			if (allItemSO.allItemAddressNames.Count > 0)
+			if (allItemSO.allItemStaticSO.allItemAddressNames.Count > 0)
 			{
-				string addressName = allItemSO.allItemAddressNames[0];
-				allItemSO.allItemAddressNames.Remove(addressName);
+				string addressName = allItemSO.allItemStaticSO.allItemAddressNames[0];
+				allItemSO.allItemStaticSO.allItemAddressNames.Remove(addressName);
 				GetItem(addressName);
 			}
 			else if (!inventoryData.itemAddressNames.Contains("I_GGMALLSTAR"))
 			{
 				inventoryData.itemAddressNames.Add("I_GGMALLSTAR");
 				ItemDataSO itemDataSO = AddressablesManager.Instance.GetResource<ItemDataSO>("I_GGMALLSTAR");
-				inventorySO.itemDatas.Add(itemDataSO);
+				InventoryStaticSO.itemDatas.Add(itemDataSO);
 				FindObjectOfType<ItemPopUpManager>(true).SetItemPopUp(itemDataSO.itemName);
 				SaveManager.Save<InventoryData>(ref inventoryData);
 			}

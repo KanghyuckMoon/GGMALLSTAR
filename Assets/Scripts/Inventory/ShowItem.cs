@@ -8,7 +8,6 @@ namespace Inventory
 	public class ShowItem : MonoBehaviour
 	{
 		public Transform pedestal;
-		public InventorySO inventorySO;
 		public TextMeshProUGUI nameText;
 		public TextMeshProUGUI captionText;
 		public int testShowItemIndex;
@@ -28,7 +27,7 @@ namespace Inventory
 		public void Start()
 		{
 			InitItemList();
-			SetItem(inventorySO.itemDatas[testShowItemIndex]);
+			SetItem(InventoryStaticSO.itemDatas[testShowItemIndex]);
 		}
 
 		public void Update()
@@ -38,7 +37,7 @@ namespace Inventory
 
 		private void InitItemList()
 		{
-			foreach (var itemData in inventorySO.itemDatas)
+			foreach (var itemData in InventoryStaticSO.itemDatas)
 			{
 				GameObject namePanel = Instantiate(itemNamePanel, contents);
 				namePanel.GetComponentInChildren<TextMeshProUGUI>().text = itemData.itemName;
@@ -50,17 +49,17 @@ namespace Inventory
 		{
 			if (Input.GetKeyDown(KeyCode.DownArrow))
 			{
-				testShowItemIndex = (testShowItemIndex + 1) % inventorySO.itemDatas.Count;
-				SetItem(inventorySO.itemDatas[testShowItemIndex]);
+				testShowItemIndex = (testShowItemIndex + 1) % InventoryStaticSO.itemDatas.Count;
+				SetItem(InventoryStaticSO.itemDatas[testShowItemIndex]);
 			}
 			if (Input.GetKeyDown(KeyCode.UpArrow))
 			{
 				testShowItemIndex--;
 				if (testShowItemIndex < 0)
 				{
-					testShowItemIndex = inventorySO.itemDatas.Count - 1;
+					testShowItemIndex = InventoryStaticSO.itemDatas.Count - 1;
 				}
-				SetItem(inventorySO.itemDatas[testShowItemIndex]);
+				SetItem(InventoryStaticSO.itemDatas[testShowItemIndex]);
 			}
 		}
 
