@@ -22,15 +22,6 @@ public class RoundHUD : MonoBehaviour
 		roundManager.RoundStartEvent += RoundStart;
 		roundManager.RoundEndEvent += RoundEnd;
 		roundManager.GameEndEvent += GameEnd;
-
-		if (SelectDataSO.isArcade)
-		{
-			roundCountP1[1].gameObject.SetActive(false);
-			roundCountP1[2].gameObject.SetActive(false);
-			roundCountP2[1].gameObject.SetActive(false);
-			roundCountP2[2].gameObject.SetActive(false);
-		}
-
 	}
 
 	private void RoundSet()
