@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_GotoGGM
   m_EditorClassIdentifier: 
   itemName: GotoGGM
+  gameName: GoToGGM
   explanation: "GGM\uC73C\uB85C \uAC00\uC790"
   prefeb: {fileID: 8134156711062759948, guid: e99a431bcd76e3f46bb097caa58bdb5d, type: 3}

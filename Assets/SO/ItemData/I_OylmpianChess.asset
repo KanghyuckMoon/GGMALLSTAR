@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_OylmpianChess
   m_EditorClassIdentifier: 
   itemName: "\uCE74\uB4DC\uB4E4"
+  gameName: Olympian Chess
   explanation: "\uCE74\uB4DC\uB9CC\uD55C \uCCB4\uC2A4\uAC00 \uC5C6\uC9C0"
   prefeb: {fileID: 109159574544936930, guid: d5f1cd476b39e96488ec9119255dd454, type: 3}

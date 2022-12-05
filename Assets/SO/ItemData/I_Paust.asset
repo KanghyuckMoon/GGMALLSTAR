@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Paust
   m_EditorClassIdentifier: 
   itemName: "\uD30C\uC6B0\uC2A4\uD2B8"
+  gameName: "\uD30C\uC6B0\uC2A4\uD2B8\uC758 \uBAA8\uD5D8"
   explanation: "\uD30C\uC6B0\uC2A4\uD2B8\uC758 \uB300\uBAA8\uD5D8\uC774\uB2E4"
   prefeb: {fileID: 6263451819564646406, guid: a3ceffe78fad49d45a8af65dd0dafcc6, type: 3}

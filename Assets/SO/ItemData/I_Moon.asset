@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Moon
   m_EditorClassIdentifier: 
   itemName: "\uBB38\uC774 \uB418\uB294\uC790"
+  gameName: "\uBB38\uC774 \uB418\uB294\uC790"
   explanation: "\uBB34\uC5C7\uC744 \uD6D4\uCE60\uAE4C"
   prefeb: {fileID: 5799851101127521548, guid: 1e69ac05b329f6c4e8cbfe09abbeeaae, type: 3}

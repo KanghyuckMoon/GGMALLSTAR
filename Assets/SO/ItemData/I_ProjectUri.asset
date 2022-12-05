@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_ProjectUri
   m_EditorClassIdentifier: 
   itemName: "\uC720\uB9AC"
+  gameName: Project_Uri
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 1046088442151208921, guid: de9b763401ef9da4fbbbe773ebbd9a0a, type: 3}

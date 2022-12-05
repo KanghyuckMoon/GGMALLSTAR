@@ -10,6 +10,7 @@ namespace Inventory
 	{
 		//CollaborationGame
 		public string itemName;
+		public string gameName;
 		public string explanation;
 		public GameObject prefeb;
 	}

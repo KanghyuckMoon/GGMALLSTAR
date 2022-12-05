@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Nailer
   m_EditorClassIdentifier: 
   itemName: "\uB2EC\uD1A0\uB07C"
+  gameName: nailer
   explanation: "\uD1A0\uB07C\uB294 \uC6D0\uB798 \uB2EC\uC5D0\uC11C \uC0BD\uB2C8\uB2E4"
   prefeb: {fileID: 1738459031376558224, guid: 4fa0eb6f1e6e3694b96116da9d029eb7, type: 3}

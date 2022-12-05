@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_MysicalDice
   m_EditorClassIdentifier: 
   itemName: "\uB2E4\uC774\uC2A4 \uB098\uC774\uCE20"
+  gameName: Mythical Dice
   explanation: "[Mysical Dice]\uC5D0 \uB4F1\uC7A5\uD558\uB294 \uAE30\uC0AC\uB85C
     \uC18C\uC6D0\uC744 \uBE4C \uC218 \uC788\uB294 \uC2E0\uC758 \uD0D1\uC5D0 \uC62C\uB77C
     \uCC9C\uC0AC \uC11D\uC0C1\uC774\uB098 \uBBF8\uB178\uD0C0\uC6B0\uB85C\uC2A4\uC640

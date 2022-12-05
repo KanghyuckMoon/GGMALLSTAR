@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_BounceGum
   m_EditorClassIdentifier: 
   itemName: "\uBC14\uC6B4\uC2A4"
+  gameName: "\uBC14\uC6B4\uC2A4\uAECC"
   explanation: "\uAECC\uC774 \uBD99\uC5B4 \uB048\uC801\uB048\uC801\uD55C \uC5EC\uD589\uC744
     \uBCF4\uB0B8 \uACF5\uC774\uB2E4."
   prefeb: {fileID: 307184454030295550, guid: 7f5fa5f03426fd243bae0a0ab564491e, type: 3}

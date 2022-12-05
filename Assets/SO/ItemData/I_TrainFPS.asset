@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_TrainFPS
   m_EditorClassIdentifier: 
   itemName: "\uAE30\uCC28FPS"
+  gameName: TrainFPS
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 6225747880511632101, guid: e9185e0497693034f97dc752ce9efaed, type: 3}

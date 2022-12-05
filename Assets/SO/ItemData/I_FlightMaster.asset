@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_FlightMaster
   m_EditorClassIdentifier: 
   itemName: "\uD50C\uB77C\uC774\uD2B8\uB9C8\uC2A4\uD130"
+  gameName: FlightMaster
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 1418537229139616120, guid: 38da2d0a748956a42ae0e6ada9d8ca12, type: 3}

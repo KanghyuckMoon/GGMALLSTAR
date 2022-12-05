@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_StreamerClicker
   m_EditorClassIdentifier: 
   itemName: "\uC2A4\uD2B8\uB9AC\uBA38"
+  gameName: "\uC2A4\uD2B8\uB9AC\uBA38\uAC78"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 5842121483136211088, guid: 196edfed48021a447ab0d96ceb607149, type: 3}

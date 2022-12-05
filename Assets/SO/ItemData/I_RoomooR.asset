@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_RoomooR
   m_EditorClassIdentifier: 
   itemName: "\uB8F8\uBA38"
+  gameName: RoomooR
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 2717694915380551583, guid: 727352dbcf692aa41b74a9d6d1b89d7c, type: 3}

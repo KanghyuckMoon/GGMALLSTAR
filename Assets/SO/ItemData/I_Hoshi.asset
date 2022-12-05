@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Hoshi
   m_EditorClassIdentifier: 
   itemName: "\uD638\uC2DC"
+  gameName: "Hoshi Adventure : \uC720\uBB3C\uC758 \uD754\uC801"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 8242071094355869130, guid: 040ef0728c8267d4a85755bdcda7b5f9, type: 3}

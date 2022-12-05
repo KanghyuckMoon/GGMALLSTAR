@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_2DHook
   m_EditorClassIdentifier: 
   itemName: "\uD6C5"
+  gameName: "2D\uD6C5"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 4503434775044408756, guid: eec2115a9e0d8204d8aa0fa5428e9566, type: 3}

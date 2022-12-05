@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Suan
   m_EditorClassIdentifier: 
   itemName: "\uC218\uC548"
+  gameName: "\uC218\uC548\uD669\uB7C9\uBABD"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 3324942837889535020, guid: fbce77a0b0e5a3244828a1c8d9372fa1, type: 3}

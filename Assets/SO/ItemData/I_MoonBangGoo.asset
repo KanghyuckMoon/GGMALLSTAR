@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_MoonBangGoo
   m_EditorClassIdentifier: 
   itemName: "\uBB38\uBC29\uAD6C \uCE5C\uAD6C\uB4E4"
+  gameName: "\uBB38\uBC29\uAD6C \uB300\uB09C\uD22C"
   explanation: "\uB358\uC9C0\uACE0 \uB0A0\uB824\uC9C0\uACE0 \uBD80\uC154\uC9C0\uACE0"
   prefeb: {fileID: 7026748157811817468, guid: a98fb7c037d502a4eb5572792e293263, type: 3}

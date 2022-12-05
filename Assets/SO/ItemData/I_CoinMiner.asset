@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_CoinMiner
   m_EditorClassIdentifier: 
   itemName: "\uCF54\uC778\uB9C8\uC774\uB108"
+  gameName: CoinMiner
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 6123385878268537961, guid: 3baa77c420ecdcd40a309ba051a735c3, type: 3}

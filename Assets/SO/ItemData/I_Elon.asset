@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Elon
   m_EditorClassIdentifier: 
   itemName: "\uBD80\uC790"
+  gameName: "\uC77C\uB860\uBA38\uC2A4\uD06C \uD0A4\uC6B0\uAE30"
   explanation: "\uD654\uC131 \uAC08\uB044\uB2C8\uAE4C"
   prefeb: {fileID: 2938496261957492360, guid: a5750a40ef856cb41b2b3ae607e44cb3, type: 3}

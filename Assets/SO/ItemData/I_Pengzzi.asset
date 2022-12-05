@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: I_Pengzzi
   m_EditorClassIdentifier: 
   itemName: "\uD3AD\uCC0C"
+  gameName: "\uC5B4\uB290 \uB0A0 \uD3AD\uADC4\uC774 \uB0B4 \uBC30\uACBD\uD654\uBA74
+    \uC18D\uC73C\uB85C \uB4E4\uC5B4\uC654\uB2E4"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 4918216090323411485, guid: e01efdd0711915446af3cc5e42a731b4, type: 3}

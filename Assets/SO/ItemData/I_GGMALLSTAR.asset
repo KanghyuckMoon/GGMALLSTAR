@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_GGMALLSTAR
   m_EditorClassIdentifier: 
   itemName: GGMALLSTAR
+  gameName: GGMALLSTAR
   explanation: "\uBAA8\uB4E0 \uD53C\uADDC\uC5B4 \uC544\uC774\uD15C\uC744 \uD68D\uB4DD\uD55C
     \uC790\uB9CC\uC774 \uC5BB\uC744 \uC218 \uC788\uB294 GGMALLSTAR \uD53C\uADDC\uC5B4.
     \uD53C\uADDC\uC5B4\uB97C \uD074\uB9AD\uD558\uBA74 \uC5D4\uB529 \uD06C\uB808\uB527\uC744

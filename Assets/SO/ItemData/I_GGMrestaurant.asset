@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_GGMrestaurant
   m_EditorClassIdentifier: 
   itemName: "\uBA54\uB274\uD310"
+  gameName: "\uAC9C\uB9C8\uC2DD\uB2F9"
   explanation: "\uC624\uB298 \uC810\uC2EC\uC740 \uBB50\uC9C0?"
   prefeb: {fileID: 3100573521777821045, guid: 2ab7e198cfed02d4bae93a5665dc9692, type: 3}

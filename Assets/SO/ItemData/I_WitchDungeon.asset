@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_WitchDungeon
   m_EditorClassIdentifier: 
   itemName: "\uB9C8\uB140"
+  gameName: "\uB9C8\uB140\uC758 \uC77C\uAE30"
   explanation: "\uB124 \uAC00\uC9C0 \uC18D\uC131\uC744 \uC774\uC6A9\uD574 \uBB34\uB108\uC9C0\uB294
     \uB358\uC804\uC73C\uB85C"
   prefeb: {fileID: 1453092198339737221, guid: 63de99e9d93657c47b8aca568da930a5, type: 3}

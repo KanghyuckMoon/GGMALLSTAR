@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_DarkWizard
   m_EditorClassIdentifier: 
   itemName: Dark Wizard
+  gameName: Dark Wizard
   explanation: "\uBE5B\uC758 \uC138\uACC4\uB97C \uC704\uD611\uD558\uB294 \uC5B4\uB460\uC758
     \uB9C8\uBC95\uC0AC"
   prefeb: {fileID: 5243119482707448973, guid: 0eff9fce99bdd0f43a83553db382e4f3, type: 3}

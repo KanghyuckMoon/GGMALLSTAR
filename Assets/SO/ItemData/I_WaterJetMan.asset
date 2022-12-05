@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_WaterJetMan
   m_EditorClassIdentifier: 
   itemName: "\uC6CC\uD130\uC81C\uD2B8\uB9E8"
+  gameName: 'WaterJetMan '
   explanation: "\uCD1D\uC758 \uBC18\uB3D9\uC73C\uB85C \uACF5\uC911\uC744 \uB0A0\uC544\uB2E4\uB2C8\uB294
     \uB0A8\uC790."
   prefeb: {fileID: 5493019043864298537, guid: 2e095d906cc87414996047c70b155fd3, type: 3}

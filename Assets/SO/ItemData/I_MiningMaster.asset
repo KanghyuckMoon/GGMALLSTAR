@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_MiningMaster
   m_EditorClassIdentifier: 
   itemName: "\uADF8\uB798\uD53D\uCE74\uB4DC\uB4E4"
+  gameName: "\uB9C8\uC774\uB2DD\uB9C8\uC2A4\uD130"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 2879863068003829134, guid: 0db0712855c78054aae87e6ea519983f, type: 3}

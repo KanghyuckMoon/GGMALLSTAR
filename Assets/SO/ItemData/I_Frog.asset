@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Frog
   m_EditorClassIdentifier: Inventory:Inventory:ItemDataSO
   itemName: "\uAC1C\uAD6C\uB9AC"
+  gameName: "\uC6B0\uBB3C \uC548 \uAC1C\uAD6C\uB9AC"
   explanation: "\uC6B0\uBB3C \uC548 \uAC1C\uAD6C\uB9AC"
   prefeb: {fileID: 6041279182890643150, guid: b7b40da2c43badd48b1c9c54e2a67a69, type: 3}

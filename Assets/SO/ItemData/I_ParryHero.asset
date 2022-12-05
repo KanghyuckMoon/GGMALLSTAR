@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_ParryHero
   m_EditorClassIdentifier: 
   itemName: "\uD328\uB9C1\uD788\uC5B4\uB85C"
+  gameName: "\uD328\uB9C1\uD788\uC5B4\uB85C"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 4036817024374510860, guid: 9f8f49d6344c24b45b6d9d685a2470c2, type: 3}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_LR2
   m_EditorClassIdentifier: 
   itemName: "L\uACFC R"
+  gameName: LR2
   explanation: "[LR2]\uC5D0 \uB4F1\uC7A5\uD558\uB294 L\uACFC R, L\uC740 \uC67C\uCABD\uC73C\uB85C
     R\uC740 \uC624\uB978\uCABD\uC73C\uB85C \uC774\uB3D9\uD560 \uC218 \uC788\uB2E4.
     \uC11C\uB85C\uC758 \uC704\uCE58\uB97C \uBC14\uAFC0 \uC218 \uC788\uC73C\uB2C8

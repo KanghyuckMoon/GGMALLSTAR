@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Pandemit
   m_EditorClassIdentifier: 
   itemName: "\uD310\uB370\uBC0B"
+  gameName: "\uD310\uB370\uBC0B"
   explanation: "\uB370\uBC0B"
   prefeb: {fileID: 2242520113562492928, guid: 220676e0e826401429b59566fb8a4ce4, type: 3}

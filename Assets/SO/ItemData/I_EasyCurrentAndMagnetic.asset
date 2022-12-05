@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_EasyCurrentAndMagnetic
   m_EditorClassIdentifier: 
-  itemName: "\uC138\uC0C1\uC5D0\uC11C \uAC00\uC7A5 \uC26C\uC6B4 \uB0A8\uCE58\uBC18"
+  itemName: "\uC138\uC0C1\uC5D0\uC11C \uAC00\uC7A5 \uC26C\uC6B4 \uB098\uCE68\uBC18"
+  gameName: "\uC138\uC0C1\uC5D0\uC11C \uAC00\uC7A5 \uC26C\uC6B4 \uC804\uB958\uC640
+    \uC790\uAE30\uC7A5"
   explanation: "\uC804\uB958\uAC00 \uC788\uC73C\uBA74 \uD6C4\uB958\uB3C4 \uC788\uB098?"
   prefeb: {fileID: 6089369073231758893, guid: 2e91513ea259589409933b7ba6082bb2, type: 3}

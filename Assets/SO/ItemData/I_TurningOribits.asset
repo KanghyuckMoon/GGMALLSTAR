@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_TurningOribits
   m_EditorClassIdentifier: 
   itemName: "\uADA4\uB3C4\uB97C \uAC00\uC9C4 \uBCC4"
+  gameName: TurningOribits
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 4020925367056282054, guid: eef098ede27b651459ea3c93f8e30d2d, type: 3}

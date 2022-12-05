@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_NinjaSprint
   m_EditorClassIdentifier: 
   itemName: "\uB2CC\uC790"
+  gameName: NinjaSprint
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 5372704221019027266, guid: 4eb4546c2b05f1f4aa15a1ef60b5b74d, type: 3}

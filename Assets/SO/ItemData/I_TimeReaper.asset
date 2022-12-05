@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_TimeReaper
   m_EditorClassIdentifier: 
   itemName: "\uD0C0\uC784\uB9AC\uD37C"
+  gameName: "\uD0C0\uC784\uB9AC\uD37C"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 3366605386984435326, guid: 992ca4288874c36478782c0a0825edff, type: 3}

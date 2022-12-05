@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_FightingShiba
   m_EditorClassIdentifier: 
   itemName: "\uC2DC\uBC14"
+  gameName: Fighting, Shiba!
   explanation: "[Fighting, Shiba!]\uC5D0\uC11C \uB4F1\uC7A5\uD558\uB294 \uC2DC\uBC14,
     \uB204\uAD70\uAC00\uB97C \uC5F0\uC0C1\uCF00\uD558\uB294 \uAC15\uC544\uC9C0. \uAD50\uC7A5
     \uC120\uC0DD\uB2D8\uC73C\uB85C\uBD80\uD130 \uC5B4\uB5A4 \uD559\uC0DD\uC744 \uB9CC\uC810\uC73C\uB85C

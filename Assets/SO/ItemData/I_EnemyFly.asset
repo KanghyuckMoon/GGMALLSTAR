@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_EnemyFly
   m_EditorClassIdentifier: 
   itemName: "\uD30C\uB9AC\uB0A0\uB2E4"
+  gameName: Catch the fly
   explanation: "Catch the fly\uC5D0\uC11C \uCC98\uC74C\uC73C\uB85C \uB9C8\uC8FC\uD558\uB294
     \uCCAB\uBC88\uC9F8 \uBAAC\uC2A4\uD130. \uB0A0\uC314\uACE0 \uAE4C\uB2E4\uB86D\uAC8C
     \uC0DD\uACBC\uB2E4. \uD30C\uB9AC\uC7A1\uACE0 \uD30C\uB9AC\uB85C~"

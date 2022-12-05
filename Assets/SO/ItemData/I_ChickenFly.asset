@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_ChickenFly
   m_EditorClassIdentifier: 
   itemName: "\uD558\uB298\uC744 \uB098\uB294 \uB2ED"
+  gameName: ChickenFly
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 6973605626033275298, guid: cac6cde7481b0984bb0cea9f7a96634a, type: 3}

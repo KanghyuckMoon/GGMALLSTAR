@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Acupuncture
   m_EditorClassIdentifier: 
   itemName: "\uD55C\uC758\uC0AC"
+  gameName: "\uCE68\uC220\uB85C \uB808\uBCA8\uC5C5"
   explanation: "\uCE68\uC220"
   prefeb: {fileID: 2431830743275516178, guid: cb8d26555bd535f47b2d238b32e8ea04, type: 3}

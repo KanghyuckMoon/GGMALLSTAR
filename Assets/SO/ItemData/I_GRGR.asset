@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_GRGR
   m_EditorClassIdentifier: 
   itemName: "\uBD80\uC154\uC9C4 \uC6B0\uC8FC\uC120"
+  gameName: GRGR
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 6813287180593585750, guid: dd1c087ed4cfae94ba5a64bfaf624036, type: 3}

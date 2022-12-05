@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Robotoid
   m_EditorClassIdentifier: 
   itemName: "\uB85C\uBCF4\uD1A0\uC774\uB4DC"
+  gameName: Robotoid
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 1574955415208560577, guid: 5a8fff703d475ac469a023c27171d92a, type: 3}

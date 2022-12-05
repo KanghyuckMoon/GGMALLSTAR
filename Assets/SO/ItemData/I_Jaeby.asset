@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_Jaeby
   m_EditorClassIdentifier: Inventory:Inventory:ItemDataSO
   itemName: "\uC7AC\uBE44"
+  gameName: "\uC544\uC774\uC6CC\uB108\uBE44\uB354\uC7AC\uBE44"
   explanation: "\uC544\uC774\uC6CC\uB108\uBE44\uB354\uC7AC\uBE44\uC5D0\uC11C \uB098\uC628
     \uC8FC\uC778\uACF5 \uC7AC\uBE44"
   prefeb: {fileID: 8577692371943681697, guid: dfd2191419f32f640967824275d5e474, type: 3}

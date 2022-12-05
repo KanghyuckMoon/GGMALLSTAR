@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_3D2048
   m_EditorClassIdentifier: 
   itemName: "2048\uD050\uBE0C"
+  gameName: 3D 2048
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 4090740588510861698, guid: 54ab055d85b62af4789f4c8261a188f0, type: 3}

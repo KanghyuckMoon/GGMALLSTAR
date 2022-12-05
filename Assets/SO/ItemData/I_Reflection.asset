@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Reflection
   m_EditorClassIdentifier: 
   itemName: "\uB9AC\uD50C\uB809\uC158"
+  gameName: Reflection
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 2174570635674502945, guid: ae2627135665e4a4db351760c05ce1eb, type: 3}

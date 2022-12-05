@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: I_Pisa
   m_EditorClassIdentifier: 
   itemName: "\uD53C\uC0AC\uC758 \uC0AC\uD0D1"
+  gameName: "\uB108\uB97C \uC704\uD574\uC11C\uB77C\uBA74 \uD53C\uC0AC\uC758 \uC0AC\uD0D1
+    \uD558\uB098\uCBE4\uC740 \uD6D4\uCCD0\uC904\uAC8C"
   explanation: "\uBB50 \uD53C\uC0AC\uC758 \uC0AC\uD0D1 \uD558\uB098\uCBE4 \uAC00\uC838\uC640\uBCF4\uC2DC\uB358\uAC00\uC694"
   prefeb: {fileID: 8420745913745793019, guid: 8dfda05b87ca3344494b7592146c78df, type: 3}

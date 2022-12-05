@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Firework
   m_EditorClassIdentifier: 
   itemName: "\uAE40\uBE44\uC11C"
+  gameName: "\uB0B4\uAC00?! \uBD88\uAF43\uB180\uC774 \uC804\uBB38\uAC00"
   explanation: "\uBD88\uAF43\uB180\uC774 \uC7A5\uC778\uC774 \uB418\uC154\uC57C \uD574\uC694"
   prefeb: {fileID: 6402142328025706309, guid: e407d6e6530416d4a8bf1d4a6ffe0304, type: 3}

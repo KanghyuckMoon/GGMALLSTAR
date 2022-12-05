@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_RedArca
   m_EditorClassIdentifier: 
   itemName: "\uB808\uB4DC\uC544\uB974\uCE74"
+  gameName: RedArca
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 2478052313526099366, guid: 1029b0332d9afba4f8563482c7a09186, type: 3}

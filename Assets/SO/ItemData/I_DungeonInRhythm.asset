@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_DungeonInRhythm
   m_EditorClassIdentifier: 
   itemName: "\uB358\uC804\uC778\uB9AC\uB4EC"
+  gameName: DungeonInRhythm
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 7550258851975112107, guid: 17a0b486c1bbf8b48908c5ff7d460c57, type: 3}

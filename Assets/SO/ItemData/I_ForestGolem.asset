@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_ForestGolem
   m_EditorClassIdentifier: 
   itemName: "\uC232\uC9C0\uACE8"
+  gameName: "\uC232\uC9C0\uACE8"
   explanation: "\uC232\uC744 \uC9C0\uD0A4\uB294 \uACE8\uB818\uC774\uB77C \uC232\uC9C0\uACE8"
   prefeb: {fileID: 5422021977890774238, guid: 2deb8902a4dc79e469476ab918a8e828, type: 3}

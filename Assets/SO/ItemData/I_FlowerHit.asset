@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: I_FlowerHit
   m_EditorClassIdentifier: 
   itemName: "\uAF43\uB4E4"
+  gameName: Flower Hit
   explanation: "[Flower Hit]\uC5D0 \uB4F1\uC7A5\uD558\uB294 \uAF43\uB4E4, \uBE59\uBE59
     \uB3CC\uC544\uAC00\uB294 \uAF43\uC744 \uC0BD\uC73C\uB85C \uB9DE\uCD94\uBA74 \uC810\uC218\uB97C
     \uD68D\uB4DD\uD560 \uC218 \uC788\uB2E4."

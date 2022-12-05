@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_ShotgunClicker
   m_EditorClassIdentifier: 
   itemName: "\uC0F7\uAC74!"
+  gameName: "\uC0F7\uAC74\uD074\uB9AC\uCEE4"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 5283712466490190752, guid: 5e9744689afc5d644b53d2da4fbf877b, type: 3}

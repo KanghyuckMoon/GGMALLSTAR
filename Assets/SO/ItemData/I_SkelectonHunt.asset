@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_SkelectonHunt
   m_EditorClassIdentifier: 
   itemName: "\uC2A4\uCF08\uB808\uD1A4 \uC7A1\uB294 \uC18C\uB140"
+  gameName: "\uC990\uAC70\uC6B4 \uD574\uACE8 \uB54C\uB824\uC7A1\uAE30 \uAC8C\uC784"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 5240991182300119391, guid: 3c9060e5e610dff4bb437fd0f4c0eac6, type: 3}

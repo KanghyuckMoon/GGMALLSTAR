@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Reflevasion
   m_EditorClassIdentifier: 
   itemName: "\uC57C\uAD6C\uBC30\uD2B8"
+  gameName: Reflevasion
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 3556783344670412747, guid: c00ee8ef3fdf3e5458a1210dfaee5724, type: 3}

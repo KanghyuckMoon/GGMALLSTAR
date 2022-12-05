@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_TheThank
   m_EditorClassIdentifier: 
   itemName: "\uD0F1\uD06C"
+  gameName: TheThank
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 1127065434519454492, guid: 54fe6a11d2e34864aa4f33d918160bf5, type: 3}

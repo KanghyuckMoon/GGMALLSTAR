@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_WordConnect
   m_EditorClassIdentifier: 
   itemName: "\uB2E8\uC5B4\uB97C \uC787\uB294\uC790"
+  gameName: "\uB2E8\uC5B4\uC787\uAE30"
   explanation: "\uD50C\uB808\uC774\uC5B4\uAC00 1\uCD08\uB9C8\uB2E4 \uB5A0\uC624\uB978\uB2E4"
   prefeb: {fileID: 1678796978749414714, guid: ac3becccbb4bb6f48aac74d0bdd5bb27, type: 3}

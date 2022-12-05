@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_Galaga
   m_EditorClassIdentifier: 
   itemName: "\uC6B0\uC8FC\uC120"
+  gameName: "\uAC24\uB7EC\uADF882"
   explanation: "\uBB34\uB824 \uC801\uC774 82\uB9C8\uB9AC??"
   prefeb: {fileID: 619184981525376161, guid: ad279fb754c969e40bed8c973a0176a8, type: 3}

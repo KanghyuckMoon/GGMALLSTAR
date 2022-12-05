@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: I_MBTIC
   m_EditorClassIdentifier: 
   itemName: MBTI
+  gameName: MBTI Catch
   explanation: "MBTI\uB97C \uC870\uD569\uD558\uB294 \uAC8C\uC784"
   prefeb: {fileID: 2094700392823845762, guid: f32d01243ff22134284982a7707993e6, type: 3}

@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: I_Bartender
   m_EditorClassIdentifier: 
   itemName: "\uBC14\uD150\uB354"
+  gameName: "\uBC14\uB2E5\uBD80\uD130 \uC2DC\uC791\uD558\uB294 \uBC14\uD150\uB354
+    \uC0DD\uD65C"
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 6742131721111541086, guid: 12cf2aeec78feba428fe187fb241b643, type: 3}
