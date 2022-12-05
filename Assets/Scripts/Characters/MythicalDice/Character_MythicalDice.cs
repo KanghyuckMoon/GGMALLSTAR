@@ -14,4 +14,10 @@ public class Character_MythicalDice : Character
         AddComponent(ComponentType.Attack, new CharacterAttack(this));
         AddComponent(ComponentType.Skill1, new CharacterSkill_MythicalDice(this));
     }
+    
+    [Header("MythicalDice")]
+    [SerializeField]
+    private Transform _dicePosition;
+
+    public Transform DicePosition => _dicePosition;
 }
