@@ -13,12 +13,9 @@ public class CharacterSkill_MythicalDice : CharacterSkill
         CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
         {
             int random = Random.Range(1, 7);
-            Debug.Log(random);
             diceQueueAdd(random);
-            Character.HitBoxDataSO.hitBoxDatasList[0].hitBoxDatas[0].damage = diceQueue.Peek().DiceNumber;
+            Character.HitBoxDataSO.hitBoxDatasList[0].hitBoxDatas[0].damage = random;
             Debug.Log(Character.HitBoxDataSO.hitBoxDatasList[0].hitBoxDatas[0].damage);
-            
-            
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.SKILL_2, () =>
