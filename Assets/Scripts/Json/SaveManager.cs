@@ -21,7 +21,7 @@ namespace Json
 			{
 				Directory.CreateDirectory($"{Application.persistentDataPath}/Save");
 			}
-			string jsonData = JsonUtility.ToJson(userSaveData);
+			string jsonData = JsonUtility.ToJson(userSaveData, true);
 			File.WriteAllText(path, jsonData);
 		}
 
