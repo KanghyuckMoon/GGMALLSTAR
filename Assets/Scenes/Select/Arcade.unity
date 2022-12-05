@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.9573351, g: 0.69973606, b: 0.47198272, a: 1}
+  m_IndirectSpecularColor: {r: 0.95731616, g: 0.6997216, b: 0.47198063, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 33258525}
   - component: {fileID: 33258524}
   m_Layer: 5
-  m_Name: MainBtn
+  m_Name: EndingBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c7f51822b49004b9e8a69bcdc27ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Main
+  sceneName: Credit
   loadingSceneType: 0
 --- !u!114 &33258527
 MonoBehaviour:
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   - {fileID: 236826606}
   - {fileID: 1968422054}
   clearPanel: {fileID: 19316265}
-  mainButton: {fileID: 33258522}
+  endingButton: {fileID: 33258522}
 --- !u!1 &607237971
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,7 +3596,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Main
+  m_text: End
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc2f9f58c3c8cf842a695a62d5a262b0, type: 2}
   m_sharedMaterial: {fileID: 3881316068502450491, guid: fc2f9f58c3c8cf842a695a62d5a262b0,
