@@ -67,6 +67,9 @@ public class CharacterDamage : CharacterComponent
         characterStat.AddHP(-hitBoxData.damage);
         Character.GetCharacterComponent<CharacterDebug>().AddDamaged(hitBoxData.damage);
 
+        //Exp
+        Character.GetCharacterComponent<CharacterLevel>().AddExp(hitBoxData.addExp / 2);
+
         //Die
         if (!characterStat.IsAlive)
         {
@@ -127,7 +130,7 @@ public class CharacterDamage : CharacterComponent
             if(characterStat.IsAlive || !RoundManager.ReturnIsSetting())
             {
                 Vector3 knockBackVector3 = DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180));
-                Character.Rigidbody.AddForce(knockBackVector3 * hitBoxData.knockBack, ForceMode.Impulse);
+                Character.Rigidbody.AddForce(knockBackVector3 * (hitBoxData.knockBack + _comboCount * 0.08f), ForceMode.Impulse);
             }
             else
 			{

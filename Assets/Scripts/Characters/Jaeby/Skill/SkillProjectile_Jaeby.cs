@@ -25,10 +25,12 @@ public class SkillProjectile_Jaeby : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == _character.gameObject || other.gameObject.CompareTag("Invincibility"))
+        if (_character != null && other.gameObject == _character.gameObject)
+        {
             return;
+        }
 
-        if (!other.gameObject.CompareTag(_character.tag))
+        if (!other.gameObject.CompareTag(_character.tag) && !other.gameObject.CompareTag("Invincibility") && (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Player2")))
         {
             CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>();
             characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
@@ -50,10 +52,10 @@ public class SkillProjectile_Jaeby : MonoBehaviour
                 StarEffect starEffect = Pool.PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
                 starEffect.SetEffect(transform.position, _character.GetCharacterComponent<CharacterLevel>(), _hitBoxData.addExp / expCount);
             }
-        }
 
-        gameObject.SetActive(false);
-        Pool.PoolManager.AddObjToPool("Assets/Prefabs/SkillProjectile_Jaeby.prefab", gameObject);
+            gameObject.SetActive(false);
+            Pool.PoolManager.AddObjToPool("Assets/Prefabs/SkillProjectile_Jaeby.prefab", gameObject);
+        }
     }
 
     private IEnumerator Move()

@@ -45,10 +45,12 @@ public class FireBall_Frog : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == _character.gameObject || other.gameObject.CompareTag("Invincibility"))
+        if (_character != null && other.gameObject == _character.gameObject)
+        {
             return;
+        }
 
-        if (!other.gameObject.CompareTag(_character.tag))
+        if (!other.gameObject.CompareTag(_character.tag) && !other.gameObject.CompareTag("Invincibility") && (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Player2")))
         {
             CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>();
             characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
@@ -70,10 +72,11 @@ public class FireBall_Frog : MonoBehaviour
                 StarEffect starEffect = Pool.PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
                 starEffect.SetEffect(transform.position, _character.GetCharacterComponent<CharacterLevel>(), _hitBoxData.addExp / expCount);
             }
+
+            gameObject.SetActive(false);
+            PoolManager.AddObjToPool("Assets/Prefabs/Fireball_Frog.prefab", gameObject);
         }
         
-        gameObject.SetActive(false);
-        PoolManager.AddObjToPool("Assets/Prefabs/Fireball_Frog.prefab", gameObject);
     }
     
     private void OnEnable()
