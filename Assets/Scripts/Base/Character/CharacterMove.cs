@@ -8,6 +8,8 @@ public class CharacterMove : CharacterComponent
     private const string _walkSound = "se_common_step_carpet";
     private float _effDelay = 1f;
     private bool _isEffInput = false;
+    private bool _isGround = false;
+    public bool IsGround => _isGround;
     private CharacterAnimation characterAnimation = null;
 
     public CharacterMove(Character character) : base(character)
@@ -203,10 +205,16 @@ public class CharacterMove : CharacterComponent
         //Ground Check
         if (other.gameObject.layer == 6)
         {
+            _isGround = true;
+
             if (characterStat.IsAlive && _rigidbody.velocity.y < 0f)
             {
                 _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0, 0);
             }
+        }
+        else
+		{
+            _isGround = false;
         }
     }
 }

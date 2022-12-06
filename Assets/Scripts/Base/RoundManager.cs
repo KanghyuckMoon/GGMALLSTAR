@@ -7,6 +7,9 @@ using Sound;
 
 public class RoundManager : MonoBehaviour
 {
+	public static CharacterDebugData characterDebugDataP1;
+	public static CharacterDebugData characterDebugDataP2;
+
 	[SerializeField] private CharacterSpawner characterSpawner;
 	[SerializeField] private Transform spawnPosP1;
 	[SerializeField] private Transform spawnPosP2;
@@ -38,7 +41,6 @@ public class RoundManager : MonoBehaviour
 
 	private float time = 0f;
 	public float Time => time;
-
 
 	public System.Action RoundSetEvent
 	{
@@ -122,6 +124,11 @@ public class RoundManager : MonoBehaviour
 		HPFullSetting();
 		PostionSetting();
 		RoundSetting();
+	}
+
+	public static int GetRoundNumber()
+	{
+		return instance.roundNumber;
 	}
 
 	public static void RoundEnd(Character loser)
@@ -287,7 +294,17 @@ public class RoundManager : MonoBehaviour
 		}
 		else
 		{
-			LoadingScene.Instance.LoadScene("Main", LoadingScene.LoadingSceneType.Normal);
+			characterDebugDataP1 = characterP1.GetCharacterComponent<CharacterDebug>().CharacterDebugData;
+			characterDebugDataP2 = characterP2.GetCharacterComponent<CharacterDebug>().CharacterDebugData;
+
+			characterDebugDataP1.damage = characterDebugDataP2.damaged;
+			characterDebugDataP2.damage = characterDebugDataP1.damaged;
+			characterDebugDataP1.winRoundCount = winCountP1;
+			characterDebugDataP1.loseRoundCount = winCountP2;
+			characterDebugDataP2.winRoundCount = winCountP2;
+			characterDebugDataP2.loseRoundCount = winCountP1;
+
+			LoadingScene.Instance.LoadScene("ResultScene", LoadingScene.LoadingSceneType.Normal);
 		}
 	}
 

@@ -94,6 +94,7 @@ public class CharacterLevel : CharacterComponent
 
     public void AddExp(int addExp)
     {
+        Character.GetCharacterComponent<CharacterDebug>().AddStar(addExp);
         _exp += addExp;
         if (_exp >= Character.CharacterLevelSO.NeedExpLevelMax)
         {

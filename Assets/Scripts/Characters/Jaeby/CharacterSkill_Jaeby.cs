@@ -32,6 +32,7 @@ public class CharacterSkill_Jaeby : CharacterSkill
 
                 Character.GetCharacterComponent<CharacterAnimation>().SetAnimationTrigger(AnimationType.Skill1);
                 PoolManager.GetItem("Assets/Prefabs/SkillProjectile_Jaeby.prefab").GetComponent<SkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>().Direction, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+                Skill1Action();
             }
         }, EventType.KEY_DOWN);
 
@@ -44,6 +45,7 @@ public class CharacterSkill_Jaeby : CharacterSkill
                 Sound.SoundManager.Instance.PlayEFF("JaebyAttack");
                 Character.GetCharacterComponent<CharacterAnimation>().SetAnimationTrigger(AnimationType.Skill2);
                 PoolManager.GetItem("Assets/Prefabs/SkillSpike_Jaeby.prefab").GetComponent<SkillSpike_Jaeby>().SetSkillSpike(Character, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]);
+                Skill2Action();
             }
         }, EventType.KEY_DOWN);
 
@@ -59,6 +61,7 @@ public class CharacterSkill_Jaeby : CharacterSkill
                 RoundManager.StaticStopMove(1f);
                 AllStarSkillUse?.Invoke();
                 Character.StartCoroutine(AllStarSkill());
+                AllStarSkillAction();
             }
         }, EventType.KEY_DOWN);
     }

@@ -19,5 +19,6 @@ public class Character_Jaeby : Character
         // 스킬1당 스크립트 분리하기 안함
         AddComponent(ComponentType.Skill1, new CharacterSkill_Jaeby(this));
         AddComponent(ComponentType.Color, new CharacterP2Color_Jaeby(this));
+        AddComponent(ComponentType.Debug, new CharacterDebug(this));
     }
 }

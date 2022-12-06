@@ -69,6 +69,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Select/Arcade.unity
     guid: 8e36af4ab133b9c43b34265cb8646fb1
   - enabled: 1
+    path: Assets/Scenes/Select/ResultScene.unity
+    guid: f7a5067480ec7884fab186f1be54aad1
+  - enabled: 1
     path: Assets/Scenes/Etc/Credit.unity
     guid: 160b91ceb97d93748ba65cbd3407b7d0
   m_configObjects:

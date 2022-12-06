@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterDebug : CharacterComponent
 {
-	private CharacterDebugData characterDebugData;
+	private CharacterDebugData characterDebugData = new CharacterDebugData();
 	public CharacterDebugData CharacterDebugData => characterDebugData;
 
 	public CharacterDebug(Character character) : base(character)
@@ -61,9 +61,27 @@ public class CharacterDebug : CharacterComponent
 	{
 		CharacterDebugData.allStarSkill = allStarSkillRound;
 	}
+	public void AddStar(int star)
+	{
+		CharacterDebugData.starAmount += star;
+	}
 	public void AddGameTime(float time)
 	{
 		CharacterDebugData.gameTime += time;
+	}
+
+	public override void Update()
+	{
+		base.Update();
+		AddGameTime(Time.deltaTime);
+		if(Character.GetCharacterComponent<CharacterMove>().IsGround)
+		{
+			AddGroundTime(Time.deltaTime);
+		}
+		else
+		{
+			AddAirTime(Time.deltaTime);
+		}
 	}
 
 }

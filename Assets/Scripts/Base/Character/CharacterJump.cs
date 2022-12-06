@@ -55,6 +55,7 @@ public class CharacterJump : CharacterComponent
             isTap = false;
             if (_rigidbody && _jumpCount == 0)
             {
+                Character.GetCharacterComponent<CharacterDebug>().AddJumpCount(1);
                 var vel = _rigidbody.velocity;
                 vel.y = 0;
                 _rigidbody.velocity = vel;

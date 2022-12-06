@@ -55,6 +55,14 @@ public class CharacterAttack : CharacterComponent
     private void AttackAnimation()
     {
         characterAnimation ??= Character.GetCharacterComponent<CharacterAnimation>();
+        if(Character.GetCharacterComponent<CharacterMove>().IsGround)
+        {
+            Character.GetCharacterComponent<CharacterDebug>().AddGroundAttackCount(1);
+        }
+		else
+        {
+            Character.GetCharacterComponent<CharacterDebug>().AddAirAttackCount(1);
+        }
         characterAnimation.SetAnimationTrigger(AnimationType.Attack);
     }
 

@@ -28,6 +28,7 @@ public class CharacterSkill_Frog : CharacterSkill
                     character, character.GetCharacterComponent<CharacterSprite>().Direction,
                     character.transform.position + new Vector3(0.2f, 0.05f, 0),
                     character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+                Skill1Action();
             }
         }, EventType.KEY_DOWN);
 
@@ -49,6 +50,7 @@ public class CharacterSkill_Frog : CharacterSkill
                 //        ? new Vector3(0.15f, 0, 0)
                 //        : new Vector3(-0.15f, 0, 0)));
                 character.GetCharacterComponent<CharacterAnimation>().SetAnimationTrigger(AnimationType.Skill2);
+                Skill2Action();
             }
         }, EventType.KEY_DOWN);
 
@@ -66,6 +68,7 @@ public class CharacterSkill_Frog : CharacterSkill
                 RoundManager.StaticStopMove(1f);
                 AllStarSkillUse?.Invoke();
                 character.StartCoroutine(AllStarSkill(enemyTransform));
+                AllStarSkillAction();
             }
         }, EventType.KEY_DOWN);
     }

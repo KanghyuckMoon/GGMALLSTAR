@@ -18,5 +18,6 @@ public class Character_Frog : Character
         AddComponent(ComponentType.Level, new CharacterLevel(this));
         AddComponent(ComponentType.Skill1, new CharacterSkill_Frog(this));
         AddComponent(ComponentType.Color, new CharacterP2Color_Frog(this));
+        AddComponent(ComponentType.Debug, new CharacterDebug(this));
     }
 }

@@ -13,4 +13,5 @@ public enum ComponentType
     Skill2,
     Level,
     Color,
+    Debug,
 }

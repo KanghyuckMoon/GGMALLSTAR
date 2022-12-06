@@ -11,6 +11,9 @@ namespace Sound
 		MainMenu_BGM,
 		Inventory_BGM,
 		Credit_BGM,
+		Jaeby_Win,
+		Frog_Win,
+		Dice_Win,
 		Count,
 	}
 

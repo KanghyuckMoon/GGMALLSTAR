@@ -533,6 +533,18 @@ MonoBehaviour:
     m_Address: JaebyComboSO
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: dc21b1561cc014e40bda8ea1f047eec5
+    m_Address: Jaeby_Win
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c7e2783abc22a7d409006a9353b0b72d
+    m_Address: Frog_Win
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e86abdfb54bc99549a468af1d99c2837
+    m_Address: Dice_Win
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

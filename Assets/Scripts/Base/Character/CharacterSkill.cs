@@ -72,4 +72,17 @@ public abstract class CharacterSkill : CharacterComponent
         allStarSkillUse += action;
     }
 
+    public virtual void Skill1Action()
+    {
+        Character.GetCharacterComponent<CharacterDebug>().AddSkill1Count(1);
+    }
+    public virtual void Skill2Action()
+    {
+        Character.GetCharacterComponent<CharacterDebug>().AddSkill2Count(1);
+    }
+    public virtual void AllStarSkillAction()
+    {
+        Character.GetCharacterComponent<CharacterDebug>().SetAllStarSkillRound(RoundManager.GetRoundNumber());
+    }
+
 }

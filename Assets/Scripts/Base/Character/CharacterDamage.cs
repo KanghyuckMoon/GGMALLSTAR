@@ -65,6 +65,7 @@ public class CharacterDamage : CharacterComponent
 
         //Hp
         characterStat.AddHP(-hitBoxData.damage);
+        Character.GetCharacterComponent<CharacterDebug>().AddDamaged(hitBoxData.damage);
 
         //Die
         if (!characterStat.IsAlive)
