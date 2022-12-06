@@ -27,7 +27,10 @@ namespace Inventory
 		public void Start()
 		{
 			InitItemList();
-			SetItem(InventoryStaticSO.itemDatas[testShowItemIndex]);
+			if(InventoryStaticSO.itemDatas.Count > 0)
+			{
+				SetItem(InventoryStaticSO.itemDatas[testShowItemIndex]);
+			}
 		}
 
 		public void Update()
