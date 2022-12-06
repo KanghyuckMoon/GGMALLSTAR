@@ -2,6 +2,7 @@ public enum ComponentType
 {
     Attack,
     Move,
+    Dodge,
     Input,
     Jump,
     Sprite,

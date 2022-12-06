@@ -108,6 +108,12 @@ public class CharacterMove : CharacterComponent
         _sturnTime = time;
     }
 
+    public void SetMoveDirection(Vector2 vector2)
+	{
+        _moveDirection = vector2;
+
+    }
+
     public override void FixedUpdate()
     {
         if (!Character.GetCharacterComponent<CharacterStat>().IsAlive)
@@ -126,7 +132,7 @@ public class CharacterMove : CharacterComponent
 
         if (_rigidbody.velocity.y == 0f)
         {
-            _moveDirection = _inputDirection;
+            SetMoveDirection(_inputDirection);
             speed = Character.CharacterSO.MoveSpeed;
             if (_inputDirection.x != 0)
             {
@@ -183,27 +189,6 @@ public class CharacterMove : CharacterComponent
         }
     }
 
-
-    public override void OnCollisionEnter(Collision other)
-    {
-        base.OnCollisionEnter(other);
-        //Wall Check
-        if (other.gameObject.layer == 8)
-        {
-            if (characterStat.IsAlive)
-            {
-                if (other.transform.position.x > Character.transform.position.x)
-                {
-                    _rigidbody.velocity = new Vector3(-1f, _rigidbody.velocity.y, 0);
-                }
-                else
-                {
-                    _rigidbody.velocity = new Vector3(1f, _rigidbody.velocity.y, 0);
-                }
-            }
-        }
-    }
-
 	public override void OnCollisionStay(Collision other)
     {
         base.OnCollisionEnter(other);
@@ -220,6 +205,22 @@ public class CharacterMove : CharacterComponent
         else
 		{
             _isGround = false;
+        }
+
+        //Wall Check
+        if (other.gameObject.layer == 8)
+        {
+            if (characterStat.IsAlive)
+            {
+                if (other.transform.position.x > Character.transform.position.x)
+                {
+                    _rigidbody.velocity = new Vector3(-1f, _rigidbody.velocity.y, 0);
+                }
+                else
+                {
+                    _rigidbody.velocity = new Vector3(1f, _rigidbody.velocity.y, 0);
+                }
+            }
         }
     }
 }

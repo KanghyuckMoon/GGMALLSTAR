@@ -11,6 +11,7 @@ public class CharacterSO : ScriptableObject
     public float FirstJumpPower;
     public float SecondJumpPower;
     public float MoveSpeed;
+    public float DodgeSpeed;
     public float AirMoveSpeed;
     public float GravityScale;
 

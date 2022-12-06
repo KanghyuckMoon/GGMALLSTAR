@@ -21,4 +21,6 @@ MonoBehaviour:
     actionName: SKILL_2
   - keyCode: 111
     actionName: ALL_STAR_SKILL
+  - keyCode: 107
+    actionName: DODGE
   MoveInput: {fileID: 11400000, guid: a6ae7e71176e28246a8fac854f46b2bf, type: 2}

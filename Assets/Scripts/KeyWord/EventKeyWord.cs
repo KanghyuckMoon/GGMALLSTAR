@@ -15,6 +15,7 @@ namespace KeyWord
         public const string DOWN = "DOWN";
         public const string LEFT = "LEFT";
         public const string RIGHT = "RIGHT";
+        public const string DODGE = "DODGE";
 
         public const string DAMAGE = "DAMAGE";
         public const string DEAD = "DEAD";

@@ -366,7 +366,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 120c6b143579b99429ef344b5c36557a
-    m_Address: StarGetEff
+    m_Address: DodgeEff
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: b15c80a869bf271438b5e6ceaa536fc4
@@ -543,6 +543,18 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: e86abdfb54bc99549a468af1d99c2837
     m_Address: Dice_Win
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9ede33e3920de8043b82c6a17095cd35
+    m_Address: Dirty_02
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a52e2f005c877bb449a8b68a713554b1
+    m_Address: StarGetEff
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ebd3f2f666f4c6d45b20cedc07ca0110
+    m_Address: WhiteSprite
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -19,6 +19,7 @@ MonoBehaviour:
   FirstJumpPower: 5
   SecondJumpPower: 2
   MoveSpeed: 3
+  DodgeSpeed: 8
   AirMoveSpeed: 1.5
   GravityScale: 1
   attackDelay: 0.6

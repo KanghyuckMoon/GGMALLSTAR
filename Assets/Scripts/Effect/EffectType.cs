@@ -8,8 +8,10 @@ namespace Effect
         Hit_3,
         Hit_4,
         Dirty_01,
+        Dirty_02,
         FinalHit,
         StarGetEff,
+        DodgeEff,
         Count,
     }
 }

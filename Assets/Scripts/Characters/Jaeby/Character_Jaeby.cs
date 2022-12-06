@@ -13,12 +13,13 @@ public class Character_Jaeby : Character
         AddComponent(ComponentType.Gravity, new CharacterGravity(this));
         AddComponent(ComponentType.Animation, new CharacterAnimation_Jaeby(this));
         AddComponent(ComponentType.Move, new CharacterMove(this));
+        AddComponent(ComponentType.Dodge, new CharacterDodge(this));
         AddComponent(ComponentType.Damage, new CharacterDamage(this));
         AddComponent(ComponentType.Jump, new CharacterJump(this));
         AddComponent(ComponentType.Level, new CharacterLevel(this));
         // 스킬1당 스크립트 분리하기 안함
         AddComponent(ComponentType.Skill1, new CharacterSkill_Jaeby(this));
-        AddComponent(ComponentType.Color, new CharacterP2Color_Jaeby(this));
+        AddComponent(ComponentType.Color, new CharacterColor_Jaeby(this));
         AddComponent(ComponentType.Debug, new CharacterDebug(this));
     }
 }

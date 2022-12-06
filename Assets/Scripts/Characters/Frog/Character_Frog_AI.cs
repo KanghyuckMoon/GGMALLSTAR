@@ -17,7 +17,7 @@ public class Character_Frog_AI : Character
         AddComponent(ComponentType.Jump, new CharacterJump(this));
         AddComponent(ComponentType.Level, new CharacterLevel(this));
         AddComponent(ComponentType.Skill1, new CharacterSkill_Frog(this));
-        AddComponent(ComponentType.Color, new CharacterP2Color_Frog(this));
+        AddComponent(ComponentType.Color, new CharacterColor_Frog(this));
         AddComponent(ComponentType.Debug, new CharacterDebug(this));
     }
 }

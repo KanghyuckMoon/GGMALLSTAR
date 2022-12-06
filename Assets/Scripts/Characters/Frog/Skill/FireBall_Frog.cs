@@ -45,10 +45,10 @@ public class FireBall_Frog : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == _character.gameObject)
+        if (other.gameObject == _character.gameObject || !other.gameObject.CompareTag("Invincibility"))
             return;
 
-        if (!other.gameObject.CompareTag(_character.tag) && !other.gameObject.CompareTag("Invincibility"))
+        if (!other.gameObject.CompareTag(_character.tag))
         {
             CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>();
             characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
