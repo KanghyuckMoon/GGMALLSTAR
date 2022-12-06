@@ -64,6 +64,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                 isCanUseSkill3 = false;
                 characterLevel.IsAllStarSkillUse = true;
                 Sound.SoundManager.Instance.PlayEFF("se_common_boss_core_hit");
+                AllStarSkillUse?.Invoke();
                 CameraManager.SetAllStar(Character.transform);
                 RoundManager.StaticSetInputSturnTime(1f);
                 RoundManager.StaticStopMove(1f);

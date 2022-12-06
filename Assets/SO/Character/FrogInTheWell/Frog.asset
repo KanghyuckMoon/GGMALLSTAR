@@ -15,14 +15,14 @@ MonoBehaviour:
   Name: Frog
   CharacterImage: {fileID: 6670376781915665784, guid: 7dcdb735ac7fc5e40be1e15911fe2368,
     type: 3}
-  MaxHP: 200
+  MaxHP: 150
   FirstJumpPower: 5
   SecondJumpPower: 2
   MoveSpeed: 3
   DodgeSpeed: 8
   AirMoveSpeed: 1.5
   GravityScale: 1
-  attackDelay: 0.6
+  attackDelay: 0.5
   skill1Delay: 2.5
   skill2Delay: 3
   HitBoxOffset: {x: 0, y: 0, z: 0}

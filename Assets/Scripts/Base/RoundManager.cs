@@ -356,8 +356,8 @@ public class RoundManager : MonoBehaviour
 		CharacterDodge characterDodge = character.GetCharacterComponent<CharacterDodge>();
 
 		characterGravity.SetHitTime(stopTime);
-		//characterMove.SetSturnTime(stopTime);
-		//characterDodge.SetSturnTime(stopTime);
+		characterMove.SetSturnTime(stopTime);
+		characterDodge.SetSturnTime(stopTime);
 		characterAnimation.SetHitTime(stopTime);
 		character.GetComponent<Rigidbody>().velocity = Vector3.zero;
 	}

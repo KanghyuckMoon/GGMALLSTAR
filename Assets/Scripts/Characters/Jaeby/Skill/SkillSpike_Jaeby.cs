@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class SkillSpike_Jaeby : MonoBehaviour
 {
@@ -14,6 +15,24 @@ public class SkillSpike_Jaeby : MonoBehaviour
         _hitBoxData = hitBoxData;
         GetComponent<Collider>().enabled = false;
         StartCoroutine(ColliderTriggerCoroutine());
+        transform.localScale = Vector3.zero;
+        transform.DOScale(1f, 0.2f);
+        Sound.SoundManager.Instance.PlayEFF("se_common_offset_sword");
+        Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Dirty_02, position);
+
+        StartCoroutine(DeleteObejct());
+    }
+
+    private IEnumerator DeleteObejct()
+	{
+        yield return new WaitForSeconds(20f);
+
+        if (gameObject.activeSelf)
+        {
+            gameObject.SetActive(false);
+            Sound.SoundManager.Instance.PlayEFF("se_common_offset_sword");
+            Pool.PoolManager.AddObjToPool("Assets/Prefabs/SkillSpike_Jaeby.prefab", gameObject);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -46,6 +65,7 @@ public class SkillSpike_Jaeby : MonoBehaviour
         }
 
         gameObject.SetActive(false);
+        Sound.SoundManager.Instance.PlayEFF("se_common_offset_sword");
         Pool.PoolManager.AddObjToPool("Assets/Prefabs/SkillSpike_Jaeby.prefab", gameObject);
     }
 
