@@ -52,7 +52,7 @@ public class FireBall_Frog : MonoBehaviour
         {
             CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>();
             characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
-            characterAttack.TargetCharacterDamage?.OnAttcked(null, _hitBoxData, other.ClosestPoint(transform.position), characterAttack.IsRight);
+            characterAttack.TargetCharacterDamage?.OnAttcked(null, _hitBoxData, other.ClosestPoint(transform.position), _direction == Direction.RIGHT ? true : false);
 
             //AI
             CharacterAIInput aiInput = characterAttack.Character.GetCharacterComponent<CharacterAIInput>();

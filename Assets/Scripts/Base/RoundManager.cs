@@ -267,6 +267,7 @@ public class RoundManager : MonoBehaviour
 				break;
 		}
 		SetInputSturnTime(2f);
+		StopMove(0f);
 		StartCoroutine(Fight(1f, 1f));
 
 		roundNumber++;

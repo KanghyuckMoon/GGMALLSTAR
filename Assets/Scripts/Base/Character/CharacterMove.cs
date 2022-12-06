@@ -152,6 +152,8 @@ public class CharacterMove : CharacterComponent
         //Wall Check
         Vector3 pos = Character.transform.position + Character.Collider.center;
         pos.x += Character.Collider.size.x * 0.5f * _moveDirection.x;
+        pos.y -= Character.Collider.size.y * 0.5f;
+        pos.y += 0.1f;
         if (Physics.Raycast(pos, _moveDirection, 0.1f, LayerMask.GetMask("Wall", "Player")))
         {
             _rigidbody.velocity = new Vector3(0, _rigidbody.velocity.y, 0);
