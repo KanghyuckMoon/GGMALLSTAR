@@ -12,10 +12,8 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     {
         CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
         {
-            int random = Random.Range(1, 7);
-            diceQueueAdd(random);
-            Character.HitBoxDataSO.hitBoxDatasList[0].hitBoxDatas[0].damage = random;
-            Debug.Log(Character.HitBoxDataSO.hitBoxDatasList[0].hitBoxDatas[0].damage);
+            // TODO: 레벨 제한 + 스킬쿨 적용 필요
+            RollDice();
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.SKILL_2, () =>
@@ -25,9 +23,13 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                 int damage = 0;
                 while (diceQueue.Count > 0)
                 {
+                    diceQueue.Peek().gameObject.SetActive(false);
+                    PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Peek().gameObject);
                     damage += diceQueue.Dequeue().DiceNumber;
                 }
-                // damage 변수 만큼 데미지를 준다.
+                Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].damage = damage;
+                PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(),
+                    () => { }, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset);
             }
             else
             {
@@ -38,7 +40,25 @@ public class CharacterSkill_MythicalDice : CharacterSkill
         CharacterEvent.AddEvent(EventKeyWord.ALL_STAR_SKILL, () =>
         {
             Debug.Log("AllStarSkill");
+            for (int i = 0; i < 4; ++i)
+            {
+                RollDice();
+            }
         }, EventType.KEY_DOWN);
+    }
+
+    public override void Start()
+    {
+        base.Start();
+        Debug.Log("start roll");
+        RollDice();
+    }
+
+    private void RollDice()
+    {
+        int random = Random.Range(1, 7);
+        diceQueueAdd(random);
+        Character.HitBoxDataSO.hitBoxDatasList[0].hitBoxDatas[0].damage = random;
     }
 
     public void diceQueueAdd(int diceNum)
