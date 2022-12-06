@@ -20,6 +20,7 @@ public class HitBox : MonoBehaviour
     public HitBoxData hitBoxData;
     public void SetHitBox(HitBoxData hitBoxData, CharacterAttack owner, Action onHit, Vector3 size = default, Vector3 offset = default)
     {
+        transform.SetParent(owner?.Character?.transform);
         _owner = owner;
         _onHit = onHit;
 
@@ -72,7 +73,12 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.gameObject.CompareTag(_owner.Character.tag) && !other.gameObject.CompareTag("Invincibility"))
+        if(_owner != null && other.gameObject == _owner.Character.gameObject)
+		{
+            return;
+		}
+
+        if (!other.gameObject.CompareTag(_owner.Character.tag) && !other.gameObject.CompareTag("Invincibility") && (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Player2")))
         {
             Owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
             Owner.TargetCharacterDamage?.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
@@ -123,6 +129,7 @@ public class HitBox : MonoBehaviour
     private IEnumerator SetActiveCoroutine(bool active = false)
     {
         yield return new WaitForSeconds(0.1f);
+        transform.SetParent(null);
         gameObject.SetActive(active);
         PoolManager.AddObjToPool("HitBox", gameObject);
     }
