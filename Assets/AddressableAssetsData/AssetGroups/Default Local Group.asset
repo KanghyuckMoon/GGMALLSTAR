@@ -565,6 +565,22 @@ MonoBehaviour:
     m_Address: Dice
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: d2ae9898e80a71e4c9f55e33cfc892df
+    m_Address: DodgeImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a20fddb13f027a347b351a17d2144f8f
+    m_Address: Jaeby_AttackImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dd234791a449ed5468cfc15d48d916e6
+    m_Address: Frog_AttackImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8e2050e4945de334ea6d887012cd533b
+    m_Address: Dice_AttackImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
