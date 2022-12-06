@@ -34,6 +34,7 @@ public class Jaeby_Behaviour : BehaviourTree
 				IfAction(Skill2Condition, UseSkill2),
 				IfAction(AllStarSkillCondition, UseAllStarSkill),
 				IfAction(AttackJCondition, AttackJ),
+				IfAction(DodgeCondition, Dodge),
 
 				IgnoreAction(IsHitFalse),
 				IgnoreAction(IsComboFalse),
@@ -101,6 +102,16 @@ public class Jaeby_Behaviour : BehaviourTree
 			return true;
 		}
 		return false;
+	}
+	protected bool DodgeCondition()
+	{
+		int random = Random.Range(0, 15);
+
+		return random == 0 && !MoveCondition();
+	}
+	protected void Dodge()
+	{
+		TapKey(KeyCode.K);
 	}
 
 	protected bool Skill1Condition()

@@ -13,6 +13,7 @@ public class Character_Frog_AI : Character
         AddComponent(ComponentType.Gravity, new CharacterGravity(this));
         AddComponent(ComponentType.Animation, new CharacterAnimation_Frog(this));
         AddComponent(ComponentType.Move, new CharacterMove(this));
+        AddComponent(ComponentType.Dodge, new CharacterDodge(this));
         AddComponent(ComponentType.Damage, new CharacterDamage(this));
         AddComponent(ComponentType.Jump, new CharacterJump(this));
         AddComponent(ComponentType.Level, new CharacterLevel(this));

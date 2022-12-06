@@ -353,9 +353,11 @@ public class RoundManager : MonoBehaviour
 		CharacterGravity characterGravity = character.GetCharacterComponent<CharacterGravity>();
 		CharacterMove characterMove = character.GetCharacterComponent<CharacterMove>();
 		CharacterAnimation characterAnimation = character.GetCharacterComponent<CharacterAnimation>();
+		CharacterDodge characterDodge = character.GetCharacterComponent<CharacterDodge>();
 
 		characterGravity.SetHitTime(stopTime);
-		characterMove.SetSturnTime(stopTime);
+		//characterMove.SetSturnTime(stopTime);
+		//characterDodge.SetSturnTime(stopTime);
 		characterAnimation.SetHitTime(stopTime);
 		character.GetComponent<Rigidbody>().velocity = Vector3.zero;
 	}

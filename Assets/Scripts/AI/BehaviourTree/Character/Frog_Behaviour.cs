@@ -30,6 +30,7 @@ public class Frog_Behaviour : BehaviourTree
 			(
 				//new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(FoolActionCondition, FoolAction),
+				IfAction(DodgeCondition, Dodge),
 				IfAction(JumpCondition, Jump),
 				IfAction(Skill1Condition, UseSkill1),
 				IfAction(Skill2Condition, UseSkill2),
@@ -90,6 +91,13 @@ public class Frog_Behaviour : BehaviourTree
 		return false;
 	}
 
+	protected bool DodgeCondition()
+	{
+		int random = Random.Range(0, 15);
+
+		return random == 0 && MoveCondition();
+	}
+
 	protected void FixedMove()
 	{
 		float fixedDistance = 0.5f;
@@ -105,6 +113,10 @@ public class Frog_Behaviour : BehaviourTree
 		}
 	}
 
+	protected void Dodge()
+	{
+		TapKey(KeyCode.K);
+	}
 
 	protected void AttackJ()
 	{

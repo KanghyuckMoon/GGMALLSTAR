@@ -25,7 +25,7 @@ public class SkillProjectile_Jaeby : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == _character.gameObject || !other.gameObject.CompareTag("Invincibility"))
+        if (other.gameObject == _character.gameObject || other.gameObject.CompareTag("Invincibility"))
             return;
 
         if (!other.gameObject.CompareTag(_character.tag))

@@ -87,7 +87,12 @@ public class CharacterDodge : CharacterComponent
 
 	public void Dodge()
 	{
-		if(_sturnTime > 0)
+		if (!Character.GetCharacterComponent<CharacterStat>().IsAlive)
+		{
+			Character.Rigidbody.velocity = Vector3.zero;
+			return;
+		}
+		if (_sturnTime > 0f)
 		{
 			return;
 		}
@@ -95,7 +100,20 @@ public class CharacterDodge : CharacterComponent
 		Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Dirty_02, Character.transform.position);
 		Character.StartCoroutine(ReturnState(Character.tag));
 		Character.tag = "Invincibility";
-		Character.GetCharacterComponent<CharacterInput>().SetInputDelayTime(0.2f);
+
+		var characterInput = Character.GetCharacterComponent<CharacterInput>();  
+
+		if (characterInput == null)
+		{
+			var aiInput = Character.GetCharacterComponent<CharacterAIInput>();
+			aiInput.SetInputDelayTime(0.2f);
+		}
+		else
+		{
+			characterInput.SetInputDelayTime(0.2f);
+		}
+
+		
 		Character.GetCharacterComponent<CharacterColor>().SetWhiteMaterial();
 		Character.GetCharacterComponent<CharacterMove>().SetMoveDirection(_inputDirection);
 		SetSturnTime(0.5f);

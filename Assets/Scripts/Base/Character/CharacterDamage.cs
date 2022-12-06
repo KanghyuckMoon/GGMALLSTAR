@@ -98,7 +98,9 @@ public class CharacterDamage : CharacterComponent
         Vector3 vector = Character.Rigidbody.velocity;
         CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>();
         CharacterMove characterMove = Character.GetCharacterComponent<CharacterMove>();
+        CharacterDodge characterDodge = Character.GetCharacterComponent<CharacterDodge>();
         characterMove.SetSturnTime(stunHitTime);
+        characterDodge.SetSturnTime(stunHitTime);
         characterGravity.SetHitTime(stunHitTime);
         Character.Rigidbody.velocity = Vector3.zero;
         CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>();
