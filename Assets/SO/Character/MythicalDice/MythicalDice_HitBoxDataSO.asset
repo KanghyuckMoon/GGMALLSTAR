@@ -28,3 +28,18 @@ MonoBehaviour:
       hitEffSoundName: 
       atkEffSoundName: 
       addExp: 10
+  - hitBoxDatas:
+    - actionName: Attack
+      damage: 0
+      knockBack: 0
+      knockAngle: 0
+      hitTime: 0
+      sturnTime: 0
+      _attackOffset: {x: 0.2, y: 0.19, z: 0}
+      _attackSize: {x: 0.25, y: 0.375, z: 0}
+      shakePower: 0
+      shakeTime: 0
+      effectType: 0
+      hitEffSoundName: 
+      atkEffSoundName: 
+      addExp: 10
