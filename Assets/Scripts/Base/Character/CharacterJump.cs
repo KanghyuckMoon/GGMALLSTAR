@@ -53,7 +53,11 @@ public class CharacterJump : CharacterComponent
         if (isTap)
         {
             isTap = false;
-            if (_rigidbody && _jumpCount == 0)
+            if(!Character.GetCharacterComponent<CharacterStat>().IsAlive)
+            {
+                _rigidbody.velocity = Vector3.zero;
+            }
+            else if (_rigidbody && _jumpCount == 0)
             {
                 Character.GetCharacterComponent<CharacterDebug>().AddJumpCount(1);
                 var vel = _rigidbody.velocity;

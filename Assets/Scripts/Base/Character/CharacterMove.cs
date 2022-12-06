@@ -110,6 +110,11 @@ public class CharacterMove : CharacterComponent
 
     public override void FixedUpdate()
     {
+        if (!Character.GetCharacterComponent<CharacterStat>().IsAlive)
+		{
+            _rigidbody.velocity = Vector3.zero;
+            return;
+        }
 
         if (_sturnTime > 0f)
         {

@@ -127,6 +127,10 @@ public class CharacterDamage : CharacterComponent
                 Vector3 knockBackVector3 = DegreeToVector3(isRight ? hitBoxData.knockAngle : (-hitBoxData.knockAngle + 180));
                 Character.Rigidbody.AddForce(knockBackVector3 * hitBoxData.knockBack, ForceMode.Impulse);
             }
+            else
+			{
+                Character.Rigidbody.velocity = Vector3.zero;
+            }
         });
 
     }

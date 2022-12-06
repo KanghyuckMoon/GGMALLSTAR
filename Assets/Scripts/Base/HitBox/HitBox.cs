@@ -68,7 +68,6 @@ public class HitBox : MonoBehaviour
         {
             StaticCoroutine.Instance.StartCoroutine(OwnerHitTimeEnd(Owner.Character, hitTime, vector));
         }
-
     }
 
     private void OnTriggerEnter(Collider other)
