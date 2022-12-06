@@ -20,7 +20,7 @@ public class CharacterSkill_Frog : CharacterSkill
     {
         CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
         {
-            if (CharacterLevel.Level > 1 && skillCoolTime1 > Character.CharacterSO.skill1Delay)
+            if (CharacterLevel.Level > 1 && skillCoolTime1 >= Character.CharacterSO.skill1Delay)
             {
                 skillCoolTime1 = 0;
                 
@@ -34,7 +34,7 @@ public class CharacterSkill_Frog : CharacterSkill
 
         CharacterEvent.AddEvent(EventKeyWord.SKILL_2, () =>
         {
-            if (CharacterLevel.Level > 2 && skillCoolTime2 > Character.CharacterSO.skill2Delay)
+            if (CharacterLevel.Level > 2 && skillCoolTime2 >= Character.CharacterSO.skill2Delay)
             {
                 skillCoolTime2 = 0;
                 

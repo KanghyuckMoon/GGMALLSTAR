@@ -414,15 +414,15 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 0d70f9dae8316df4a902c7ae8290edd2
-    m_Address: DiceKnight_SkillImage1
+    m_Address: Dice_SkillImage1
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: c4dc8b9313e1ec143a297f20779c4138
-    m_Address: DiceKnight_SkillImage2
+    m_Address: Dice_SkillImage2
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: a7bc5cd82a7b2ba4b93742952f087128
-    m_Address: Knight_AllStarSkillImage
+    m_Address: Dice_AllStarSkillImage
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 60886e91060a3b1469bc05dcf3b2b3e7
@@ -555,6 +555,14 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: ebd3f2f666f4c6d45b20cedc07ca0110
     m_Address: SpriteWhite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f10bec6d96eb6e7479b7d2a306da735c
+    m_Address: Assets/Prefabs/Dice.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 296dbbe0fee36ea408a10c9b2e06d9f3
+    m_Address: Dice
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
