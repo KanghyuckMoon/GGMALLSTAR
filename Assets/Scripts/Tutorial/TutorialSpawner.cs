@@ -5,39 +5,14 @@ using Addressable;
 using Utill;
 using Cinemachine;
 
-public class CharacterSpawner : MonoBehaviour
+public class TutorialSpawner : CharacterSpawner
 {
-	public GameObject Player1
+
+	protected override void Awake()
 	{
-		get
-		{
-			return player1;
-		}
-	}
-	public GameObject Player2
-	{
-		get
-		{
-			return player2;
-		}
-	}
-
-	[SerializeField] protected CinemachineTargetGroup cinemachineTargetGroup;
-	[SerializeField] protected Transform spawnPositionP1;
-	[SerializeField] protected Transform spawnPositionP2;
-
-	[SerializeField] protected InputDataBaseSO inputDataBaseSOP1;
-	[SerializeField] protected InputDataBaseSO inputDataBaseSOP2;
-
-	protected GameObject player1;
-	protected GameObject player2;
-
-	protected virtual void Awake()
-	{
-		if(SelectDataSO.isAICharacterP1)
+		if (SelectDataSO.isAICharacterP1)
 		{
 			player1 = Instantiate(AddressablesManager.Instance.GetResource<GameObject>(SelectDataSO.characterSelectP1.ToString() + "_AI"), spawnPositionP1.position, Quaternion.identity);
-
 		}
 		else
 		{
@@ -60,16 +35,4 @@ public class CharacterSpawner : MonoBehaviour
 		cinemachineTargetGroup.AddMember(player1.transform, 1, 1);
 		cinemachineTargetGroup.AddMember(player2.transform, 1, 1);
 	}
-
-	protected virtual IEnumerator Start()
-	{
-		yield return new WaitForEndOfFrame();
-		if(SelectDataSO.characterSelectP1 == SelectDataSO.characterSelectP2)
-		{
-			player2.GetComponent<Character>().GetCharacterComponent<CharacterColor>().SetP2Color();
-		}
-		player1.GetComponent<Character>().GetCharacterComponent<CharacterStat>().IsPlayerP1 = true;
-	}
-
-
 }

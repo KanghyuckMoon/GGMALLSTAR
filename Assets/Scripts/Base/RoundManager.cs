@@ -153,6 +153,11 @@ public class RoundManager : MonoBehaviour
 	}
 	private void Update()
 	{
+		if (SelectDataSO.isTutorial)
+		{
+			return;
+		}
+
 		if (isSetting)
 		{
 			if (time > 0f)

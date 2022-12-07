@@ -43,6 +43,7 @@ public class SelectUI : MonoBehaviour
 		}
 
 		SelectDataSO.isArcade = false;
+		SelectDataSO.isTutorial = false;
 	}
 
 	public void ArcadeChoiceCharacter(int character)
@@ -50,6 +51,7 @@ public class SelectUI : MonoBehaviour
 		ChoiceP1(character);
 
 		SelectDataSO.winCount = 0;
+		SelectDataSO.isTutorial = false;
 		SelectDataSO.isArcade = true;
 		SelectDataSO.isAICharacterP2 = true;
 	}
