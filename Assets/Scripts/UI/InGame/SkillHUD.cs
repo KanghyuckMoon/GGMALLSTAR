@@ -33,6 +33,8 @@ public class SkillHUD : MonoBehaviour
 	private Vector3 originAllStarSkillCutPosP2;
 
 
+	private CharacterDodge characterDodgeP1;
+	private CharacterDodge characterDodgeP2;
 	private CharacterLevel characterLevelP1;
 	private CharacterLevel characterLevelP2;
 	private CharacterSkill characterSkillP1;
@@ -41,10 +43,12 @@ public class SkillHUD : MonoBehaviour
 	private bool isNowCanUseSkill1P1;
 	private bool isNowCanUseSkill2P1;
 	private bool isNowCanUseAllStarSkillP1;
+	private bool isNowCanUseDodgeP1;
 
 	private bool isNowCanUseSkill1P2;
 	private bool isNowCanUseSkill2P2;
 	private bool isNowCanUseAllStarSkillP2;
+	private bool isNowCanUseDodgeP2;
 
 
 	private void Start()
@@ -59,6 +63,8 @@ public class SkillHUD : MonoBehaviour
 		characterSkillP1 = characterP1.GetCharacterComponent<CharacterSkill>();
 		characterSkillP2 = characterP2.GetCharacterComponent<CharacterSkill>();
 
+		characterDodgeP1 = characterP1.GetCharacterComponent<CharacterDodge>();
+		characterDodgeP2 = characterP2.GetCharacterComponent<CharacterDodge>();
 
 
 
@@ -71,10 +77,12 @@ public class SkillHUD : MonoBehaviour
 			characterLevelP1?.AddChangeLevelEvent(ChangeSkill1_P1);
 			characterLevelP1?.AddChangeLevelEvent(ChangeSkill2_P1);
 			characterLevelP1?.AddChangeLevelEvent(ChangeSkill3_P1);
+			characterDodgeP1?.AddChangeDodgeCoolTimeAction(ChangeDodge_P1);
 
 			ChangeSkill1_P1();
 			ChangeSkill2_P1();
 			ChangeSkill3_P1();
+			ChangeDodge_P1();
 		}
 
 		if (characterSkillP2 != null)
@@ -86,10 +94,12 @@ public class SkillHUD : MonoBehaviour
 			characterLevelP2?.AddChangeLevelEvent(ChangeSkill1_P2);
 			characterLevelP2?.AddChangeLevelEvent(ChangeSkill2_P2);
 			characterLevelP2?.AddChangeLevelEvent(ChangeSkill3_P2);
+			characterDodgeP2?.AddChangeDodgeCoolTimeAction(ChangeDodge_P2);
 
 			ChangeSkill1_P2();
 			ChangeSkill2_P2();
 			ChangeSkill3_P2();
+			ChangeDodge_P2();
 		}
 
 		//SkillImage
@@ -111,6 +121,34 @@ public class SkillHUD : MonoBehaviour
 		originAllStarSkillCutPosP1 = allStarSkillCutObjP1.localPosition;
 		originAllStarSkillCutPosP2 = allStarSkillCutObjP2.localPosition;
 
+	}
+
+	private void ChangeDodge_P1()
+	{
+		SetDodgeCoolTimeImage(skillHideImagesP1[4], characterDodgeP1.CoolTime, skillCoolTimeTextP1[4], characterDodgeP1.CoolTimeRatio);
+		CheckCanUseSkill(characterDodgeP1.CoolTime, ref isNowCanUseDodgeP1, skillCoolTimeParticleP1[4]);
+	}
+	private void ChangeDodge_P2()
+	{
+		SetDodgeCoolTimeImage(skillHideImagesP2[4], characterDodgeP2.CoolTime, skillCoolTimeTextP2[4], characterDodgeP2.CoolTimeRatio);
+		CheckCanUseSkill(characterDodgeP2.CoolTime, ref isNowCanUseDodgeP2, skillCoolTimeParticleP2[4]);
+	}
+
+	private bool SetDodgeCoolTimeImage(Image image, float remainTime, TextMeshProUGUI text, float ratioCoolTime)
+	{
+		if (remainTime > 0f)
+		{
+			text.gameObject.SetActive(true);
+			image.gameObject.SetActive(true);
+			image.fillAmount = ratioCoolTime;
+			text.text = $"{(int)remainTime}";
+			return false;
+		}
+		else
+		{
+			text.gameObject.SetActive(false);
+			return true;
+		}
 	}
 
 	private void ChangeSkill1_P1()

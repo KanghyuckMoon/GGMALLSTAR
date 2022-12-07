@@ -6,6 +6,23 @@ using KeyWord;
 public class CharacterDodge : CharacterComponent
 {
 	private float _sturnTime = 0f;
+	private float _coolTime = 0f;
+	private System.Action changeDodgeCoolTime;
+
+	public float CoolTime
+	{
+		get
+		{
+			return _coolTime;
+		}
+	}
+	public float CoolTimeRatio
+	{
+		get
+		{
+			return _coolTime / 0.5f;
+		}
+	}
 
 	private bool _isRight = false;
 	private Vector2 _inputDirection = Vector2.zero;
@@ -69,9 +86,17 @@ public class CharacterDodge : CharacterComponent
 			Dodge();
 		}, EventType.KEY_DOWN);
 	}
+	public void AddChangeDodgeCoolTimeAction(System.Action action)
+	{
+		changeDodgeCoolTime += action;
+	}
 	public void SetSturnTime(float time)
 	{
 		_sturnTime = time;
+	}
+	public void SetCoolTime(float time)
+	{
+		_coolTime = time;
 	}
 
 	public override void FixedUpdate()
@@ -83,6 +108,11 @@ public class CharacterDodge : CharacterComponent
 			_sturnTime -= Time.fixedDeltaTime;
 			return;
 		}
+		if (_coolTime > 0f)
+		{
+			_coolTime -= Time.fixedDeltaTime;
+			changeDodgeCoolTime?.Invoke();
+		}
 	}
 
 	public void Dodge()
@@ -93,6 +123,10 @@ public class CharacterDodge : CharacterComponent
 			return;
 		}
 		if (_sturnTime > 0f)
+		{
+			return;
+		}
+		if (_coolTime > 0f)
 		{
 			return;
 		}
@@ -116,7 +150,7 @@ public class CharacterDodge : CharacterComponent
 		
 		Character.GetCharacterComponent<CharacterColor>().SetWhiteMaterial();
 		Character.GetCharacterComponent<CharacterMove>().SetMoveDirection(_inputDirection);
-		SetSturnTime(0.5f);
+		SetCoolTime(0.5f);
 
 		var velocity = Character.Rigidbody.velocity;
 		velocity.x = 0f;

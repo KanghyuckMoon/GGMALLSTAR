@@ -1526,7 +1526,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 260, y: -184.7}
+  m_AnchoredPosition: {x: 260, y: -184.70001}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &462415921
@@ -1679,6 +1679,12 @@ PrefabInstance:
 --- !u!224 &471580941 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6265184910825159833, guid: b15c80a869bf271438b5e6ceaa536fc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 471580940}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &471580942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5024009746357069194, guid: b15c80a869bf271438b5e6ceaa536fc4,
     type: 3}
   m_PrefabInstance: {fileID: 471580940}
   m_PrefabAsset: {fileID: 0}
@@ -2335,7 +2341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &647204328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3368,7 +3374,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 190, y: -184.7}
+  m_AnchoredPosition: {x: 190, y: -184.70001}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &810684826
@@ -7634,7 +7640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 330, y: -184.7}
+  m_AnchoredPosition: {x: 330, y: -184.70001}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1665381232
@@ -8210,7 +8216,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 470, y: -184.7}
+  m_AnchoredPosition: {x: 470, y: -184.70001}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791852025
@@ -8518,6 +8524,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1835452469}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1835452471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5024009746357069194, guid: b15c80a869bf271438b5e6ceaa536fc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1835452469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1836015781
 GameObject:
   m_ObjectHideFlags: 0
@@ -8599,7 +8611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 400, y: -184.7}
+  m_AnchoredPosition: {x: 400, y: -184.70001}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842034345
@@ -8806,34 +8818,52 @@ MonoBehaviour:
   - {fileID: 649838217}
   - {fileID: 222573819}
   - {fileID: 860745274}
+  - {fileID: 689766695}
+  - {fileID: 528491173}
   skillImagesP2:
   - {fileID: 1665381233}
   - {fileID: 1842034346}
   - {fileID: 1791852026}
+  - {fileID: 462415922}
+  - {fileID: 810684827}
   skillHideImagesP1:
   - {fileID: 1134148343}
   - {fileID: 1758999769}
+  - {fileID: 0}
+  - {fileID: 1800191714}
+  - {fileID: 1149009274}
   skillHideImagesP2:
   - {fileID: 1468651832}
   - {fileID: 1818811418}
+  - {fileID: 0}
+  - {fileID: 1697247017}
+  - {fileID: 1417168298}
   allStarSkillEffectP1: {fileID: 1529123474193043276}
   allStarSkillEffectP2: {fileID: 1084523734}
   skillCoolTimeParticleP1:
   - {fileID: 1627460346}
   - {fileID: 2073848235}
   - {fileID: 1427296844}
+  - {fileID: 471580942}
+  - {fileID: 1835452471}
   skillCoolTimeParticleP2:
   - {fileID: 2043070867}
   - {fileID: 1397946729}
   - {fileID: 1126706910}
+  - {fileID: 471580942}
+  - {fileID: 1835452471}
   skillCoolTimeTextP1:
   - {fileID: 553830576}
   - {fileID: 805800032}
   - {fileID: 0}
+  - {fileID: 647204329}
+  - {fileID: 1774174764}
   skillCoolTimeTextP2:
   - {fileID: 2099991193}
   - {fileID: 211043232}
   - {fileID: 0}
+  - {fileID: 2096155112}
+  - {fileID: 2122505610}
   lockImage: {fileID: 21300000, guid: b836c2dad472b2e4ca8385b840332a17, type: 3}
   allStarSkillCutObjP1: {fileID: 997764472}
   allStarSkillCutObjP2: {fileID: 1199893727}
@@ -9486,7 +9516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2096155111
 RectTransform:
   m_ObjectHideFlags: 0
