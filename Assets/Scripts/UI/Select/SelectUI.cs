@@ -88,14 +88,14 @@ public class SelectUI : MonoBehaviour
 		if(SelectDataSO.isAICharacterP1)
 		{
 			aiTextP1.text = "AI ON";
-			aiLevelTextP1.gameObject.SetActive(true);
-			aiLevelP1.gameObject.SetActive(true);
+			aiLevelTextP1?.gameObject.SetActive(true);
+			aiLevelP1?.gameObject.SetActive(true);
 		}
 		else
 		{
 			aiTextP1.text = "AI OFF";
-			aiLevelTextP1.gameObject.SetActive(false);
-			aiLevelP1.gameObject.SetActive(false);
+			aiLevelTextP1?.gameObject.SetActive(false);
+			aiLevelP1?.gameObject.SetActive(false);
 		}
 	}
 	public void AIChangButtonSettingP2()
@@ -103,14 +103,14 @@ public class SelectUI : MonoBehaviour
 		if (SelectDataSO.isAICharacterP2)
 		{
 			aiTextP2.text = "AI ON";
-			aiLevelTextP2.gameObject.SetActive(true);
-			aiLevelP2.gameObject.SetActive(true);
+			aiLevelTextP2?.gameObject.SetActive(true);
+			aiLevelP2?.gameObject.SetActive(true);
 		}
 		else
 		{
 			aiTextP2.text = "AI OFF";
-			aiLevelTextP2.gameObject.SetActive(false);
-			aiLevelP2.gameObject.SetActive(false);
+			aiLevelTextP2?.gameObject.SetActive(false);
+			aiLevelP2?.gameObject.SetActive(false);
 		}
 	}
 

@@ -9,6 +9,7 @@ public enum CameraType
 	Shake,
 	Zoom,
 	AllStar,
+	StartZoom,
 }
 
 public class CameraManager : MonoBehaviour
@@ -104,6 +105,24 @@ public class CameraManager : MonoBehaviour
 		shakeCoroutine = null;
 	}
 
+	public IEnumerator StartGame(Transform character1, Transform character2)
+	{
+
+		cinemachineVirtualCameras[(int)CameraType.StartZoom].Follow = character1;
+		cinemachineVirtualCameras[(int)CameraType.StartZoom].LookAt = character1;
+		var groupComposer = cinemachineVirtualCameras[(int)CameraType.StartZoom].GetCinemachineComponent<CinemachineGroupComposer>();
+		groupComposer.m_TrackedObjectOffset.x = 1;
+		SetCamera(CameraType.StartZoom, true);
+
+		yield return new WaitForSeconds(1f);
+		cinemachineVirtualCameras[(int)CameraType.StartZoom].Follow = character2;
+		cinemachineVirtualCameras[(int)CameraType.StartZoom].LookAt = character2;
+		groupComposer.m_TrackedObjectOffset.x = -1;
+
+		yield return new WaitForSeconds(1f);
+		SetCamera(CameraType.Normal, true);
+	}
+
 	public static void SetShake(float shakeTime, float shakePower)
 	{
 		CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
@@ -129,6 +148,12 @@ public class CameraManager : MonoBehaviour
 			cameraManager.StopCoroutine(shakeCoroutine);
 		}
 		cameraManager.StartCoroutine(cameraManager.StartAllStar(transform, 1f));
+	}
+
+	public static void SetGameStart(Transform character1, Transform character2)
+	{
+		CameraManager cameraManager = Camera.main.GetComponent<CameraManager>();
+		cameraManager.StartCoroutine(cameraManager.StartGame(character1, character2));
 	}
 
 }

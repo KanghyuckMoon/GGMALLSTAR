@@ -124,6 +124,8 @@ public class RoundManager : MonoBehaviour
 		HPFullSetting();
 		PostionSetting();
 		RoundSetting();
+
+		CameraManager.SetGameStart(characterP1.transform, characterP2.transform);
 	}
 
 	public static int GetRoundNumber()
@@ -305,7 +307,7 @@ public class RoundManager : MonoBehaviour
 			characterDebugDataP2.winRoundCount = winCountP2;
 			characterDebugDataP2.loseRoundCount = winCountP1;
 
-			LoadingScene.Instance.LoadScene("ResultScene", LoadingScene.LoadingSceneType.Normal);
+			LoadingScene.Instance.LoadScene("ResultScene", LoadingScene.LoadingSceneType.Result);
 		}
 	}
 

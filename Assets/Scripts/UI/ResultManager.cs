@@ -29,7 +29,7 @@ public class ResultManager : MonoBehaviour
 			PlayWinBGM(SelectDataSO.characterSelectP2);
 		}
 
-		stageImage.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.stageSelect.ToString()}_SImage");
+		//stageImage.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.stageSelect.ToString()}_SImage");
 
 		SetField(debugTextsP1, RoundManager.characterDebugDataP1);
 		SetField(debugTextsP2, RoundManager.characterDebugDataP2);

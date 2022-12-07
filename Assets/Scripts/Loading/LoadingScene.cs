@@ -13,6 +13,7 @@ namespace Loading
 		{
             Normal,
             Battle,
+            Result,
 		}
         public void LoadScene(string sceneName, LoadingSceneType loadingSceneType = LoadingSceneType.Normal)
         {
@@ -25,6 +26,10 @@ namespace Loading
                     break;
                 case LoadingSceneType.Battle:
                     SceneManager.LoadScene("BattleLoadingScene");
+                    delay = 3f;
+                    break;
+                case LoadingSceneType.Result:
+                    SceneManager.LoadScene("ResultLoadingScene");
                     delay = 3f;
                     break;
                 default:
