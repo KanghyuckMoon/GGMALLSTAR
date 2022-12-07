@@ -247,7 +247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tutorial
+  m_text: Manual
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc2f9f58c3c8cf842a695a62d5a262b0, type: 2}
   m_sharedMaterial: {fileID: 3881316068502450491, guid: fc2f9f58c3c8cf842a695a62d5a262b0,
@@ -1018,12 +1018,12 @@ GameObject:
   - component: {fileID: 410817609}
   - component: {fileID: 410817608}
   m_Layer: 5
-  m_Name: MultiBattleBtn
+  m_Name: TutorialBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &410817607
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c7f51822b49004b9e8a69bcdc27ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: ArcadeSelect
+  sceneName: Tutorial
   loadingSceneType: 0
 --- !u!114 &410817611
 MonoBehaviour:
@@ -1841,7 +1841,7 @@ GameObject:
   - component: {fileID: 816663359}
   - component: {fileID: 816663365}
   m_Layer: 5
-  m_Name: TutorialBtn
+  m_Name: ManualBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1960,8 +1960,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 816663365}
-        m_TargetAssemblyTypeName: OpenTutorialPage, Assembly-CSharp
-        m_MethodName: OpenTutorial
+        m_TargetAssemblyTypeName: OpenManualPage, Assembly-CSharp
+        m_MethodName: OpenManual
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3194,7 +3194,7 @@ GameObject:
   - component: {fileID: 1666767133}
   - component: {fileID: 1666767132}
   m_Layer: 5
-  m_Name: MultiBattle
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3240,7 +3240,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MultiBattle
+  m_text: Tutorial
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc2f9f58c3c8cf842a695a62d5a262b0, type: 2}
   m_sharedMaterial: {fileID: 3881316068502450491, guid: fc2f9f58c3c8cf842a695a62d5a262b0,
@@ -3268,8 +3268,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33
-  m_fontSizeBase: 33
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
