@@ -17,37 +17,148 @@ public class Frog_Behaviour : BehaviourTree
 			return characterSkill_Frog;
 		}
 	}
-	public override void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput)
+	public override void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput, int level)
 	{
-		base.Init(opCh, mainCh, aiTestInput);
+		base.Init(opCh, mainCh, aiTestInput, level);
 	}
-	public override void SetNode()
+	public override void SetNode(int level)
 	{
-		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
-		//NodeSetting
-		_rootNode =
-			Selector
+		switch(level)
+		{
+			default:
+				_rootNode = Level1();
+				break;
+			case 2:
+				_rootNode = Level2();
+				break;
+			case 3:
+				_rootNode = Level3();
+				break;
+			case 4:
+				_rootNode = Level4();
+				break;
+			case 5:
+				_rootNode = Level5();
+				break;
+		}
+	}
+
+	private INode Level1()
+	{
+		return Selector
+		(
+			IfAction(FoolActionConditionLevel1, FoolAction),
+			//IfAction(DodgeCondition, Dodge),
+			//IfAction(JumpCondition, Jump),
+			IfAction(Skill1Condition, UseSkill1),
+			IfAction(Skill2Condition, UseSkill2),
+			IfAction(AllStarSkillCondition, UseAllStarSkill),
+			IfAction(AttackJCondition, AttackJ),
+
+			IgnoreAction(IsHitFalse),
+			IgnoreAction(IsComboFalse),
+
+			//ÀÌµ¿ ½ÃÄö½º
+			RandomChoice
 			(
-				//new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
-				IfAction(FoolActionCondition, FoolAction),
-				IfAction(DodgeCondition, Dodge),
-				IfAction(JumpCondition, Jump),
-				IfAction(Skill1Condition, UseSkill1),
-				IfAction(Skill2Condition, UseSkill2),
-				IfAction(AllStarSkillCondition, UseAllStarSkill),
-				IfAction(AttackJCondition, AttackJ),
-
-				IgnoreAction(IsHitFalse),
-				IgnoreAction(IsComboFalse),
-
-				//ÀÌµ¿ ½ÃÄö½º
-				RandomChoice
-				(
-					Action(FixedMove),
-					Action(Jump)
-				)
-			);
+				Action(FixedMove)
+				//Action(Jump)
+			)
+		);
 	}
+	private INode Level2()
+	{
+		return Selector
+		(
+			IfAction(FoolActionConditionLevel2, FoolAction),
+			//IfAction(DodgeCondition, Dodge),
+			//IfAction(JumpCondition, Jump),
+			IfAction(Skill1Condition, UseSkill1),
+			IfAction(Skill2Condition, UseSkill2),
+			IfAction(AllStarSkillCondition, UseAllStarSkill),
+			IfAction(AttackJCondition, AttackJ),
+
+			IgnoreAction(IsHitFalse),
+			IgnoreAction(IsComboFalse),
+
+			//ÀÌµ¿ ½ÃÄö½º
+			RandomChoice
+			(
+				Action(FixedMove),
+				Action(Jump)
+			)
+		);
+	}
+	private INode Level3()
+	{
+		return Selector
+		(
+			IfAction(FoolActionConditionLevel3, FoolAction),
+			//IfAction(DodgeCondition, Dodge)
+			IfAction(JumpCondition, Jump),
+			IfAction(Skill1Condition, UseSkill1),
+			IfAction(Skill2Condition, UseSkill2),
+			IfAction(AllStarSkillCondition, UseAllStarSkill),
+			IfAction(AttackJCondition, AttackJ),
+
+			IgnoreAction(IsHitFalse),
+			IgnoreAction(IsComboFalse),
+
+			//ÀÌµ¿ ½ÃÄö½º
+			RandomChoice
+			(
+				Action(FixedMove),
+				Action(Jump)
+			)
+		);
+	}
+	private INode Level4()
+	{
+		return Selector
+		(
+			IfAction(FoolActionConditionLevel3, FoolAction),
+			IfAction(DodgeCondition, Dodge),
+			IfAction(JumpCondition, Jump),
+			IfAction(Skill1Condition, UseSkill1),
+			IfAction(Skill2Condition, UseSkill2),
+			IfAction(AllStarSkillCondition, UseAllStarSkill),
+			IfAction(AttackJCondition, AttackJ),
+
+			IgnoreAction(IsHitFalse),
+			IgnoreAction(IsComboFalse),
+
+			//ÀÌµ¿ ½ÃÄö½º
+			RandomChoice
+			(
+				Action(FixedMove),
+				Action(Jump)
+			)
+		);
+	}
+	private INode Level5()
+	{
+		return Selector
+		(
+			//IfAction(FoolActionCondition, FoolAction),
+			IfAction(DodgeCondition, Dodge),
+			IfAction(JumpCondition, Jump),
+			IfAction(Skill1Condition, UseSkill1),
+			IfAction(Skill2Condition, UseSkill2),
+			IfAction(AllStarSkillCondition, UseAllStarSkill),
+			IfAction(AttackJCondition, AttackJ),
+
+			IgnoreAction(IsHitFalse),
+			IgnoreAction(IsComboFalse),
+
+			//ÀÌµ¿ ½ÃÄö½º
+			RandomChoice
+			(
+				Action(FixedMove),
+				Action(Jump)
+			)
+		);
+	}
+
 
 	protected bool AttackJCondition()
 	{
@@ -151,9 +262,21 @@ public class Frog_Behaviour : BehaviourTree
 		return false;
 	}
 
-	protected bool FoolActionCondition()
+	protected bool FoolActionConditionLevel1()
 	{
-		int random = Random.Range(0, 15);
+		int random = Random.Range(0, 5);
+
+		return random == 0;
+	}
+	protected bool FoolActionConditionLevel2()
+	{
+		int random = Random.Range(0, 10);
+
+		return random == 0;
+	}
+	protected bool FoolActionConditionLevel3()
+	{
+		int random = Random.Range(0, 30);
 
 		return random == 0;
 	}

@@ -9,11 +9,17 @@ public class SelectUI : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI aiTextP1;
 	[SerializeField] private TextMeshProUGUI aiTextP2;
+	[SerializeField] private TextMeshProUGUI aiLevelTextP1;
+	[SerializeField] private TextMeshProUGUI aiLevelTextP2;
 
 	[SerializeField] private Image characterP1;
 	[SerializeField] private Image characterP2;
 	[SerializeField] private GameObject stageSelectUI;
 	[SerializeField] private GameObject characterSelectUI;
+
+	[SerializeField] private GameObject aiLevelP1;
+	[SerializeField] private GameObject aiLevelP2;
+
 	private bool isChoiceP2 = false;
 
 	private void Start()
@@ -82,10 +88,14 @@ public class SelectUI : MonoBehaviour
 		if(SelectDataSO.isAICharacterP1)
 		{
 			aiTextP1.text = "AI ON";
+			aiLevelTextP1.gameObject.SetActive(true);
+			aiLevelP1.gameObject.SetActive(true);
 		}
 		else
 		{
 			aiTextP1.text = "AI OFF";
+			aiLevelTextP1.gameObject.SetActive(false);
+			aiLevelP1.gameObject.SetActive(false);
 		}
 	}
 	public void AIChangButtonSettingP2()
@@ -93,12 +103,28 @@ public class SelectUI : MonoBehaviour
 		if (SelectDataSO.isAICharacterP2)
 		{
 			aiTextP2.text = "AI ON";
+			aiLevelTextP2.gameObject.SetActive(true);
+			aiLevelP2.gameObject.SetActive(true);
 		}
 		else
 		{
 			aiTextP2.text = "AI OFF";
+			aiLevelTextP2.gameObject.SetActive(false);
+			aiLevelP2.gameObject.SetActive(false);
 		}
 	}
+
+	public void AILevelChangeP1(float level)
+	{
+		SelectDataSO.aiLevelP1 = (int)level;
+		aiLevelTextP1.text = $"AI Level : {(int)level}";
+	}
+	public void AILevelChangeP2(float level)
+	{
+		SelectDataSO.aiLevelP2 = (int)level;
+		aiLevelTextP2.text = $"AI Level : {(int)level}";
+	}
+
 
 	public void ChoiceStage(int stage)
 	{

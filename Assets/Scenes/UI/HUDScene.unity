@@ -7500,6 +7500,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1641408026}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1641408028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5024009746357069194, guid: b15c80a869bf271438b5e6ceaa536fc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1641408026}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1661565545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7597,6 +7603,12 @@ PrefabInstance:
 --- !u!224 &1661565546 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6265184910825159833, guid: b15c80a869bf271438b5e6ceaa536fc4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1661565545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1661565547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5024009746357069194, guid: b15c80a869bf271438b5e6ceaa536fc4,
     type: 3}
   m_PrefabInstance: {fileID: 1661565545}
   m_PrefabAsset: {fileID: 0}
@@ -8850,8 +8862,8 @@ MonoBehaviour:
   - {fileID: 2043070867}
   - {fileID: 1397946729}
   - {fileID: 1126706910}
-  - {fileID: 471580942}
-  - {fileID: 1835452471}
+  - {fileID: 1661565547}
+  - {fileID: 1641408028}
   skillCoolTimeTextP1:
   - {fileID: 553830576}
   - {fileID: 805800032}

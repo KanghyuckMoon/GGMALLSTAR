@@ -18,16 +18,107 @@ public class Jaeby_Behaviour : BehaviourTree
 		}
 	}
 
-	public override void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput)
+	public override void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput, int level)
 	{
-		base.Init(opCh, mainCh, aiTestInput);
+		base.Init(opCh, mainCh, aiTestInput, level);
 	}
-	public override void SetNode()
+
+	public override void SetNode(int level)
+	{
+		switch (level)
+		{
+			default:
+				_rootNode = Level1();
+				break;
+			case 2:
+				_rootNode = Level2();
+				break;
+			case 3:
+				_rootNode = Level3();
+				break;
+			case 4:
+				_rootNode = Level4();
+				break;
+			case 5:
+				_rootNode = Level5();
+				break;
+		}
+	}
+
+	private INode Level1()
+	{
+		return 	Selector
+			(
+				IfAction(Skill1Condition, UseSkill1),
+				IfAction(Skill2Condition, UseSkill2),
+				IfAction(AllStarSkillCondition, UseAllStarSkill),
+				IfAction(AttackJCondition, AttackJ),
+				//IfAction(DodgeCondition, Dodge),
+
+				IgnoreAction(IsHitFalse),
+				IgnoreAction(IsComboFalse),
+
+				//ÀÌµ¿ ½ÃÄö½º
+				RandomChoice
+				(
+					IfAction(MoveCondition, CloseMove)
+					//IfAction(MoveCondition, Jump)
+				)
+			);
+	}
+	private INode Level2()
+	{
+		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
+		//NodeSetting
+		return Selector
+			(
+				//new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
+				IfAction(Skill1Condition, UseSkill1),
+				IfAction(Skill2Condition, UseSkill2),
+				IfAction(AllStarSkillCondition, UseAllStarSkill),
+				IfAction(AttackJCondition, AttackJ),
+				//IfAction(DodgeCondition, Dodge),
+
+				IgnoreAction(IsHitFalse),
+				IgnoreAction(IsComboFalse),
+
+				//ÀÌµ¿ ½ÃÄö½º
+				RandomChoice
+				(
+					IfAction(MoveCondition, CloseMove),
+					IfAction(MoveCondition, Jump)
+				)
+			);
+	}
+	private INode Level3()
+	{
+		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
+		//NodeSetting
+		return Selector
+			(
+				//new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
+				IfAction(Skill1Condition, UseSkill1),
+				IfAction(Skill2Condition, UseSkill2),
+				IfAction(AllStarSkillCondition, UseAllStarSkill),
+				IfAction(AttackJCondition, AttackJ),
+				IfAction(DodgeCondition, Dodge),
+
+				IgnoreAction(IsHitFalse),
+				IgnoreAction(IsComboFalse),
+
+				//ÀÌµ¿ ½ÃÄö½º
+				RandomChoice
+				(
+					IfAction(MoveCondition, CloseMove),
+					IfAction(MoveCondition, Jump)
+				)
+			);
+	}
+	private INode Level4()
 	{
 		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
 		//NodeSetting
-		_rootNode =
-			Selector
+		return Selector
 			(
 				new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(Skill1Condition, UseSkill1),
@@ -47,6 +138,31 @@ public class Jaeby_Behaviour : BehaviourTree
 				)
 			);
 	}
+	private INode Level5()
+	{
+		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
+		//NodeSetting
+		return Selector
+			(
+				new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
+				IfAction(Skill1Condition, UseSkill1),
+				IfAction(Skill2Condition, UseSkill2),
+				IfAction(AllStarSkillCondition, UseAllStarSkill),
+				IfAction(AttackJCondition, AttackJ),
+				IfAction(DodgeCondition, Dodge),
+
+				IgnoreAction(IsHitFalse),
+				IgnoreAction(IsComboFalse),
+
+				//ÀÌµ¿ ½ÃÄö½º
+				RandomChoice
+				(
+					IfAction(MoveCondition, CloseMove),
+					IfAction(MoveCondition, Jump)
+				)
+			);
+	}
+
 
 	protected bool AttackJCondition()
 	{

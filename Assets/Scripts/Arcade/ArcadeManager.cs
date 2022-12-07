@@ -33,6 +33,8 @@ public class ArcadeManager : MonoBehaviour
 		}
 		else
 		{
+			SelectDataSO.aiLevelP2 = SelectDataSO.winCount + 1;
+
 			arrowImage.DOAnchorPosX(checkImages[SelectDataSO.winCount + 1].anchoredPosition.x, 1f).OnComplete(() =>
 			{
 				int characterRandom = Random.Range(1, 3);
@@ -81,6 +83,7 @@ public class ArcadeManager : MonoBehaviour
 			}
 			else
 			{
+				SelectDataSO.aiLevelP2 = SelectDataSO.winCount + 1;
 				clearPanel.gameObject.SetActive(false);
 				arrowImage.DOAnchorPosX(checkImages[SelectDataSO.winCount + 1].anchoredPosition.x, 1f).OnComplete(() =>
 				{

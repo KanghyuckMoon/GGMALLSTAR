@@ -17,15 +17,15 @@ public class BehaviourTree
 	protected bool isRight;
 
 
-	public virtual void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput)
+	public virtual void Init(Character opCh, Character mainCh, CharacterAIInput aiTestInput, int level = 1)
 	{
 		this.aiTestInput = aiTestInput;
 		opCharacter = opCh;
 		mainCharacter = mainCh;
-		SetNode();
+		SetNode(level);
 	}
 
-	public virtual void SetNode()
+	public virtual void SetNode(int level = 1)
 	{
 		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("TestComboSO");
 		//NodeSetting

@@ -27,10 +27,11 @@ public class CharacterAIInput : CharacterComponent
     protected virtual void Init()
     {
         var characterSpawner = GameObject.FindObjectOfType<CharacterSpawner>();
-
+        bool isPlayer1 = false;
         if (characterSpawner.Player1 == Character.gameObject)
         {
             opponentCharacter = characterSpawner.Player2.GetComponent<Character>();
+            isPlayer1 = true;
         }
         else
         {
@@ -50,7 +51,7 @@ public class CharacterAIInput : CharacterComponent
                 CharacterEvent.AddEvent(input.actionName, (EventType)i);
             }
         }
-        SetBehaviourTree();
+        SetBehaviourTree(isPlayer1);
     }
 
     public void IsHit(string actionName)
@@ -58,7 +59,7 @@ public class CharacterAIInput : CharacterComponent
         _behaviourTree.IsHit(actionName);
 	}
 
-    protected virtual void SetBehaviourTree()
+    protected virtual void SetBehaviourTree(bool isPlayer1)
     {
         _behaviourTree = new BehaviourTree();
         _behaviourTree.Init(opponentCharacter, Character, this);

@@ -10,10 +10,10 @@ public class CharacterAIInput_Frog : CharacterAIInput
     {
     }
 
-	protected override void SetBehaviourTree()
+	protected override void SetBehaviourTree(bool isPlayer1)
     {
         _behaviourTree = new Frog_Behaviour();
-        _behaviourTree.Init(opponentCharacter, Character, this);
+        _behaviourTree.Init(opponentCharacter, Character, this, isPlayer1 ? SelectDataSO.aiLevelP1 : SelectDataSO.aiLevelP2);
     }
 }
 

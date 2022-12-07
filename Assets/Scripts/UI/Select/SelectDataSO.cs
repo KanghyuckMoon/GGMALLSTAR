@@ -29,6 +29,9 @@ public static class SelectDataSO
 	static public bool isAICharacterP1;
 	static public bool isAICharacterP2;
 	static public StageSelect stageSelect;
+	static public int aiLevelP1 = 1;
+	static public int aiLevelP2 = 1;
+
 
 	//Arcade
 	static public int winCount = 0;
