@@ -34,6 +34,7 @@ public static class SelectDataSO
 
 
 	//Arcade
+	static public int priviousWinCount = 0;
 	static public int winCount = 0;
 	static public bool isArcade = false;
 
