@@ -33,21 +33,39 @@ public class TutorialManager : MonoBehaviour
 	private IEnumerator SetHP()
 	{
 		TutorialSpawner tutorialSpawner = FindObjectOfType<TutorialSpawner>();
+		Character characterP1 = tutorialSpawner.Player1.GetComponent<Character>();
+		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
+		CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>();
 		Character characterP2 = tutorialSpawner.Player2.GetComponent<Character>();
 		CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>();
+		CharacterLevel characterLevelP2 = characterP2.GetCharacterComponent<CharacterLevel>();
+		characterLevelP2.AddExp(1000);
 		while (true)
 		{
 			yield return null;
+			characterStatP1.SetHP(characterStatP1.MaxHP);
 			characterStatP2.SetHP(characterStatP2.MaxHP);
 		}
 	}
 
 	private IEnumerator UpdateTutorial()
 	{
-		while (tutorialStep < 12)
+		TutorialSpawner tutorialSpawner = FindObjectOfType<TutorialSpawner>();
+		Character characterP1 = tutorialSpawner.Player1.GetComponent<Character>();
+		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
+		CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>();
+		while (tutorialStep < 11)
 		{
 			yield return new WaitForSeconds(5f);
 			NextStep();
+			switch (tutorialStep)
+			{
+				case 5:
+				case 7:
+				case 9:
+					characterLevelP1.AddExp(100);
+				break;
+			}
 		}
 		Loading.LoadingScene.Instance.LoadScene("Main", Loading.LoadingScene.LoadingSceneType.Normal);
 	}

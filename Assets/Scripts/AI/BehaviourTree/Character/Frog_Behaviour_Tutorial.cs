@@ -33,7 +33,7 @@ public class Frog_Behaviour_Tutorial : BehaviourTree
 	{
 		_rootNode = Selector
 		(
-			IfAction(Skill2Condition, UseSkill2)
+			IfAction(Skill1Condition, UseSkill1)
 		);
 	}
 	protected bool AttackJCondition()
@@ -164,11 +164,11 @@ public class Frog_Behaviour_Tutorial : BehaviourTree
 
 	protected bool Skill1Condition()
 	{
-		return CharacterSkill_Frog.IsCanUseSkill1;
+		return TutorialManager.TutorialStrp == 4 && CharacterSkill_Frog.IsCanUseSkill1;
 	}
 	protected bool Skill2Condition()
 	{
-		return TutorialManager.TutorialStrp == 4 && CharacterSkill_Frog.IsCanUseSkill2;
+		return CharacterSkill_Frog.IsCanUseSkill2;
 	}
 	protected bool AllStarSkillCondition()
 	{
@@ -177,8 +177,20 @@ public class Frog_Behaviour_Tutorial : BehaviourTree
 
 	protected void UseSkill1()
 	{
+		if (opCharacter.transform.position.x < mainCharacter.transform.position.x && !isRight)
+		{
+			TapKey(KeyCode.A);
+			isRight = false;
+		}
+		else if (opCharacter.transform.position.x > mainCharacter.transform.position.x && isRight)
+		{
+			TapKey(KeyCode.D);
+			isRight = true;
+		}
+
 		TapKey(KeyCode.U);
 	}
+
 	protected void UseSkill2()
 	{
 		TapKey(KeyCode.I);
