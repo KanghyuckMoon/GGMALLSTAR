@@ -44,9 +44,12 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                         PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Peek().gameObject);
                         damage += diceQueue.Dequeue().DiceNumber;
                     }
-                    Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].damage = damage;
-                    PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(),
-                        () => { Debug.Log($"Hit damage: {damage}"); }, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset);
+                    
+                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].damage = damage;
+                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].addExp = damage;
+                    
+                    Character.GetCharacterComponent<CharacterAnimation>().SetAnimationTrigger(AnimationType.Skill2);
+                    PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(),() => { Debug.Log($"Hit damage: {damage}"); }, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, new Vector3(character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT? character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset.x: -character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset.x, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset.y, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset.z));
 
                     Skill2Action();
                 }
@@ -139,14 +142,6 @@ public class CharacterSkill_MythicalDice : CharacterSkill
             diceQueue.Peek().gameObject.SetActive(false);
             PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Dequeue().gameObject);
         }
-        string str = "";
-        
-        foreach (var VARIABLE in diceQueue)
-        {
-            str += VARIABLE.DiceNumber + " ";
-        }
-        
-        Debug.Log("DiceQueue Number: " + str);
     }
     public override void Update()
     {
