@@ -16,7 +16,7 @@ public class Dice : MonoBehaviour
     public void SetDice(int diceNumber, Transform diceParent)
     {
         transform.SetParent(diceParent);
-        diceNumber = diceNumber;
+        _diceNumber = diceNumber;
         GetComponent<Image>().sprite = _diceSprites[diceNumber];
     }
 

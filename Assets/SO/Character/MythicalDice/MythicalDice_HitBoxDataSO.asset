@@ -15,7 +15,7 @@ MonoBehaviour:
   hitBoxDatasList:
   - hitBoxDatas:
     - actionName: Attack
-      damage: 12
+      damage: 1
       knockBack: 3
       knockAngle: 45
       hitTime: 0.25
@@ -29,7 +29,7 @@ MonoBehaviour:
       atkEffSoundName: se_common_sword_swing_s
       addExp: 20
   - hitBoxDatas:
-    - actionName: Attack
+    - actionName: Skill2
       damage: 0
       knockBack: 0
       knockAngle: 0

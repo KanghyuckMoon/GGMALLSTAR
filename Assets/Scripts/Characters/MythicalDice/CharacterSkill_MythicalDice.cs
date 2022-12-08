@@ -39,13 +39,14 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                     int damage = 0;
                     while (diceQueue.Count > 0)
                     {
+                        Debug.Log(diceQueue.Peek().DiceNumber);
                         diceQueue.Peek().gameObject.SetActive(false);
                         PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Peek().gameObject);
                         damage += diceQueue.Dequeue().DiceNumber;
                     }
                     Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].damage = damage;
                     PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(),
-                        () => { }, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset);
+                        () => { Debug.Log($"Hit damage: {damage}"); }, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset);
 
                     Skill2Action();
                 }
@@ -70,6 +71,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
 
                 while (diceQueue.Count > 0)
                 {
+                    diceQueue.Peek().transform.SetParent(null);
                     diceQueue.Peek().gameObject.SetActive(false);
                     PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Dequeue().gameObject);
                 }
@@ -86,7 +88,6 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     public override void Start()
     {
         base.Start();
-        Debug.Log("start roll");
         RollDice();
     }
 
@@ -107,7 +108,13 @@ public class CharacterSkill_MythicalDice : CharacterSkill
             timer += Time.deltaTime;
             yield return null;
         }
-
+        
+        while (diceQueue.Count > 0)
+        {
+            diceQueue.Peek().transform.SetParent(null);
+            diceQueue.Peek().gameObject.SetActive(false);
+            PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Dequeue().gameObject);
+        }
         targetCharacter.CharacterEvent._canEvent = true;
     }
 
@@ -132,7 +139,14 @@ public class CharacterSkill_MythicalDice : CharacterSkill
             diceQueue.Peek().gameObject.SetActive(false);
             PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Dequeue().gameObject);
         }
-
+        string str = "";
+        
+        foreach (var VARIABLE in diceQueue)
+        {
+            str += VARIABLE.DiceNumber + " ";
+        }
+        
+        Debug.Log("DiceQueue Number: " + str);
     }
     public override void Update()
     {
