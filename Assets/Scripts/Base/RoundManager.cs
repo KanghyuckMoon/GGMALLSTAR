@@ -300,6 +300,10 @@ public class RoundManager : MonoBehaviour
 			SelectDataSO.winCount++;
 			LoadingScene.Instance.LoadScene("Arcade", LoadingScene.LoadingSceneType.Normal);
 		}
+		else if(SelectDataSO.isArcade)
+		{
+			LoadingScene.Instance.LoadScene("ArcadeContinueScene", LoadingScene.LoadingSceneType.Normal);
+		}
 		else
 		{
 			characterDebugDataP1 = characterP1.GetCharacterComponent<CharacterDebug>().CharacterDebugData;
