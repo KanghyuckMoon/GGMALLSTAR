@@ -87,11 +87,26 @@ public class CharacterAttack : CharacterComponent
             if (hitboxData.atkEffSoundName != "")
 			{
                 Sound.SoundManager.Instance.PlayEFF(hitboxData.atkEffSoundName);
-			}
+            }
 
             Vector3 attackOffset = hitboxData._attackOffset;
             attackOffset.x *= IsRight ? 1 : -1;
             PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(hitboxData, this, () => Debug.Log("Hit"), hitboxData._attackSize, attackOffset);
+
+            if (hitboxData.atkEffectType != Effect.EffectType.None)
+            {
+                switch(hitboxData.atkEffectDirectionType)
+				{
+                    default:
+                        Effect.EffectManager.Instance.SetEffect(hitboxData.atkEffectType, Character.transform.position + attackOffset, Effect.EffectDirectionType.Identity);
+                        break;
+                    case Effect.EffectDirectionType.ReverseDirection:
+                        Vector3 direction = new Vector3(0, 0, IsRight ? 180 : 0);
+                        Effect.EffectManager.Instance.SetEffect(hitboxData.atkEffectType, Character.transform.position + attackOffset, Effect.EffectDirectionType.ReverseDirection, direction);
+                        break;
+				}
+                Sound.SoundManager.Instance.PlayEFF(hitboxData.atkEffSoundName);
+            }
         }
     }
 }

@@ -58,7 +58,7 @@ namespace Effect
         /// ÀÌÆåÆ® ¼³Ä¡
         /// </summary>
         /// <param name="pos"></param>
-        public void SetEffect(EffectType effectType, Vector3 pos)
+        public void SetEffect(EffectType effectType, Vector3 pos, EffectDirectionType effectDirectionType = EffectDirectionType.Identity, Vector3 direction = default)
         {
             if (!_isInit)
             {
@@ -68,15 +68,22 @@ namespace Effect
             GameObject effect = Pool(effectType);
             effect.transform.position = pos;
             effect.gameObject.SetActive(true);
-        }
 
-        /// <summary>
-        /// ÄÞº¸Ä«¿îÆ®ÀÌÆåÆ®
-        /// </summary>
-        /// <param name="count"></param>
-        /// <param name="stunTime"></param>
-        /// <param name="pos"></param>
-        public void SetComboCountEffect(int count, float stunTime, Vector3 pos)
+			switch (effectDirectionType)
+			{
+                case EffectDirectionType.ReverseDirection:
+                    effect.transform.eulerAngles = direction;
+                    break;
+			}
+		}
+
+		/// <summary>
+		/// ÄÞº¸Ä«¿îÆ®ÀÌÆåÆ®
+		/// </summary>
+		/// <param name="count"></param>
+		/// <param name="stunTime"></param>
+		/// <param name="pos"></param>
+		public void SetComboCountEffect(int count, float stunTime, Vector3 pos)
 		{
             PoolManager.GetItem("ComboCountEff").GetComponent<ComboCountEffect>().SetComboCount(count, stunTime, pos);
         }

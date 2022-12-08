@@ -1,9 +1,15 @@
 
 namespace Effect
 {
+    public enum EffectDirectionType
+	{
+        Identity,
+        ReverseDirection,
+	}
     public enum EffectType
     {
-        Hit_1,
+        None = -1,
+        Hit_1 = 0,
         Hit_2,
         Hit_3,
         Hit_4,
@@ -12,6 +18,7 @@ namespace Effect
         FinalHit,
         StarGetEff,
         DodgeEff,
+        Hit_5,
         Count,
     }
 }

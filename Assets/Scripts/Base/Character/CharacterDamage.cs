@@ -89,7 +89,17 @@ public class CharacterDamage : CharacterComponent
         hitBox?.OwnerHitTime(hitBoxData.hitTime);
 
         //Effect & Sound
-        EffectManager.Instance.SetEffect(hitBoxData.effectType, collistionPoint);
+        switch(hitBoxData.hitEffectDirectionType)
+		{
+            default:
+                EffectManager.Instance.SetEffect(hitBoxData.hitEffectType, collistionPoint, hitBoxData.hitEffectDirectionType);
+                break;
+            case EffectDirectionType.ReverseDirection:
+                Vector3 direction = new Vector3(0, 0, collistionPoint.x < Character.transform.position.x ? 180 : 0);
+                EffectManager.Instance.SetEffect(hitBoxData.hitEffectType, collistionPoint, EffectDirectionType.ReverseDirection, direction);
+                break;
+		}
+
         SoundManager.Instance.PlayEFF(hitBoxData.hitEffSoundName);
 
         //ComboCount
