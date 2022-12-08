@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 using Loading;
 using Sound;
@@ -22,6 +23,7 @@ public class RoundManager : MonoBehaviour
 	private int winCountP2 = 0;
 	private bool isSetting = false;
 
+	private System.Action gameSetEvent;
 	private System.Action roundSetEvent;
 	private System.Action roundReadyEvent;
 	private System.Action roundStartEvent;
@@ -89,6 +91,17 @@ public class RoundManager : MonoBehaviour
 			roundEndEvent = value;
 		}
 	}
+	public System.Action GameSetEvent
+	{
+		get
+		{
+			return gameSetEvent;
+		}
+		set
+		{
+			gameSetEvent = value;
+		}
+	}
 	public System.Action GameEndEvent
 	{
 		get
@@ -123,9 +136,15 @@ public class RoundManager : MonoBehaviour
 
 		HPFullSetting();
 		PostionSetting();
+		SetInputSturnTime(5f);
+		yield return new WaitForSeconds(1f);
+
+		gameSetEvent?.Invoke();
+		CameraManager.SetGameStart(characterP1.transform, characterP2.transform);
+
+		yield return new WaitForSeconds(3f);
 		RoundSetting();
 
-		CameraManager.SetGameStart(characterP1.transform, characterP2.transform);
 	}
 
 	public static int GetRoundNumber()
@@ -273,7 +292,7 @@ public class RoundManager : MonoBehaviour
 				SoundManager.Instance.PlayEFF("vc_narration_five");
 				break;
 		}
-		SetInputSturnTime(2f);
+		SetInputSturnTime(3f);
 		StopMove(0f);
 		StartCoroutine(Fight(1f, 1f));
 
