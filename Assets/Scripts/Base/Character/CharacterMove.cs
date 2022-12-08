@@ -191,9 +191,31 @@ public class CharacterMove : CharacterComponent
         }
     }
 
+	public override void OnCollisionEnter(Collision other)
+    {
+        //Wall Check
+        if(_sturnTime > 0f)
+        {
+            if (other.gameObject.layer == 8)
+            {
+                if (characterStat.IsAlive)
+                {
+                    //right
+                    if (other.transform.position.x > Character.transform.position.x)
+                    {
+                        Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Hit_5, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.ReverseDirection, new Vector3(0, 0, 180));
+                    }
+                    else
+                    {
+                        Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Hit_5, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.ReverseDirection, new Vector3(0, 0, 0));
+                    }
+                }
+            }
+        }
+    }
+
 	public override void OnCollisionStay(Collision other)
     {
-        base.OnCollisionEnter(other);
         //Ground Check
         if (other.gameObject.layer == 6)
         {
