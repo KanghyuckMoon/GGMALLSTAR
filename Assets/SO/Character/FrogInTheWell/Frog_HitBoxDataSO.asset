@@ -42,8 +42,8 @@ MonoBehaviour:
       _attackSize: {x: 0.9, y: 0.6, z: 1}
       shakePower: 5
       shakeTime: 0.7
-      atkEffectType: -1
-      atkEffectDirectionType: 0
+      atkEffectType: 9
+      atkEffectDirectionType: 1
       hitEffectType: 0
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_fire_l

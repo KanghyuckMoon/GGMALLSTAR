@@ -21,6 +21,21 @@ public class FireBall_Frog : MonoBehaviour
             Sound.SoundManager.Instance.PlayEFF(_hitBoxData.atkEffSoundName);
         }
 
+
+        if (hitBoxData.atkEffectType != Effect.EffectType.None)
+        {
+            switch (hitBoxData.atkEffectDirectionType)
+            {
+                default:
+                    Effect.EffectManager.Instance.SetEffect(hitBoxData.atkEffectType, transform.position, Effect.EffectDirectionType.Identity);
+                    break;
+                case Effect.EffectDirectionType.ReverseDirection:
+                    Vector3 dir = new Vector3(0, 0, _direction == Direction.RIGHT ? 180 : 0);
+                    Effect.EffectManager.Instance.SetEffect(hitBoxData.atkEffectType, transform.position, Effect.EffectDirectionType.ReverseDirection, dir);
+                    break;
+            }
+        }
+
         StartCoroutine(Move());
     }
 
