@@ -12,16 +12,25 @@ public class RoundHUD : MonoBehaviour
 	[SerializeField] private Image[] roundCountP2;
 	[SerializeField] private Sprite winSprite;
 
+	[SerializeField] private GameObject upperHud;
+	[SerializeField] private GameObject frameImage;
+
 	private RoundManager roundManager;
 
-	private void Start()
+	private void Awake()
 	{
 		roundManager = FindObjectOfType<RoundManager>();
+		roundManager.GameSetEvent += GameSet;
 		roundManager.RoundSetEvent += RoundSet;
 		roundManager.RoundReadyEvent += RoundReady;
 		roundManager.RoundStartEvent += RoundStart;
 		roundManager.RoundEndEvent += RoundEnd;
 		roundManager.GameEndEvent += GameEnd;
+	}
+	private void GameSet()
+	{
+		upperHud.gameObject.SetActive(false);
+		frameImage.gameObject.SetActive(true);
 	}
 
 	private void RoundSet()
@@ -34,6 +43,8 @@ public class RoundHUD : MonoBehaviour
 		{
 			SetText($"Round {roundManager.RoundNumber}");
 		}
+		upperHud.gameObject.SetActive(true);
+		frameImage.gameObject.SetActive(false);
 	}
 	private void RoundStart()
 	{
@@ -43,6 +54,8 @@ public class RoundHUD : MonoBehaviour
 	{
 		SetText($"KO");
 		CountImageSetting();
+		upperHud.gameObject.SetActive(false);
+		frameImage.gameObject.SetActive(true);
 	}
 	private void RoundReady()
 	{
@@ -52,6 +65,8 @@ public class RoundHUD : MonoBehaviour
 	{
 		SetText($"Game Set");
 		CountImageSetting();
+		upperHud.gameObject.SetActive(false);
+		frameImage.gameObject.SetActive(true);
 	}
 
 	public void SetText(string str)

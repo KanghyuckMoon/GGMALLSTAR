@@ -27,7 +27,7 @@ public class ArcadeManager : MonoBehaviour
 		characterImage.sprite = Addressable.AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_CImage");
 
 
-		if (SelectDataSO.winCount > 0)
+		if (SelectDataSO.winCount > SelectDataSO.priviousWinCount)
 		{
 			OpenClearPanel();
 		}
@@ -63,6 +63,7 @@ public class ArcadeManager : MonoBehaviour
 
 	private void OpenClearPanel()
 	{
+		SelectDataSO.priviousWinCount = SelectDataSO.winCount;
 		clearRewardCount = 3;
 		clearPanel.gameObject.SetActive(true);
 		Sound.SoundManager.Instance.PlayEFF("vc_narration_result_victory");

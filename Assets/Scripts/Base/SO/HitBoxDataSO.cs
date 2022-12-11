@@ -36,7 +36,10 @@ public class HitBoxData
     public float shakeTime = 0.3f;
 
     //Effect & Sound
-    public Effect.EffectType effectType;
+    public Effect.EffectType atkEffectType;
+    public Effect.EffectDirectionType atkEffectDirectionType;
+    public Effect.EffectType hitEffectType;
+    public Effect.EffectDirectionType hitEffectDirectionType;
     public string hitEffSoundName;
     public string atkEffSoundName;
 

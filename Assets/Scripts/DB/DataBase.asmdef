@@ -1,0 +1,17 @@
+{
+    "name": "DataBase",
+    "rootNamespace": "",
+    "references": [
+        "GUID:88f21cb52f5fb924380e809b64f38770",
+        "GUID:717c6366b923ff24cbec6ed879450c8d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

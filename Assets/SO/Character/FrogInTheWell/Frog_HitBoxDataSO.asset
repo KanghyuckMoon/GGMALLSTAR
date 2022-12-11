@@ -24,7 +24,10 @@ MonoBehaviour:
       _attackSize: {x: 0.17, y: 0.17, z: 1}
       shakePower: 3
       shakeTime: 0.3
-      effectType: 0
+      atkEffectType: -1
+      atkEffectDirectionType: 0
+      hitEffectType: 0
+      hitEffectDirectionType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: se_common_swing_01
       addExp: 5
@@ -39,7 +42,10 @@ MonoBehaviour:
       _attackSize: {x: 0.9, y: 0.6, z: 1}
       shakePower: 5
       shakeTime: 0.7
-      effectType: 0
+      atkEffectType: 9
+      atkEffectDirectionType: 1
+      hitEffectType: 0
+      hitEffectDirectionType: 0
       hitEffSoundName: se_common_fire_l
       atkEffSoundName: se_item_firebar_l
       addExp: 20
@@ -54,7 +60,10 @@ MonoBehaviour:
       _attackSize: {x: 0.4, y: 0.17, z: 1}
       shakePower: 3
       shakeTime: 0.3
-      effectType: 0
+      atkEffectType: -1
+      atkEffectDirectionType: 0
+      hitEffectType: 0
+      hitEffectDirectionType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: se_common_swing_01
       addExp: 7
@@ -69,7 +78,10 @@ MonoBehaviour:
       _attackSize: {x: 10, y: 2, z: 1}
       shakePower: 5
       shakeTime: 1
-      effectType: 0
+      atkEffectType: -1
+      atkEffectDirectionType: 0
+      hitEffectType: 0
+      hitEffectDirectionType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: 
       addExp: 100
@@ -84,7 +96,10 @@ MonoBehaviour:
       _attackSize: {x: 0.4, y: 0.17, z: 1}
       shakePower: 6
       shakeTime: 0.7
-      effectType: 0
+      atkEffectType: -1
+      atkEffectDirectionType: 0
+      hitEffectType: 0
+      hitEffectDirectionType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: 
       addExp: 10
@@ -99,7 +114,10 @@ MonoBehaviour:
       _attackSize: {x: 1, y: 0.17, z: 1}
       shakePower: 5
       shakeTime: 0.5
-      effectType: 0
+      atkEffectType: -1
+      atkEffectDirectionType: 0
+      hitEffectType: 0
+      hitEffectDirectionType: 0
       hitEffSoundName: se_common_punch_hit_s
       atkEffSoundName: 
       addExp: 15
