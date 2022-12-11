@@ -6,13 +6,11 @@ using Pool;
 
 public class StarEffect : MonoBehaviour
 {
-	private LevelHUD levelHUD;
 	[SerializeField] private AnimationCurve moveCurve;
 
 	public void SetEffect(Vector3 startPos, CharacterLevel characterLevel, int addExp)
 	{
 		transform.rotation = Quaternion.identity;
-		levelHUD ??= FindObjectOfType<LevelHUD>();
 		transform.position = startPos;
 		StartCoroutine(MoveToTarget(startPos, characterLevel, addExp));
 	}

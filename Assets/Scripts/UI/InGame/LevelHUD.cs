@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Effect;
 using DG.Tweening;
 
 public class LevelHUD : MonoBehaviour
@@ -80,7 +81,7 @@ public class LevelHUD : MonoBehaviour
 		if (characterLevelP2.Level == 4)
 		{
 			levelTextP2.text = "ALL STAR";
-			Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Hit_1, expImageP1.rectTransform.position);
+			EffectManager.Instance.SetEffect(EffectType.Hit_1, expImageP1.rectTransform.position);
 		}
 		else
 		{
