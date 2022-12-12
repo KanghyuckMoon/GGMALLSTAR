@@ -81,7 +81,6 @@ public class LevelHUD : MonoBehaviour
 		if (characterLevelP2.Level == 4)
 		{
 			levelTextP2.text = "ALL STAR";
-			EffectManager.Instance.SetEffect(EffectType.Hit_1, expImageP1.rectTransform.position);
 		}
 		else
 		{
