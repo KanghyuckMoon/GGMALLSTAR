@@ -14,6 +14,8 @@ namespace Sound
 		Jaeby_Win,
 		Frog_Win,
 		Dice_Win,
+		LostKingdom_BGM,
+		Puppet_Win,
 		Count,
 	}
 

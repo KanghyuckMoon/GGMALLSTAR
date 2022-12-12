@@ -589,6 +589,18 @@ MonoBehaviour:
     m_Address: Hit_5
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: dbd8026a1e8589547bd97873bb9d742a
+    m_Address: LostKingdom_SImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 28cfffa05f665c5488b6b6ece89801b1
+    m_Address: LostKingdom_BGM
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 71fec20a64006754d921a6f07801af16
+    m_Address: Puppet_Win
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
