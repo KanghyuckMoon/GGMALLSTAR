@@ -443,7 +443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 405760297}
   m_Layer: 0
-  m_Name: LostKingdom
+  m_Name: Puppet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -597,7 +597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1364972505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0.1, z: 0}
+  m_LocalPosition: {x: 1.3333223, y: 0.10666678, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -623,7 +623,7 @@ MonoBehaviour:
   - target: {fileID: 1845410046}
     weight: 1
     radius: 1
-  - target: {fileID: 0}
+  - target: {fileID: 1763434769}
     weight: 1
     radius: 1
 --- !u!1 &1605395974
@@ -679,7 +679,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 14.250107
+  field of view: 15.992586
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -704,8 +704,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605395974}
-  m_LocalRotation: {x: 1e-45, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0.1, z: -10}
+  m_LocalRotation: {x: -0.00016487057, y: -0.016019542, z: -0.0000026414896, w: 0.99987173}
+  m_LocalPosition: {x: 1.3333223, y: 0.10666678, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -790,6 +790,7 @@ GameObject:
   - component: {fileID: 1763434769}
   - component: {fileID: 1763434770}
   - component: {fileID: 1763434771}
+  - component: {fileID: 1763434772}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -884,6 +885,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1763434772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763434768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448d1257539b48e49bb409741f467481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1845410046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7575581590248848135, guid: 7032f5716c248ad478555885f1c87f24,
@@ -952,8 +965,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2053855088}
-  m_LocalRotation: {x: 1e-45, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0.1, z: -10}
+  m_LocalRotation: {x: -0.00016487057, y: -0.016019542, z: -0.0000026414896, w: 0.99987173}
+  m_LocalPosition: {x: 1.3333223, y: 0.10666678, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
