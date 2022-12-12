@@ -13,5 +13,7 @@ public class Character_Puppet : Character
         AddComponent(ComponentType.Move, new CharacterMove(this));
         AddComponent(ComponentType.Sprite, new CharacterSprite(this));
         AddComponent(ComponentType.Attack, new CharacterAttack(this));
+        AddComponent(ComponentType.Level, new CharacterLevel(this));
+        AddComponent(ComponentType.Skill1, new CharacterSkill_Puppet(this));
     }
 }
