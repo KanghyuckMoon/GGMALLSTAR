@@ -5,6 +5,7 @@ namespace Effect
 	{
         Identity,
         ReverseDirection,
+        SetParticle3DRotation,
 	}
     public enum EffectType
     {
@@ -19,6 +20,7 @@ namespace Effect
         StarGetEff,
         DodgeEff,
         Hit_5,
+        Shockwave,
         Count,
     }
 }

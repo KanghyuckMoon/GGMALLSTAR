@@ -74,6 +74,9 @@ namespace Effect
                 case EffectDirectionType.ReverseDirection:
                     effect.transform.eulerAngles = direction;
                     break;
+                case EffectDirectionType.SetParticle3DRotation:
+                    effect.GetComponentInChildren<ParticleSystem>().startRotation3D = direction;
+                    break;
 			}
 		}
 
