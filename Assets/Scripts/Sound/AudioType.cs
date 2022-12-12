@@ -16,6 +16,8 @@ namespace Sound
 		Dice_Win,
 		LostKingdom_BGM,
 		Puppet_Win,
+		AgentStage_BGM,
+		Agent_Win,
 		Count,
 	}
 

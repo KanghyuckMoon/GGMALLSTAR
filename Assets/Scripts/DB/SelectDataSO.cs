@@ -20,6 +20,7 @@ public enum StageSelect
 	QuietTown,
 	Tower,
 	LostKingdom,
+	AgentStage,
 	Count
 }
 

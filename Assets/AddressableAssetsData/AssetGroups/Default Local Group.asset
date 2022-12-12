@@ -605,6 +605,18 @@ MonoBehaviour:
     m_Address: Shockwave
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 7f209b415f9f15d4d8744651aa55b6c3
+    m_Address: AgentStage_SImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: de36fb43045e35d42a9de74e7cb19ac0
+    m_Address: AgentStage_BGM
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 475d95fb902f1624db9389203fff5c05
+    m_Address: Agent_Win
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
