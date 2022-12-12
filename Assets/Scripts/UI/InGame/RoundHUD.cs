@@ -15,6 +15,9 @@ public class RoundHUD : MonoBehaviour
 	[SerializeField] private GameObject upperHud;
 	[SerializeField] private GameObject frameImage;
 
+	[SerializeField] private Material originMaterial;
+	[SerializeField] private Material negativeMaterial;
+
 	private RoundManager roundManager;
 
 	private void Awake()
@@ -37,40 +40,44 @@ public class RoundHUD : MonoBehaviour
 	{
 		if (roundManager.RoundNumber == 5)
 		{
-			SetText("Round Final");
+			StartCoroutine(SetText("Round Final"));
 		}
 		else
 		{
-			SetText($"Round {roundManager.RoundNumber}");
+			StartCoroutine(SetText($"Round {roundManager.RoundNumber}"));
 		}
 		upperHud.gameObject.SetActive(true);
 		frameImage.gameObject.SetActive(false);
 	}
 	private void RoundStart()
 	{
-		SetText($"GO");
+		StartCoroutine(SetText($"GO"));
 	}
 	private void RoundEnd()
 	{
-		SetText($"KO");
+		StartCoroutine(SetText($"KO"));
 		CountImageSetting();
 		upperHud.gameObject.SetActive(false);
 		frameImage.gameObject.SetActive(true);
 	}
 	private void RoundReady()
 	{
-		SetText($"Ready");
+		StartCoroutine(SetText($"Ready"));
 	}
 	private void GameEnd()
 	{
-		SetText($"Game Set");
+		StartCoroutine(SetText($"Game Set"));
 		CountImageSetting();
 		upperHud.gameObject.SetActive(false);
 		frameImage.gameObject.SetActive(true);
 	}
 
-	public void SetText(string str)
+	public IEnumerator SetText(string str)
 	{
+		roundtext.fontMaterial = negativeMaterial;
+		yield return new WaitForSeconds(0.02f);
+		roundtext.fontMaterial = originMaterial;
+
 		roundtext.gameObject.SetActive(true);
 		roundtext.rectTransform.DOKill();
 		roundtext.rectTransform.localScale = Vector3.zero;

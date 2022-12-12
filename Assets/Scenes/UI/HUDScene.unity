@@ -6235,7 +6235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Round 1
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 743c28862d446ec40a9883c2e84c47d9, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f276e61e7e36168409583dd2dcf01ca9, type: 2}
@@ -8963,6 +8963,8 @@ MonoBehaviour:
   winSprite: {fileID: 21300000, guid: 606fa25da0e15eb469e797bd8dbb6f96, type: 3}
   upperHud: {fileID: 709580291}
   frameImage: {fileID: 1907391828}
+  originMaterial: {fileID: 2100000, guid: f276e61e7e36168409583dd2dcf01ca9, type: 2}
+  negativeMaterial: {fileID: 2100000, guid: 17a0fe41c314ca54fbb7d9b94a534b7d, type: 2}
 --- !u!114 &1852666240
 MonoBehaviour:
   m_ObjectHideFlags: 0
