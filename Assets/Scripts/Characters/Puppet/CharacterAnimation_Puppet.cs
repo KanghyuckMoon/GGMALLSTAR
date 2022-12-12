@@ -13,5 +13,6 @@ public class CharacterAnimation_Puppet : CharacterAnimation
     {
         base.Awake();
         AddAnimationHash(AnimationType.Run, AnimationKeyWord.RUN);
+        AddAnimationHash(AnimationType.Attack, AnimationKeyWord.ATTACK);
     }
 }
