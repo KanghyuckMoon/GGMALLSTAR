@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Puppet
   CharacterImage: {fileID: 0}
-  MaxHP: 0
-  FirstJumpPower: 0
-  SecondJumpPower: 0
-  MoveSpeed: 0
-  DodgeSpeed: 0
-  AirMoveSpeed: 0
-  GravityScale: 0
+  MaxHP: 200
+  FirstJumpPower: 10
+  SecondJumpPower: 5
+  MoveSpeed: 2
+  DodgeSpeed: 1
+  AirMoveSpeed: 5
+  GravityScale: 2
   attackDelay: 0
   skill1Delay: 0
   skill2Delay: 0

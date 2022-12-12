@@ -11,6 +11,7 @@ public class CharacterAnimation_Puppet : CharacterAnimation
 
     protected override void Awake()
     {
+        base.Awake();
         AddAnimationHash(AnimationType.Run, AnimationKeyWord.RUN);
     }
 }
