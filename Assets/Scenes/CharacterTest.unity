@@ -442,6 +442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 405760297}
+  - component: {fileID: 405760298}
   m_Layer: 0
   m_Name: Puppet
   m_TagString: Untagged
@@ -465,6 +466,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &405760298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405760296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44e417a066639d40afdc9f5c55a413e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterSO: {fileID: 11400000, guid: 27402775295e7a14084c6676d57bbb59, type: 2}
+  _characterLevelSO: {fileID: 11400000, guid: 3fe9842786c27ba4a925c9258206415b, type: 2}
+  _inputDataBaseSO: {fileID: 11400000, guid: 46bd95fd7549ed44e8c44b18738106d0, type: 2}
+  _hitBoxDataSO: {fileID: 11400000, guid: d94b38018eaa26e4b95b5b3bf054ea10, type: 2}
 --- !u!1 &1081736453
 GameObject:
   m_ObjectHideFlags: 3
