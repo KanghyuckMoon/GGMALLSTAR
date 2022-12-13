@@ -66,9 +66,9 @@ public class StarEffect : MonoBehaviour
 		}
 
 		characterLevel.AddExp(addExp);
-		PoolManager.AddObjToPool("StarEff", gameObject);
 		Sound.SoundManager.Instance.PlayEFF("se_item_superstar_get");
 		Effect.EffectManager.Instance.SetEffect(Effect.EffectType.StarGetEff, transform.position);
+		PoolManager.AddObjToPool("StarEff", gameObject);
 		gameObject.SetActive(false);
 	}
 

@@ -11,8 +11,6 @@ namespace Effect
 
     public class EffectManager : MonoSingleton<EffectManager>
     {
-        private Dictionary<EffectType, Transform> _effectParents = new Dictionary<EffectType, Transform>();
-        private Dictionary<EffectType, GameObject> _effectPrefebs = new Dictionary<EffectType, GameObject>();
         private bool _isInit = false;
 
         public void Start()
@@ -41,17 +39,6 @@ namespace Effect
                 return;
             }
             _isInit = true;
-            SceneManager.sceneLoaded += LoadedsceneEvent;
-
-            int count = (int)EffectType.Count;
-            for (int i = 0; i < count; ++i)
-            {
-                GameObject obj = new GameObject(((EffectType)i).ToString());
-                DontDestroyOnLoad(obj);
-                _effectParents.Add((EffectType)i, obj.transform);
-                _effectPrefebs.Add((EffectType)i, AddressablesManager.Instance.GetResource<GameObject>(((EffectType)i).ToString()));
-
-            }
         }
 
         /// <summary>
@@ -80,58 +67,13 @@ namespace Effect
 			}
 		}
 
-		/// <summary>
-		/// 콤보카운트이펙트
-		/// </summary>
-		/// <param name="count"></param>
-		/// <param name="stunTime"></param>
-		/// <param name="pos"></param>
-		public void SetComboCountEffect(int count, float stunTime, Vector3 pos)
-		{
-            PoolManager.GetItem("ComboCountEff").GetComponent<ComboCountEffect>().SetComboCount(count, stunTime, pos);
-        }
-
-        /// <summary>
-        /// 씬 이동에 대응하여 이펙트 삭제
-        /// </summary>
-        public void MoveSceneToDeleteEffect()
-        {
-            int count = (int)EffectType.Count;
-            for (int i = 0; i < count; ++i)
-            {
-                Transform parent = _effectParents[(EffectType)i];
-                int childCount = parent.childCount;
-                for (int j = 0; j < childCount; ++j)
-                {
-                    parent.GetChild(j).gameObject.SetActive(false);
-                }
-            }
-        }
-
         /// <summary>
         /// 이펙트 풀링
         /// </summary>
         /// <param name="transform"></param>
         private GameObject Pool(EffectType effectType)
         {
-            Transform parent = _effectParents[effectType];
-            int count = parent.childCount;
-            for (int i = 0; i < count; ++i)
-            {
-                GameObject effect = parent.GetChild(i).gameObject;
-                if (!effect.activeSelf)
-                {
-                    return effect;
-                }
-            }
-
-            GameObject newEffect = Instantiate(_effectPrefebs[effectType], parent);
-            return newEffect;
-        }
-
-        private void LoadedsceneEvent(Scene scene, LoadSceneMode mode)
-        {
-            MoveSceneToDeleteEffect();
+            return PoolManager.GetItem(effectType.ToString());
         }
     }
 

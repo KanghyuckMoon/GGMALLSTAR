@@ -27,7 +27,6 @@ public class BehaviourTree
 
 	public virtual void SetNode(int level = 1)
 	{
-		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("TestComboSO");
 		//NodeSetting
 		_rootNode =
 			Selector
@@ -39,8 +38,6 @@ public class BehaviourTree
 					IfAction(MoveCondition, FerMove),
 					IfAction(MoveCondition, Jump)
 				)
-
-				//new ConditionCheckNode(AttackCondition, new ComboNode(comboSO, HoldKey, UpKey, TapKey))
 			);
 	}
 
@@ -120,7 +117,6 @@ public class BehaviourTree
 			aiTestInput.SingleHoldInputKey(KeyCode.D);
 			isRight = true;
 		}
-		Debug.Log("AI Close Move");
 	}
 	protected void FerMove()
 	{
@@ -134,12 +130,10 @@ public class BehaviourTree
 			aiTestInput.SingleHoldInputKey(KeyCode.A);
 			isRight = false;
 		}
-		Debug.Log("AI Fer Move");
 	}
 	protected void Jump()
 	{
 		aiTestInput.TapInputKey(KeyCode.W);
-		Debug.Log("AI Jump");
 	}
 
 	protected float _delay = 0.1f;
@@ -155,15 +149,12 @@ public class BehaviourTree
 		{
 			return;
 		}
-		//aiTestInput.FalseInputKey();
 		aiTestInput.TapInputKey(KeyCode.J);
-		Debug.Log("AI Attack");
 	}
 
 	protected void TapKey(KeyCode keyCode)
 	{
 		aiTestInput.TapInputKey(keyCode);
-		Debug.Log($"AI Input{keyCode}");
 	}
 	protected void UpKey(KeyCode keyCode)
 	{

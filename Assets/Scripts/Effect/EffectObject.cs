@@ -7,24 +7,12 @@ namespace Effect
 
     public class EffectObject : MonoBehaviour
     {
-        [SerializeField]
-        private float _duration;
+        [SerializeField] private EffectType effectType;
 
-        private void OnEnable()
+        private void OnDisable()
         {
-            StartCoroutine(Delete());
+            Pool.PoolManager.AddObjToPool(effectType.ToString(), gameObject);
         }
-        private IEnumerator Delete()
-        {
-            yield return new WaitForSeconds(_duration);
-            gameObject.SetActive(false);
-        }
-
-		private void OnDestroy()
-		{
-            Debug.LogError("Object Delete");
-		}
-
 	}
 
 }

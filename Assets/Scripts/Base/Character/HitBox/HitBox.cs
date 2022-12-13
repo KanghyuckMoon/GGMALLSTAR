@@ -84,8 +84,6 @@ public class HitBox : MonoBehaviour
             Owner.TargetCharacterDamage?.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
             OnHit?.Invoke();
 
-            Debug.Log(hitBoxData.knockBack);
-
             //AI
             CharacterAIInput aiInput = Owner.Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
             if (aiInput is not null)
@@ -95,7 +93,7 @@ public class HitBox : MonoBehaviour
 
             //Exp
 
-            int expCount = (hitBoxData.addExp / 5) + 1;
+            int expCount = (hitBoxData.addExp / 7) + 1;
 
             for (int i = 0; i < expCount; ++i)
             {
