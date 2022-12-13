@@ -86,7 +86,9 @@ public class CharacterSkill_Puppet : CharacterSkill
             switch (_elementalType)
             {
                 case ElementalType.Wind:
-                    GameObject wind = PoolManager.GetItem("Assets/Prefabs/WindSkill.prefab");
+                    var wind = PoolManager.GetItem("Assets/Prefabs/WindSkill.prefab").GetComponent<WindSkill>();
+                    wind.SetWindSkill(_character.transform.position);
+                    _character.Rigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
                     break;
                 case ElementalType.Fire:
 

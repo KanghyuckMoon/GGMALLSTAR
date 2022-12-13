@@ -15,9 +15,9 @@ MonoBehaviour:
   Name: Puppet
   CharacterImage: {fileID: 0}
   MaxHP: 200
-  FirstJumpPower: 10
+  FirstJumpPower: 5
   SecondJumpPower: 5
-  MoveSpeed: 2
+  MoveSpeed: 10
   DodgeSpeed: 1
   AirMoveSpeed: 5
   GravityScale: 2

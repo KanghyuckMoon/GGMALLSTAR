@@ -10,12 +10,15 @@ public class Character_Puppet : Character
         AddComponent(ComponentType.Input, new CharacterInput(this));
         AddComponent(ComponentType.Animation, new CharacterAnimation_Puppet(this));
         AddComponent(ComponentType.Stat, new CharacterStat(this));
+        AddComponent(ComponentType.Debug, new CharacterDebug(this));
         AddComponent(ComponentType.Move, new CharacterMove(this));
+        AddComponent(ComponentType.Jump, new CharacterJump(this));
         AddComponent(ComponentType.Sprite, new CharacterSprite(this));
         AddComponent(ComponentType.Attack, new CharacterAttack(this));
         AddComponent(ComponentType.Level, new CharacterLevel(this));
         AddComponent(ComponentType.Skill1, new CharacterSkill_Puppet(this));
         AddComponent(ComponentType.Damage, new CharacterDamage(this));
+        AddComponent(ComponentType.Gravity, new CharacterGravity(this));
     }
 
     [Header("Elemental Transform")]
