@@ -15,5 +15,13 @@ public class Character_Puppet : Character
         AddComponent(ComponentType.Attack, new CharacterAttack(this));
         AddComponent(ComponentType.Level, new CharacterLevel(this));
         AddComponent(ComponentType.Skill1, new CharacterSkill_Puppet(this));
+        AddComponent(ComponentType.Damage, new CharacterDamage(this));
     }
+
+    [Header("Elemental Transform")]
+
+    [SerializeField]
+    private Transform _elementalTransform = null;
+
+    public Transform ElementalTransform => _elementalTransform;
 }

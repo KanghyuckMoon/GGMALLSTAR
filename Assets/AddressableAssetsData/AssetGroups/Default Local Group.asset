@@ -589,6 +589,26 @@ MonoBehaviour:
     m_Address: Hit_5
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f5b45ddc7ea683a499b5db1402e34f38
+    m_Address: Assets/Prefabs/Wind.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9caa6ebbaba17ae4c98677ad175b806f
+    m_Address: Assets/Prefabs/Fire.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d24de52f785b8f84f8257ef1b9210db5
+    m_Address: Assets/Prefabs/Earth.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dff826eda5df96d45a67e4aca1271bb9
+    m_Address: Assets/Prefabs/Water.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b42edded623af3643853fd8a18e488cd
+    m_Address: Assets/Prefabs/WindSkill.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
