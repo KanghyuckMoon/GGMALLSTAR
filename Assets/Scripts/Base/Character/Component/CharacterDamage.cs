@@ -10,6 +10,40 @@ using DG.Tweening;
 
 public class CharacterDamage : CharacterComponent
 {
+
+    private int _comboCount = 0;
+    private CharacterStat characterStat;
+    private float _sturnTime;
+    private System.Action damagedAction;
+
+    public int HitCount
+	{
+        get
+		{
+            return _comboCount;
+		}
+	}
+
+    public float SturnTime
+	{
+        get
+		{
+            return _sturnTime;
+		}
+    }
+    public System.Action DamagedAction
+    {
+        get
+        {
+            return damagedAction;
+        }
+        set
+		{
+            damagedAction = value;
+
+        }
+    }
+
     public CharacterDamage(Character character) : base(character)
     {
 
@@ -17,7 +51,6 @@ public class CharacterDamage : CharacterComponent
 
     protected override void Awake()
     {
-        //_hp = Character.GetCharacterComponent<CharacterStat>().MaxHP;
         characterStat = Character.GetCharacterComponent<CharacterStat>();
     }
 
@@ -30,9 +63,9 @@ public class CharacterDamage : CharacterComponent
 	{
 		base.Update();
 
-        if (_stunTime > 0f)
+        if (_sturnTime > 0f)
 		{
-            _stunTime -= Time.deltaTime;
+            _sturnTime -= Time.deltaTime;
         }
         else
 		{
@@ -40,20 +73,12 @@ public class CharacterDamage : CharacterComponent
         }
 	}
 
-	//private float _hp = 0;
-    private int _comboCount = 0;
-    private CharacterStat characterStat;
 
     private void OnDamage()
     {
-        //_hp -= 10;
-        //if (_hp <= 0)
-        //{
-        //    Debug.Log("Die");
-        //}
+
     }
 
-    private float _stunTime;
 
     public void OnAttcked(HitBox hitBox, HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
     {
@@ -104,8 +129,8 @@ public class CharacterDamage : CharacterComponent
 
         //ComboCount
         _comboCount++;
-        _stunTime = stunHitTime;
-        EffectManager.Instance.SetComboCountEffect(_comboCount, stunHitTime, collistionPoint);
+        _sturnTime = stunHitTime;
+        damagedAction?.Invoke();
 
         //Set HitTime & StunTime
         Vector3 vector = Character.Rigidbody.velocity;
