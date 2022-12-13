@@ -235,12 +235,12 @@ public class RoundManager : MonoBehaviour
 			{
 				Debug.Log("Game End P2 Win");
 			}
-			SoundManager.Instance.PlayEFF("vc_narration_gameset_CN-JP-KR");
+			SoundManager.Instance.PlayEFF("AkBankBattle#500 (1038384928)");
 			StartCoroutine(GameEnd(6f));
 		}
 		else
 		{
-			SoundManager.Instance.PlayEFF("vc_narration_gameset");
+			SoundManager.Instance.PlayEFF("AkBankBattle#500 (1038384928)");
 			StartCoroutine(NextRound(6f));
 		}
 	}
@@ -277,19 +277,19 @@ public class RoundManager : MonoBehaviour
 		{
 			default:
 			case 1:
-				SoundManager.Instance.PlayEFF("vc_narration_one");
+				SoundManager.Instance.PlayEFF("AkBankBattle#29 (57556810)");
 				break;
 			case 2:
-				SoundManager.Instance.PlayEFF("vc_narration_two");
+				SoundManager.Instance.PlayEFF("AkBankBattle#320 (663251579)");
 				break;
 			case 3:
-				SoundManager.Instance.PlayEFF("vc_narration_three");
+				SoundManager.Instance.PlayEFF("AkBankBattle#92 (185443775)");
 				break;
 			case 4:
-				SoundManager.Instance.PlayEFF("vc_narration_four");
+				SoundManager.Instance.PlayEFF("AkBankBattle#420 (871787823)");
 				break;
 			case 5:
-				SoundManager.Instance.PlayEFF("vc_narration_five");
+				SoundManager.Instance.PlayEFF("AkBankBattle#122 (241347237)");
 				break;
 		}
 		SetInputSturnTime(3f);
@@ -348,7 +348,7 @@ public class RoundManager : MonoBehaviour
 
 		yield return new WaitForSeconds(fightTime);
 		Debug.Log("Fight");
-		SoundManager.Instance.PlayEFF("vc_narration_go");
+		SoundManager.Instance.PlayEFF("AkBankBattle#128 (253827322)");
 		isSetting = true;
 		roundStartEvent?.Invoke();
 	}

@@ -10,9 +10,19 @@ using DG.Tweening;
 
 public class CharacterDamage : CharacterComponent
 {
+    private CharacterAnimation CharacterAnimation
+	{
+        get
+		{
+            characterAnimation ??= Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation);
+            return characterAnimation;
+		}
+	}
+
 
     private int _comboCount = 0;
     private CharacterStat characterStat;
+    private CharacterAnimation characterAnimation;
     private float _sturnTime;
     private System.Action damagedAction;
 
@@ -65,11 +75,13 @@ public class CharacterDamage : CharacterComponent
 
         if (_sturnTime > 0f)
 		{
+            CharacterAnimation.SetAnimationBool(AnimationType.Damage, true);
             _sturnTime -= Time.deltaTime;
         }
         else
 		{
             _comboCount = 0;
+            CharacterAnimation.SetAnimationBool(AnimationType.Damage, false);
         }
 	}
 

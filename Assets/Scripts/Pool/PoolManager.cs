@@ -12,8 +12,13 @@ namespace Pool
         public static Dictionary<string, GameObject> prefabDictionary = new Dictionary<string, GameObject>();
         private static List<string> nameList = new List<string>();
 
-        private static void CreatePool(string name)
+        public static void CreatePool(string name)
         {
+            if (pool.ContainsKey(name))
+            {
+                return;
+            }
+
             Queue<GameObject> q = new Queue<GameObject>();
             GameObject prefab = AddressablesManager.Instance.GetResource<GameObject>(name);
 
