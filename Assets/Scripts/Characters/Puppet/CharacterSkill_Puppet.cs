@@ -1,4 +1,3 @@
-using System.Diagnostics.Tracing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -88,7 +87,12 @@ public class CharacterSkill_Puppet : CharacterSkill
                 case ElementalType.Wind:
                     var wind = PoolManager.GetItem("Assets/Prefabs/WindSkill.prefab").GetComponent<WindSkill>();
                     wind.SetWindSkill(_character.transform.position);
-                    _character.Rigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
+                    //_character.Rigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
+
+                    Vector3 dir = new Vector3(_character.GetCharacterComponent<CharacterMove>().InputDirection.x * 10f, _character.GetCharacterComponent<CharacterMove>().InputDirection.y + 5f, 0f);
+
+                    _character.Rigidbody.AddForce(dir, ForceMode.Impulse);
+
                     break;
                 case ElementalType.Fire:
 

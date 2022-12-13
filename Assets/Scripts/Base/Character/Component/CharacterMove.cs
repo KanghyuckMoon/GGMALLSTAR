@@ -64,9 +64,9 @@ public class CharacterMove : CharacterComponent
         characterStat = Character.GetCharacterComponent<CharacterStat>();
     }
 
-	protected override void SetEvent()
-	{
-		base.SetEvent();
+    protected override void SetEvent()
+    {
+        base.SetEvent();
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
             _isRight = false;
@@ -87,10 +87,13 @@ public class CharacterMove : CharacterComponent
         }, EventType.KEY_HOLD);
     }
 
-	private CharacterStat characterStat;
+    private CharacterStat characterStat;
     private Transform _transform = null;
     private Rigidbody _rigidbody = null;
+
     private Vector2 _inputDirection = Vector2.zero;
+    public Vector2 InputDirection => _inputDirection;
+
     private Vector2 _moveDirection = Vector2.zero;
     private float _sturnTime = 0f;
 
@@ -109,7 +112,7 @@ public class CharacterMove : CharacterComponent
     }
 
     public void SetMoveDirection(Vector2 vector2)
-	{
+    {
         _moveDirection = vector2;
 
     }
@@ -117,7 +120,7 @@ public class CharacterMove : CharacterComponent
     public override void FixedUpdate()
     {
         if (!Character.GetCharacterComponent<CharacterStat>().IsAlive)
-		{
+        {
             _rigidbody.velocity = Vector3.zero;
             return;
         }
@@ -191,10 +194,10 @@ public class CharacterMove : CharacterComponent
         }
     }
 
-	public override void OnCollisionEnter(Collision other)
+    public override void OnCollisionEnter(Collision other)
     {
         //Wall Check
-        if(_sturnTime > 0f)
+        if (_sturnTime > 0f)
         {
             if (other.gameObject.layer == 8)
             {
@@ -214,7 +217,7 @@ public class CharacterMove : CharacterComponent
         }
     }
 
-	public override void OnCollisionStay(Collision other)
+    public override void OnCollisionStay(Collision other)
     {
         //Ground Check
         if (other.gameObject.layer == 6)
@@ -227,7 +230,7 @@ public class CharacterMove : CharacterComponent
             }
         }
         else
-		{
+        {
             _isGround = false;
         }
 
