@@ -3701,7 +3701,6 @@ GameObject:
   - component: {fileID: 915966863}
   - component: {fileID: 915966862}
   - component: {fileID: 915966864}
-  - component: {fileID: 915966865}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -3806,53 +3805,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!114 &915966865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915966861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4132f37f6f3e51149853605cee5e6e49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: -30
-      inSlope: -0.1896868
-      outSlope: -0.1896868
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.29403785
-      value: -20
-      inSlope: 0.853878
-      outSlope: 0.853878
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: -30.00118
-      inSlope: -2.650225
-      outSlope: -2.650225
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  period: 1
-  speed: 0.1
 --- !u!1 &926202693
 GameObject:
   m_ObjectHideFlags: 0
