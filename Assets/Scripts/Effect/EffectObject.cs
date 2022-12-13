@@ -20,6 +20,11 @@ namespace Effect
             gameObject.SetActive(false);
         }
 
-    }
+		private void OnDestroy()
+		{
+            Debug.LogError("Object Delete");
+		}
+
+	}
 
 }

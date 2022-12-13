@@ -51,7 +51,7 @@ public class CharacterDamage : CharacterComponent
 
     protected override void Awake()
     {
-        characterStat = Character.GetCharacterComponent<CharacterStat>();
+        characterStat = Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
     }
 
     protected override void SetEvent()
@@ -90,10 +90,10 @@ public class CharacterDamage : CharacterComponent
 
         //Hp
         characterStat.AddHP(-hitBoxData.damage);
-        Character.GetCharacterComponent<CharacterDebug>().AddDamaged(hitBoxData.damage);
+        Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddDamaged(hitBoxData.damage);
 
         //Exp
-        Character.GetCharacterComponent<CharacterLevel>().AddExp(hitBoxData.addExp / 2);
+        Character.GetCharacterComponent<CharacterLevel>(ComponentType.Level).AddExp(hitBoxData.addExp / 2);
 
         //Die
         if (!characterStat.IsAlive)
@@ -134,21 +134,21 @@ public class CharacterDamage : CharacterComponent
 
         //Set HitTime & StunTime
         Vector3 vector = Character.Rigidbody.velocity;
-        CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>();
-        CharacterMove characterMove = Character.GetCharacterComponent<CharacterMove>();
-        CharacterDodge characterDodge = Character.GetCharacterComponent<CharacterDodge>();
+        CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>(ComponentType.Gravity);
+        CharacterMove characterMove = Character.GetCharacterComponent<CharacterMove>(ComponentType.Move);
+        CharacterDodge characterDodge = Character.GetCharacterComponent<CharacterDodge>(ComponentType.Dodge);
         characterMove.SetSturnTime(stunHitTime);
         characterDodge.SetSturnTime(stunHitTime);
         characterGravity.SetHitTime(stunHitTime);
         Character.Rigidbody.velocity = Vector3.zero;
-        CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>();
+        CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>(ComponentType.Input);
         if(characterInput is not null)
 		{
             characterInput.SetStunTime(stunHitTime);
         }
         else
         {
-            CharacterAIInput aITestInput = Character.GetCharacterComponent<CharacterAIInput>();
+            CharacterAIInput aITestInput = Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
             if (aITestInput is not null)
             {
                 aITestInput.SetStunTime(stunHitTime);
@@ -156,7 +156,7 @@ public class CharacterDamage : CharacterComponent
 		}
 
         //CharacterShake
-        CharacterSprite characterSprite = Character.GetCharacterComponent<CharacterSprite>();
+        CharacterSprite characterSprite = Character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite);
         characterSprite.SpriteRenderer.transform.DOKill();
         characterSprite.SpriteRenderer.transform.DOShakePosition(hitBoxData.hitTime, 0.05f, 20).OnComplete(() => 
         {

@@ -49,7 +49,7 @@ public class CharacterJump : CharacterComponent
     protected override void Awake()
     {
         _rigidbody = Character.Rigidbody;
-        characterAnimation = Character.GetCharacterComponent<CharacterAnimation>();
+        characterAnimation = Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation);
     }
 
     public override void FixedUpdate()
@@ -65,13 +65,13 @@ public class CharacterJump : CharacterComponent
         if (isTap)
         {
             isTap = false;
-            if(!Character.GetCharacterComponent<CharacterStat>().IsAlive)
+            if(!Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat).IsAlive)
             {
                 _rigidbody.velocity = Vector3.zero;
             }
             else if (_rigidbody && _jumpCount == 0)
             {
-                Character.GetCharacterComponent<CharacterDebug>().AddJumpCount(1);
+                Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddJumpCount(1);
                 var vel = _rigidbody.velocity;
                 vel.y = 0;
                 _rigidbody.velocity = vel;

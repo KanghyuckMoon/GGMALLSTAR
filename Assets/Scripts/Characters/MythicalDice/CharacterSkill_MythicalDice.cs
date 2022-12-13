@@ -10,7 +10,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     {
         get
         {
-            characterLevel ??= Character.GetCharacterComponent<CharacterLevel>();
+            characterLevel ??= Character.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
             return characterLevel;
         }
     }
@@ -45,7 +45,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                         damage += diceQueue.Dequeue().DiceNumber;
                     }
                     Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].damage = damage;
-                    PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(),
+                    PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(ComponentType.Attack),
                         () => { }, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset);
 
                     Skill2Action();

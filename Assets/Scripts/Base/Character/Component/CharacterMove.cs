@@ -57,8 +57,8 @@ public class CharacterMove : CharacterComponent
     {
         _rigidbody = Character.Rigidbody;
         _transform = Character.transform;
-        characterAnimation = Character.GetCharacterComponent<CharacterAnimation>();
-        characterStat = Character.GetCharacterComponent<CharacterStat>();
+        characterAnimation = Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation);
+        characterStat = Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
     }
 
 	public override void Start()
@@ -118,7 +118,7 @@ public class CharacterMove : CharacterComponent
 
     public override void FixedUpdate()
     {
-        if (!Character.GetCharacterComponent<CharacterStat>().IsAlive)
+        if (!Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat).IsAlive)
 		{
             _rigidbody.velocity = Vector3.zero;
             return;

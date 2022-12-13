@@ -186,8 +186,8 @@ public class RoundManager : MonoBehaviour
 			}
 			else
 			{
-				CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
-				CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>();
+				CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+				CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
 
 				if (characterStatP1.HP / characterStatP1.MaxHP > characterStatP2.HP / characterStatP2.MaxHP)
 				{
@@ -248,10 +248,10 @@ public class RoundManager : MonoBehaviour
 	private void HPFullSetting()
 	{
 		//HP Setting
-		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
+		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
 		characterStatP1.SetHP((int)characterStatP1.MaxHP);
 
-		CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>();
+		CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
 		characterStatP2.SetHP((int)characterStatP2.MaxHP);
 	}
 
@@ -325,8 +325,8 @@ public class RoundManager : MonoBehaviour
 		}
 		else
 		{
-			characterDebugDataP1 = characterP1.GetCharacterComponent<CharacterDebug>().CharacterDebugData;
-			characterDebugDataP2 = characterP2.GetCharacterComponent<CharacterDebug>().CharacterDebugData;
+			characterDebugDataP1 = characterP1.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).CharacterDebugData;
+			characterDebugDataP2 = characterP2.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).CharacterDebugData;
 
 			characterDebugDataP1.damage = characterDebugDataP2.damaged;
 			characterDebugDataP2.damage = characterDebugDataP1.damaged;
@@ -367,24 +367,24 @@ public class RoundManager : MonoBehaviour
 
 	private void StopCharacterInputSturn(Character character, float stopTime)
 	{
-		CharacterInput characterInput = character.GetCharacterComponent<CharacterInput>();
+		CharacterInput characterInput = character.GetCharacterComponent<CharacterInput>(ComponentType.Input);
 		if (characterInput != null)
 		{
 			characterInput.SetStunTime(stopTime);
 		}
 		else
 		{
-			var aITestInput = character.GetCharacterComponent<CharacterAIInput>();
+			var aITestInput = character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
 			aITestInput.SetStunTime(stopTime);
 		}
 	}
 
 	private void StopCharacter(Character character, float stopTime)
 	{
-		CharacterGravity characterGravity = character.GetCharacterComponent<CharacterGravity>();
-		CharacterMove characterMove = character.GetCharacterComponent<CharacterMove>();
-		CharacterAnimation characterAnimation = character.GetCharacterComponent<CharacterAnimation>();
-		CharacterDodge characterDodge = character.GetCharacterComponent<CharacterDodge>();
+		CharacterGravity characterGravity = character.GetCharacterComponent<CharacterGravity>(ComponentType.Gravity);
+		CharacterMove characterMove = character.GetCharacterComponent<CharacterMove>(ComponentType.Move);
+		CharacterAnimation characterAnimation = character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation);
+		CharacterDodge characterDodge = character.GetCharacterComponent<CharacterDodge>(ComponentType.Dodge);
 
 		characterGravity.SetHitTime(stopTime);
 		characterMove.SetSturnTime(stopTime);

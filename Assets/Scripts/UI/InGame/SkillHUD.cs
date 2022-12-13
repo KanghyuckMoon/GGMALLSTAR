@@ -57,14 +57,14 @@ public class SkillHUD : MonoBehaviour
 		var characterP1 = characterSpawner.Player1.GetComponent<Character>();
 		var characterP2 = characterSpawner.Player2.GetComponent<Character>();
 
-		characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>();
-		characterLevelP2 = characterP2.GetCharacterComponent<CharacterLevel>();
+		characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
+		characterLevelP2 = characterP2.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
 
-		characterSkillP1 = characterP1.GetCharacterComponent<CharacterSkill>();
-		characterSkillP2 = characterP2.GetCharacterComponent<CharacterSkill>();
+		characterSkillP1 = characterP1.GetCharacterComponent<CharacterSkill>(ComponentType.Skill1);
+		characterSkillP2 = characterP2.GetCharacterComponent<CharacterSkill>(ComponentType.Skill1);
 
-		characterDodgeP1 = characterP1.GetCharacterComponent<CharacterDodge>();
-		characterDodgeP2 = characterP2.GetCharacterComponent<CharacterDodge>();
+		characterDodgeP1 = characterP1.GetCharacterComponent<CharacterDodge>(ComponentType.Dodge);
+		characterDodgeP2 = characterP2.GetCharacterComponent<CharacterDodge>(ComponentType.Dodge);
 
 
 

@@ -13,7 +13,7 @@ public class Frog_Behaviour : BehaviourTree
 	{
 		get
 		{
-			characterSkill_Frog ??= mainCharacter.GetCharacterComponent<CharacterSkill_Frog>();
+			characterSkill_Frog ??= mainCharacter.GetCharacterComponent<CharacterSkill_Frog>(ComponentType.Skill1);
 			return characterSkill_Frog;
 		}
 	}

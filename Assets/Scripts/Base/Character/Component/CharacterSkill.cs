@@ -74,15 +74,15 @@ public abstract class CharacterSkill : CharacterComponent
 
     public virtual void Skill1Action()
     {
-        Character.GetCharacterComponent<CharacterDebug>().AddSkill1Count(1);
+        Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddSkill1Count(1);
     }
     public virtual void Skill2Action()
     {
-        Character.GetCharacterComponent<CharacterDebug>().AddSkill2Count(1);
+        Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddSkill2Count(1);
     }
     public virtual void AllStarSkillAction()
     {
-        Character.GetCharacterComponent<CharacterDebug>().SetAllStarSkillRound(RoundManager.GetRoundNumber());
+        Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).SetAllStarSkillRound(RoundManager.GetRoundNumber());
     }
 
 }

@@ -47,6 +47,15 @@ public abstract class Character : MonoBehaviour
         return null;
     }
 
+    public T GetCharacterComponent<T>(ComponentType componentType) where T : CharacterComponent
+    {
+        if(_characterComponents.TryGetValue(componentType, out var characterComponent))
+		{
+            return characterComponent as T;
+		}
+        return null;
+    }
+
     private CharacterEvent _characterEvent = null;
     public CharacterEvent CharacterEvent => _characterEvent;
 

@@ -22,8 +22,8 @@ public class ComboHUD : MonoBehaviour
 		var characterP1 = characterSpawner.Player1.GetComponent<Character>();
 		var characterP2 = characterSpawner.Player2.GetComponent<Character>();
 
-		characterDamageP1 = characterP1.GetCharacterComponent<CharacterDamage>();
-		characterDamageP2 = characterP2.GetCharacterComponent<CharacterDamage>();
+		characterDamageP1 = characterP1.GetCharacterComponent<CharacterDamage>(ComponentType.Damage);
+		characterDamageP2 = characterP2.GetCharacterComponent<CharacterDamage>(ComponentType.Damage);
 
 		originPosP1 = comboTextP1.rectTransform.anchoredPosition;
 		originPosP2 = comboTextP2.rectTransform.anchoredPosition;

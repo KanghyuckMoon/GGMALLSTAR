@@ -74,7 +74,7 @@ public class CharacterDebug : CharacterComponent
 	{
 		base.Update();
 		AddGameTime(Time.deltaTime);
-		if(Character.GetCharacterComponent<CharacterMove>().IsGround)
+		if(Character.GetCharacterComponent<CharacterMove>(ComponentType.Move).IsGround)
 		{
 			AddGroundTime(Time.deltaTime);
 		}

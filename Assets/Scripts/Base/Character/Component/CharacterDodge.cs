@@ -117,7 +117,7 @@ public class CharacterDodge : CharacterComponent
 
 	public void Dodge()
 	{
-		if (!Character.GetCharacterComponent<CharacterStat>().IsAlive)
+		if (!Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat).IsAlive)
 		{
 			Character.Rigidbody.velocity = Vector3.zero;
 			return;
@@ -135,11 +135,11 @@ public class CharacterDodge : CharacterComponent
 		Character.StartCoroutine(ReturnState(Character.tag));
 		Character.tag = "Invincibility";
 
-		var characterInput = Character.GetCharacterComponent<CharacterInput>();  
+		var characterInput = Character.GetCharacterComponent<CharacterInput>(ComponentType.Input);  
 
 		if (characterInput == null)
 		{
-			var aiInput = Character.GetCharacterComponent<CharacterAIInput>();
+			var aiInput = Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
 			aiInput.SetInputDelayTime(0.2f);
 		}
 		else
@@ -148,8 +148,8 @@ public class CharacterDodge : CharacterComponent
 		}
 
 		
-		Character.GetCharacterComponent<CharacterColor>().SetWhiteMaterial();
-		Character.GetCharacterComponent<CharacterMove>().SetMoveDirection(_inputDirection);
+		Character.GetCharacterComponent<CharacterColor>(ComponentType.Color).SetWhiteMaterial();
+		Character.GetCharacterComponent<CharacterMove>(ComponentType.Move).SetMoveDirection(_inputDirection);
 		SetCoolTime(0.5f);
 
 		var velocity = Character.Rigidbody.velocity;
@@ -161,7 +161,7 @@ public class CharacterDodge : CharacterComponent
 	private IEnumerator ReturnState(string originTag)
 	{
 		yield return new WaitForSeconds(0.2f);
-		Character.GetCharacterComponent<CharacterColor>().SetOriginMaterial();
+		Character.GetCharacterComponent<CharacterColor>(ComponentType.Color).SetOriginMaterial();
 		Character.tag = originTag;
 	}
 
