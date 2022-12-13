@@ -617,6 +617,22 @@ MonoBehaviour:
     m_Address: Agent_Win
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 98b968e8b6354b940896a0b28720cabf
+    m_Address: I_RESENTMENT
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f176ae9a13c81e44f8750f485cfde695
+    m_Address: I_Fishight
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 257cf4cd45701c247b59e3ebdeb721c1
+    m_Address: I_To.77I
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c27f0a6b2e816f341827682bc438959c
+    m_Address: I_Astro
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
