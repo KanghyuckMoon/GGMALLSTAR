@@ -40,7 +40,7 @@ public class SkillSpike_Jaeby : MonoBehaviour
         if (other.gameObject == _character.gameObject || other.gameObject.CompareTag("Invincibility"))
             return;
 
-        if (!other.gameObject.CompareTag(_character.tag))
+        if (!other.gameObject.CompareTag(_character.tag) && (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Player2")))
         {
             CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>();
             characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
@@ -62,11 +62,12 @@ public class SkillSpike_Jaeby : MonoBehaviour
                 StarEffect starEffect = Pool.PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
                 starEffect.SetEffect(transform.position, _character.GetCharacterComponent<CharacterLevel>(), _hitBoxData.addExp / expCount);
             }
+
+            gameObject.SetActive(false);
+            Sound.SoundManager.Instance.PlayEFF("se_common_offset_sword");
+            Pool.PoolManager.AddObjToPool("Assets/Prefabs/SkillSpike_Jaeby.prefab", gameObject);
         }
 
-        gameObject.SetActive(false);
-        Sound.SoundManager.Instance.PlayEFF("se_common_offset_sword");
-        Pool.PoolManager.AddObjToPool("Assets/Prefabs/SkillSpike_Jaeby.prefab", gameObject);
     }
 
     private void OnEnable()

@@ -14,9 +14,6 @@ public class CharacterMove : CharacterComponent
 
     public CharacterMove(Character character) : base(character)
     {
-        Utill.StaticCoroutine.Instance.StartCoroutine(PlayWalkEFF());
-
-
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
             _inputDirection.x = -1;
@@ -64,7 +61,12 @@ public class CharacterMove : CharacterComponent
         characterStat = Character.GetCharacterComponent<CharacterStat>();
     }
 
-	protected override void SetEvent()
+	public override void Start()
+    {
+        Character.StartCoroutine(PlayWalkEFF());
+    }
+
+    protected override void SetEvent()
 	{
 		base.SetEvent();
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
