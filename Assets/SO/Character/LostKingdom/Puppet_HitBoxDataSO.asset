@@ -12,4 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3a799da8efd8a4d9c110bc3a8cd6c4, type: 3}
   m_Name: Puppet_HitBoxDataSO
   m_EditorClassIdentifier: 
-  hitBoxDatasList: []
+  hitBoxDatasList:
+  - hitBoxDatas:
+    - actionName: Attack
+      damage: 10
+      knockBack: 5
+      knockAngle: 15
+      hitTime: 0.1
+      sturnTime: 0.2
+      _attackOffset: {x: 0.25, y: 0.15, z: 0}
+      _attackSize: {x: 0.5, y: 0.3, z: 0}
+      shakePower: 0
+      shakeTime: 0
+      atkEffectType: 0
+      atkEffectDirectionType: 0
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: 
+      atkEffSoundName: 
+      addExp: 10
