@@ -142,7 +142,7 @@ public class RoundHUD : MonoBehaviour
 	private void RoundStart()
 	{
 		CoroutineStop();
-		coroutine = StartCoroutine(RoundStartText($"GO"));
+		coroutine = StartCoroutine(RoundStartText($"FIGHT"));
 	}
 
 	private IEnumerator RoundStartText(string text)
@@ -177,6 +177,7 @@ public class RoundHUD : MonoBehaviour
 	{
 		yield return null;
 		roundtext.rectTransform.DOKill();
+		roundtext.gameObject.SetActive(true);
 		roundtext.text = text;
 		roundtext.fontMaterial = originMaterial;
 		roundtext.rectTransform.localScale = Vector3.one * 2;
