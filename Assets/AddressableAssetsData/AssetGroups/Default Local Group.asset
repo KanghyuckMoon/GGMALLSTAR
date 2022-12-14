@@ -621,6 +621,14 @@ MonoBehaviour:
     m_Address: Bridge_SImage
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 2c2613498bf722e429794363f45a85d5
+    m_Address: Bridge_BGM
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8e0710f2c5962ea42a45b36eaf7f8882
+    m_Address: Damvi_Win
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
