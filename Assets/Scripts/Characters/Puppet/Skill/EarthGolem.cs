@@ -30,17 +30,21 @@ public class EarthGolem : Skill
             transform.localScale = new Vector3(1, 1, 1);
         }
 
-        _character.CharacterEvent.AddEvent(EventKeyWord.SKILL_2, () =>
+        _character.CharacterEvent.AddEvent(EventKeyWord.SKILL_2, Attack, EventType.KEY_DOWN);
+    }
+
+    private void Attack()
+    {
+        if (_character.GetCharacterComponent<CharacterSkill_Puppet>().CurrentElementalType == CharacterSkill_Puppet.ElementalType.Earth)
         {
-            if (_character.GetCharacterComponent<CharacterSkill_Puppet>().CurrentElementalType == CharacterSkill_Puppet.ElementalType.Earth)
-            {
-                _animator.SetTrigger("Attack");
-            }
-        }, EventType.KEY_DOWN);
+            _animator.SetTrigger("Attack");
+        }
     }
 
     private void OnDisable()
     {
         _character.GetCharacterComponent<CharacterSkill_Puppet>().IsEarthGolemSpawn = false;
+        Pool.PoolManager.AddObjToPool("Assets/Prefabs/EarthGolem.prefab", gameObject);
+        _character.CharacterEvent.RemoveEvent(EventKeyWord.SKILL_2, Attack, EventType.KEY_DOWN);
     }
 }

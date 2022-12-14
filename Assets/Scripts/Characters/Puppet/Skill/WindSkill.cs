@@ -8,4 +8,9 @@ public class WindSkill : Skill
     {
         transform.position = position;
     }
+
+    private void OnDisable()
+    {
+        Pool.PoolManager.AddObjToPool("Assets/Prefabs/WindSkill.prefab", gameObject);
+    }
 }

@@ -45,6 +45,6 @@ public class WaterBeam : Skill
 
     private void OnDisable()
     {
-
+        Pool.PoolManager.AddObjToPool("Assets/Prefabs/WaterBeam.prefab", gameObject);
     }
 }
