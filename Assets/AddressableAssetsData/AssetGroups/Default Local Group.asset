@@ -629,6 +629,30 @@ MonoBehaviour:
     m_Address: Damvi_Win
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 08b9922914ecbd54aa281d31b3185fef
+    m_Address: Damvi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 474f5a6e31d1ab24fa7745f742d976c0
+    m_Address: Damvi_AllStarSkillImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 67d94256fb773b3469f585acaa6d825f
+    m_Address: Damvi_SkillImage1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5df9aefec2668e848872f0da27d6d963
+    m_Address: Damvi_AttackImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b89ea8a186201e84cbaff1770b926cf6
+    m_Address: Damvi_SkillImage2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8f4d01ae2642fa04397596c14f7361b6
+    m_Address: Damvi_CImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

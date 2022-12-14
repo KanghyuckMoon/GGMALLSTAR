@@ -8,6 +8,9 @@ public enum CharacterSelect
 	Jaeby,
 	Frog,
 	Dice,
+	Puppet,
+	Agent,
+	Damvi,
 	Count
 }
 
