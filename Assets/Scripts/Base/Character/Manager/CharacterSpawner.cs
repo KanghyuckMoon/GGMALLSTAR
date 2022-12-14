@@ -66,9 +66,9 @@ public class CharacterSpawner : MonoBehaviour
 		yield return new WaitForEndOfFrame();
 		if(SelectDataSO.characterSelectP1 == SelectDataSO.characterSelectP2)
 		{
-			player2.GetComponent<Character>().GetCharacterComponent<CharacterColor>().SetP2Color();
+			player2.GetComponent<Character>().GetCharacterComponent<CharacterColor>(ComponentType.Color).SetP2Color();
 		}
-		player1.GetComponent<Character>().GetCharacterComponent<CharacterStat>().IsPlayerP1 = true;
+		player1.GetComponent<Character>().GetCharacterComponent<CharacterStat>(ComponentType.Stat).IsPlayerP1 = true;
 	}
 
 

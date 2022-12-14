@@ -22,14 +22,12 @@ namespace Loading
 			switch (loadingSceneType)
 			{
                 case LoadingSceneType.Normal:
-                    SceneManager.LoadScene("LoadingScene");
+                    delay = 1f;
                     break;
                 case LoadingSceneType.Battle:
-                    SceneManager.LoadScene("BattleLoadingScene");
                     delay = 3f;
                     break;
                 case LoadingSceneType.Result:
-                    SceneManager.LoadScene("ResultLoadingScene");
                     delay = 3f;
                     break;
                 default:
@@ -37,41 +35,53 @@ namespace Loading
 			}
             SceneManager.sceneLoaded += LoadSceneEnd;
             loadSceneName = sceneName;
-            StartCoroutine(Load(sceneName, delay));
+            StartCoroutine(Load(loadingSceneType, sceneName, delay));
 		}
 
-		private IEnumerator Load(string sceneName, float delay = 0f)
+        private IEnumerator LoadLoadingScene(LoadingSceneType loadingSceneType)
         {
-            float amount = 0f;
-            yield return StartCoroutine(Fade(true));
+            AsyncOperation op;
+            switch (loadingSceneType)
+            {
+                default:
+                case LoadingSceneType.Normal:
+                    op = SceneManager.LoadSceneAsync("LoadingScene");
+                    break;
+                case LoadingSceneType.Battle:
+                    op = SceneManager.LoadSceneAsync("BattleLoadingScene");
+                    break;
+                case LoadingSceneType.Result:
+                    op = SceneManager.LoadSceneAsync("ResultLoadingScene");
+                    break;
+            }
+            op.allowSceneActivation = true;
+
+            while (!op.isDone)
+			{
+                yield return null;
+            }
+            yield break;
+        }
+
+		private IEnumerator Load(LoadingSceneType loadingSceneType, string sceneName, float delay = 0f)
+        {
+            yield return LoadLoadingScene(loadingSceneType);
             AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
             op.allowSceneActivation = false;
-
             float timer = 0.0f - delay;
-            while (!op.isDone)
+
+            while (timer < 1f)
             {
                 yield return null;
                 timer += Time.unscaledDeltaTime;
-
-                if (op.progress < 0.9f)
-                {
-                    amount = Mathf.Lerp(amount, op.progress, timer);
-                    if (amount >= op.progress)
-                    {
-                        timer = 0f;
-                    }
-                }
-                else
-                {
-                    amount = Mathf.Lerp(amount, 1f, timer);
-
-                    if (amount == 1.0f)
-                    {
-                        op.allowSceneActivation = true;
-                        yield break;
-                    }
-                }
             }
+            op.allowSceneActivation = true;
+
+            while (!op.isDone)
+            {
+                yield return null;
+            }
+
         }
 
         private void LoadSceneEnd(Scene scene, LoadSceneMode loadSceneMode)
@@ -80,18 +90,6 @@ namespace Loading
             {
                 SceneManager.sceneLoaded -= LoadSceneEnd;
             }
-        }
-
-        private IEnumerator Fade(bool isFadeIn)
-        {
-            float timer = 0f;
-
-            while (timer <= 1f)
-            {
-                yield return null;
-                timer += Time.unscaledDeltaTime * 2f;
-            }
-
         }
 	}
 

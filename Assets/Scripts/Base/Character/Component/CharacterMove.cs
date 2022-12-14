@@ -14,9 +14,6 @@ public class CharacterMove : CharacterComponent
 
     public CharacterMove(Character character) : base(character)
     {
-        Utill.StaticCoroutine.Instance.StartCoroutine(PlayWalkEFF());
-
-
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
             _inputDirection.x = -1;
@@ -60,8 +57,13 @@ public class CharacterMove : CharacterComponent
     {
         _rigidbody = Character.Rigidbody;
         _transform = Character.transform;
-        characterAnimation = Character.GetCharacterComponent<CharacterAnimation>();
-        characterStat = Character.GetCharacterComponent<CharacterStat>();
+        characterAnimation = Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation);
+        characterStat = Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+    }
+
+    public override void Start()
+    {
+        Character.StartCoroutine(PlayWalkEFF());
     }
 
     protected override void SetEvent()
@@ -119,7 +121,7 @@ public class CharacterMove : CharacterComponent
 
     public override void FixedUpdate()
     {
-        if (!Character.GetCharacterComponent<CharacterStat>().IsAlive)
+        if (!Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat).IsAlive)
         {
             _rigidbody.velocity = Vector3.zero;
             return;
@@ -207,10 +209,12 @@ public class CharacterMove : CharacterComponent
                     if (other.transform.position.x > Character.transform.position.x)
                     {
                         Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Hit_5, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.ReverseDirection, new Vector3(0, 0, 180));
+                        Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Shockwave, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.SetParticle3DRotation, new Vector3(0, 45, 0));
                     }
                     else
                     {
                         Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Hit_5, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.ReverseDirection, new Vector3(0, 0, 0));
+                        Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Shockwave, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.SetParticle3DRotation, new Vector3(0, -45, 0));
                     }
                 }
             }

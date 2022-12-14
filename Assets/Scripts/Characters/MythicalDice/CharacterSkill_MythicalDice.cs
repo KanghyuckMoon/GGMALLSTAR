@@ -10,7 +10,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     {
         get
         {
-            characterLevel ??= Character.GetCharacterComponent<CharacterLevel>();
+            characterLevel ??= Character.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
             return characterLevel;
         }
     }
@@ -44,12 +44,9 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                         PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Peek().gameObject);
                         damage += diceQueue.Dequeue().DiceNumber;
                     }
-                    
-                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].damage = damage;
-                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].addExp = damage;
-                    
-                    Character.GetCharacterComponent<CharacterAnimation>().SetAnimationTrigger(AnimationType.Skill2);
-                    PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(),() => { Debug.Log($"Hit damage: {damage}"); }, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, new Vector3(character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT? character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset.x: -character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset.x, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset.y, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset.z));
+                    Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].damage = damage;
+                    PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(ComponentType.Attack),
+                        () => { }, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset);
 
                     Skill2Action();
                 }
@@ -78,11 +75,11 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                     diceQueue.Peek().gameObject.SetActive(false);
                     PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Dequeue().gameObject);
                 }
-                
+
                 RollDice();
 
                 Character.StartCoroutine(DioTheWorld(diceQueue.Peek().DiceNumber));
-                
+
                 AllStarSkillAction();
             }
         }, EventType.KEY_DOWN);
@@ -98,8 +95,8 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     {
         global::Character targetCharacter =
             Character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character;
-        
-        Vector3 targetPos = new Vector3(targetCharacter.transform.position.x , targetCharacter.transform.position.y, targetCharacter.transform.position.z);
+
+        Vector3 targetPos = new Vector3(targetCharacter.transform.position.x, targetCharacter.transform.position.y, targetCharacter.transform.position.z);
 
         targetCharacter.CharacterEvent._canEvent = false;
         float timer = 0;
@@ -111,7 +108,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
             timer += Time.deltaTime;
             yield return null;
         }
-        
+
         while (diceQueue.Count > 0)
         {
             diceQueue.Peek().transform.SetParent(null);
@@ -131,11 +128,11 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     public void diceQueueAdd(int diceNum)
     {
         Dice dice = PoolManager.GetItem("Assets/Prefabs/Dice.prefab").GetComponent<Dice>();
-        
+
         dice.SetDice(diceNum, (Character as Character_MythicalDice).DicePosition);
-        
+
         diceQueue.Enqueue(dice);
-        
+
         if (diceQueue.Count > 4)
         {
             diceQueue.Peek().transform.SetParent(null);

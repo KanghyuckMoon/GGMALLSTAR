@@ -40,14 +40,14 @@ public class SkillSpike_Jaeby : MonoBehaviour
         if (other.gameObject == _character.gameObject || other.gameObject.CompareTag("Invincibility"))
             return;
 
-        if (!other.gameObject.CompareTag(_character.tag))
+        if (!other.gameObject.CompareTag(_character.tag) && (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Player2")))
         {
-            CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>();
-            characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
+            CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>(ComponentType.Attack);
+            characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>(ComponentType.Damage);
             characterAttack.TargetCharacterDamage?.OnAttcked(null, _hitBoxData, other.ClosestPoint(transform.position), characterAttack.IsRight);
 
             //AI
-            CharacterAIInput aiInput = characterAttack.Character.GetCharacterComponent<CharacterAIInput>();
+            CharacterAIInput aiInput = characterAttack.Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
             if (aiInput is not null)
             {
                 aiInput.IsHit(_hitBoxData.actionName);
@@ -60,13 +60,14 @@ public class SkillSpike_Jaeby : MonoBehaviour
             for (int i = 0; i < expCount; ++i)
             {
                 StarEffect starEffect = Pool.PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
-                starEffect.SetEffect(transform.position, _character.GetCharacterComponent<CharacterLevel>(), _hitBoxData.addExp / expCount);
+                starEffect.SetEffect(transform.position, _character.GetCharacterComponent<CharacterLevel>(ComponentType.Level), _hitBoxData.addExp / expCount);
             }
+
+            gameObject.SetActive(false);
+            Sound.SoundManager.Instance.PlayEFF("se_common_offset_sword");
+            Pool.PoolManager.AddObjToPool("Assets/Prefabs/SkillSpike_Jaeby.prefab", gameObject);
         }
 
-        gameObject.SetActive(false);
-        Sound.SoundManager.Instance.PlayEFF("se_common_offset_sword");
-        Pool.PoolManager.AddObjToPool("Assets/Prefabs/SkillSpike_Jaeby.prefab", gameObject);
     }
 
     private void OnEnable()

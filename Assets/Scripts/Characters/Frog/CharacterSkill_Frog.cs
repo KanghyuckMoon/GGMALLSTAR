@@ -11,7 +11,7 @@ public class CharacterSkill_Frog : CharacterSkill
     {
         get
         {
-            characterLevel ??= Character.GetCharacterComponent<CharacterLevel>();
+            characterLevel ??= Character.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
             return characterLevel;
         }
     }
@@ -25,7 +25,7 @@ public class CharacterSkill_Frog : CharacterSkill
                 skillCoolTime1 = 0;
                 
                 PoolManager.GetItem("Assets/Prefabs/Fireball_Frog.prefab").GetComponent<FireBall_Frog>().SetFireBall(
-                    character, character.GetCharacterComponent<CharacterSprite>().Direction,
+                    character, character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite).Direction,
                     character.transform.position + new Vector3(0.2f, 0.05f, 0),
                     character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
                 Skill1Action();
@@ -49,7 +49,7 @@ public class CharacterSkill_Frog : CharacterSkill
                 //    (character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT
                 //        ? new Vector3(0.15f, 0, 0)
                 //        : new Vector3(-0.15f, 0, 0)));
-                character.GetCharacterComponent<CharacterAnimation>().SetAnimationTrigger(AnimationType.Skill2);
+                character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation).SetAnimationTrigger(AnimationType.Skill2);
                 Skill2Action();
             }
         }, EventType.KEY_DOWN);
@@ -60,7 +60,7 @@ public class CharacterSkill_Frog : CharacterSkill
             {
                 isCanUseSkill3 = false;
                 characterLevel.IsAllStarSkillUse = true;
-                Transform enemyTransform = character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage
+                Transform enemyTransform = character.GetCharacterComponent<CharacterAttack>(ComponentType.Attack).TargetCharacterDamage
                     .Character.transform;
                 Sound.SoundManager.Instance.PlayEFF("se_common_boss_core_hit");
                 CameraManager.SetAllStar(Character.transform);
@@ -109,7 +109,7 @@ public class CharacterSkill_Frog : CharacterSkill
     private IEnumerator SecondSkill(Transform trm)
     {
         yield return new WaitForSeconds(1f);
-        trm.position = Character.transform.position + (Character.GetCharacterComponent<CharacterSprite>().Direction == Direction.LEFT ? Vector3.left : Vector3.right) * 0.25f;
+        trm.position = Character.transform.position + (Character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite).Direction == Direction.LEFT ? Vector3.left : Vector3.right) * 0.25f;
     }
     
     private IEnumerator AllStarSkill(Transform trm)
@@ -126,7 +126,7 @@ public class CharacterSkill_Frog : CharacterSkill
 
         if (RoundManager.ReturnIsSetting())
         {
-            PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0], Character.GetCharacterComponent<CharacterAttack>(), null, Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]._attackSize, Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]._attackOffset);
+            PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0], Character.GetCharacterComponent<CharacterAttack>(ComponentType.Attack), null, Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]._attackSize, Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]._attackOffset);
         }
     }
 }

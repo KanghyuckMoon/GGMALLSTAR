@@ -23,6 +23,9 @@ namespace Arcade
 
 		private void Start()
 		{
+			SelectDataSO.isAICharacterP1 = false;
+			SelectDataSO.isAICharacterP2 = true;
+
 			//LoadItemPopUpScene
 			SceneManager.LoadScene("ItemPopUp", LoadSceneMode.Additive);
 

@@ -4686,7 +4686,7 @@ GameObject:
   - component: {fileID: 7970335433790251136}
   - component: {fileID: 7970335433790251137}
   - component: {fileID: 7970335433790251138}
-  - component: {fileID: 8579230578726303535}
+  - component: {fileID: -170004644617583307}
   m_Layer: 0
   m_Name: Hit_05
   m_TagString: Untagged
@@ -4721,7 +4721,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -9512,7 +9512,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8579230578726303535
+--- !u!114 &-170004644617583307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9524,7 +9524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eaae9a820f8959498b01921422238f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.5
+  effectType: 9
 --- !u!1 &7970335434616646839
 GameObject:
   m_ObjectHideFlags: 0

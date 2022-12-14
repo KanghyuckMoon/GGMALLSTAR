@@ -12,7 +12,7 @@ public class CharacterSkill_Jaeby : CharacterSkill
     {
         get
         {
-            characterLevel ??= Character.GetCharacterComponent<CharacterLevel>();
+            characterLevel ??= Character.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
             return characterLevel;
         }
     }
@@ -30,8 +30,8 @@ public class CharacterSkill_Jaeby : CharacterSkill
             {
                 skillCoolTime1 = 0f;
 
-                Character.GetCharacterComponent<CharacterAnimation>().SetAnimationTrigger(AnimationType.Skill1);
-                PoolManager.GetItem("Assets/Prefabs/SkillProjectile_Jaeby.prefab").GetComponent<SkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>().Direction, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+                Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation).SetAnimationTrigger(AnimationType.Skill1);
+                PoolManager.GetItem("Assets/Prefabs/SkillProjectile_Jaeby.prefab").GetComponent<SkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite).Direction, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
                 Skill1Action();
             }
         }, EventType.KEY_DOWN);
@@ -43,7 +43,7 @@ public class CharacterSkill_Jaeby : CharacterSkill
                 skillCoolTime2 = 0f;
 
                 Sound.SoundManager.Instance.PlayEFF("JaebyAttack");
-                Character.GetCharacterComponent<CharacterAnimation>().SetAnimationTrigger(AnimationType.Skill2);
+                Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation).SetAnimationTrigger(AnimationType.Skill2);
                 PoolManager.GetItem("Assets/Prefabs/SkillSpike_Jaeby.prefab").GetComponent<SkillSpike_Jaeby>().SetSkillSpike(Character, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]);
                 Skill2Action();
             }
@@ -105,7 +105,7 @@ public class CharacterSkill_Jaeby : CharacterSkill
 
         if(RoundManager.ReturnIsSetting())
         {
-            PoolManager.GetItem("Assets/Prefabs/ALL_STAR_SKILL_Projectile_Jaeby.prefab").GetComponent<AllStarSkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>().Direction, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]);
+            PoolManager.GetItem("Assets/Prefabs/ALL_STAR_SKILL_Projectile_Jaeby.prefab").GetComponent<AllStarSkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite).Direction, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]);
 		}
     }
 }

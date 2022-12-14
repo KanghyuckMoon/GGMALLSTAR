@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3731403069436635233}
   - component: {fileID: 3731403069436635234}
   - component: {fileID: 3731403069436635235}
-  - component: {fileID: 4232607926806391921}
+  - component: {fileID: -4017860320687845078}
   m_Layer: 0
   m_Name: Dirty_01
   m_TagString: Untagged
@@ -44,7 +44,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 0.3
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 1
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4871,7 +4871,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4232607926806391921
+--- !u!114 &-4017860320687845078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4883,4 +4883,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eaae9a820f8959498b01921422238f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 0.3
+  effectType: 4

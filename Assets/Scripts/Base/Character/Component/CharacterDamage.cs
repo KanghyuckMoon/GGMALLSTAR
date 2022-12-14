@@ -10,6 +10,50 @@ using DG.Tweening;
 
 public class CharacterDamage : CharacterComponent
 {
+    private CharacterAnimation CharacterAnimation
+	{
+        get
+		{
+            characterAnimation ??= Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation);
+            return characterAnimation;
+		}
+	}
+
+
+    private int _comboCount = 0;
+    private CharacterStat characterStat;
+    private CharacterAnimation characterAnimation;
+    private float _sturnTime;
+    private System.Action damagedAction;
+
+    public int HitCount
+	{
+        get
+		{
+            return _comboCount;
+		}
+	}
+
+    public float SturnTime
+	{
+        get
+		{
+            return _sturnTime;
+		}
+    }
+    public System.Action DamagedAction
+    {
+        get
+        {
+            return damagedAction;
+        }
+        set
+		{
+            damagedAction = value;
+
+        }
+    }
+
     public CharacterDamage(Character character) : base(character)
     {
 
@@ -17,8 +61,7 @@ public class CharacterDamage : CharacterComponent
 
     protected override void Awake()
     {
-        //_hp = Character.GetCharacterComponent<CharacterStat>().MaxHP;
-        characterStat = Character.GetCharacterComponent<CharacterStat>();
+        characterStat = Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
     }
 
     protected override void SetEvent()
@@ -30,30 +73,24 @@ public class CharacterDamage : CharacterComponent
 	{
 		base.Update();
 
-        if (_stunTime > 0f)
+        if (_sturnTime > 0f)
 		{
-            _stunTime -= Time.deltaTime;
+            CharacterAnimation.SetAnimationBool(AnimationType.Damage, true);
+            _sturnTime -= Time.deltaTime;
         }
         else
 		{
             _comboCount = 0;
+            CharacterAnimation.SetAnimationBool(AnimationType.Damage, false);
         }
 	}
 
-	//private float _hp = 0;
-    private int _comboCount = 0;
-    private CharacterStat characterStat;
 
     private void OnDamage()
     {
-        //_hp -= 10;
-        //if (_hp <= 0)
-        //{
-        //    Debug.Log("Die");
-        //}
+
     }
 
-    private float _stunTime;
 
     public void OnAttcked(HitBox hitBox, HitBoxData hitBoxData, Vector3 collistionPoint, bool isRight)
     {
@@ -65,10 +102,10 @@ public class CharacterDamage : CharacterComponent
 
         //Hp
         characterStat.AddHP(-hitBoxData.damage);
-        Character.GetCharacterComponent<CharacterDebug>().AddDamaged(hitBoxData.damage);
+        Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddDamaged(hitBoxData.damage);
 
         //Exp
-        Character.GetCharacterComponent<CharacterLevel>().AddExp(hitBoxData.addExp / 2);
+        Character.GetCharacterComponent<CharacterLevel>(ComponentType.Level).AddExp(hitBoxData.addExp / 2);
 
         //Die
         if (!characterStat.IsAlive)
@@ -104,26 +141,26 @@ public class CharacterDamage : CharacterComponent
 
         //ComboCount
         _comboCount++;
-        _stunTime = stunHitTime;
-        EffectManager.Instance.SetComboCountEffect(_comboCount, stunHitTime, collistionPoint);
+        _sturnTime = stunHitTime;
+        damagedAction?.Invoke();
 
         //Set HitTime & StunTime
         Vector3 vector = Character.Rigidbody.velocity;
-        CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>();
-        CharacterMove characterMove = Character.GetCharacterComponent<CharacterMove>();
-        CharacterDodge characterDodge = Character.GetCharacterComponent<CharacterDodge>();
+        CharacterGravity characterGravity = Character.GetCharacterComponent<CharacterGravity>(ComponentType.Gravity);
+        CharacterMove characterMove = Character.GetCharacterComponent<CharacterMove>(ComponentType.Move);
+        CharacterDodge characterDodge = Character.GetCharacterComponent<CharacterDodge>(ComponentType.Dodge);
         characterMove.SetSturnTime(stunHitTime);
         characterDodge.SetSturnTime(stunHitTime);
         characterGravity.SetHitTime(stunHitTime);
         Character.Rigidbody.velocity = Vector3.zero;
-        CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>();
+        CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>(ComponentType.Input);
         if(characterInput is not null)
 		{
             characterInput.SetStunTime(stunHitTime);
         }
         else
         {
-            CharacterAIInput aITestInput = Character.GetCharacterComponent<CharacterAIInput>();
+            CharacterAIInput aITestInput = Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
             if (aITestInput is not null)
             {
                 aITestInput.SetStunTime(stunHitTime);
@@ -131,7 +168,7 @@ public class CharacterDamage : CharacterComponent
 		}
 
         //CharacterShake
-        CharacterSprite characterSprite = Character.GetCharacterComponent<CharacterSprite>();
+        CharacterSprite characterSprite = Character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite);
         characterSprite.SpriteRenderer.transform.DOKill();
         characterSprite.SpriteRenderer.transform.DOShakePosition(hitBoxData.hitTime, 0.05f, 20).OnComplete(() => 
         {

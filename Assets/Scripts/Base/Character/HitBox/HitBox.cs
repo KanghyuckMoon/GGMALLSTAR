@@ -43,10 +43,10 @@ public class HitBox : MonoBehaviour
             return;
 		}
 
-        Owner.Character.GetCharacterComponent<CharacterGravity>().SetHitTime(hitTime);
+        Owner.Character.GetCharacterComponent<CharacterGravity>(ComponentType.Gravity).SetHitTime(hitTime);
         Vector3 vector = Owner.Character.Rigidbody.velocity;
         Owner.Character.Rigidbody.velocity = Vector3.zero;
-        CharacterInput characterInput = Owner.Character.GetCharacterComponent<CharacterInput>();
+        CharacterInput characterInput = Owner.Character.GetCharacterComponent<CharacterInput>(ComponentType.Input);
         
         // 캐릭터 경직
         if (characterInput is not null)
@@ -55,17 +55,17 @@ public class HitBox : MonoBehaviour
         }
         else
         {
-            CharacterAIInput aITestInput = Owner.Character.GetCharacterComponent<CharacterAIInput>();
+            CharacterAIInput aITestInput = Owner.Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
             if (aITestInput is not null)
             {
                 aITestInput.SetStunTime(hitTime);
             }
         }
 
-        CharacterAnimation characterAnimation = Owner.Character.GetCharacterComponent<CharacterAnimation>();
+        CharacterAnimation characterAnimation = Owner.Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation);
         characterAnimation?.SetHitTime(hitTime);
 
-        if (Owner.TargetCharacterDamage.Character.GetCharacterComponent<CharacterStat>().IsAlive)
+        if (Owner.TargetCharacterDamage.Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat).IsAlive)
         {
             StaticCoroutine.Instance.StartCoroutine(OwnerHitTimeEnd(Owner.Character, hitTime, vector));
         }
@@ -80,14 +80,12 @@ public class HitBox : MonoBehaviour
 
         if (!other.gameObject.CompareTag(_owner.Character.tag) && !other.gameObject.CompareTag("Invincibility") && (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Player2")))
         {
-            Owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>();
+            Owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>(ComponentType.Damage);
             Owner.TargetCharacterDamage?.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
             OnHit?.Invoke();
 
-            Debug.Log(hitBoxData.knockBack);
-
             //AI
-            CharacterAIInput aiInput = Owner.Character.GetCharacterComponent<CharacterAIInput>();
+            CharacterAIInput aiInput = Owner.Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
             if (aiInput is not null)
 			{
                 aiInput.IsHit(hitBoxData.actionName);
@@ -95,12 +93,12 @@ public class HitBox : MonoBehaviour
 
             //Exp
 
-            int expCount = (hitBoxData.addExp / 5) + 1;
+            int expCount = (hitBoxData.addExp / 7) + 1;
 
             for (int i = 0; i < expCount; ++i)
             {
                 StarEffect starEffect = PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
-                starEffect.SetEffect(transform.position, Owner.Character.GetCharacterComponent<CharacterLevel>(), hitBoxData.addExp / expCount);
+                starEffect.SetEffect(transform.position, Owner.Character.GetCharacterComponent<CharacterLevel>(ComponentType.Level), hitBoxData.addExp / expCount);
 			}
 
         }

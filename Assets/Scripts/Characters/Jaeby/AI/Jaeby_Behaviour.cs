@@ -13,7 +13,7 @@ public class Jaeby_Behaviour : BehaviourTree
 	{
 		get
 		{
-			characterSkill_Jaeby ??= mainCharacter.GetCharacterComponent<CharacterSkill_Jaeby>();
+			characterSkill_Jaeby ??= mainCharacter.GetCharacterComponent<CharacterSkill_Jaeby>(ComponentType.Skill1);
 			return characterSkill_Jaeby;
 		}
 	}

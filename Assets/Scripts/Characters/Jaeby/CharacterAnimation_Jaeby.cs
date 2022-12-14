@@ -13,6 +13,7 @@ public class CharacterAnimation_Jaeby : CharacterAnimation
         AddAnimationHash(AnimationType.AllStarSkill, AnimationKeyWord.ATTACK);
         AddAnimationHash(AnimationType.Run, AnimationKeyWord.RUN);
         AddAnimationHash(AnimationType.Jump, AnimationKeyWord.JUMP);
+        AddAnimationHash(AnimationType.Damage, AnimationKeyWord.DAMAGE);
     }
 
     protected override void SetEvent()

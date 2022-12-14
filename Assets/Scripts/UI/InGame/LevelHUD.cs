@@ -38,8 +38,8 @@ public class LevelHUD : MonoBehaviour
 		var characterP1 = characterSpawner.Player1.GetComponent<Character>();
 		var characterP2 = characterSpawner.Player2.GetComponent<Character>();
 
-		characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>();
-		characterLevelP2 = characterP2.GetCharacterComponent<CharacterLevel>();
+		characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
+		characterLevelP2 = characterP2.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
 
 		characterLevelP1.AddChangeExpEvent(ChangeExpHUDP1);
 		characterLevelP1.AddChangeLevelEvent(ChangeLevelHUDP1);

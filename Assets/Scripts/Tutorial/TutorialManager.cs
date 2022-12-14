@@ -34,11 +34,11 @@ public class TutorialManager : MonoBehaviour
 	{
 		TutorialSpawner tutorialSpawner = FindObjectOfType<TutorialSpawner>();
 		Character characterP1 = tutorialSpawner.Player1.GetComponent<Character>();
-		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
-		CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>();
+		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+		CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
 		Character characterP2 = tutorialSpawner.Player2.GetComponent<Character>();
-		CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>();
-		CharacterLevel characterLevelP2 = characterP2.GetCharacterComponent<CharacterLevel>();
+		CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+		CharacterLevel characterLevelP2 = characterP2.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
 		characterLevelP2.AddExp(1000);
 		while (true)
 		{
@@ -52,8 +52,8 @@ public class TutorialManager : MonoBehaviour
 	{
 		TutorialSpawner tutorialSpawner = FindObjectOfType<TutorialSpawner>();
 		Character characterP1 = tutorialSpawner.Player1.GetComponent<Character>();
-		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
-		CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>();
+		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+		CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
 		while (tutorialStep < 11)
 		{
 			yield return new WaitForSeconds(5f);

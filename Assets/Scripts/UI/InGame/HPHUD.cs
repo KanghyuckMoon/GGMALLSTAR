@@ -28,8 +28,8 @@ public class HPHUD : MonoBehaviour
 		var characterP1 = characterSpawner.Player1.GetComponent<Character>();
 		var characterP2 = characterSpawner.Player2.GetComponent<Character>();
 
-		characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>();
-		characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>();
+		characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+		characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
 
 
 		characterStatP1.AddHPEvent(ChangeHPP1);

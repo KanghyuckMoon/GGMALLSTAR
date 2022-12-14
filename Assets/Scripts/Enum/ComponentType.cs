@@ -15,4 +15,5 @@ public enum ComponentType
     Level,
     Color,
     Debug,
+    Optimization,
 }

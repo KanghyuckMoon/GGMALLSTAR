@@ -589,36 +589,32 @@ MonoBehaviour:
     m_Address: Hit_5
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: f5b45ddc7ea683a499b5db1402e34f38
-    m_Address: Assets/Prefabs/Wind.prefab
+  - m_GUID: dbd8026a1e8589547bd97873bb9d742a
+    m_Address: LostKingdom_SImage
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 9caa6ebbaba17ae4c98677ad175b806f
-    m_Address: Assets/Prefabs/Fire.prefab
+  - m_GUID: 28cfffa05f665c5488b6b6ece89801b1
+    m_Address: LostKingdom_BGM
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: d24de52f785b8f84f8257ef1b9210db5
-    m_Address: Assets/Prefabs/Earth.prefab
+  - m_GUID: 71fec20a64006754d921a6f07801af16
+    m_Address: Puppet_Win
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dff826eda5df96d45a67e4aca1271bb9
-    m_Address: Assets/Prefabs/Water.prefab
+  - m_GUID: 564815d74f3707f4ea0c4a9c59c86714
+    m_Address: Shockwave
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: b42edded623af3643853fd8a18e488cd
-    m_Address: Assets/Prefabs/WindSkill.prefab
+  - m_GUID: 7f209b415f9f15d4d8744651aa55b6c3
+    m_Address: AgentStage_SImage
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: dee58a5b2564fe441a1a1c517b5a19c9
-    m_Address: Assets/Prefabs/FireBite.prefab
+  - m_GUID: de36fb43045e35d42a9de74e7cb19ac0
+    m_Address: AgentStage_BGM
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ec7daf042dc6aa74db93de099ff92ba6
-    m_Address: Assets/Prefabs/EarthGolem.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3d7319546c2deb149beddbc256505535
-    m_Address: Assets/Prefabs/WaterBeam.prefab
+  - m_GUID: 475d95fb902f1624db9389203fff5c05
+    m_Address: Agent_Win
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

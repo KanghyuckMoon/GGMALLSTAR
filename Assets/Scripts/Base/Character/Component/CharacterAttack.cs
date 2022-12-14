@@ -30,14 +30,14 @@ public class CharacterAttack : CharacterComponent
 	{
         get
         {
-            characterMove ??= Character.GetCharacterComponent<CharacterMove>();
+            characterMove ??= Character.GetCharacterComponent<CharacterMove>(ComponentType.Move);
             return characterMove.IsRight;
         }
 	}
 
     protected override void Awake()
     {
-        _direction = Character.GetCharacterComponent<CharacterSprite>().Direction;
+        _direction = Character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite).Direction;
 
     }
 
@@ -54,28 +54,28 @@ public class CharacterAttack : CharacterComponent
 
     private void AttackAnimation()
     {
-        characterAnimation ??= Character.GetCharacterComponent<CharacterAnimation>();
-        if(Character.GetCharacterComponent<CharacterMove>().IsGround)
+        characterAnimation ??= Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation);
+        if(Character.GetCharacterComponent<CharacterMove>(ComponentType.Move).IsGround)
         {
-            Character.GetCharacterComponent<CharacterDebug>().AddGroundAttackCount(1);
+            Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddGroundAttackCount(1);
         }
 		else
         {
-            Character.GetCharacterComponent<CharacterDebug>().AddAirAttackCount(1);
+            Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddAirAttackCount(1);
         }
         characterAnimation.SetAnimationTrigger(AnimationType.Attack);
     }
 
     public void SetInputDelay()
 	{
-        var characterInput = Character.GetCharacterComponent<CharacterInput>();
+        var characterInput = Character.GetCharacterComponent<CharacterInput>(ComponentType.Input);
         if (characterInput is not null)
 		{
             characterInput.SetInputDelayTime(Character.CharacterSO.attackDelay);
         }
         else
         {
-            var aiInput = Character.GetCharacterComponent<CharacterAIInput>();
+            var aiInput = Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
             aiInput.SetInputDelayTime(Character.CharacterSO.attackDelay);
         }
     }
