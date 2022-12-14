@@ -47,6 +47,7 @@ public class CharacterSkill_Puppet : CharacterSkill
         _elemental[(uint)ElementalType.Earth] = PoolManager.GetItem("Assets/Prefabs/Earth.prefab");
         _elemental[(uint)ElementalType.Water] = PoolManager.GetItem("Assets/Prefabs/Water.prefab");
 
+
         // Elemental Default Setting
         for (int i = 0; i < _elemental.Length; i++)
         {
@@ -65,6 +66,9 @@ public class CharacterSkill_Puppet : CharacterSkill
             }
 
             _elemental[(uint)_elementalType].SetActive(true);
+
+            // roll back stat
+
 
             // Elemental Type Effect Setting
             switch (_elementalType)
