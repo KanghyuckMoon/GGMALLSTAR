@@ -20,12 +20,13 @@ MonoBehaviour:
       knockAngle: 15
       hitTime: 0.3
       sturnTime: 0.5
-      _attackOffset: {x: -0.236, y: 0, z: 0}
-      _attackSize: {x: 0.4, y: 1, z: 1}
+      _attackOffset: {x: 0.38, y: 0, z: 0}
+      _attackSize: {x: 0.6, y: 1, z: 1}
       shakePower: 6
       shakeTime: 0.5
-      atkEffectType: 9
-      atkEffectDirectionType: 1
+      atkEffectType: 11
+      atkEffectDirectionType: 3
+      atkEffectOffset: {x: -0.1, y: 0.2, z: 0}
       hitEffectType: 0
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_sword_hit_s

@@ -54,12 +54,13 @@ public class CharacterSprite : CharacterComponent
 
 	public virtual void ResetModelPosition()
 	{
-        SpriteRenderer.transform.localPosition = _originPosition;
+        _model.transform.localPosition = _originPosition;
     }
 
     protected override void Awake()
     {
         _spriteRenderer = Character.GetComponentInChildren<SpriteRenderer>();
+        _model = Character.transform.GetChild(0).gameObject;
         _originPosition = _spriteRenderer.transform.localPosition;
         _originScale = _spriteRenderer.transform.localScale;
         _originRotation = _spriteRenderer.transform.localEulerAngles;

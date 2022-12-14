@@ -336,7 +336,7 @@ MonoBehaviour:
   _characterSO: {fileID: 11400000, guid: e36c0e9d31ee84547bb7bf2d9a31abae, type: 2}
   _characterLevelSO: {fileID: 11400000, guid: 3fe9842786c27ba4a925c9258206415b, type: 2}
   _inputDataBaseSO: {fileID: 11400000, guid: 46bd95fd7549ed44e8c44b18738106d0, type: 2}
-  _hitBoxDataSO: {fileID: 11400000, guid: 4917b9eb83628924d986bfdf78e277e3, type: 2}
+  _hitBoxDataSO: {fileID: 11400000, guid: e7f78517fd016ae4b9cd7083aadb4001, type: 2}
 --- !u!65 &7617196528240860072
 BoxCollider:
   m_ObjectHideFlags: 0
