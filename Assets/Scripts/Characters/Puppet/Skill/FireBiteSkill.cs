@@ -15,10 +15,24 @@ public class FireBiteSkill : Skill
         transform.position = position;
         _character = character;
         _direction = direction;
+
+        if (_direction.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (_direction.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     private void Update()
     {
         transform.Translate(_direction * _speed * Time.deltaTime);
+    }
+
+    private void OnDisable()
+    {
+        Pool.PoolManager.AddObjToPool("Assets/Prefabs/FireBite.prefab", gameObject);
     }
 }

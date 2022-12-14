@@ -103,17 +103,17 @@ public class CharacterSkill_Puppet : CharacterSkill
 
                     break;
                 case ElementalType.Fire:
-                    PoolManager.GetItem("Assets/Prefabs/FireBite.prefab").GetComponent<FireBiteSkill>().SetFireBiteSkill(_character, _character.transform.position + new Vector3(0.1f, 0.2f, 0f), _character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? Vector3.right : Vector3.left);
+                    PoolManager.GetItem("Assets/Prefabs/FireBite.prefab").GetComponent<FireBiteSkill>().SetFireBiteSkill(_character, _character.transform.position + (_character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? new Vector3(0.1f, 0.2f, 0f) : new Vector3(-0.1f, 0.2f, 0f)), _character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? Vector3.right : Vector3.left);
                     break;
                 case ElementalType.Earth:
                     if (!_isEarthGolemSpawn)
                     {
                         _isEarthGolemSpawn = true;
-                        PoolManager.GetItem("Assets/Prefabs/EarthGolem.prefab").GetComponent<EarthGolem>().SetEarthGolem(_character, _character.transform.position + new Vector3(0.1f, 0.25f, 0f), _character.GetCharacterComponent<CharacterSprite>().Direction);
+                        PoolManager.GetItem("Assets/Prefabs/EarthGolem.prefab").GetComponent<EarthGolem>().SetEarthGolem(_character, _character.transform.position + (_character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? new Vector3(0.1f, 0.25f, 0f) : new Vector3(-0.1f, 0.25f, 0f)), _character.GetCharacterComponent<CharacterSprite>().Direction);
                     }
                     break;
                 case ElementalType.Water:
-
+                    PoolManager.GetItem("Assets/Prefabs/WaterBeam.prefab").GetComponent<WaterBeam>().SetWaterBeam(_character, _character.transform.position + (_character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? new Vector3(0.5f, 0.125f, 0f) : new Vector3(-0.5f, 0.125f, 0f)), _character.GetCharacterComponent<CharacterSprite>().Direction);
                     break;
                 default:
                     Debug.LogError("ElementalType Error");
