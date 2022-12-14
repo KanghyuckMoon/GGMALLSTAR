@@ -21,6 +21,7 @@ public enum StageSelect
 	Tower,
 	LostKingdom,
 	AgentStage,
+	Bridge,
 	Count
 }
 
