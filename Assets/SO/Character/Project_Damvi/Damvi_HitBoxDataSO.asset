@@ -29,6 +29,6 @@ MonoBehaviour:
       atkEffectOffset: {x: -0.1, y: 0.2, z: 0}
       hitEffectType: 0
       hitEffectDirectionType: 0
-      hitEffSoundName: se_common_sword_hit_s
-      atkEffSoundName: se_common_sword_swing_s
+      hitEffSoundName: se_common_slap_hit_l
+      atkEffSoundName: se_common_spirits_machstamp_fall
       addExp: 10
