@@ -657,6 +657,46 @@ MonoBehaviour:
     m_Address: Hit_6
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f0af4ec470f29f66c025f369565c5464
+    m_Address: Damvi_TransP1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3ebd67d4f7bf1e736f563954e14ba9e
+    m_Address: Damvi_HairP1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b41a31a546d93a7f26e3126d681a74ae
+    m_Address: Damvi_BodyP1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b71f0008e22d461d43780bf9dedc035f
+    m_Address: Damvi_WearP1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ad27ff0c4df76fcc1bf20dcf3d6ce00c
+    m_Address: Damvi_EyeP1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4f253bad376eb8547825f12fa60a33d0
+    m_Address: Damvi_BodyP2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 50eb1539cf3d17e4bad6fb7596608f17
+    m_Address: Damvi_EyeP2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 98d9e37d8c0e77943a5e987df66aeb01
+    m_Address: Damvi_TransP2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 890b717421a2c0e468d89ae127ba43f9
+    m_Address: Damvi_WearP2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fb6e5542cdfa51346a4376fbcf33e0f1
+    m_Address: Damvi_HairP2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
