@@ -45,7 +45,7 @@ namespace Effect
         /// ¿Ã∆Â∆Æ º≥ƒ°
         /// </summary>
         /// <param name="pos"></param>
-        public void SetEffect(EffectType effectType, Vector3 pos, EffectDirectionType effectDirectionType = EffectDirectionType.Identity, Vector3 direction = default)
+        public void SetEffect(EffectType effectType, Vector3 pos, EffectDirectionType effectDirectionType = EffectDirectionType.Identity, Vector3 atkEffectOffset = default, bool isRight = true)
         {
             if (!_isInit)
             {
@@ -53,19 +53,30 @@ namespace Effect
             }
 
             GameObject effect = Pool(effectType);
-            effect.transform.position = pos;
-            effect.gameObject.SetActive(true);
+            effect.transform.position = pos + atkEffectOffset;
 
-			switch (effectDirectionType)
+            Vector3 dir = Vector3.zero; 
+
+            switch (effectDirectionType)
 			{
                 case EffectDirectionType.ReverseDirection:
-                    effect.transform.eulerAngles = direction;
+                    dir = new Vector3(0, 0, isRight ? 180 : 0);
+                    effect.transform.eulerAngles = dir;
                     break;
                 case EffectDirectionType.SetParticle3DRotation:
-                    effect.GetComponentInChildren<ParticleSystem>().startRotation3D = direction;
+                    effect.GetComponentInChildren<ParticleSystem>().startRotation3D = dir;
                     break;
-			}
-		}
+                case EffectDirectionType.SetParticleOffsetIs3DRotation:
+                    effect.transform.position -= atkEffectOffset;
+                    effect.GetComponentInChildren<ParticleSystem>().startRotation3D = atkEffectOffset;
+                    break;
+                case EffectDirectionType.OriginDirection:
+                    dir = new Vector3(0, 0, isRight ? 0 : 180);
+                    effect.transform.eulerAngles = dir;
+                    break;
+            }
+            effect.gameObject.SetActive(true);
+        }
 
         /// <summary>
         /// ¿Ã∆Â∆Æ «Æ∏µ

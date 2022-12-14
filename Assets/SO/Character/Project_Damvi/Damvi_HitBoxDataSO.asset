@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3a799da8efd8a4d9c110bc3a8cd6c4, type: 3}
+  m_Name: Damvi_HitBoxDataSO
+  m_EditorClassIdentifier: 
+  hitBoxDatasList:
+  - hitBoxDatas:
+    - actionName: Attack
+      damage: 15
+      knockBack: 4
+      knockAngle: 15
+      hitTime: 0.3
+      sturnTime: 0.5
+      _attackOffset: {x: 0.38, y: 0, z: 0}
+      _attackSize: {x: 0.6, y: 1, z: 1}
+      shakePower: 6
+      shakeTime: 0.5
+      atkEffectType: 11
+      atkEffectDirectionType: 3
+      atkEffectOffset: {x: -0.1, y: 0.2, z: 0}
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: se_common_slap_hit_l
+      atkEffSoundName: se_common_spirits_machstamp_fall
+      addExp: 10

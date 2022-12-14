@@ -18,6 +18,8 @@ namespace Sound
 		Puppet_Win,
 		AgentStage_BGM,
 		Agent_Win,
+		Bridge_BGM,
+		Damvi_Win,
 		Count,
 	}
 
