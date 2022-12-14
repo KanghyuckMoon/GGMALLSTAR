@@ -11,6 +11,7 @@ public class CharacterAnimation : CharacterComponent
 
     private Animator _animator = null;
     private Dictionary<AnimationType, int> _animationHash = null;
+    private HashSet<int> validParameters = new HashSet<int>();
     protected Dictionary<AnimationType, int> AnimationHash => _animationHash;
 
     protected override void Awake()
@@ -19,14 +20,18 @@ public class CharacterAnimation : CharacterComponent
         _animationHash = new();
     }
 
-    protected void AddAnimationHash(AnimationType animationType, string animationName)
+	protected void AddAnimationHash(AnimationType animationType, string animationName)
     {
         _animationHash.Add(animationType, Animator.StringToHash(animationName));
+        validParameters.Add(Animator.StringToHash(animationName));
     }
 
     public void SetAnimationTrigger(AnimationType animationType)
     {
-        _animator.SetTrigger(AnimationHash[animationType]);
+        if(CheckHasParam(animationType))
+        {
+            _animator.SetTrigger(AnimationHash[animationType]);
+        }
     }
 
     protected void SetAnimationTrigger(int animationHash)
@@ -41,7 +46,10 @@ public class CharacterAnimation : CharacterComponent
 
     public void SetAnimationBool(AnimationType animationType, bool value)
     {
-        _animator.SetBool(AnimationHash[animationType], value);
+        if (CheckHasParam(animationType))
+        {
+            _animator.SetBool(AnimationHash[animationType], value);
+        }
     }
 
     protected void SetAnimationBool(int animationHash, bool value)
@@ -56,7 +64,10 @@ public class CharacterAnimation : CharacterComponent
 
     public void SetAnimationFloat(AnimationType animationType, float value)
     {
-        _animator.SetFloat(AnimationHash[animationType], value);
+        if (CheckHasParam(animationType))
+        {
+            _animator.SetFloat(AnimationHash[animationType], value);
+        }
     }
 
     protected void SetAnimationFloat(int animationHash, float value)
@@ -71,7 +82,10 @@ public class CharacterAnimation : CharacterComponent
 
     public void SetAnimationInt(AnimationType animationType, int value)
     {
-        _animator.SetInteger(AnimationHash[animationType], value);
+        if (CheckHasParam(animationType))
+        {
+            _animator.SetInteger(AnimationHash[animationType], value);
+        }
     }
 
     protected void SetAnimationInt(int animationHash, int value)
@@ -88,6 +102,11 @@ public class CharacterAnimation : CharacterComponent
 	{
         _animator.speed = 0;
         Character.StartCoroutine(EndHitTime(hitTime));
+    }
+
+    protected bool CheckHasParam(AnimationType animationType)
+	{
+        return _animationHash.TryGetValue(animationType, out int value);
     }
 
     private IEnumerator EndHitTime(float hitTime)

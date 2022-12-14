@@ -13,8 +13,21 @@ public class CharacterSprite : CharacterComponent
         }
 	}
 
+    public GameObject Model
+	{
+        get
+		{
+            return _model;
+		}
+	}
+
     public CharacterSprite(Character character) : base(character)
     {
+    }
+
+	protected override void SetEvent()
+	{
+		base.SetEvent();
         CharacterEvent.AddEvent(EventKeyWord.LEFT, () =>
         {
             _spriteRenderer.flipX = true;
@@ -39,20 +52,24 @@ public class CharacterSprite : CharacterComponent
         }, EventType.KEY_HOLD);
     }
 
-    public void ResetModelPosition()
+	public virtual void ResetModelPosition()
 	{
-        SpriteRenderer.transform.localPosition = _originVector;
-
+        SpriteRenderer.transform.localPosition = _originPosition;
     }
 
     protected override void Awake()
     {
         _spriteRenderer = Character.GetComponentInChildren<SpriteRenderer>();
-        _originVector = _spriteRenderer.transform.localPosition;
+        _originPosition = _spriteRenderer.transform.localPosition;
+        _originScale = _spriteRenderer.transform.localScale;
+        _originRotation = _spriteRenderer.transform.localEulerAngles;
     }
 
-    private Vector3 _originVector;
-    private SpriteRenderer _spriteRenderer = null;
-    private Direction _direction = Direction.RIGHT;
+    protected Vector3 _originPosition;
+    protected Vector3 _originRotation;
+    protected Vector3 _originScale;
+    protected SpriteRenderer _spriteRenderer = null;
+    protected GameObject _model = null;
+    protected Direction _direction = Direction.RIGHT;
     public Direction Direction => _direction;
 }
