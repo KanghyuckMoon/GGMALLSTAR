@@ -133,6 +133,7 @@ public class CharacterDamage : CharacterComponent
         //ComboCount
         _comboCount++;
         _sturnTime = stunHitTime;
+        CharacterAnimation.SetAnimationBool(AnimationType.Damage, true);
         damagedAction?.Invoke();
 
         //Set HitTime & StunTime
