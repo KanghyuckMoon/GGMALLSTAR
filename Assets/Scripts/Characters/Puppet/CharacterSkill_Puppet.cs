@@ -24,6 +24,14 @@ public class CharacterSkill_Puppet : CharacterSkill
 
     // Current Elemental Type
     private ElementalType _elementalType = ElementalType.Count;
+    public ElementalType CurrentElementalType => _elementalType;
+
+    private bool _isEarthGolemSpawn = false;
+    public bool IsEarthGolemSpawn
+    {
+        get => _isEarthGolemSpawn;
+        set => _isEarthGolemSpawn = value;
+    }
 
     public CharacterSkill_Puppet(Character character) : base(character)
     {
@@ -87,18 +95,22 @@ public class CharacterSkill_Puppet : CharacterSkill
                 case ElementalType.Wind:
                     var wind = PoolManager.GetItem("Assets/Prefabs/WindSkill.prefab").GetComponent<WindSkill>();
                     wind.SetWindSkill(_character.transform.position);
-                    //_character.Rigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
 
-                    Vector3 dir = new Vector3(_character.GetCharacterComponent<CharacterMove>().InputDirection.x * 10f, _character.GetCharacterComponent<CharacterMove>().InputDirection.y + 5f, 0f);
+                    Vector3 dir = new Vector3(_character.GetCharacterComponent<CharacterMove>().InputDirection.x * 5f, _character.GetCharacterComponent<CharacterMove>().InputDirection.y + 5f, 0f);
 
+                    _character.Rigidbody.velocity = Vector3.zero;
                     _character.Rigidbody.AddForce(dir, ForceMode.Impulse);
 
                     break;
                 case ElementalType.Fire:
-
+                    PoolManager.GetItem("Assets/Prefabs/FireBite.prefab").GetComponent<FireBiteSkill>().SetFireBiteSkill(_character, _character.transform.position + new Vector3(0.1f, 0.2f, 0f), _character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? Vector3.right : Vector3.left);
                     break;
                 case ElementalType.Earth:
-
+                    if (!_isEarthGolemSpawn)
+                    {
+                        _isEarthGolemSpawn = true;
+                        PoolManager.GetItem("Assets/Prefabs/EarthGolem.prefab").GetComponent<EarthGolem>().SetEarthGolem(_character, _character.transform.position + new Vector3(0.1f, 0.25f, 0f), _character.GetCharacterComponent<CharacterSprite>().Direction);
+                    }
                     break;
                 case ElementalType.Water:
 

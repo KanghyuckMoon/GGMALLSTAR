@@ -609,6 +609,14 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/WindSkill.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: dee58a5b2564fe441a1a1c517b5a19c9
+    m_Address: Assets/Prefabs/FireBite.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec7daf042dc6aa74db93de099ff92ba6
+    m_Address: Assets/Prefabs/EarthGolem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
