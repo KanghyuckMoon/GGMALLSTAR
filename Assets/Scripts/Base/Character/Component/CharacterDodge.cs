@@ -149,6 +149,7 @@ public class CharacterDodge : CharacterComponent
 
 		
 		Character.GetCharacterComponent<CharacterColor>(ComponentType.Color).SetWhiteMaterial();
+		Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation).SetAnimationTrigger(AnimationType.Dodge);
 		Character.GetCharacterComponent<CharacterMove>(ComponentType.Move).SetMoveDirection(_inputDirection);
 		SetCoolTime(0.5f);
 

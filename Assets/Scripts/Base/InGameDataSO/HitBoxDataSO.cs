@@ -38,6 +38,7 @@ public class HitBoxData
     //Effect & Sound
     public Effect.EffectType atkEffectType;
     public Effect.EffectDirectionType atkEffectDirectionType;
+    public Vector3 atkEffectOffset = Vector3.zero;
     public Effect.EffectType hitEffectType;
     public Effect.EffectDirectionType hitEffectDirectionType;
     public string hitEffSoundName;

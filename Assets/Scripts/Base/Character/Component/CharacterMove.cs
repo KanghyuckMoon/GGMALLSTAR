@@ -209,12 +209,12 @@ public class CharacterMove : CharacterComponent
                     if (other.transform.position.x > Character.transform.position.x)
                     {
                         Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Hit_5, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.ReverseDirection, new Vector3(0, 0, 180));
-                        Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Shockwave, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.SetParticle3DRotation, new Vector3(0, 45, 0));
+                        Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Shockwave, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.SetParticleOffsetIs3DRotation, new Vector3(0, 45, 0));
                     }
                     else
                     {
                         Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Hit_5, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.ReverseDirection, new Vector3(0, 0, 0));
-                        Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Shockwave, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.SetParticle3DRotation, new Vector3(0, -45, 0));
+                        Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Shockwave, other.collider.ClosestPoint(Character.transform.position), Effect.EffectDirectionType.SetParticleOffsetIs3DRotation, new Vector3(0, -45, 0));
                     }
                 }
             }

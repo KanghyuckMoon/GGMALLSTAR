@@ -21,19 +21,16 @@ public class FireBall_Frog : MonoBehaviour
             Sound.SoundManager.Instance.PlayEFF(_hitBoxData.atkEffSoundName);
         }
 
+        Vector3 offset = _hitBoxData.atkEffectOffset;
 
-        if (hitBoxData.atkEffectType != Effect.EffectType.None)
+        if (_direction == Direction.LEFT)
         {
-            switch (hitBoxData.atkEffectDirectionType)
-            {
-                default:
-                    Effect.EffectManager.Instance.SetEffect(hitBoxData.atkEffectType, transform.position, Effect.EffectDirectionType.Identity);
-                    break;
-                case Effect.EffectDirectionType.ReverseDirection:
-                    Vector3 dir = new Vector3(0, 0, _direction == Direction.RIGHT ? 180 : 0);
-                    Effect.EffectManager.Instance.SetEffect(hitBoxData.atkEffectType, transform.position, Effect.EffectDirectionType.ReverseDirection, dir);
-                    break;
-            }
+            offset.x *= -1;
+        }
+
+            if (hitBoxData.atkEffectType != Effect.EffectType.None)
+        {
+            Effect.EffectManager.Instance.SetEffect(hitBoxData.atkEffectType, transform.position, Effect.EffectDirectionType.ReverseDirection, offset, _direction == Direction.RIGHT);
         }
 
         StartCoroutine(Move());

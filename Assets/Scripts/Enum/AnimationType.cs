@@ -11,4 +11,5 @@ public enum AnimationType
     Skill1,
     Skill2,
     AllStarSkill,
+    Dodge,
 }

@@ -126,22 +126,14 @@ public class CharacterDamage : CharacterComponent
         hitBox?.OwnerHitTime(hitBoxData.hitTime);
 
         //Effect & Sound
-        switch(hitBoxData.hitEffectDirectionType)
-		{
-            default:
-                EffectManager.Instance.SetEffect(hitBoxData.hitEffectType, collistionPoint, hitBoxData.hitEffectDirectionType);
-                break;
-            case EffectDirectionType.ReverseDirection:
-                Vector3 direction = new Vector3(0, 0, collistionPoint.x < Character.transform.position.x ? 180 : 0);
-                EffectManager.Instance.SetEffect(hitBoxData.hitEffectType, collistionPoint, EffectDirectionType.ReverseDirection, direction);
-                break;
-		}
+        EffectManager.Instance.SetEffect(hitBoxData.hitEffectType, collistionPoint, EffectDirectionType.ReverseDirection, hitBoxData.atkEffectOffset , (collistionPoint.x < Character.transform.position.x ? true : false));
 
         SoundManager.Instance.PlayEFF(hitBoxData.hitEffSoundName);
 
         //ComboCount
         _comboCount++;
         _sturnTime = stunHitTime;
+        CharacterAnimation.SetAnimationBool(AnimationType.Damage, true);
         damagedAction?.Invoke();
 
         //Set HitTime & StunTime
@@ -169,8 +161,8 @@ public class CharacterDamage : CharacterComponent
 
         //CharacterShake
         CharacterSprite characterSprite = Character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite);
-        characterSprite.SpriteRenderer.transform.DOKill();
-        characterSprite.SpriteRenderer.transform.DOShakePosition(hitBoxData.hitTime, 0.05f, 20).OnComplete(() => 
+        characterSprite.Model.transform.DOKill();
+        characterSprite.Model.transform.DOShakePosition(hitBoxData.hitTime, 0.05f, 20).OnComplete(() => 
         {
             characterSprite.ResetModelPosition();
 

@@ -8,6 +8,9 @@ public enum CharacterSelect
 	Jaeby,
 	Frog,
 	Dice,
+	Puppet,
+	Agent,
+	Damvi,
 	Count
 }
 
@@ -21,6 +24,7 @@ public enum StageSelect
 	Tower,
 	LostKingdom,
 	AgentStage,
+	Bridge,
 	Count
 }
 
