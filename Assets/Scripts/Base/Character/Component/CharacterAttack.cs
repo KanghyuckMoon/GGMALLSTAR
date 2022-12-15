@@ -47,7 +47,6 @@ public class CharacterAttack : CharacterComponent
     {
         CharacterEvent.AddEvent(EventKeyWord.ATTACK, () =>
         {
-            Debug.Log("Attack");
             SetInputDelay();
             AttackAnimation();
         }, EventType.KEY_DOWN);
