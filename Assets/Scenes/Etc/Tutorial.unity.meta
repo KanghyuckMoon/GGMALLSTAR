@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Resource/Animation/MythicalDice/M_Skill2.anim.meta
+guid: 954e0a23ce394bb4eb735c09b1c021a9
+NativeFormatImporter:
+========
 guid: 0dad79011fb424247b8a24893fed508f
 DefaultImporter:
+>>>>>>>> TestRoom:Assets/Scenes/Etc/Tutorial.unity.meta
   externalObjects: {}
+  mainObjectFileID: 7400000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

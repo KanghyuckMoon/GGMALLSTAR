@@ -24,6 +24,11 @@ public class CharacterSkill_Damvi : CharacterSkill
             {
                 skillCoolTime1 = 0;
 
+                PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 1 : -1),0,0),
+                    character.transform.position,
+                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+
                 Skill1Action();
             }
         }, EventType.KEY_DOWN);
@@ -33,6 +38,21 @@ public class CharacterSkill_Damvi : CharacterSkill
             if (CharacterLevel.Level > 2 && skillCoolTime2 >= Character.CharacterSO.skill2Delay)
             {
                 skillCoolTime2 = 0;
+
+                PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 0.7f : -0.7f), 0.2f, 0),
+                    character.transform.position,
+                    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]);
+
+                PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 0.7f : -0.7f), 0, 0),
+                    character.transform.position,
+                    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]);
+
+                PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 0.7f : -0.7f), -0.2f, 0),
+                    character.transform.position,
+                    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]);
 
                 Skill2Action();
             }
@@ -44,7 +64,12 @@ public class CharacterSkill_Damvi : CharacterSkill
             {
                 isCanUseSkill3 = false;
                 characterLevel.IsAllStarSkillUse = true;
-
+                Sound.SoundManager.Instance.PlayEFF("se_common_boss_core_hit");
+                CameraManager.SetAllStar(Character.transform);
+                RoundManager.StaticSetInputSturnTime(1f);
+                RoundManager.StaticStopMove(1f);
+                AllStarSkillUse?.Invoke();
+                Character.StartCoroutine(AllStarSkill());
                 AllStarSkillUse?.Invoke();
                 AllStarSkillAction();
             }
@@ -80,6 +105,16 @@ public class CharacterSkill_Damvi : CharacterSkill
         if (!CharacterLevel.IsAllStarSkillUse && CharacterLevel.Level > 3)
         {
             isCanUseSkill3 = true;
+        }
+    }
+
+    private IEnumerator AllStarSkill()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (RoundManager.ReturnIsSetting())
+        {
+            PoolManager.GetItem("Maggellan_Damvi").GetComponent<Maggellan_Damvi>().SetMaggellan(Character, Vector3.zero, Character.transform.position, Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]);
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class CharacterEvent
 {
+    public bool _canEvent = true;
+    
     public CharacterEvent()
     {
         uint eventTypeLength = (uint)Enum.GetValues(typeof(EventType)).Length;
@@ -43,7 +45,7 @@ public class CharacterEvent
 
     public void EventTrigger(string actionName, EventType eventType = EventType.DEFAULT)
     {
-        if (_characterEvent[(uint)eventType].ContainsKey(actionName))
+        if (_characterEvent[(uint)eventType].ContainsKey(actionName)&&_canEvent)
         {
             _characterEvent[(uint)eventType][actionName]?.Invoke();
         }

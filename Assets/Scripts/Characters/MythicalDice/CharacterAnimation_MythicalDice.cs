@@ -16,6 +16,7 @@ public class CharacterAnimation_MythicalDice : CharacterAnimation
         AddAnimationHash(AnimationType.Run, AnimationKeyWord.RUN);
         AddAnimationHash(AnimationType.Attack, AnimationKeyWord.ATTACK);
         AddAnimationHash(AnimationType.Jump, AnimationKeyWord.JUMP);
+        AddAnimationHash(AnimationType.Skill2, AnimationKeyWord.SKILL2);
     }
 
     protected override void SetEvent()

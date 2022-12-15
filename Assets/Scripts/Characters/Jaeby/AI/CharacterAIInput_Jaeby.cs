@@ -9,6 +9,7 @@ public class CharacterAIInput_Jaeby : CharacterAIInput
     public CharacterAIInput_Jaeby(Character character) : base(character)
     {
     }
+    
     protected override void SetBehaviourTree(bool isPlayer1)
     {
         _behaviourTree = new Jaeby_Behaviour();

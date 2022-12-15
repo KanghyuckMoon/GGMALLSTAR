@@ -21,7 +21,6 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     {
         CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
         {
-            // TODO: 레벨 제한 + 스킬쿨 적용 필요
             if (CharacterLevel.Level > 1 && skillCoolTime1 >= Character.CharacterSO.skill1Delay)
             {
                 skillCoolTime1 = 0;
@@ -40,6 +39,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                     int damage = 0;
                     while (diceQueue.Count > 0)
                     {
+                        Debug.Log(diceQueue.Peek().DiceNumber);
                         diceQueue.Peek().gameObject.SetActive(false);
                         PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Peek().gameObject);
                         damage += diceQueue.Dequeue().DiceNumber;
@@ -69,11 +69,17 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                 RoundManager.StaticSetInputSturnTime(1f);
                 RoundManager.StaticStopMove(1f);
 
-                Debug.Log("AllStarSkill");
-                for (int i = 0; i < 4; ++i)
+                while (diceQueue.Count > 0)
                 {
-                    RollDice();
+                    diceQueue.Peek().transform.SetParent(null);
+                    diceQueue.Peek().gameObject.SetActive(false);
+                    PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Dequeue().gameObject);
                 }
+
+                RollDice();
+
+                Character.StartCoroutine(DioTheWorld(diceQueue.Peek().DiceNumber));
+
                 AllStarSkillAction();
             }
         }, EventType.KEY_DOWN);
@@ -82,8 +88,34 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     public override void Start()
     {
         base.Start();
-        Debug.Log("start roll");
         RollDice();
+    }
+
+    private IEnumerator DioTheWorld(float time)
+    {
+        global::Character targetCharacter =
+            Character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character;
+
+        Vector3 targetPos = new Vector3(targetCharacter.transform.position.x, targetCharacter.transform.position.y, targetCharacter.transform.position.z);
+
+        targetCharacter.CharacterEvent._canEvent = false;
+        float timer = 0;
+
+        while (timer < time)
+        {
+            targetCharacter.transform.position = targetPos;
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        while (diceQueue.Count > 0)
+        {
+            diceQueue.Peek().transform.SetParent(null);
+            diceQueue.Peek().gameObject.SetActive(false);
+            PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Dequeue().gameObject);
+        }
+        targetCharacter.CharacterEvent._canEvent = true;
     }
 
     private void RollDice()
@@ -96,18 +128,17 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     public void diceQueueAdd(int diceNum)
     {
         Dice dice = PoolManager.GetItem("Assets/Prefabs/Dice.prefab").GetComponent<Dice>();
-        
+
         dice.SetDice(diceNum, (Character as Character_MythicalDice).DicePosition);
-        
+
         diceQueue.Enqueue(dice);
-        
+
         if (diceQueue.Count > 4)
         {
             diceQueue.Peek().transform.SetParent(null);
             diceQueue.Peek().gameObject.SetActive(false);
             PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Dequeue().gameObject);
         }
-
     }
     public override void Update()
     {
