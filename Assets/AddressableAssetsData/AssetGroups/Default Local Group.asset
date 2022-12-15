@@ -133,7 +133,7 @@ MonoBehaviour:
     m_Address: HitBox
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 80f23d3a20a30654097fb118f4a5a743
+  - m_GUID: 856b49be42af2e14f9bf104d36bdca6e
     m_Address: Assets/Prefabs/Fireball_Frog.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -419,6 +419,10 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: 5631008eb778ba24dbe9dcdf5c85c85c
     m_Address: Puppet_AllStarSkillImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 80f23d3a20a30654097fb118f4a5a743
+    m_Address: Bullet_Damvi
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

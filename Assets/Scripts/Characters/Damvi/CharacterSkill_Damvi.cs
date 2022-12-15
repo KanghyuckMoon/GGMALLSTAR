@@ -24,6 +24,11 @@ public class CharacterSkill_Damvi : CharacterSkill
             {
                 skillCoolTime1 = 0;
 
+                PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 1 : -1),0,0),
+                    character.transform.position,
+                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+
                 Skill1Action();
             }
         }, EventType.KEY_DOWN);
@@ -33,6 +38,21 @@ public class CharacterSkill_Damvi : CharacterSkill
             if (CharacterLevel.Level > 2 && skillCoolTime2 >= Character.CharacterSO.skill2Delay)
             {
                 skillCoolTime2 = 0;
+
+                PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 1 : -1), 0.5f, 0),
+                    character.transform.position,
+                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+
+                PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 1 : -1), 0, 0),
+                    character.transform.position,
+                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+
+                PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 1 : -1), -0.5f, 0),
+                    character.transform.position,
+                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
 
                 Skill2Action();
             }
