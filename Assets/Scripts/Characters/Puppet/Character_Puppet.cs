@@ -19,6 +19,8 @@ public class Character_Puppet : Character
         AddComponent(ComponentType.Skill1, new CharacterSkill_Puppet(this));
         AddComponent(ComponentType.Damage, new CharacterDamage(this));
         AddComponent(ComponentType.Gravity, new CharacterGravity(this));
+        AddComponent(ComponentType.Dodge, new CharacterDodge(this));
+        AddComponent(ComponentType.Color, new CharacterColor_Jaeby(this));
     }
 
     [Header("Elemental Transform")]

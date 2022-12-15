@@ -27,13 +27,13 @@ public class CharacterAttack : CharacterComponent
     }
 
     public bool IsRight
-	{
+    {
         get
         {
             characterMove ??= Character.GetCharacterComponent<CharacterMove>(ComponentType.Move);
             return characterMove.IsRight;
         }
-	}
+    }
 
     protected override void Awake()
     {
@@ -41,12 +41,13 @@ public class CharacterAttack : CharacterComponent
 
     }
 
-	CharacterMove characterMove = null;
+    CharacterMove characterMove = null;
 
     protected override void SetEvent()
     {
-        CharacterEvent.AddEvent(EventKeyWord.ATTACK, () => 
-        { 
+        CharacterEvent.AddEvent(EventKeyWord.ATTACK, () =>
+        {
+            Debug.Log("Attack");
             SetInputDelay();
             AttackAnimation();
         }, EventType.KEY_DOWN);
@@ -55,11 +56,11 @@ public class CharacterAttack : CharacterComponent
     private void AttackAnimation()
     {
         characterAnimation ??= Character.GetCharacterComponent<CharacterAnimation>(ComponentType.Animation);
-        if(Character.GetCharacterComponent<CharacterMove>(ComponentType.Move).IsGround)
+        if (Character.GetCharacterComponent<CharacterMove>(ComponentType.Move).IsGround)
         {
             Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddGroundAttackCount(1);
         }
-		else
+        else
         {
             Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddAirAttackCount(1);
         }
@@ -67,10 +68,10 @@ public class CharacterAttack : CharacterComponent
     }
 
     public void SetInputDelay()
-	{
+    {
         var characterInput = Character.GetCharacterComponent<CharacterInput>(ComponentType.Input);
         if (characterInput is not null)
-		{
+        {
             characterInput.SetInputDelayTime(Character.CharacterSO.attackDelay);
         }
         else
@@ -85,7 +86,7 @@ public class CharacterAttack : CharacterComponent
         foreach (var hitboxData in Character.HitBoxDataSO.hitBoxDatasList[hitBoxIndex].hitBoxDatas)
         {
             if (hitboxData.atkEffSoundName != "")
-			{
+            {
                 Sound.SoundManager.Instance.PlayEFF(hitboxData.atkEffSoundName);
             }
 
