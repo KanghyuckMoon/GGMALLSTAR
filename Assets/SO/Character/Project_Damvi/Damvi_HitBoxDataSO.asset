@@ -44,10 +44,29 @@ MonoBehaviour:
       shakePower: 5
       shakeTime: 0.7
       atkEffectType: 9
-      atkEffectDirectionType: 1
+      atkEffectDirectionType: 3
       atkEffectOffset: {x: 0, y: 0, z: 0}
       hitEffectType: 0
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_fire_l
       atkEffSoundName: se_item_firebar_l
       addExp: 20
+  - hitBoxDatas:
+    - actionName: Skill2
+      damage: 7
+      knockBack: 3
+      knockAngle: 10
+      hitTime: 0.4
+      sturnTime: 0.3
+      _attackOffset: {x: 0.25, y: 0.3, z: 0}
+      _attackSize: {x: 0.9, y: 0.6, z: 1}
+      shakePower: 5
+      shakeTime: 0.7
+      atkEffectType: 9
+      atkEffectDirectionType: 3
+      atkEffectOffset: {x: 0, y: 0, z: 0}
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: se_common_fire_l
+      atkEffSoundName: se_item_firebar_l
+      addExp: 15

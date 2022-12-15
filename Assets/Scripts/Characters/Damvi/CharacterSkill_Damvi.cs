@@ -40,19 +40,19 @@ public class CharacterSkill_Damvi : CharacterSkill
                 skillCoolTime2 = 0;
 
                 PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
-                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 1 : -1), 0.5f, 0),
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 0.7f : -0.7f), 0.2f, 0),
                     character.transform.position,
-                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+                    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]);
 
                 PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
-                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 1 : -1), 0, 0),
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 0.7f : -0.7f), 0, 0),
                     character.transform.position,
-                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+                    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]);
 
                 PoolManager.GetItem("Bullet_Damvi").GetComponent<Bullet_Damvi>().SetBullet(
-                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 1 : -1), -0.5f, 0),
+                    character, new Vector3(1 * (Character.GetCharacterComponent<CharacterMove>().IsRight ? 0.7f : -0.7f), -0.2f, 0),
                     character.transform.position,
-                    character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+                    character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]);
 
                 Skill2Action();
             }

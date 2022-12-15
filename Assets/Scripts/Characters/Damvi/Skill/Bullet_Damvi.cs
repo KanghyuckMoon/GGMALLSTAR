@@ -14,8 +14,8 @@ public class Bullet_Damvi : MonoBehaviour
         _character = character;
         _hitBoxData = hitBoxData;
         _direction = direction;
+        position.y += 0.1f;
         transform.position = position;
-
         if (_hitBoxData.atkEffSoundName != "")
         {
             Sound.SoundManager.Instance.PlayEFF(_hitBoxData.atkEffSoundName);
@@ -27,7 +27,6 @@ public class Bullet_Damvi : MonoBehaviour
         {
             Effect.EffectManager.Instance.SetEffect(hitBoxData.atkEffectType, transform.position, hitBoxData.atkEffectDirectionType, offset, _direction.x > 0 ? true : false);
         }
-        transform.localEulerAngles = direction;
 
 
         StartCoroutine(Move());
@@ -37,7 +36,7 @@ public class Bullet_Damvi : MonoBehaviour
     {
         while (true)
         {
-            transform.Translate(_direction * 4f * Time.deltaTime);
+            transform.Translate(_direction * 4f * Time.deltaTime, Space.World);
 
             yield return null;
         }
