@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_Fallio
+  m_EditorClassIdentifier: 
+  itemName: I_Fallio
+  gameName: I_Fallio
+  explanation: I_Fallio
+  prefeb: {fileID: 3849936652519026462, guid: 730ea64d65a58da419461b8bd22237d3, type: 3}

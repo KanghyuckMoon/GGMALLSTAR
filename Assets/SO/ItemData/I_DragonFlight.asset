@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_DragonFlight
+  m_EditorClassIdentifier: 
+  itemName: I_DragonFlight
+  gameName: I_DragonFlight
+  explanation: I_DragonFlight
+  prefeb: {fileID: 5171724753906049815, guid: 6f6801f5f685d8542b740e03c2db56cc, type: 3}
