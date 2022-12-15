@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_Duck
   m_EditorClassIdentifier: 
-  itemName: I_Duck
-  gameName: I_Duck
-  explanation: I_Duck
+  itemName: "\uCD5C\uC885\uBCD1\uAE30 \uC624\uB9AC"
+  gameName: "\uCD5C\uC885\uBCD1\uAE30 \uC624\uB9AC"
+  explanation: "\uCD5C\uC885\uBCD1\uAE30\uC778 \uC624\uB9AC\uC774\uB2E4."
   prefeb: {fileID: 4702155831026490692, guid: 37174c37ae77bf54d980ecd87d35524e, type: 3}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
+  m_Name: I_Arrowio
+  m_EditorClassIdentifier: 
+  itemName: "\uD65C"
+  gameName: Arrow.io
+  explanation: "\uD654\uC0B4\uC744 \uC3D8\uC544 \uACFC\uB141\uC744 \uACA9\uD30C\uD558\uB294
+    \uAC8C\uC784\uC5D0\uC11C \uC0AC\uC6A9\uD558\uB294 \uD65C. \uD65C\uC744 \uB204\uB974\uACE0
+    \uB4DC\uB798\uADF8\uD558\uBA74 \uD654\uC0B4\uC744 \uBC1C\uC0AC\uD560 \uC218 \uC788\uB2E4."
+  prefeb: {fileID: 1363081183878862259, guid: 7279dfe80dff4b640a918a3eaab01e4b, type: 3}

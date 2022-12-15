@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_Fallio
   m_EditorClassIdentifier: 
-  itemName: I_Fallio
-  gameName: I_Fallio
-  explanation: I_Fallio
+  itemName: "\uB5A8\uC5B4\uC9C0\uB294 \uC2A4\uD2F1\uB9E8"
+  gameName: Fall.io
+  explanation: "\uAE30\uB465\uB4E4 \uC0AC\uC774\uB85C \uB5A8\uC5B4\uC9C0\uB294 \uC2A4\uD2F1\uB9E8.
+    \uC7A5\uC560\uBB3C\uC744 \uD53C\uD558\uBA70 \uACC4\uC18D\uD574\uC11C \uB5A8\uC5B4\uC9C0\uC790"
   prefeb: {fileID: 3849936652519026462, guid: 730ea64d65a58da419461b8bd22237d3, type: 3}

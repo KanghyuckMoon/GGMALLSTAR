@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_BirdFly
   m_EditorClassIdentifier: 
-  itemName: I_BirdFly
-  gameName: I_BirdFly
-  explanation: I_BirdFly
+  itemName: "\uC0C8\uB4E4"
+  gameName: "\uBC84\uB4DC\uD50C\uB77C\uC774"
+  explanation: "\uBC84\uB4DC\uD50C\uB77C\uC774\uC5D0\uC11C \uB098\uC624\uB294 \uC0C8\uB4E4.
+    \uC0C1\uB300 \uC9D1\uC5D0 \uC0C8\uB97C \uB0A0\uB824\uC11C \uCC3D\uBB38\uC744
+    \uAE68\uD2B8\uB9AC\uACE0 \uC0C1\uB300 \uC9D1 \uC8FC\uC778\uC744 \uC4F0\uB7EC\uD2B8\uB9AC\uBA74
+    \uC774\uAE34\uB2E4."
   prefeb: {fileID: 4826526308426759492, guid: 42d1747842e7d004e9fb40445123368e, type: 3}

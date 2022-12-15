@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_Extra
   m_EditorClassIdentifier: 
-  itemName: I_Extra
-  gameName: I_Extra
-  explanation: I_Extra
+  itemName: "\uC9C0\uB098\uAC00\uB294 \uC5D1\uC2A4\uD2B8\uB77C"
+  gameName: "\uC9C0\uB098\uAC00\uB358 \uC5D1\uC2A4\uD2B8\uB77C\uC785\uB2C8\uB2E4\uB9CC"
+  explanation: "\uC9C0\uB098\uAC00\uB358 \uC5D1\uC2A4\uD2B8\uB77C\uC774\uC9C0\uB9CC
+    \uC5B4\uCC0C\uB41C \uC601\uBB38\uC778\uC9C0 \uC0AC\uB78C\uB4E4\uC5D0\uAC8C \uCAD3\uAE30\uACE0
+    \uC788\uB2E4."
   prefeb: {fileID: 8292301456891558059, guid: 3ce1beced114e9643acf8369217898d1, type: 3}
