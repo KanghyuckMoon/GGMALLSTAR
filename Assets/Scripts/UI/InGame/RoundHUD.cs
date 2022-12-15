@@ -89,6 +89,12 @@ public class RoundHUD : MonoBehaviour
 				return infoDatas[1];
 			case CharacterSelect.Dice:
 				return infoDatas[2];
+			case CharacterSelect.Puppet:
+				return infoDatas[3];
+			case CharacterSelect.Agent:
+				return infoDatas[4];
+			case CharacterSelect.Damvi:
+				return infoDatas[5];
 		}
 	}
 

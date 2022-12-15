@@ -64,7 +64,12 @@ public class CharacterSkill_Damvi : CharacterSkill
             {
                 isCanUseSkill3 = false;
                 characterLevel.IsAllStarSkillUse = true;
-
+                Sound.SoundManager.Instance.PlayEFF("se_common_boss_core_hit");
+                CameraManager.SetAllStar(Character.transform);
+                RoundManager.StaticSetInputSturnTime(1f);
+                RoundManager.StaticStopMove(1f);
+                AllStarSkillUse?.Invoke();
+                Character.StartCoroutine(AllStarSkill());
                 AllStarSkillUse?.Invoke();
                 AllStarSkillAction();
             }
@@ -100,6 +105,16 @@ public class CharacterSkill_Damvi : CharacterSkill
         if (!CharacterLevel.IsAllStarSkillUse && CharacterLevel.Level > 3)
         {
             isCanUseSkill3 = true;
+        }
+    }
+
+    private IEnumerator AllStarSkill()
+    {
+        yield return new WaitForSeconds(1f);
+
+        if (RoundManager.ReturnIsSetting())
+        {
+            PoolManager.GetItem("Maggellan_Damvi").GetComponent<Maggellan_Damvi>().SetMaggellan(Character, Vector3.zero, Character.transform.position, Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]);
         }
     }
 }

@@ -14,7 +14,7 @@ public class Damvi_Behaviour : BehaviourTree
 		get
 		{
 			characterSkill_Damvi ??= mainCharacter.GetCharacterComponent<CharacterSkill_Damvi>(ComponentType.Skill1);
-			return CharacterSkill_Damvi;
+			return characterSkill_Damvi;
 		}
 	}
 
@@ -47,7 +47,27 @@ public class Damvi_Behaviour : BehaviourTree
 
 	private INode Level1()
 	{
-		return 	Selector
+		return Selector
+			(
+				IfAction(Skill1Condition, UseSkill1),
+				IfAction(Skill2Condition, UseSkill2),
+				IfAction(AllStarSkillCondition, UseAllStarSkill),
+				IfAction(AttackJCondition, AttackJ),
+				//IfAction(DodgeCondition, Dodge),
+
+				IgnoreAction(IsHitFalse),
+				IgnoreAction(IsComboFalse),
+
+				RandomChoice
+				(
+					IfAction(MoveCondition, CloseMove),
+					IfAction(MoveCondition, FerMove)
+				)
+			);
+	}
+	private INode Level2()
+	{
+		return Selector
 			(
 				IfAction(Skill1Condition, UseSkill1),
 				IfAction(Skill2Condition, UseSkill2),
@@ -66,13 +86,10 @@ public class Damvi_Behaviour : BehaviourTree
 				)
 			);
 	}
-	private INode Level2()
+	private INode Level3()
 	{
-		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
-		//NodeSetting
 		return Selector
 			(
-				//new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(Skill1Condition, UseSkill1),
 				IfAction(Skill2Condition, UseSkill2),
 				IfAction(AllStarSkillCondition, UseAllStarSkill),
@@ -90,37 +107,11 @@ public class Damvi_Behaviour : BehaviourTree
 				)
 			);
 	}
-	private INode Level3()
-	{
-		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
-		//NodeSetting
-		return Selector
-			(
-				//new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
-				IfAction(Skill1Condition, UseSkill1),
-				IfAction(Skill2Condition, UseSkill2),
-				IfAction(AllStarSkillCondition, UseAllStarSkill),
-				IfAction(AttackJCondition, AttackJ),
-				IfAction(DodgeCondition, Dodge),
-
-				IgnoreAction(IsHitFalse),
-				IgnoreAction(IsComboFalse),
-
-				//이동 시퀀스
-				RandomChoice
-				(
-					IfAction(MoveCondition, CloseMove),
-					IfAction(MoveCondition, Jump)
-				)
-			);
-	}
 	private INode Level4()
 	{
-		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
 		//NodeSetting
 		return Selector
 			(
-				new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(Skill1Condition, UseSkill1),
 				IfAction(Skill2Condition, UseSkill2),
 				IfAction(AllStarSkillCondition, UseAllStarSkill),
@@ -140,11 +131,9 @@ public class Damvi_Behaviour : BehaviourTree
 	}
 	private INode Level5()
 	{
-		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
 		//NodeSetting
 		return Selector
 			(
-				new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(Skill1Condition, UseSkill1),
 				IfAction(Skill2Condition, UseSkill2),
 				IfAction(AllStarSkillCondition, UseAllStarSkill),
@@ -157,7 +146,7 @@ public class Damvi_Behaviour : BehaviourTree
 				//이동 시퀀스
 				RandomChoice
 				(
-					IfAction(MoveCondition, CloseMove),
+					IfAction(MoveCondition, FixedMove),
 					IfAction(MoveCondition, Jump)
 				)
 			);
@@ -166,7 +155,7 @@ public class Damvi_Behaviour : BehaviourTree
 
 	protected bool AttackJCondition()
 	{
-		float randomDistance = 0.3f; //Random.Range(0.1f, 1f);
+		float randomDistance = 1f; //Random.Range(0.1f, 1f);
 		bool distanceCondition = false;
 		bool directionCondition = false;
 
@@ -221,9 +210,21 @@ public class Damvi_Behaviour : BehaviourTree
 	}
 	protected bool DodgeCondition()
 	{
-		int random = Random.Range(0, 15);
+		float randomDistance = 0.5f; //Random.Range(0.1f, 1f);
+		bool distanceCondition = false;
 
-		return random == 0 && !MoveCondition();
+
+		//거리
+		if (Mathf.Abs(opCharacter.transform.position.x - mainCharacter.transform.position.x) < randomDistance)
+		{
+			distanceCondition = true;
+		}
+		else
+		{
+			distanceCondition = false;
+		}
+
+		return distanceCondition;
 	}
 	protected void Dodge()
 	{
@@ -240,7 +241,21 @@ public class Damvi_Behaviour : BehaviourTree
 	}
 	protected bool AllStarSkillCondition()
 	{
-		return CharacterSkill_Damvi.IsCanUseSkill3;
+		float distance = 0.8f; //Random.Range(0.1f, 1f);
+		bool distanceCondition = false;
+
+
+		//거리
+		if (Mathf.Abs(opCharacter.transform.position.x - mainCharacter.transform.position.x) < distance)
+		{
+			distanceCondition = true;
+		}
+		else
+		{
+			distanceCondition = false;
+		}
+
+		return CharacterSkill_Damvi.IsCanUseSkill3 && distanceCondition;
 	}
 
 	protected void UseSkill1()
@@ -254,5 +269,20 @@ public class Damvi_Behaviour : BehaviourTree
 	protected void UseAllStarSkill()
 	{
 		TapKey(KeyCode.O);
+	}
+
+	protected void FixedMove()
+	{
+		float fixedDistance = 0.5f;
+		float closeDistance = 1f;
+
+		if (Mathf.Abs(opCharacter.transform.position.x - mainCharacter.transform.position.x) > fixedDistance)
+		{
+			CloseMove();
+		}
+		else if (Mathf.Abs(opCharacter.transform.position.x - mainCharacter.transform.position.x) < closeDistance)
+		{
+			FerMove();
+		}
 	}
 }

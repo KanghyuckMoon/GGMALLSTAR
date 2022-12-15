@@ -48,6 +48,15 @@ public class ResultManager : MonoBehaviour
 			case CharacterSelect.Dice:
 				Sound.SoundManager.Instance.PlayBGM(Sound.AudioBGMType.Dice_Win);
 				break;
+			case CharacterSelect.Puppet:
+				Sound.SoundManager.Instance.PlayBGM(Sound.AudioBGMType.Puppet_Win);
+				break;
+			case CharacterSelect.Agent:
+				Sound.SoundManager.Instance.PlayBGM(Sound.AudioBGMType.Agent_Win);
+				break;
+			case CharacterSelect.Damvi:
+				Sound.SoundManager.Instance.PlayBGM(Sound.AudioBGMType.Damvi_Win);
+				break;
 		}
 	}
 

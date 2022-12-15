@@ -4907,7 +4907,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Agent
+  m_text: Zombie Village
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8b1a1f9ccf61434ebb4ce639784d284, type: 2}
   m_sharedMaterial: {fileID: -3656589031002724397, guid: c8b1a1f9ccf61434ebb4ce639784d284,
@@ -4935,8 +4935,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8812,7 +8812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 793.00006, y: -435.5}
+  m_AnchoredPosition: {x: 1127, y: -435.5}
   m_SizeDelta: {x: 304, y: 171}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1453387527
@@ -10989,7 +10989,7 @@ GameObject:
   - component: {fileID: 1877479719}
   - component: {fileID: 1877479718}
   m_Layer: 5
-  m_Name: Agent
+  m_Name: Zombie Village
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -20,8 +20,8 @@ MonoBehaviour:
       knockAngle: 15
       hitTime: 0.3
       sturnTime: 0.5
-      _attackOffset: {x: 0.38, y: 0, z: 0}
-      _attackSize: {x: 0.6, y: 1, z: 1}
+      _attackOffset: {x: 0.38, y: 0.2, z: 0}
+      _attackSize: {x: 0.65, y: 0.1, z: 1}
       shakePower: 6
       shakeTime: 0.5
       atkEffectType: 11
@@ -39,7 +39,7 @@ MonoBehaviour:
       knockAngle: 10
       hitTime: 0.4
       sturnTime: 0.3
-      _attackOffset: {x: 0.25, y: 0.3, z: 0}
+      _attackOffset: {x: 0, y: 0.3, z: 0}
       _attackSize: {x: 0.9, y: 0.6, z: 1}
       shakePower: 5
       shakeTime: 0.7
@@ -70,3 +70,22 @@ MonoBehaviour:
       hitEffSoundName: se_common_fire_l
       atkEffSoundName: se_item_firebar_l
       addExp: 15
+  - hitBoxDatas:
+    - actionName: ALL_STAR_SKILL
+      damage: 50
+      knockBack: 7
+      knockAngle: 85
+      hitTime: 2
+      sturnTime: 0.5
+      _attackOffset: {x: 0, y: 2.57, z: 0}
+      _attackSize: {x: 0, y: 0, z: 1}
+      shakePower: 3
+      shakeTime: 2.5
+      atkEffectType: -1
+      atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: se_common_bomb_damage_l
+      atkEffSoundName: se_item_metalbox
+      addExp: 0

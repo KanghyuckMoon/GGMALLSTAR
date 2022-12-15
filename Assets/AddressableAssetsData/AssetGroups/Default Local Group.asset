@@ -425,6 +425,14 @@ MonoBehaviour:
     m_Address: Bullet_Damvi
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 4c73a7eca2675dc4f93dc14631c51f66
+    m_Address: Maggellan_Damvi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4cd317fc27135c0419c0a434a3ca59af
+    m_Address: Damvi_AI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
