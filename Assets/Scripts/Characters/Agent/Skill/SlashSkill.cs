@@ -1,6 +1,8 @@
+using System.Transactions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pool;
 
 public class SlashSkill : Skill
 {
@@ -17,6 +19,8 @@ public class SlashSkill : Skill
         _speed = speed;
         _hitBoxData = hitBoxData;
         transform.position = _character.transform.position + offset;
+
+        character.transform.localScale = new Vector3(_direction == Direction.RIGHT ? 0.5f : -0.5f, 0.5f, 1f);
     }
 
     private void Update()
@@ -58,12 +62,12 @@ public class SlashSkill : Skill
 
     private void OnEnable()
     {
-
+        StartCoroutine(SetActiveCoroutine(true));
     }
 
     private void OnDisable()
     {
-
+        PoolManager.AddObjToPool("Assets/Prefabs/Agent_Slash.prefab", gameObject);
     }
 
     private IEnumerator SetActiveCoroutine(bool isEnable = false)

@@ -32,3 +32,22 @@ MonoBehaviour:
       hitEffSoundName: se_common_sword_hit_s
       atkEffSoundName: se_common_sword_swing_s
       addExp: 10
+  - hitBoxDatas:
+    - actionName: Slash
+      damage: 15
+      knockBack: 0
+      knockAngle: 0
+      hitTime: 0.1
+      sturnTime: 0.2
+      _attackOffset: {x: 0, y: 0, z: 0}
+      _attackSize: {x: 1, y: 1, z: 1}
+      shakePower: 0
+      shakeTime: 0
+      atkEffectType: -1
+      atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: se_common_sword_hit_s
+      atkEffSoundName: se_common_sword_swing_s
+      addExp: 10
