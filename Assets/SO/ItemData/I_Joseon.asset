@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_Joseon
   m_EditorClassIdentifier: 
-  itemName: I_Joseon
-  gameName: I_Joseon
-  explanation: I_Joseon
+  itemName: "\uC9C1\uC5C5\uCE74\uB4DC"
+  gameName: "\uC870\uC120\uC9C1\uC5C5\uC804"
+  explanation: "\uC870\uC120\uC744 \uD14C\uB9C8\uB85C \uC81C\uC791\uB41C \uC870\uC120
+    \uC9C1\uC5C5 \uCE74\uB4DC\uB4E4, \uAC01 \uCE74\uB4DC\uB4E4\uC774 \uAC00\uC9C0\uACE0
+    \uC788\uB294 \uD6A8\uACFC\uB97C \uC0AC\uC6A9\uD558\uC5EC \uC0C1\uB300\uC758 \uBAA9\uC228\uC744
+    \uC5C6\uC560\uAC70\uB098 \uB3C8\uC744 \uBAA8\uC544\uC57C \uD55C\uB2E4. "
   prefeb: {fileID: 5610609917245640732, guid: 51ce87a9d172ed94493ddcb553f0cacd, type: 3}

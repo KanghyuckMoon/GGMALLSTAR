@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_ShipIO
   m_EditorClassIdentifier: 
-  itemName: "\uC27D\uC544\uC774\uC624"
+  itemName: "\uAD70\uD568"
   gameName: Ship.io
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 4524764776610228905, guid: 99ec7d4ecd1fef040824c6207cf35b0b, type: 3}

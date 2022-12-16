@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: RESENTMENT
   gameName: RESENTMENT
-  explanation: RESENTMENT
+  explanation: "\uC124\uBA85"
   prefeb: {fileID: 6695605730997014076, guid: 6446df7f9f71f714cb27a9763f935ed7, type: 3}

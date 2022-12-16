@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_Hunminjeongeum
   m_EditorClassIdentifier: 
-  itemName: I_Hunminjeongeum
-  gameName: I_Hunminjeongeum
-  explanation: I_Hunminjeongeum
+  itemName: "\uD6C8\uBBFC\uC815\uC74C"
+  gameName: "\uD6C8\uBBFC\uC815\uC74C"
+  explanation: "\uAE00\uC790\uB97C \uB3CC\uB9AC\uACE0 \uC870\uD569\uD574\uC11C \uB9DE\uCD94\uB294
+    \uAC8C\uC784\uC778 [\uD6C8\uBBFC\uC815\uC74C]\uC5D0 \uB098\uC624\uB294 \uC655\uACFC
+    \uAE00\uC790\uB4E4."
   prefeb: {fileID: 2274638677769764801, guid: 8df18d2503dc5d24eacdfae9fc0c3e4d, type: 3}

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_FutureAgent
   m_EditorClassIdentifier: 
-  itemName: I_FutureAgent
-  gameName: I_FutureAgent
-  explanation: I_FutureAgent
+  itemName: Agent
+  gameName: Future Agent
+  explanation: "\uC880\uBE44\uB4E4\uC744 \uC0AC\uB0E5\uD558\uB294 \uC694\uC6D0. \uB2E4\uC591\uD55C
+    \uC2A4\uD0AC\uC744 \uD1B5\uD574 \uADF8\uAC00 \uD718\uB450\uB974\uB294 \uB300\uAC80\uC744
+    \uB354\uC6B1 \uAC15\uD558\uAC8C \uB9CC\uB4E0\uB2E4."
   prefeb: {fileID: 8210119397144380399, guid: 363ba945833818543be8856d10e2b6d6, type: 3}

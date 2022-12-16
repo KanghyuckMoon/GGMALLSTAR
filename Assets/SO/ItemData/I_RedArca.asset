@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_RedArca
   m_EditorClassIdentifier: 
-  itemName: "\uB808\uB4DC\uC544\uB974\uCE74"
+  itemName: "\uC804\uD654\uBD80\uC2A4"
   gameName: RedArca
-  explanation: "\uC124\uBA85"
+  explanation: "[RedArca]\uC5D0\uC11C \uB4F1\uC7A5\uD55C \uACF5\uC911\uC804\uD654\uC774\uB2E4.
+    \uC548\uC5D0 \uAC07\uD788\uBA74 \uC7A5\uC2DC\uAC04 \uD589\uB3D9\uD560 \uC218
+    \uC5C6\uB2E4."
   prefeb: {fileID: 2478052313526099366, guid: 1029b0332d9afba4f8563482c7a09186, type: 3}

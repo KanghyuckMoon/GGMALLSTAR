@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_HideAndSick
   m_EditorClassIdentifier: 
-  itemName: I_HideAndSick
-  gameName: I_HideAndSick
-  explanation: I_HideAndSick
+  itemName: "\uCAD3\uC544\uC624\uB294 \uAD34\uBB3C"
+  gameName: HIDE AND SICK
+  explanation: "\uC124\uBA85"
   prefeb: {fileID: 8458328326490328573, guid: 6a229db7e4ae8744f97d7c2dd817bdf1, type: 3}

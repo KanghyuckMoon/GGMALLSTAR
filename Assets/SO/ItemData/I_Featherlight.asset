@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_Featherlight
   m_EditorClassIdentifier: 
-  itemName: I_Featherlight
-  gameName: I_Featherlight
-  explanation: I_Featherlight
+  itemName: "\uD398\uB354"
+  gameName: "\uD398\uB354\uB77C\uC774\uD2B8 \uC2A4\uD1A0\uB9AC"
+  explanation: " \uD398\uB354\uB77C\uC774\uD2B8 \uC2A4\uD1A0\uB9AC\uC758 \uC8FC\uC778\uACF5
+    \uCE90\uB9AD\uD130. \uAE43\uD138\uC744 \uD65C\uC6A9\uD55C \uD654\uB824\uD55C
+    \uC804\uD22C\uB97C \uAD6C\uC0AC\uD55C\uB2E4."
   prefeb: {fileID: 1701230324328028111, guid: b1fa2f82f7ffa034d873876c6897d395, type: 3}

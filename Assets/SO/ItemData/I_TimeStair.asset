@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_TimeStair
   m_EditorClassIdentifier: 
-  itemName: I_TimeStair
-  gameName: I_TimeStair
-  explanation: I_TimeStair
+  itemName: "\uD0C0\uC784\uBA38\uC2E0"
+  gameName: Time Stair
+  explanation: "[Time Stair]\uC5D0 \uB4F1\uC7A5\uD558\uB294 \uD0C0\uC784\uBA38\uC2E0,
+    \uD0C0\uC784\uB8E8\uD504\uC911\uC5D0 \uACE0\uC7A5\uC774\uB77C\uB3C4 \uB098\uBA74
+    \uC774\uC0C1\uD55C \uBB34\uD55C \uB8E8\uD504 \uACC4\uB2E8\uC5D0 \uB5A8\uC5B4\uC9C0\uB294
+    \uAC83 \uAC19\uB2E4."
   prefeb: {fileID: 2322681608644636486, guid: 0bf05fb33ef90284e9f3592239764a7e, type: 3}

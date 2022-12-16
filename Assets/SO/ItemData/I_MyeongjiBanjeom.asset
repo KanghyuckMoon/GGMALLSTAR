@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_MyeongjiBanjeom
   m_EditorClassIdentifier: 
-  itemName: I_MyeongjiBanjeom
-  gameName: I_MyeongjiBanjeom
-  explanation: I_MyeongjiBanjeom
+  itemName: "\uC624\uD1A0\uBC14\uC774"
+  gameName: "\uBA85\uC9C0\uBC18\uC810"
+  explanation: "[\uBA85\uC9C0\uBC18\uC810]\uC5D0 \uB4F1\uC7A5\uD558\uB294 \uC624\uD1A0\uBC14\uC774\uC640
+    \uADF8 \uC8FC\uC778. \uBC30\uB2EC \uC8FC\uBB38\uC774 \uB4E4\uC5B4\uC624\uBA74
+    \uD55C\uC2DC\uB77C\uB3C4 \uBE68\uB9AC \uC9C8\uC8FC\uD558\uC5EC \uBC30\uB2EC\uD574\uC57C\uD55C\uB2E4."
   prefeb: {fileID: 6504735631036689770, guid: 6c5bb72521825c84d9913f969194e25c, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
   m_Name: I_Fishight
   m_EditorClassIdentifier: 
-  itemName: Fishight
+  itemName: "\uBC14\uB2F7 \uC18D"
   gameName: Fishight
   explanation: Fishight
   prefeb: {fileID: 133673055048466637, guid: a6c657d111f0c4449b32415c5cfb1130, type: 3}

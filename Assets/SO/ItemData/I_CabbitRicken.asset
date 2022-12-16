@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3cca9a355d89144b886da459b6da519, type: 3}
-  m_Name: I_BounceGum
+  m_Name: I_CabbitRicken
   m_EditorClassIdentifier: 
-  itemName: "\uBC14\uC6B4\uC2A4"
-  gameName: BoucneGum
-  explanation: "\uAECC\uC774 \uBD99\uC5B4 \uB048\uC801\uB048\uC801\uD55C \uC5EC\uD589\uC744
-    \uBCF4\uB0B8 \uACF5\uC774\uB2E4."
-  prefeb: {fileID: 307184454030295550, guid: 7f5fa5f03426fd243bae0a0ab564491e, type: 3}
+  itemName: "\uD1A0\uB07C"
+  gameName: Cabbit Ricken
+  explanation: "\uC124\uBA85"
+  prefeb: {fileID: 6186858656625555030, guid: 84e3634d4d1c8cd4fb3236e9b7ebb664, type: 3}
