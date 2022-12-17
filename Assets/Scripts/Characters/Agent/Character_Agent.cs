@@ -16,6 +16,7 @@ public class Character_Agent : Character
         AddComponent(ComponentType.Damage, new CharacterDamage(this));
         AddComponent(ComponentType.Jump, new CharacterJump(this));
         AddComponent(ComponentType.Gravity, new CharacterGravity(this));
+        AddComponent(ComponentType.Level, new CharacterLevel(this));
         AddComponent(ComponentType.Skill1, new CharacterSkill_Agent(this));
         AddComponent(ComponentType.Color, new CharacterColor_Jaeby(this));
     }
