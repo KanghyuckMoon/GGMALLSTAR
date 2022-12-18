@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Agent
   CharacterImage: {fileID: 0}
-  MaxHP: 200
-  FirstJumpPower: 2.5
+  MaxHP: 150
+  FirstJumpPower: 7.5
   SecondJumpPower: 0
-  MoveSpeed: 3
+  MoveSpeed: 5
   DodgeSpeed: 1
   AirMoveSpeed: 3
   GravityScale: 1
   attackDelay: 0.25
-  skill1Delay: 0
-  skill2Delay: 0
+  skill1Delay: 6
+  skill2Delay: 10
   HitBoxOffset: {x: 0, y: 0, z: 0}
   HitBoxSize: {x: 0, y: 0, z: 0}
