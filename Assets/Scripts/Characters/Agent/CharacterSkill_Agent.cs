@@ -23,6 +23,7 @@ public class CharacterSkill_Agent : CharacterSkill
             if (CharacterLevel.Level > 1 && skillCoolTime1 >= Character.CharacterSO.skill1Delay)
             {
                 skillCoolTime1 = 0f;
+                Sound.SoundManager.Instance.PlayEFF("se_common_swing_07");
                 Pool.PoolManager.GetItem("Assets/Prefabs/Agent_Slash.prefab").GetComponent<SlashSkill>().SetSlashSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterSprite>().Direction, 5f, new Vector3(0f, 0.035f, 0f));
             }
         }, EventType.KEY_DOWN);
@@ -32,6 +33,7 @@ public class CharacterSkill_Agent : CharacterSkill
             if (CharacterLevel.Level > 2 && skillCoolTime2 >= Character.CharacterSO.skill2Delay)
             {
                 skillCoolTime2 = 0f;
+                Sound.SoundManager.Instance.PlayEFF("se_common_stage_demon_dojo_wall_break");
                 character.StartCoroutine(StatUpgrade());
             }
         }, EventType.KEY_DOWN);
@@ -64,18 +66,29 @@ public class CharacterSkill_Agent : CharacterSkill
 
     private IEnumerator StatUpgrade()
     {
+        (Character as Character_Agent).SpeedEffect.SetActive(true);
         CharacterSO characterSO = Character.CharacterSO;
 
         float defaultSpeed = characterSO.MoveSpeed;
-        float defaultJumpPower = characterSO.FirstJumpPower;
+        float defaultAirSpeed = characterSO.AirMoveSpeed;
+        float defaultGravitySpeed = characterSO.GravityScale;
+        float defaultDodgeSpeed = characterSO.DodgeSpeed;
+        //float defaultJumpPower = characterSO.FirstJumpPower;
 
         characterSO.MoveSpeed *= 2f;
-        characterSO.FirstJumpPower *= 2f;
+        characterSO.GravityScale *= 2f;
+        characterSO.AirMoveSpeed *= 2f;
+        characterSO.DodgeSpeed *= 2f;
+        //characterSO.FirstJumpPower *= 2f;
 
         yield return new WaitForSeconds(5f);
+        (Character as Character_Agent).SpeedEffect.SetActive(false);
 
         characterSO.MoveSpeed = defaultSpeed;
-        characterSO.FirstJumpPower = defaultJumpPower;
+        characterSO.GravityScale = defaultGravitySpeed;
+        characterSO.AirMoveSpeed = defaultAirSpeed;
+        characterSO.DodgeSpeed = defaultDodgeSpeed;
+        //characterSO.FirstJumpPower = defaultJumpPower;
 
     }
 

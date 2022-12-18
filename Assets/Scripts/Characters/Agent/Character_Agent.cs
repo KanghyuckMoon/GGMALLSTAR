@@ -21,4 +21,9 @@ public class Character_Agent : Character
         AddComponent(ComponentType.Color, new CharacterColor_Jaeby(this));
         AddComponent(ComponentType.Dodge, new CharacterDodge(this));
     }
+
+    [SerializeField]
+    private GameObject speedEffect;
+
+    public GameObject SpeedEffect => speedEffect;
 }
