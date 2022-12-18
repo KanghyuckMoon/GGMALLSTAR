@@ -23,4 +23,22 @@ public class CharacterSO : ScriptableObject
     [Header("Character's HitBox Collision")]
     public Vector3 HitBoxOffset;
     public Vector3 HitBoxSize;
+
+    public void Copy(ref CharacterSO characterSO)
+	{
+        characterSO.Name = this.Name;
+        characterSO.CharacterImage = this.CharacterImage;
+        characterSO.MaxHP = this.MaxHP;
+        characterSO.FirstJumpPower = this.FirstJumpPower;
+        characterSO.SecondJumpPower = this.SecondJumpPower;
+        characterSO.MoveSpeed = this.MoveSpeed;
+        characterSO.DodgeSpeed = this.DodgeSpeed;
+        characterSO.AirMoveSpeed = this.AirMoveSpeed;
+        characterSO.GravityScale = this.GravityScale;
+        characterSO.attackDelay = this.attackDelay;
+        characterSO.skill1Delay = this.skill1Delay;
+        characterSO.skill2Delay = this.skill2Delay;
+        characterSO.HitBoxOffset = this.HitBoxOffset;
+        characterSO.HitBoxSize = this.HitBoxSize;
+    }
 }

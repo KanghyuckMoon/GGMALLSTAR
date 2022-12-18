@@ -6,7 +6,17 @@ public abstract class Character : MonoBehaviour
 {
     [SerializeField]
     private CharacterSO _characterSO = null;
-    public CharacterSO CharacterSO => _characterSO;
+    public CharacterSO CharacterSO
+	{
+		get
+		{
+            return _characterSO;
+        }
+        set
+		{
+            _characterSO = value;
+        }
+	}
 
     [SerializeField]
     private CharacterLevelSO _characterLevelSO = null;

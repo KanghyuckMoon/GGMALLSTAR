@@ -16,6 +16,7 @@ public class LoadingItem : MonoBehaviour
 
 	private void SetRandomItem()
 	{
+		randomItems[0].SetActive(false);
 		int random = Random.Range(0, randomItems.Length);
 		randomItems[random].SetActive(true);
 	}

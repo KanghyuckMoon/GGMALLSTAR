@@ -477,6 +477,26 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/Fireball_Frog.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f202bcfea8fd3044c91e172284156ced
+    m_Address: Agent_AI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4cd317fc27135c0419c0a434a3ca59af
+    m_Address: Damvi_AI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aee622916a9d01c49b9ec5181788a7f7
+    m_Address: Puppet_AI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: eacec448bbbd3f144a2a865d74a10ce7
+    m_Address: Dice_AI
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7c8588570f56c3b4fb4315a26425b93f
+    m_Address: Puppet_AttackImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

@@ -15,14 +15,14 @@ MonoBehaviour:
   Name: Agent
   CharacterImage: {fileID: 0}
   MaxHP: 150
-  FirstJumpPower: 5
-  SecondJumpPower: 0
-  MoveSpeed: 5
-  DodgeSpeed: 1
-  AirMoveSpeed: 3
+  FirstJumpPower: 3
+  SecondJumpPower: 3
+  MoveSpeed: 2.5
+  DodgeSpeed: 6
+  AirMoveSpeed: 1.5
   GravityScale: 1
   attackDelay: 0.25
   skill1Delay: 6
-  skill2Delay: 10
+  skill2Delay: 20
   HitBoxOffset: {x: 0, y: 0, z: 0}
   HitBoxSize: {x: 0, y: 0, z: 0}
