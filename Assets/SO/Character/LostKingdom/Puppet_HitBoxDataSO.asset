@@ -24,10 +24,106 @@ MonoBehaviour:
       _attackSize: {x: 0.5, y: 0.3, z: 0}
       shakePower: 0
       shakeTime: 0
-      atkEffectType: 0
+      atkEffectType: -1
       atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
       hitEffectType: 0
       hitEffectDirectionType: 0
-      hitEffSoundName: 
-      atkEffSoundName: 
+      hitEffSoundName: se_common_sword_hit_s
+      atkEffSoundName: JaebyAttack
       addExp: 10
+  - hitBoxDatas:
+    - actionName: WindSkill
+      damage: 5
+      knockBack: 10
+      knockAngle: 20
+      hitTime: 0.1
+      sturnTime: 0.2
+      _attackOffset: {x: 0.25, y: 0.15, z: 0}
+      _attackSize: {x: 0.5, y: 0.3, z: 0}
+      shakePower: 0
+      shakeTime: 0
+      atkEffectType: 0
+      atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: se_common_sword_hit_s
+      atkEffSoundName: JaebyAttack
+      addExp: 30
+  - hitBoxDatas:
+    - actionName: FireBite
+      damage: 25
+      knockBack: 1
+      knockAngle: 0
+      hitTime: 0.5
+      sturnTime: 0.2
+      _attackOffset: {x: 0.25, y: 0.15, z: 0}
+      _attackSize: {x: 0.5, y: 0.3, z: 0}
+      shakePower: 0
+      shakeTime: 0
+      atkEffectType: 0
+      atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: se_common_sword_hit_s
+      atkEffSoundName: JaebyAttack
+      addExp: 15
+  - hitBoxDatas:
+    - actionName: EarthGolemAttack
+      damage: 30
+      knockBack: 3
+      knockAngle: 0
+      hitTime: 0.1
+      sturnTime: 0.5
+      _attackOffset: {x: 0.25, y: 0, z: 0}
+      _attackSize: {x: 0.5, y: 0.25, z: 0}
+      shakePower: 0.1
+      shakeTime: 0.02
+      atkEffectType: 0
+      atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: se_common_sword_hit_s
+      atkEffSoundName: JaebyAttack
+      addExp: 20
+  - hitBoxDatas:
+    - actionName: WaterBeam
+      damage: 10
+      knockBack: 5
+      knockAngle: 5
+      hitTime: 0.5
+      sturnTime: 0.25
+      _attackOffset: {x: 0.25, y: 0, z: 0}
+      _attackSize: {x: 0.5, y: 0.5, z: 0}
+      shakePower: 0
+      shakeTime: 0
+      atkEffectType: 0
+      atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: se_common_sword_hit_s
+      atkEffSoundName: JaebyAttack
+      addExp: 15
+  - hitBoxDatas:
+    - actionName: ALLSTAR
+      damage: 100
+      knockBack: 10
+      knockAngle: 90
+      hitTime: 0.5
+      sturnTime: 1.5
+      _attackOffset: {x: 0, y: 0, z: 0}
+      _attackSize: {x: 1, y: 0.5, z: 0}
+      shakePower: 0
+      shakeTime: 0
+      atkEffectType: 0
+      atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
+      hitEffectType: 0
+      hitEffectDirectionType: 0
+      hitEffSoundName: se_common_sword_hit_s
+      atkEffSoundName: JaebyAttack
+      addExp: 0

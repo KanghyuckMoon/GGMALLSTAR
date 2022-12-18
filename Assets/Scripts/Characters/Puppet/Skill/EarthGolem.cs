@@ -12,7 +12,9 @@ public class EarthGolem : Skill
 
     private Direction _direction = Direction.RIGHT;
 
-    public void SetEarthGolem(Character character, Vector3 position, Direction direction)
+    private HitBoxData _hitBoxData = null;
+
+    public void SetEarthGolem(Character character, HitBoxData hitBoxData, Vector3 position, Direction direction)
     {
         _animator = GetComponent<Animator>();
 
@@ -20,6 +22,7 @@ public class EarthGolem : Skill
         _character = character;
 
         _direction = direction;
+        _hitBoxData = hitBoxData;
 
         if (_direction == Direction.LEFT)
         {
@@ -38,7 +41,14 @@ public class EarthGolem : Skill
         if (_character.GetCharacterComponent<CharacterSkill_Puppet>().CurrentElementalType == CharacterSkill_Puppet.ElementalType.Earth)
         {
             _animator.SetTrigger("Attack");
+            StartCoroutine(AttackCoroutine());
         }
+    }
+
+    private IEnumerator AttackCoroutine()
+    {
+        yield return new WaitForSeconds(0.4f);
+        Pool.PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(_hitBoxData, _character.GetCharacterComponent<CharacterAttack>(), null, _hitBoxData._attackSize, _direction == Direction.RIGHT ? _hitBoxData._attackOffset : -_hitBoxData.atkEffectOffset);
     }
 
     private void OnDisable()
