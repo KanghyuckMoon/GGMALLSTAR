@@ -15,15 +15,15 @@ MonoBehaviour:
   hitBoxDatasList:
   - hitBoxDatas:
     - actionName: Attack
-      damage: 25
-      knockBack: 5
-      knockAngle: 2.5
-      hitTime: 0.1
-      sturnTime: 0.2
+      damage: 15
+      knockBack: 1
+      knockAngle: 10
+      hitTime: 0.2
+      sturnTime: 0.4
       _attackOffset: {x: 0.1, y: 0.15, z: 0}
       _attackSize: {x: 0.6, y: 0.3, z: 1}
-      shakePower: 0
-      shakeTime: 0
+      shakePower: 5
+      shakeTime: 0.5
       atkEffectType: -1
       atkEffectDirectionType: 0
       atkEffectOffset: {x: 0, y: 0, z: 0}
@@ -31,18 +31,18 @@ MonoBehaviour:
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_sword_hit_s
       atkEffSoundName: se_common_sword_swing_s
-      addExp: 1000
+      addExp: 12
   - hitBoxDatas:
     - actionName: Slash
       damage: 15
-      knockBack: 0
-      knockAngle: 0
-      hitTime: 0.1
-      sturnTime: 0.2
+      knockBack: 1
+      knockAngle: -90
+      hitTime: 0.4
+      sturnTime: 0.5
       _attackOffset: {x: 0, y: 0, z: 0}
       _attackSize: {x: 1, y: 1, z: 1}
-      shakePower: 0
-      shakeTime: 0
+      shakePower: 5
+      shakeTime: 0.8
       atkEffectType: -1
       atkEffectDirectionType: 0
       atkEffectOffset: {x: 0, y: 0, z: 0}
