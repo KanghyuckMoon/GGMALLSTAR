@@ -88,9 +88,9 @@ namespace Arcade
 			SelectDataSO.aiLevelP2 = SelectDataSO.winCount + 1;
 			arrowImage.DOAnchorPosX(checkImages[SelectDataSO.winCount + 1].anchoredPosition.x, 1f).OnComplete(() =>
 			{
-				int characterRandom = Random.Range(1, 3);
+				int characterRandom = Random.Range(1, 7);
 				SelectDataSO.characterSelectP2 = (CharacterSelect)characterRandom;
-				switch (Random.Range(0, 4))
+				switch (Random.Range(0, 7))
 				{
 					default:
 					case 0:
@@ -104,6 +104,15 @@ namespace Arcade
 						break;
 					case 3:
 						Loading.LoadingScene.Instance.LoadScene("QuietTown");
+						break;
+					case 4:
+						Loading.LoadingScene.Instance.LoadScene("LostKingdom");
+						break;
+					case 5:
+						Loading.LoadingScene.Instance.LoadScene("AgentStage");
+						break;
+					case 6:
+						Loading.LoadingScene.Instance.LoadScene("Bridge");
 						break;
 				}
 
