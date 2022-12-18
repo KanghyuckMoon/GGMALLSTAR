@@ -44,7 +44,7 @@ public class CharacterSkill_Agent : CharacterSkill
                 characterLevel.IsAllStarSkillUse = true;
 
                 Sound.SoundManager.Instance.PlayEFF("se_common_boss_core_hit");
-                CameraManager.SetAllStar(Character.transform);
+                CameraManager.SetAllStar(Character.transform, 2.5f);
 
                 RoundManager.StaticSetInputSturnTime(1f);
                 RoundManager.StaticStopMove(1f);
