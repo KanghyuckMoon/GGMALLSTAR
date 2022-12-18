@@ -45,8 +45,9 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                         damage += diceQueue.Dequeue().DiceNumber;
                     }
                     Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].damage = damage;
+
                     PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(ComponentType.Attack),
-                        () => { }, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset);
+                        null, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset);
 
                     Skill2Action();
                 }
@@ -140,6 +141,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
             PoolManager.AddObjToPool("Assets/Prefabs/Dice.prefab", diceQueue.Dequeue().gameObject);
         }
     }
+
     public override void Update()
     {
         base.Update();

@@ -461,10 +461,6 @@ MonoBehaviour:
     m_Address: Puppet
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 61edaa7e1392f2a47895018568b5bda2
-    m_Address: Puppet_AttackImage
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: f65df067e9a39f0468e40b70e27988d9
     m_Address: Assets/Prefabs/Agent_Slash.prefab
     m_ReadOnly: 0
