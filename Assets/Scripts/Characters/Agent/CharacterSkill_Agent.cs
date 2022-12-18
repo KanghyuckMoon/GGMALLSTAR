@@ -66,8 +66,18 @@ public class CharacterSkill_Agent : CharacterSkill
 
     private IEnumerator StatUpgrade()
     {
-        (Character as Character_Agent).SpeedEffect.SetActive(true);
-        CharacterSO characterSO = Character.CharacterSO;
+        GameObject speedEffect = null;
+        if(Character is Character_Agent)
+		{
+            speedEffect = (Character as Character_Agent).SpeedEffect;
+        }
+        else if(Character is Character_Agent_AI)
+		{
+            speedEffect = (Character as Character_Agent_AI).SpeedEffect;
+        }
+        CharacterSO characterSO = (ScriptableObject.CreateInstance(typeof(CharacterSO)) as CharacterSO);
+        Character.CharacterSO.Copy(ref characterSO);
+        Character.CharacterSO = characterSO;
 
         float defaultSpeed = characterSO.MoveSpeed;
         float defaultAirSpeed = characterSO.AirMoveSpeed;
@@ -82,7 +92,7 @@ public class CharacterSkill_Agent : CharacterSkill
         //characterSO.FirstJumpPower *= 2f;
 
         yield return new WaitForSeconds(5f);
-        (Character as Character_Agent).SpeedEffect.SetActive(false);
+        speedEffect.SetActive(false);
 
         characterSO.MoveSpeed = defaultSpeed;
         characterSO.GravityScale = defaultGravitySpeed;
