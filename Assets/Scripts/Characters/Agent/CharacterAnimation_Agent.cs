@@ -15,5 +15,6 @@ public class CharacterAnimation_Agent : CharacterAnimation
         AddAnimationHash(AnimationType.Run, AnimationKeyWord.RUN);
         AddAnimationHash(AnimationType.Jump, AnimationKeyWord.JUMP);
         AddAnimationHash(AnimationType.Attack, AnimationKeyWord.ATTACK);
+        AddAnimationHash(AnimationType.AllStarSkill, AnimationKeyWord.ALL_STAR_SKILL);
     }
 }

@@ -13,5 +13,6 @@ namespace KeyWord
         public const string SKILL2 = "Skill2";
         public const string DAMAGE = "IsDamage";
         public const string DODGE = "Dodge";
+        public const string ALL_STAR_SKILL = "AllStarSkill";
     }
 }
