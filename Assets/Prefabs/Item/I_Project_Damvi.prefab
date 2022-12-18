@@ -1004,7 +1004,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1014662924640885066}
-  - component: {fileID: 6409997042886066992}
   m_Layer: 3
   m_Name: I_Project_Damvi
   m_TagString: Player
@@ -1029,26 +1028,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -140, z: 0}
---- !u!95 &6409997042886066992
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 387061221390205936}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: dd3ffdd6d596668ac5f7872513945965, type: 3}
-  m_Controller: {fileID: 9100000, guid: 04796ea8bd47d1042b0538121f4b45d4, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &392667962976736425
 GameObject:
   m_ObjectHideFlags: 0

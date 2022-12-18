@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Puppet
   CharacterImage: {fileID: 0}
-  MaxHP: 200
-  FirstJumpPower: 5
+  MaxHP: 100
+  FirstJumpPower: 3
   SecondJumpPower: 5
-  MoveSpeed: 10
-  DodgeSpeed: 1
-  AirMoveSpeed: 5
-  GravityScale: 2
-  attackDelay: 0
-  skill1Delay: 0
-  skill2Delay: 0
+  MoveSpeed: 3
+  DodgeSpeed: 5
+  AirMoveSpeed: 2
+  GravityScale: 1
+  attackDelay: 0.3
+  skill1Delay: 1
+  skill2Delay: 1
   HitBoxOffset: {x: 0, y: 0, z: 0}
   HitBoxSize: {x: 0, y: 0, z: 0}
