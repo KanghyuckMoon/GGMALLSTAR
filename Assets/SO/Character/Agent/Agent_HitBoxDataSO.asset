@@ -54,8 +54,8 @@ MonoBehaviour:
   - hitBoxDatas:
     - actionName: ALLSTARSKILL
       damage: 80
-      knockBack: 50
-      knockAngle: 30
+      knockBack: 20
+      knockAngle: 80
       hitTime: 0.1
       sturnTime: 0.2
       _attackOffset: {x: 5, y: 0, z: 0}
