@@ -46,8 +46,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                     }
                     Character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0].damage = damage;
 
-                    PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(ComponentType.Attack),
-                        null, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackSize, character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]._attackOffset);
+                    Character.Animator.SetTrigger(AnimationKeyWord.SKILL2);
 
                     Skill2Action();
                 }
