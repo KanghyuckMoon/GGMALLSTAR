@@ -18,12 +18,12 @@ MonoBehaviour:
       damage: 5
       knockBack: 5
       knockAngle: 15
-      hitTime: 0.1
+      hitTime: 0.3
       sturnTime: 0.2
       _attackOffset: {x: 0.25, y: 0.15, z: 0}
       _attackSize: {x: 0.5, y: 0.3, z: 0}
       shakePower: 3
-      shakeTime: 0.3
+      shakeTime: 0.6
       atkEffectType: -1
       atkEffectDirectionType: 0
       atkEffectOffset: {x: 0, y: 0, z: 0}
