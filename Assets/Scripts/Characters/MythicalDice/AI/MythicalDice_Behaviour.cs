@@ -68,11 +68,9 @@ public class MythicalDice_Behaviour : BehaviourTree
 	}
 	private INode Level2()
 	{
-		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
 		//NodeSetting
 		return Selector
 			(
-				//new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(Skill1Condition, UseSkill1),
 				IfAction(Skill2Condition, UseSkill2),
 				IfAction(AllStarSkillCondition, UseAllStarSkill),
@@ -92,11 +90,9 @@ public class MythicalDice_Behaviour : BehaviourTree
 	}
 	private INode Level3()
 	{
-		//ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
 		//NodeSetting
 		return Selector
 			(
-				//new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(Skill1Condition, UseSkill1),
 				IfAction(Skill2Condition, UseSkill2),
 				IfAction(AllStarSkillCondition, UseAllStarSkill),
@@ -116,11 +112,9 @@ public class MythicalDice_Behaviour : BehaviourTree
 	}
 	private INode Level4()
 	{
-		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
 		//NodeSetting
 		return Selector
 			(
-				new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(Skill1Condition, UseSkill1),
 				IfAction(Skill2Condition, UseSkill2),
 				IfAction(AllStarSkillCondition, UseAllStarSkill),
@@ -140,11 +134,9 @@ public class MythicalDice_Behaviour : BehaviourTree
 	}
 	private INode Level5()
 	{
-		ComboSO comboSO = Addressable.AddressablesManager.Instance.GetResource<ComboSO>("JaebyComboSO");
 		//NodeSetting
 		return Selector
 			(
-				new ConditionCheckNode(IsAttackCombo, new ComboNode(comboSO, HoldKey, UpKey, TapKey)),
 				IfAction(Skill1Condition, UseSkill1),
 				IfAction(Skill2Condition, UseSkill2),
 				IfAction(AllStarSkillCondition, UseAllStarSkill),
