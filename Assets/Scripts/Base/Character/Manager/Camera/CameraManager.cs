@@ -86,7 +86,7 @@ public class CameraManager : MonoBehaviour
 
         cinemachineVirtualCameras[(int)CameraType.AllStar].Follow = transform;
         cinemachineVirtualCameras[(int)CameraType.AllStar].LookAt = transform;
-        cinemachineVirtualCameras[(int)CameraType.AllStar].GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = new Vector3(cinemachineVirtualCameras[(int)CameraType.AllStar].GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x, cinemachineVirtualCameras[(int)CameraType.AllStar].GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y, cinemachineVirtualCameras[(int)CameraType.AllStar].GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z - distance);
+        cinemachineVirtualCameras[(int)CameraType.AllStar].GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset += new Vector3(0f, 0f, -distance);
         //var transpoer = cinemachineVirtualCameras[(int)CameraType.Zoom].GetCinemachineComponent<CinemachineTransposer>();
         //float killTotalTime = killTime;
         //Vector3 startOffset = new Vector3(-3, 0.5f, -2.5f);
