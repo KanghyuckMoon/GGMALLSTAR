@@ -6,6 +6,15 @@ using Pool;
 
 public class CharacterSkill_Puppet : CharacterSkill
 {
+    public CharacterLevel CharacterLevel
+    {
+        get
+        {
+            characterLevel ??= Character.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
+            return characterLevel;
+        }
+    }
+
     // Elemental's Transform
     private Transform _elementalTransform = null;
 
@@ -58,75 +67,84 @@ public class CharacterSkill_Puppet : CharacterSkill
 
         CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
         {
-            _elementalType = _elementalType == ElementalType.Count ? ElementalType.Wind : (ElementalType)(((uint)_elementalType + 1) % (uint)ElementalType.Count);
-
-            for (int i = 0; i < _elemental.Length; i++)
+            if (CharacterLevel.Level > 1 && skillCoolTime1 >= Character.CharacterSO.skill1Delay)
             {
-                _elemental[i].SetActive(false);
-            }
+                _elementalType = _elementalType == ElementalType.Count ? ElementalType.Wind : (ElementalType)(((uint)_elementalType + 1) % (uint)ElementalType.Count);
 
-            _elemental[(uint)_elementalType].SetActive(true);
+                for (int i = 0; i < _elemental.Length; i++)
+                {
+                    _elemental[i].SetActive(false);
+                }
 
-            // roll back stat
+                _elemental[(uint)_elementalType].SetActive(true);
+
+                // roll back stat
 
 
-            // Elemental Type Effect Setting
-            switch (_elementalType)
-            {
-                case ElementalType.Wind:
+                // Elemental Type Effect Setting
+                switch (_elementalType)
+                {
+                    case ElementalType.Wind:
 
-                    break;
-                case ElementalType.Fire:
+                        break;
+                    case ElementalType.Fire:
 
-                    break;
-                case ElementalType.Earth:
+                        break;
+                    case ElementalType.Earth:
 
-                    break;
-                case ElementalType.Water:
+                        break;
+                    case ElementalType.Water:
 
-                    break;
-                default:
-                    Debug.LogError("ElementalType Error");
-                    break;
+                        break;
+                    default:
+                        Debug.LogError("ElementalType Error");
+                        break;
+                }
             }
 
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.SKILL_2, () =>
         {
-            switch (_elementalType)
+            if (CharacterLevel.Level > 2 && skillCoolTime2 >= Character.CharacterSO.skill2Delay)
             {
-                case ElementalType.Wind:
-                    var wind = PoolManager.GetItem("Assets/Prefabs/WindSkill.prefab").GetComponent<WindSkill>();
-                    wind.SetWindSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.transform.position);
-                    Vector3 dir = new Vector3(_character.GetCharacterComponent<CharacterMove>().InputDirection.x * 5f, _character.GetCharacterComponent<CharacterMove>().InputDirection.y + 5f, 0f);
+                switch (_elementalType)
+                {
+                    case ElementalType.Wind:
+                        var wind = PoolManager.GetItem("Assets/Prefabs/WindSkill.prefab").GetComponent<WindSkill>();
+                        wind.SetWindSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.transform.position);
+                        Vector3 dir = new Vector3(_character.GetCharacterComponent<CharacterMove>().InputDirection.x * 5f, _character.GetCharacterComponent<CharacterMove>().InputDirection.y + 5f, 0f);
 
-                    _character.Rigidbody.velocity = Vector3.zero;
-                    _character.Rigidbody.AddForce(dir, ForceMode.Impulse);
+                        _character.Rigidbody.velocity = Vector3.zero;
+                        _character.Rigidbody.AddForce(dir, ForceMode.Impulse);
 
-                    break;
-                case ElementalType.Fire:
-                    PoolManager.GetItem("Assets/Prefabs/FireBite.prefab").GetComponent<FireBiteSkill>().SetFireBiteSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0], _character.transform.position + (_character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? new Vector3(0.1f, 0.2f, 0f) : new Vector3(-0.1f, 0.2f, 0f)), _character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? Vector3.right : Vector3.left);
-                    break;
-                case ElementalType.Earth:
-                    if (!_isEarthGolemSpawn)
-                    {
-                        _isEarthGolemSpawn = true;
-                        PoolManager.GetItem("Assets/Prefabs/EarthGolem.prefab").GetComponent<EarthGolem>().SetEarthGolem(_character, _character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0], _character.transform.position + (_character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? new Vector3(0.1f, 0.25f, 0f) : new Vector3(-0.1f, 0.25f, 0f)), _character.GetCharacterComponent<CharacterSprite>().Direction);
-                    }
-                    break;
-                case ElementalType.Water:
-                    PoolManager.GetItem("Assets/Prefabs/WaterBeam.prefab").GetComponent<WaterBeam>().SetWaterBeam(_character, _character.HitBoxDataSO.hitBoxDatasList[4].hitBoxDatas[0], _character.transform.position + (_character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? new Vector3(0.5f, 0.125f, 0f) : new Vector3(-0.5f, 0.125f, 0f)), _character.GetCharacterComponent<CharacterSprite>().Direction);
-                    break;
-                default:
-                    Debug.LogError("ElementalType Error");
-                    break;
+                        break;
+                    case ElementalType.Fire:
+                        PoolManager.GetItem("Assets/Prefabs/FireBite.prefab").GetComponent<FireBiteSkill>().SetFireBiteSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0], _character.transform.position + (_character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? new Vector3(0.1f, 0.2f, 0f) : new Vector3(-0.1f, 0.2f, 0f)), _character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? Vector3.right : Vector3.left);
+                        break;
+                    case ElementalType.Earth:
+                        if (!_isEarthGolemSpawn)
+                        {
+                            _isEarthGolemSpawn = true;
+                            PoolManager.GetItem("Assets/Prefabs/EarthGolem.prefab").GetComponent<EarthGolem>().SetEarthGolem(_character, _character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0], _character.transform.position + (_character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? new Vector3(0.1f, 0.25f, 0f) : new Vector3(-0.1f, 0.25f, 0f)), _character.GetCharacterComponent<CharacterSprite>().Direction);
+                        }
+                        break;
+                    case ElementalType.Water:
+                        PoolManager.GetItem("Assets/Prefabs/WaterBeam.prefab").GetComponent<WaterBeam>().SetWaterBeam(_character, _character.HitBoxDataSO.hitBoxDatasList[4].hitBoxDatas[0], _character.transform.position + (_character.GetCharacterComponent<CharacterSprite>().Direction == Direction.RIGHT ? new Vector3(0.5f, 0.125f, 0f) : new Vector3(-0.5f, 0.125f, 0f)), _character.GetCharacterComponent<CharacterSprite>().Direction);
+                        break;
+                    default:
+                        Debug.LogError("ElementalType Error");
+                        break;
+                }
             }
         }, EventType.KEY_DOWN);
 
         CharacterEvent.AddEvent(EventKeyWord.ALL_STAR_SKILL, () =>
         {
-            PoolManager.GetItem("Assets/Prefabs/FireBeamALLSTAR.prefab").GetComponent<FireBeamALLSTARSkill>().SetFireBeamALLSTARSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[5].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character.transform.position); // != null ? _character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character.gameObject.transform.position : _character.transform.position);
+            if (CharacterLevel.Level > 3 && !CharacterLevel.IsAllStarSkillUse)
+            {
+                PoolManager.GetItem("Assets/Prefabs/FireBeamALLSTAR.prefab").GetComponent<FireBeamALLSTARSkill>().SetFireBeamALLSTARSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[5].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character.transform.position); // != null ? _character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character.gameObject.transform.position : _character.transform.position);
+            }
         }, EventType.KEY_DOWN);
     }
 }
