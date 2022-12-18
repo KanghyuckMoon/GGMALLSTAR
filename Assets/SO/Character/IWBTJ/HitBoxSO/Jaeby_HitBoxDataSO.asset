@@ -26,6 +26,7 @@ MonoBehaviour:
       shakeTime: 0.3
       atkEffectType: -1
       atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
       hitEffectType: 0
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_sword_hit_s
@@ -44,6 +45,7 @@ MonoBehaviour:
       shakeTime: 0.5
       atkEffectType: -1
       atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
       hitEffectType: 0
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_sword_hit_s
@@ -62,6 +64,7 @@ MonoBehaviour:
       shakeTime: 0.7
       atkEffectType: -1
       atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
       hitEffectType: 0
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_sword_hit_s
@@ -80,6 +83,7 @@ MonoBehaviour:
       shakeTime: 1.3
       atkEffectType: -1
       atkEffectDirectionType: 0
+      atkEffectOffset: {x: 0, y: 0, z: 0}
       hitEffectType: 0
       hitEffectDirectionType: 0
       hitEffSoundName: se_item_killsword_critical_hit

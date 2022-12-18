@@ -133,7 +133,7 @@ MonoBehaviour:
     m_Address: HitBox
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 856b49be42af2e14f9bf104d36bdca6e
+  - m_GUID: 80f23d3a20a30654097fb118f4a5a743
     m_Address: Assets/Prefabs/Fireball_Frog.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -421,24 +421,56 @@ MonoBehaviour:
     m_Address: Puppet_AllStarSkillImage
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 80f23d3a20a30654097fb118f4a5a743
-    m_Address: Bullet_Damvi
+  - m_GUID: 2843ad61044b7604da54d2d83c4302f4
+    m_Address: Assets/Prefabs/FireBeamALLSTAR.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4c73a7eca2675dc4f93dc14631c51f66
-    m_Address: Maggellan_Damvi
+  - m_GUID: dff826eda5df96d45a67e4aca1271bb9
+    m_Address: Assets/Prefabs/Water.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4cd317fc27135c0419c0a434a3ca59af
-    m_Address: Damvi_AI
+  - m_GUID: 3d7319546c2deb149beddbc256505535
+    m_Address: Assets/Prefabs/WaterBeam.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: a92e6052739f86c43907e1af947d1565
-    m_Address: Agent_AttackImage
+  - m_GUID: f5b45ddc7ea683a499b5db1402e34f38
+    m_Address: Assets/Prefabs/Wind.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7c8588570f56c3b4fb4315a26425b93f
+  - m_GUID: b42edded623af3643853fd8a18e488cd
+    m_Address: Assets/Prefabs/WindSkill.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d24de52f785b8f84f8257ef1b9210db5
+    m_Address: Assets/Prefabs/Earth.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec7daf042dc6aa74db93de099ff92ba6
+    m_Address: Assets/Prefabs/EarthGolem.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9caa6ebbaba17ae4c98677ad175b806f
+    m_Address: Assets/Prefabs/Fire.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: dee58a5b2564fe441a1a1c517b5a19c9
+    m_Address: Assets/Prefabs/FireBite.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 936d3f12cb94626468c019ada4e62346
+    m_Address: Puppet
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 61edaa7e1392f2a47895018568b5bda2
     m_Address: Puppet_AttackImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f65df067e9a39f0468e40b70e27988d9
+    m_Address: Assets/Prefabs/Agent_Slash.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4730e7b11f6193344abc426123573edd
+    m_Address: Agent
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
