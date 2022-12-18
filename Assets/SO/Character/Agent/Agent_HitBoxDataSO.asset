@@ -15,8 +15,8 @@ MonoBehaviour:
   hitBoxDatasList:
   - hitBoxDatas:
     - actionName: Attack
-      damage: 5
-      knockBack: 0.2
+      damage: 25
+      knockBack: 5
       knockAngle: 2.5
       hitTime: 0.1
       sturnTime: 0.2
@@ -31,7 +31,7 @@ MonoBehaviour:
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_sword_hit_s
       atkEffSoundName: se_common_sword_swing_s
-      addExp: 100
+      addExp: 1000
   - hitBoxDatas:
     - actionName: Slash
       damage: 15

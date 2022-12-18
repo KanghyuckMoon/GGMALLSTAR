@@ -16,6 +16,8 @@ public class CharacterSkill_Agent : CharacterSkill
 
     public CharacterSkill_Agent(Character character) : base(character)
     {
+        SkillAllStarAction = AllStarSkill;
+
         CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
         {
             if (CharacterLevel.Level > 1 && skillCoolTime1 >= Character.CharacterSO.skill1Delay)
@@ -40,10 +42,24 @@ public class CharacterSkill_Agent : CharacterSkill
             {
                 isCanUseSkill3 = false;
                 characterLevel.IsAllStarSkillUse = true;
-                Pool.PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(_character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(), null, _character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackSize, _character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackOffset);
-                character.Animator.SetTrigger(AnimationKeyWord.ALL_STAR_SKILL);
+
+                Sound.SoundManager.Instance.PlayEFF("se_common_boss_core_hit");
+                CameraManager.SetAllStar(Character.transform);
+
+                RoundManager.StaticSetInputSturnTime(1f);
+                RoundManager.StaticStopMove(1f);
+                AllStarSkillUse?.Invoke();
+
+                Character.Animator.SetTrigger(AnimationKeyWord.ALL_STAR_SKILL);
             }
         }, EventType.KEY_DOWN);
+    }
+
+    public System.Action SkillAllStarAction;
+
+    private void AllStarSkill()
+    {
+        Pool.PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(_character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(), null, _character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackSize, _character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackOffset);
     }
 
     private IEnumerator StatUpgrade()

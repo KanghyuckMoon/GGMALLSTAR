@@ -103,9 +103,9 @@ public class CharacterSkill_Jaeby : CharacterSkill
     {
         yield return new WaitForSeconds(1f);
 
-        if(RoundManager.ReturnIsSetting())
+        if (RoundManager.ReturnIsSetting())
         {
             PoolManager.GetItem("Assets/Prefabs/ALL_STAR_SKILL_Projectile_Jaeby.prefab").GetComponent<AllStarSkillProjectile_Jaeby>().SetSkillProjectile(Character, Character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite).Direction, Character.transform.position + new Vector3(0, 0.09f, 0), Character.HitBoxDataSO.hitBoxDatasList[3].hitBoxDatas[0]);
-		}
+        }
     }
 }
