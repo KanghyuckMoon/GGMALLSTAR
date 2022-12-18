@@ -41,20 +41,33 @@ public class CharacterSkill_Puppet : CharacterSkill
         get => _isEarthGolemSpawn;
         set => _isEarthGolemSpawn = value;
     }
-
+    
     public CharacterSkill_Puppet(Character character) : base(character)
     {
+    }
+
+	protected override void SetEvent()
+	{
+		base.SetEvent();
+
         // Elemental Transform Caching
-        _elementalTransform = (character as Character_Puppet)?.ElementalTransform;
+        if(Character is Character_Puppet)
+		{
+            _elementalTransform = (Character as Character_Puppet)?.ElementalTransform;
+		}
+        else if(Character is Character_Puppet_AI)
+		{
+            _elementalTransform = (Character as Character_Puppet_AI)?.ElementalTransform;
+		}
 
         // Elemental variable init
         _elemental = new GameObject[(uint)ElementalType.Count];
 
         // Elemental Prefab Caching
-        _elemental[(uint)ElementalType.Wind] = PoolManager.GetItem("Assets/Prefabs/Wind.prefab");
-        _elemental[(uint)ElementalType.Fire] = PoolManager.GetItem("Assets/Prefabs/Fire.prefab");
-        _elemental[(uint)ElementalType.Earth] = PoolManager.GetItem("Assets/Prefabs/Earth.prefab");
-        _elemental[(uint)ElementalType.Water] = PoolManager.GetItem("Assets/Prefabs/Water.prefab");
+        _elemental[(uint)ElementalType.Wind] = _elementalTransform.GetChild(0).gameObject;
+        _elemental[(uint)ElementalType.Fire] = _elementalTransform.GetChild(1).gameObject;
+        _elemental[(uint)ElementalType.Earth] = _elementalTransform.GetChild(2).gameObject;
+        _elemental[(uint)ElementalType.Water] = _elementalTransform.GetChild(3).gameObject;
 
 
         // Elemental Default Setting
@@ -73,6 +86,7 @@ public class CharacterSkill_Puppet : CharacterSkill
                 skillCoolTime1 = 0f;
 
                 _elementalType = _elementalType == ElementalType.Count ? ElementalType.Wind : (ElementalType)(((uint)_elementalType + 1) % (uint)ElementalType.Count);
+                _elementalType = _elementalType == ElementalType.Count ? ElementalType.Wind : _elementalType;
 
                 for (int i = 0; i < _elemental.Length; i++)
                 {
@@ -113,6 +127,10 @@ public class CharacterSkill_Puppet : CharacterSkill
             if (CharacterLevel.Level > 2 && skillCoolTime2 >= Character.CharacterSO.skill2Delay)
             {
                 skillCoolTime2 = 0f;
+
+                _elementalType = _elementalType == ElementalType.Count ? ElementalType.Wind : _elementalType;
+                _elemental[(uint)_elementalType].SetActive(true);
+
 
                 switch (_elementalType)
                 {
@@ -167,8 +185,7 @@ public class CharacterSkill_Puppet : CharacterSkill
         }, EventType.KEY_DOWN);
     }
 
-
-    public override void Update()
+	public override void Update()
     {
         base.Update();
         if (skillCoolTime1 < Character.CharacterSO.skill1Delay)

@@ -13,6 +13,8 @@ public class EarthGolem : Skill
     private Direction _direction = Direction.RIGHT;
 
     private HitBoxData _hitBoxData = null;
+    private BoxCollider _boxCollider;
+
 
     public void SetEarthGolem(Character character, HitBoxData hitBoxData, Vector3 position, Direction direction)
     {
@@ -48,7 +50,22 @@ public class EarthGolem : Skill
     private IEnumerator AttackCoroutine()
     {
         yield return new WaitForSeconds(0.4f);
-        Pool.PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(_hitBoxData, _character.GetCharacterComponent<CharacterAttack>(), null, _hitBoxData._attackSize, _direction == Direction.RIGHT ? _hitBoxData._attackOffset : -_hitBoxData.atkEffectOffset);
+        var hitbox = Pool.PoolManager.GetItem("HitBox").GetComponent<HitBox>();
+        hitbox.SetHitBox(_hitBoxData, _character.GetCharacterComponent<CharacterAttack>(), null, _hitBoxData._attackSize, _direction == Direction.RIGHT ? _hitBoxData._attackOffset : -_hitBoxData.atkEffectOffset);
+        Vector3 pos = transform.position;
+        if (_direction == Direction.LEFT)
+		{
+            pos.x -= _hitBoxData._attackOffset.x;
+        }
+        else
+		{
+            pos.x += _hitBoxData._attackOffset.x;
+        }
+
+        pos.y += _hitBoxData._attackOffset.y;
+        pos.z += _hitBoxData._attackOffset.z;
+
+        hitbox.transform.position = pos;
     }
 
     private void OnDisable()

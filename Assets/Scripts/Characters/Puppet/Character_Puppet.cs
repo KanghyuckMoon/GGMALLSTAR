@@ -28,5 +28,15 @@ public class Character_Puppet : Character
     [SerializeField]
     private Transform _elementalTransform = null;
 
-    public Transform ElementalTransform => _elementalTransform;
+    public Transform ElementalTransform
+    {
+        get
+		{
+            if(_elementalTransform is null)
+			{
+                _elementalTransform = transform.GetChild(1);
+            }
+            return _elementalTransform;
+		}
+    }
 }
