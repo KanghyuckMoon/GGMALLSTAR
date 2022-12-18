@@ -20,7 +20,7 @@ public class SlashSkill : Skill
         _hitBoxData = hitBoxData;
         transform.position = _character.transform.position + offset;
 
-        character.transform.localScale = new Vector3(_direction == Direction.RIGHT ? 0.5f : -0.5f, 0.5f, 1f);
+        GetComponent<SpriteRenderer>().flipX = _direction == Direction.LEFT;
     }
 
     private void Update()
