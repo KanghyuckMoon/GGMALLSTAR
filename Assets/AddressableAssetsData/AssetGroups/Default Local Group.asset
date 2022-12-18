@@ -477,6 +477,10 @@ MonoBehaviour:
     m_Address: Agent_AttackImage
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 856b49be42af2e14f9bf104d36bdca6e
+    m_Address: Assets/Prefabs/Fireball_Frog.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:
