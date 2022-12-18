@@ -31,16 +31,8 @@ public class PressSpace : MonoBehaviour
 		{
 			if (Input.anyKeyDown)
 			{
-				if (currentTime.Year != 2022 && currentTime.Month != 12 && currentTime.Day > 5)
-				{
-					Debug.Log("Cant play game");
-					Application.Quit();
-				}
-				else
-				{
-					isInput = true;
-					StartCoroutine(SceneMove());
-				}
+				isInput = true;
+				StartCoroutine(SceneMove());
 			}
 		}
     }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: I_Refleact
   m_EditorClassIdentifier: 
   itemName: Refleact
-  gameName: Refleact
+  gameName: refleact
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 1676566171530148313, guid: b5df6ab22d8125949be03959f06addd7, type: 3}

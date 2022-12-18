@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: I_SecurityPoker
   m_EditorClassIdentifier: 
   itemName: 'Security Poker  '
-  gameName: 'Security Poker  '
+  gameName: Security Poker
   explanation: "\uC124\uBA85"
   prefeb: {fileID: 6637865532634586881, guid: 61c3263280f2d4449a4b26a602b2dce8, type: 3}
