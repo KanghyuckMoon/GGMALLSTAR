@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class AnimationToAttack : MonoBehaviour
 {
-	private Character character;
+    private Character character;
 
-	private void Start()
-	{
-		character = GetComponentInParent<Character>();
-	}
+    private void Start()
+    {
+        character = GetComponentInParent<Character>();
+    }
 
-	public void OnAttack(int hitboxIndex)
-	{
-		character.OnAttack(hitboxIndex);
-	}
+    public void OnAttack(int hitboxIndex)
+    {
+        character.OnAttack(hitboxIndex);
+    }
+
+    public void OnAllStarSkill()
+    {
+        character.GetCharacterComponent<CharacterSkill_Agent>().SkillAllStarAction?.Invoke();
+    }
 }

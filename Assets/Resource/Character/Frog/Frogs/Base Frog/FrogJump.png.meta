@@ -147,211 +147,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_0
+      name: FrogJump_0
       rect:
         serializedVersion: 2
-        x: 9
+        x: 17
         y: 32
-        width: 46
+        width: 26
         height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbe748090825c1aa0800000000000000
-      internalID: -6188981075780010307
+      spriteID: 6b9a57bf500493244bfaf06da631c01e
+      internalID: -2024848219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_1
+      name: FrogJump_1
       rect:
         serializedVersion: 2
-        x: 71
+        x: 81
         y: 29
-        width: 46
+        width: 26
         height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d08f8268cbd52ab0800000000000000
-      internalID: -5033375354823147305
+      spriteID: 14036f7bfb3962a47ac0896fa1ddfbbb
+      internalID: -1105290989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_2
+      name: FrogJump_2
       rect:
         serializedVersion: 2
-        x: 134
+        x: 137
         y: 22
-        width: 46
+        width: 34
         height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3983067c96b748970800000000000000
-      internalID: 8756259269761841299
+      spriteID: 39470891317fe334298160acb8ec003d
+      internalID: -419008315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_3
+      name: FrogJump_3
       rect:
         serializedVersion: 2
-        x: 195
+        x: 197
         y: 18
-        width: 46
+        width: 38
         height: 36
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60a605496406324e0800000000000000
-      internalID: -2007655152624834042
+      spriteID: cf4f438c6a12c7e4eb772759c03835a9
+      internalID: -1515976160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_4
+      name: FrogJump_4
       rect:
         serializedVersion: 2
         x: 259
         y: 31
-        width: 46
+        width: 45
         height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f7409247f4fddfb0800000000000000
-      internalID: -4621268299801409548
+      spriteID: 06a942967b9b8b34cb7aa530c93f511a
+      internalID: -1151033481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_5
+      name: FrogJump_5
       rect:
         serializedVersion: 2
         x: 320
         y: 31
         width: 48
         height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 560582307da9c8100800000000000000
-      internalID: 111634339039039589
+      spriteID: 7bca4adff80941149b17334f32f1244d
+      internalID: 317796810
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_6
+      name: FrogJump_6
       rect:
         serializedVersion: 2
         x: 387
         y: 31
-        width: 46
+        width: 45
         height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c77e8bb06c4d30860800000000000000
-      internalID: 7495068151939917692
+      spriteID: 793a494f3753a5d4fb789afc570926e6
+      internalID: -54090770
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_7
+      name: FrogJump_7
       rect:
         serializedVersion: 2
-        x: 452
+        x: 453
         y: 34
-        width: 46
+        width: 43
         height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a82ee8818b1380f0800000000000000
-      internalID: -1116018039495710560
+      spriteID: 0839e7d0f1cd11341a7aa2275202e9fb
+      internalID: -276667985
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_8
+      name: FrogJump_8
       rect:
         serializedVersion: 2
-        x: 518
+        x: 523
         y: 32
-        width: 46
+        width: 32
         height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56ba229340c3d30c0800000000000000
-      internalID: -4594450056011928731
+      spriteID: ca7bfbd14380d1448bffe16441a719a4
+      internalID: -170518012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: adfadfafsadfasdfdfafa_9
+      name: FrogJump_9
       rect:
         serializedVersion: 2
-        x: 585
+        x: 593
         y: 32
-        width: 46
+        width: 26
         height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 132f21df0722d9d00800000000000000
-      internalID: 980978162514194993
+      spriteID: 17ac9a1f95717ad44aa2a4eaeba0f104
+      internalID: -237658802
       vertices: []
       indices: 
       edges: []
@@ -367,16 +367,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      adfadfafsadfasdfdfafa_0: -6188981075780010307
-      adfadfafsadfasdfdfafa_8: -4594450056011928731
-      adfadfafsadfasdfdfafa_3: -2007655152624834042
-      adfadfafsadfasdfdfafa_1: -5033375354823147305
-      adfadfafsadfasdfdfafa_5: 111634339039039589
-      adfadfafsadfasdfdfafa_6: 7495068151939917692
-      adfadfafsadfasdfdfafa_4: -4621268299801409548
-      adfadfafsadfasdfdfafa_7: -1116018039495710560
-      adfadfafsadfasdfdfafa_2: 8756259269761841299
-      adfadfafsadfasdfdfafa_9: 980978162514194993
+      FrogJump_4: -1151033481
+      FrogJump_3: -1515976160
+      FrogJump_7: -276667985
+      FrogJump_2: -419008315
+      FrogJump_0: -2024848219
+      FrogJump_8: -170518012
+      FrogJump_1: -1105290989
+      FrogJump_5: 317796810
+      FrogJump_9: -237658802
+      FrogJump_6: -54090770
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -15,7 +15,7 @@ public class CharacterSkill_Frog : CharacterSkill
             return characterLevel;
         }
     }
-    
+
     public CharacterSkill_Frog(Character character) : base(character)
     {
         CharacterEvent.AddEvent(EventKeyWord.SKILL_1, () =>
@@ -23,11 +23,12 @@ public class CharacterSkill_Frog : CharacterSkill
             if (CharacterLevel.Level > 1 && skillCoolTime1 >= Character.CharacterSO.skill1Delay)
             {
                 skillCoolTime1 = 0;
-                
+
                 PoolManager.GetItem("Assets/Prefabs/Fireball_Frog.prefab").GetComponent<FireBall_Frog>().SetFireBall(
                     character, character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite).Direction,
                     character.transform.position + new Vector3(0.2f, 0.05f, 0),
                     character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0]);
+
                 Skill1Action();
             }
         }, EventType.KEY_DOWN);
@@ -37,7 +38,7 @@ public class CharacterSkill_Frog : CharacterSkill
             if (CharacterLevel.Level > 2 && skillCoolTime2 >= Character.CharacterSO.skill2Delay)
             {
                 skillCoolTime2 = 0;
-                
+
                 //Transform enemyTransform = null;
                 //var characterAtk = character.GetCharacterComponent<CharacterAttack>();
                 //PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(
@@ -72,7 +73,7 @@ public class CharacterSkill_Frog : CharacterSkill
             }
         }, EventType.KEY_DOWN);
     }
-    
+
     public override void Update()
     {
         base.Update();
@@ -82,10 +83,10 @@ public class CharacterSkill_Frog : CharacterSkill
             skill1CoolTimeChange?.Invoke();
             isCanUseSkill1 = false;
         }
-        else if(CharacterLevel.Level > 1)
-		{
+        else if (CharacterLevel.Level > 1)
+        {
             isCanUseSkill1 = true;
-		}
+        }
 
         if (skillCoolTime2 < Character.CharacterSO.skill2Delay)
         {
@@ -111,7 +112,7 @@ public class CharacterSkill_Frog : CharacterSkill
         yield return new WaitForSeconds(1f);
         trm.position = Character.transform.position + (Character.GetCharacterComponent<CharacterSprite>(ComponentType.Sprite).Direction == Direction.LEFT ? Vector3.left : Vector3.right) * 0.25f;
     }
-    
+
     private IEnumerator AllStarSkill(Transform trm)
     {
         string tag = Character.tag;

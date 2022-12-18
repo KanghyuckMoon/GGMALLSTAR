@@ -15,12 +15,12 @@ MonoBehaviour:
   hitBoxDatasList:
   - hitBoxDatas:
     - actionName: Attack
-      damage: 5
-      knockBack: 0.2
+      damage: 25
+      knockBack: 5
       knockAngle: 2.5
       hitTime: 0.1
       sturnTime: 0.2
-      _attackOffset: {x: 0, y: 0.15, z: 0}
+      _attackOffset: {x: 0.1, y: 0.15, z: 0}
       _attackSize: {x: 0.6, y: 0.3, z: 1}
       shakePower: 0
       shakeTime: 0
@@ -31,7 +31,7 @@ MonoBehaviour:
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_sword_hit_s
       atkEffSoundName: se_common_sword_swing_s
-      addExp: 10
+      addExp: 1000
   - hitBoxDatas:
     - actionName: Slash
       damage: 15
@@ -54,8 +54,8 @@ MonoBehaviour:
   - hitBoxDatas:
     - actionName: ALLSTARSKILL
       damage: 80
-      knockBack: 50
-      knockAngle: 30
+      knockBack: 20
+      knockAngle: 80
       hitTime: 0.1
       sturnTime: 0.2
       _attackOffset: {x: 5, y: 0, z: 0}

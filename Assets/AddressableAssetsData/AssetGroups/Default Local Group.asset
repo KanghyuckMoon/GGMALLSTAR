@@ -461,7 +461,7 @@ MonoBehaviour:
     m_Address: Puppet
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 7c8588570f56c3b4fb4315a26425b93f
+  - m_GUID: 61edaa7e1392f2a47895018568b5bda2
     m_Address: Puppet_AttackImage
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -473,8 +473,12 @@ MonoBehaviour:
     m_Address: Agent
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: aee622916a9d01c49b9ec5181788a7f7
-    m_Address: Puppet_AI
+  - m_GUID: a92e6052739f86c43907e1af947d1565
+    m_Address: Agent_AttackImage
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 856b49be42af2e14f9bf104d36bdca6e
+    m_Address: Assets/Prefabs/Fireball_Frog.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
