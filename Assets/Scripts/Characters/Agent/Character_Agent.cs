@@ -19,5 +19,6 @@ public class Character_Agent : Character
         AddComponent(ComponentType.Level, new CharacterLevel(this));
         AddComponent(ComponentType.Skill1, new CharacterSkill_Agent(this));
         AddComponent(ComponentType.Color, new CharacterColor_Jaeby(this));
+        AddComponent(ComponentType.Dodge, new CharacterDodge(this));
     }
 }
