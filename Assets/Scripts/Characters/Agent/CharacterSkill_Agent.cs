@@ -20,6 +20,7 @@ public class CharacterSkill_Agent : CharacterSkill
         {
             if (CharacterLevel.Level > 1 && skillCoolTime1 >= Character.CharacterSO.skill1Delay)
             {
+                skillCoolTime1 = 0f;
                 Pool.PoolManager.GetItem("Assets/Prefabs/Agent_Slash.prefab").GetComponent<SlashSkill>().SetSlashSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[1].hitBoxDatas[0], _character.GetCharacterComponent<CharacterSprite>().Direction, 5f, new Vector3(0f, 0.035f, 0f));
             }
         }, EventType.KEY_DOWN);
@@ -28,6 +29,7 @@ public class CharacterSkill_Agent : CharacterSkill
         {
             if (CharacterLevel.Level > 2 && skillCoolTime2 >= Character.CharacterSO.skill2Delay)
             {
+                skillCoolTime2 = 0f;
                 character.StartCoroutine(StatUpgrade());
             }
         }, EventType.KEY_DOWN);
@@ -36,6 +38,8 @@ public class CharacterSkill_Agent : CharacterSkill
         {
             if (CharacterLevel.Level > 3 && !CharacterLevel.IsAllStarSkillUse)
             {
+                isCanUseSkill3 = false;
+                characterLevel.IsAllStarSkillUse = true;
                 Pool.PoolManager.GetItem("HitBox").GetComponent<HitBox>().SetHitBox(_character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>(), null, _character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackSize, _character.HitBoxDataSO.hitBoxDatasList[2].hitBoxDatas[0]._attackOffset);
                 character.Animator.SetTrigger(AnimationKeyWord.ALL_STAR_SKILL);
             }
@@ -56,6 +60,38 @@ public class CharacterSkill_Agent : CharacterSkill
 
         characterSO.MoveSpeed = defaultSpeed;
         characterSO.FirstJumpPower = defaultJumpPower;
+
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (skillCoolTime1 < Character.CharacterSO.skill1Delay)
+        {
+            skillCoolTime1 += Time.deltaTime;
+            skill1CoolTimeChange?.Invoke();
+            isCanUseSkill1 = false;
+        }
+        else if (CharacterLevel.Level > 1)
+        {
+            isCanUseSkill1 = true;
+        }
+
+        if (skillCoolTime2 < Character.CharacterSO.skill2Delay)
+        {
+            skillCoolTime2 += Time.deltaTime;
+            skill2CoolTimeChange?.Invoke();
+            isCanUseSkill2 = false;
+        }
+        else if (CharacterLevel.Level > 2)
+        {
+            isCanUseSkill2 = true;
+        }
+
+        if (!CharacterLevel.IsAllStarSkillUse && CharacterLevel.Level > 3)
+        {
+            isCanUseSkill3 = true;
+        }
 
     }
 }

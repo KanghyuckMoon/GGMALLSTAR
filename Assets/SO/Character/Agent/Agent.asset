@@ -15,7 +15,7 @@ MonoBehaviour:
   Name: Agent
   CharacterImage: {fileID: 0}
   MaxHP: 150
-  FirstJumpPower: 7.5
+  FirstJumpPower: 5
   SecondJumpPower: 0
   MoveSpeed: 5
   DodgeSpeed: 1
