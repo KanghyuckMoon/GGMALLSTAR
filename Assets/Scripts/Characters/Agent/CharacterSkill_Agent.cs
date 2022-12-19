@@ -91,6 +91,7 @@ public class CharacterSkill_Agent : CharacterSkill
         characterSO.DodgeSpeed *= 2f;
         //characterSO.FirstJumpPower *= 2f;
 
+        speedEffect.SetActive(true);
         yield return new WaitForSeconds(5f);
         speedEffect.SetActive(false);
 
