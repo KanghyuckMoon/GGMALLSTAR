@@ -7,16 +7,16 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     private CharacterSO _characterSO = null;
     public CharacterSO CharacterSO
-	{
-		get
-		{
+    {
+        get
+        {
             return _characterSO;
         }
         set
-		{
+        {
             _characterSO = value;
         }
-	}
+    }
 
     [SerializeField]
     private CharacterLevelSO _characterLevelSO = null;
@@ -59,10 +59,10 @@ public abstract class Character : MonoBehaviour
 
     public T GetCharacterComponent<T>(ComponentType componentType) where T : CharacterComponent
     {
-        if(_characterComponents.TryGetValue(componentType, out var characterComponent))
-		{
+        if (_characterComponents.TryGetValue(componentType, out var characterComponent))
+        {
             return characterComponent as T;
-		}
+        }
         return null;
     }
 
@@ -149,7 +149,7 @@ public abstract class Character : MonoBehaviour
         _characterComponents.Add(componentType, characterComponent);
     }
 
-    protected virtual void SetComponent() { }
+    protected abstract void SetComponent();
 
     public void OnAttack(int hitBoxIndex)
     {

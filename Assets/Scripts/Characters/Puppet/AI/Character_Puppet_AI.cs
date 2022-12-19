@@ -6,7 +6,6 @@ public class Character_Puppet_AI : Character
 {
     protected override void SetComponent()
     {
-        base.SetComponent();
         AddComponent(ComponentType.Input, new CharacterAIInput_Puppet(this));
         AddComponent(ComponentType.Animation, new CharacterAnimation_Puppet(this));
         AddComponent(ComponentType.Stat, new CharacterStat(this));
