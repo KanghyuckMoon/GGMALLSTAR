@@ -6,6 +6,37 @@ using UnityEngine;
 public class HitBoxDataSO : ScriptableObject
 {
     public HitBoxDatas[] hitBoxDatasList;
+
+    public void Copy(ref HitBoxDataSO hitBoxDataSO)
+	{
+        hitBoxDataSO.hitBoxDatasList = this.hitBoxDatasList;
+        for(int i = 0; i < this.hitBoxDatasList.Length; ++i)
+		{
+            for(int j = 0; j < this.hitBoxDatasList[i].hitBoxDatas.Length; ++j)
+			{
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j] = this.hitBoxDatasList[i].hitBoxDatas[j];
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].actionName = this.hitBoxDatasList[i].hitBoxDatas[j].actionName;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].damage = this.hitBoxDatasList[i].hitBoxDatas[j].damage;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].knockBack = this.hitBoxDatasList[i].hitBoxDatas[j].knockBack;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].knockAngle = this.hitBoxDatasList[i].hitBoxDatas[j].knockAngle;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].hitTime = this.hitBoxDatasList[i].hitBoxDatas[j].hitTime;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].sturnTime = this.hitBoxDatasList[i].hitBoxDatas[j].sturnTime;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j]._attackOffset = this.hitBoxDatasList[i].hitBoxDatas[j]._attackOffset;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j]._attackSize = this.hitBoxDatasList[i].hitBoxDatas[j]._attackSize;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].shakePower = this.hitBoxDatasList[i].hitBoxDatas[j].shakePower;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].shakeTime = this.hitBoxDatasList[i].hitBoxDatas[j].shakeTime;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].atkEffectType = this.hitBoxDatasList[i].hitBoxDatas[j].atkEffectType;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].atkEffectDirectionType = this.hitBoxDatasList[i].hitBoxDatas[j].atkEffectDirectionType;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].atkEffectOffset = this.hitBoxDatasList[i].hitBoxDatas[j].atkEffectOffset;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].hitEffectType = this.hitBoxDatasList[i].hitBoxDatas[j].hitEffectType;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].hitEffectDirectionType = this.hitBoxDatasList[i].hitBoxDatas[j].hitEffectDirectionType;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].hitEffSoundName = this.hitBoxDatasList[i].hitBoxDatas[j].hitEffSoundName;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].atkEffSoundName = this.hitBoxDatasList[i].hitBoxDatas[j].atkEffSoundName;
+                hitBoxDataSO.hitBoxDatasList[i].hitBoxDatas[j].addExp = this.hitBoxDatasList[i].hitBoxDatas[j].addExp;
+            }
+        }
+    }
+
 }
 
 [System.Serializable]

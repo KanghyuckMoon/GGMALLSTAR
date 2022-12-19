@@ -24,6 +24,7 @@ namespace Effect
         Hit_5,
         Shockwave,
         Hit_6,
+        Lighting,
         Count,
     }
 }

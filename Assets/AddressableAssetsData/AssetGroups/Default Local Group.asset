@@ -497,6 +497,14 @@ MonoBehaviour:
     m_Address: Puppet_AttackImage
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: dd9962a9738867f45909993b5d5fc17a
+    m_Address: Lighting
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 64f33178d4281474fb9267f87641fa3e
+    m_Address: AllStarDice
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 31de887f537685a4b8cbadc66fc6e565, type: 2}
   m_SchemaSet:

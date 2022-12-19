@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: MythicalDice
   CharacterImage: {fileID: -683470671, guid: 6b9e8ae04ccd2cb4f89fdab4aa06d193, type: 3}
-  MaxHP: 200
+  MaxHP: 130
   FirstJumpPower: 3
   SecondJumpPower: 1
   MoveSpeed: 5
@@ -23,6 +23,6 @@ MonoBehaviour:
   GravityScale: 1
   attackDelay: 0.6
   skill1Delay: 3
-  skill2Delay: 10
+  skill2Delay: 4
   HitBoxOffset: {x: 0.2, y: 0.2, z: 0}
   HitBoxSize: {x: 0.3, y: 0.3, z: 0}
