@@ -6,6 +6,9 @@ namespace Setting
 {
 	public class QuitGame : MonoBehaviour
 	{
+		/// <summary>
+		/// 게임 정료
+		/// </summary>
 		public void Quit()
 		{
 #if UNITY_EDITOR

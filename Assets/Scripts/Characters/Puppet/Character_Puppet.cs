@@ -6,7 +6,6 @@ public class Character_Puppet : Character
 {
     protected override void SetComponent()
     {
-        base.SetComponent();
         AddComponent(ComponentType.Input, new CharacterInput(this));
         AddComponent(ComponentType.Animation, new CharacterAnimation_Puppet(this));
         AddComponent(ComponentType.Stat, new CharacterStat(this));
@@ -31,12 +30,12 @@ public class Character_Puppet : Character
     public Transform ElementalTransform
     {
         get
-		{
-            if(_elementalTransform is null)
-			{
+        {
+            if (_elementalTransform is null)
+            {
                 _elementalTransform = transform.GetChild(1);
             }
             return _elementalTransform;
-		}
+        }
     }
 }

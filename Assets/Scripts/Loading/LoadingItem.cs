@@ -1,29 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class LoadingItem : MonoBehaviour
+namespace Loading
 {
-	public float speed = 1.0f;
-	public GameObject[] randomItems;
-	private Vector3 rotation = Vector3.zero;
-
-
-	private void Start()
+	public class LoadingItem : MonoBehaviour
 	{
-		SetRandomItem();
-	}
+		[SerializeField, FormerlySerializedAs("speed")]
+		private float _speed = 1.0f;
+		[SerializeField, FormerlySerializedAs("speed")]
+		private GameObject[] _randomItems;
+		private Vector3 _rotation = Vector3.zero;
 
-	private void SetRandomItem()
-	{
-		randomItems[0].SetActive(false);
-		int random = Random.Range(0, randomItems.Length);
-		randomItems[random].SetActive(true);
-	}
 
-	private void Update()
-	{
-		rotation.y += Time.deltaTime * speed;
-		transform.eulerAngles = rotation;
+		private void Start()
+		{
+			SetRandomItem();
+		}
+
+		private void SetRandomItem()
+		{
+			int random = Random.Range(0, _randomItems.Length);
+			_randomItems[random].SetActive(true);
+		}
+
+		private void Update()
+		{
+			_rotation.y += Time.deltaTime * _speed;
+			transform.eulerAngles = _rotation;
+		}
 	}
 }
+

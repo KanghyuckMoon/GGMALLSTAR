@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using TMPro;
 using Addressable;
 
-public class CharacterHUD : MonoBehaviour
+namespace UI.InGame
 {
-	[SerializeField] private Image characterImageP1;
-	[SerializeField] private Image characterImageP2;
-	[SerializeField] private TextMeshProUGUI characterTextP1;
-	[SerializeField] private TextMeshProUGUI characterTextP2;
-
-	private void Start()
+	public class CharacterHUD : MonoBehaviour
 	{
-		characterImageP1.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_CImage");
-		characterImageP2.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_CImage");
+		[SerializeField, FormerlySerializedAs("characterImageP1")] 
+		private Image _characterImageP1;
+		[SerializeField, FormerlySerializedAs("characterImageP2")] 
+		private Image _characterImageP2;
+		[SerializeField, FormerlySerializedAs("characterTextP1")] 
+		private TextMeshProUGUI _characterTextP1;
+		[SerializeField, FormerlySerializedAs("characterTextP2")] 
+		private TextMeshProUGUI _characterTextP2;
 
-		characterTextP1.text = SelectDataSO.characterSelectP1.ToString();
-		characterTextP2.text = SelectDataSO.characterSelectP2.ToString();
+		private void Start()
+		{
+			_characterImageP1.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP1.ToString()}_CImage");
+			_characterImageP2.sprite = AddressablesManager.Instance.GetResource<Sprite>($"{SelectDataSO.characterSelectP2.ToString()}_CImage");
+
+			_characterTextP1.text = SelectDataSO.characterSelectP1.ToString();
+			_characterTextP2.text = SelectDataSO.characterSelectP2.ToString();
+		}
 	}
+
 }

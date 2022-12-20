@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pool;
 
-public class LoadingMemoryClean : MonoBehaviour
+namespace Loading
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// 로딩중 브금 초기화와 풀매니저 데이터 제거
+    /// </summary>
+    public class LoadingMemoryClean : MonoBehaviour
     {
-        Sound.SoundManager.Instance.SetBGMSpeed(1.0f);
-        PoolManager.DeleteAllPool();
+        // Start is called before the first frame update
+        void Start()
+        {
+            Sound.SoundManager.Instance.SetBGMSpeed(1.0f);
+            PoolManager.DeleteAllPool();
+        }
     }
 }

@@ -28,7 +28,7 @@ public class FireBall_Frog : MonoBehaviour
             offset.x *= -1;
         }
 
-            if (hitBoxData.atkEffectType != Effect.EffectType.None)
+        if (hitBoxData.atkEffectType != Effect.EffectType.None)
         {
             Effect.EffectManager.Instance.SetEffect(hitBoxData.atkEffectType, transform.position, Effect.EffectDirectionType.ReverseDirection, offset, _direction == Direction.RIGHT);
         }
@@ -66,7 +66,7 @@ public class FireBall_Frog : MonoBehaviour
         {
             CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>(ComponentType.Attack);
             characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>(ComponentType.Damage);
-            characterAttack.TargetCharacterDamage?.OnAttcked(null, _hitBoxData, other.ClosestPoint(transform.position), _direction == Direction.RIGHT ? true : false);
+            characterAttack.TargetCharacterDamage?.OnAttacked(null, _hitBoxData, other.ClosestPoint(transform.position), _direction == Direction.RIGHT ? true : false);
 
             //AI
             CharacterAIInput aiInput = characterAttack.Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
@@ -88,9 +88,9 @@ public class FireBall_Frog : MonoBehaviour
             gameObject.SetActive(false);
             PoolManager.AddObjToPool("Assets/Prefabs/Fireball_Frog.prefab", gameObject);
         }
-        
+
     }
-    
+
     private void OnEnable()
     {
         StartCoroutine(SetActiveCoroutine());

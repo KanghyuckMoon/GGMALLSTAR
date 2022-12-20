@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 namespace Setting
 {
+    /// <summary>
+    /// InGameSceneÀ» ºÒ·¯¿È
+    /// </summary>
     public class InGameSettingLoad : MonoBehaviour
     {
-        // Start is called before the first frame update
         void Start()
         {
             SceneManager.LoadScene("InGameSetting", LoadSceneMode.Additive);

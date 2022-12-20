@@ -8,13 +8,17 @@ namespace Pool
 {
     public static class PoolManager
     {
-        public static Dictionary<string, Queue<GameObject>> pool = new Dictionary<string, Queue<GameObject>>();
-        public static Dictionary<string, GameObject> prefabDictionary = new Dictionary<string, GameObject>();
-        private static List<string> nameList = new List<string>();
+        private static Dictionary<string, Queue<GameObject>> _pool = new Dictionary<string, Queue<GameObject>>();
+        private static Dictionary<string, GameObject> _prefabDictionary = new Dictionary<string, GameObject>();
+        private static List<string> _nameList = new List<string>();
 
+        /// <summary>
+        /// 풀 생성
+        /// </summary>
+        /// <param name="name"></param>
         public static void CreatePool(string name)
         {
-            if (pool.ContainsKey(name))
+            if (_pool.ContainsKey(name))
             {
                 return;
             }
@@ -24,36 +28,44 @@ namespace Pool
 
             try
             {
-                pool.Add(name, q);
-                nameList.Add(name);
-                prefabDictionary.Add(name, prefab.gameObject);
+                _pool.Add(name, q);
+                _nameList.Add(name);
+                _prefabDictionary.Add(name, prefab.gameObject);
             }
             catch (ArgumentException e)
             {
                 Debug.Log(e.ToString());
 
-                pool.Clear();
-                prefabDictionary.Clear();
-                pool.Add(name, q);
-                nameList.Add(name);
-                prefabDictionary.Add(name, prefab.gameObject);
+                _pool.Clear();
+                _prefabDictionary.Clear();
+                _pool.Add(name, q);
+                _nameList.Add(name);
+                _prefabDictionary.Add(name, prefab.gameObject);
             }
         }
 
+        /// <summary>
+        /// 풀에 오브젝트 넣기
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="obj"></param>
         public static void AddObjToPool(string name, GameObject obj)
         {
-            if (!pool.ContainsKey(name))
+            if (!_pool.ContainsKey(name))
             {
                 CreatePool(name);
             }
-            pool[name].Enqueue(obj);
+            _pool[name].Enqueue(obj);
         }
 
+        /// <summary>
+        /// 풀과 풀에 있는 모든 오브젝트 제거
+        /// </summary>
         public static void DeleteAllPool()
         {
-            for (int i = 0; i < nameList.Count; ++i)
+            for (int i = 0; i < _nameList.Count; ++i)
             {
-                var q = pool[nameList[i]];
+                var q = _pool[_nameList[i]];
                 while (q.Count > 0)
 				{
                     GameObject.Destroy(q.Dequeue());
@@ -62,22 +74,27 @@ namespace Pool
             GC.Collect();
         }
 
+        /// <summary>
+        /// 오브젝트 가져오기
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static GameObject GetItem(string name)
         {
             GameObject item = null;
 
-            if (!prefabDictionary.ContainsKey(name))
+            if (!_prefabDictionary.ContainsKey(name))
             {
                 CreatePool(name);
             }
 
-            if (pool.ContainsKey(name))
+            if (_pool.ContainsKey(name))
             {
-                Queue<GameObject> q = pool[name];
+                Queue<GameObject> q = _pool[name];
 
                 if (q.Count == 0)
                 {  //???° ???????? ??? ?????????
-                    GameObject prefab = prefabDictionary[name];
+                    GameObject prefab = _prefabDictionary[name];
                     GameObject g = GameObject.Instantiate(prefab);
                     item = g;
                 }
@@ -89,7 +106,7 @@ namespace Pool
             }
             else
             {
-                GameObject prefab = prefabDictionary[name];
+                GameObject prefab = _prefabDictionary[name];
                 GameObject g = GameObject.Instantiate(prefab);
                 item = g;
             }

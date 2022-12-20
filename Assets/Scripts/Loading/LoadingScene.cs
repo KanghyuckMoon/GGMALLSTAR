@@ -8,13 +8,23 @@ namespace Loading
 {
     public class LoadingScene : MonoSingleton<LoadingScene>
     {
-        private string loadSceneName;
+        private string _loadSceneName;
+
+        /// <summary>
+        /// 어떤 로딩씬을 거칠지 여부
+        /// </summary>
         public enum LoadingSceneType
 		{
             Normal,
             Battle,
             Result,
 		}
+
+        /// <summary>
+        /// 어떤 씬을 로드할지와 어떤 로딩씬을 거칠지를 선택해 씬을 로딩함
+        /// </summary>
+        /// <param name="sceneName"></param>
+        /// <param name="loadingSceneType"></param>
         public void LoadScene(string sceneName, LoadingSceneType loadingSceneType = LoadingSceneType.Normal)
         {
             gameObject.SetActive(true);
@@ -34,7 +44,7 @@ namespace Loading
 					break;
 			}
             SceneManager.sceneLoaded += LoadSceneEnd;
-            loadSceneName = sceneName;
+            _loadSceneName = sceneName;
             StartCoroutine(Load(loadingSceneType, sceneName, delay));
 		}
 
@@ -86,7 +96,7 @@ namespace Loading
 
         private void LoadSceneEnd(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (scene.name == loadSceneName)
+            if (scene.name == _loadSceneName)
             {
                 SceneManager.sceneLoaded -= LoadSceneEnd;
             }

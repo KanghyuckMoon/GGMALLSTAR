@@ -4,15 +4,15 @@ using UnityEngine;
 
 public abstract class CharacterColor : CharacterComponent
 {
-	protected Material originMaterial;
-	public CharacterColor(Character character) : base(character)
+    protected Material _originMaterial;
+    public CharacterColor(Character character) : base(character)
     {
 
     }
 
     public abstract void SetP2Color();
 
-	public abstract void SetWhiteMaterial();
+    public abstract void SetWhiteMaterial();
 
-	public abstract void SetOriginMaterial();
+    public abstract void SetOriginMaterial();
 }

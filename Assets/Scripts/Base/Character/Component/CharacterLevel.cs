@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class CharacterLevel : CharacterComponent
 {
+    // Level getter
     public int Level
     {
         get
@@ -12,6 +13,8 @@ public class CharacterLevel : CharacterComponent
             return _level;
         }
     }
+
+    // Exp getter
     public int Exp
     {
         get
@@ -19,6 +22,8 @@ public class CharacterLevel : CharacterComponent
             return _exp;
         }
     }
+
+    // AllStarSkill 사용 여부 getter
     public bool IsAllStarSkillUse
     {
         get
@@ -31,14 +36,21 @@ public class CharacterLevel : CharacterComponent
         }
     }
 
+    // 경험치 증가시 호출할 이벤트
     private System.Action changeExpEvent;
+    // 레벨업시 호출할 이벤트
     private System.Action changeLevelEvent;
 
+    // 이전 레벨
     private int _previousLevel = 1;
+    // 현 레벨
     private int _level = 1;
+    // 현 경험치
     private int _exp = 0;
+    // AllStarSkill 사용 여부
     private bool isAllStarSkillUse = false;
 
+    // 다음 레벨업 까지 필요한 경험치
     public int NeedExp
     {
         get
@@ -57,6 +69,8 @@ public class CharacterLevel : CharacterComponent
             }
         }
     }
+
+    // 현 레벨이 되기까지 필요했던 경험치
     public int PreviouseExp
     {
         get
@@ -82,16 +96,19 @@ public class CharacterLevel : CharacterComponent
 
     }
 
+    // 경험치 증가시 호출할 이벤트 추가
     public void AddChangeExpEvent(System.Action action)
     {
         changeExpEvent += action;
     }
 
+    // 레벨업시 호출할 이벤트 추가
     public void AddChangeLevelEvent(System.Action action)
     {
         changeLevelEvent += action;
     }
 
+    // 경험치 획득 함수
     public void AddExp(int addExp)
     {
         Character.GetCharacterComponent<CharacterDebug>(ComponentType.Debug).AddStar(addExp);
@@ -103,6 +120,7 @@ public class CharacterLevel : CharacterComponent
         CheckLevel();
     }
 
+    // 경험치 감소 함수
     public void ReturnPreviousLevel()
     {
         int removeExp = 0;
@@ -163,14 +181,4 @@ public class CharacterLevel : CharacterComponent
             _previousLevel = _level;
         }
     }
-
-    //디버그용 코드
-	//public override void Update()
-	//{
-	//	base.Update();
-    //    if(Input.GetKeyDown(KeyCode.P))
-	//	{
-    //        AddExp(10);
-	//	}
-	//}
 }
