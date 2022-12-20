@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 using TMPro;
 
-public class TimeHUD : MonoBehaviour
+namespace UI.InGame
 {
-	[SerializeField] private TextMeshProUGUI timeText;
-	private RoundManager roundManager;
-
-	private void Start()
+	public class TimeHUD : MonoBehaviour
 	{
-		roundManager = FindObjectOfType<RoundManager>();
-		roundManager.TimeChangeEvent += TimeChange;
-	}
+		[SerializeField, FormerlySerializedAs("timeText")] 
+		private TextMeshProUGUI _timeText;
+		private RoundManager _roundManager;
 
-	private void TimeChange()
-	{
-		timeText.text = $"{(int)roundManager.Time}";
+		private void Start()
+		{
+			_roundManager = FindObjectOfType<RoundManager>();
+			_roundManager.TimeChangeEvent += TimeChange;
+		}
+
+		private void TimeChange()
+		{
+			_timeText.text = $"{(int)_roundManager.Time}";
+		}
+
 	}
 
 }

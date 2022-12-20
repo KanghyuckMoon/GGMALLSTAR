@@ -1,81 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
-public class HPHUD : MonoBehaviour
+namespace UI.InGame
 {
-	[SerializeField] private Image hpBarIamgeP1;
-	[SerializeField] private Image hpBarIamgeP2;
-	[SerializeField] private RectTransform characterImageP1;
-	[SerializeField] private RectTransform characterImageP2;
-
-	private CharacterStat characterStatP1;
-	private CharacterStat characterStatP2;
-
-	private Vector3 originPosP1;
-	private Vector3 originPosP2;
-
-	private float previousHPP1;
-	private float previousHPP2;
-
-
-	private void Start()
+	public class HPHUD : MonoBehaviour
 	{
-		CharacterSpawner characterSpawner = FindObjectOfType<CharacterSpawner>();
-		var characterP1 = characterSpawner.Player1.GetComponent<Character>();
-		var characterP2 = characterSpawner.Player2.GetComponent<Character>();
+		[SerializeField, FormerlySerializedAs("hpBarIamgeP1")] 
+		private Image _hpBarIamgeP1;
+		[SerializeField, FormerlySerializedAs("hpBarIamgeP2")] 
+		private Image _hpBarIamgeP2;
+		[SerializeField, FormerlySerializedAs("characterImageP1")] 
+		private RectTransform _characterImageP1;
+		[SerializeField, FormerlySerializedAs("characterImageP2")] 
+		private RectTransform _characterImageP2;
 
-		characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
-		characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+		private CharacterStat _characterStatP1;
+		private CharacterStat _characterStatP2;
+
+		private Vector3 _originPosP1;
+		private Vector3 _originPosP2;
+
+		private float _previousHPP1;
+		private float _previousHPP2;
 
 
-		characterStatP1.AddHPEvent(ChangeHPP1);
-		characterStatP2.AddHPEvent(ChangeHPP2);
-
-		previousHPP1 = characterStatP1.HP;
-		previousHPP2 = characterStatP2.HP;
-
-		originPosP1 = characterImageP1.localPosition;
-		originPosP2 = characterImageP2.localPosition;
-
-		ChangeHPP1();
-		ChangeHPP2();
-	}
-
-	private void ChangeHPP1()
-	{
-		//hpTextP1.text = $"{characterStatP1.HP}";
-		hpBarIamgeP1.fillAmount = characterStatP1.HP / characterStatP1.MaxHP;
-
-		if(previousHPP1 > characterStatP1.HP)
+		private void Start()
 		{
-			characterImageP1.DOKill();
-			characterImageP1.DOShakePosition(0.2f, 5).OnComplete(() =>
-			{
-				characterImageP1.localPosition = originPosP1;
-			});
+			CharacterSpawner characterSpawner = FindObjectOfType<CharacterSpawner>();
+			var characterP1 = characterSpawner.Player1.GetComponent<Character>();
+			var characterP2 = characterSpawner.Player2.GetComponent<Character>();
+
+			_characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+			_characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+
+
+			_characterStatP1.AddHPEvent(ChangeHPP1);
+			_characterStatP2.AddHPEvent(ChangeHPP2);
+
+			_previousHPP1 = _characterStatP1.HP;
+			_previousHPP2 = _characterStatP2.HP;
+
+			_originPosP1 = _characterImageP1.localPosition;
+			_originPosP2 = _characterImageP2.localPosition;
+
+			ChangeHPP1();
+			ChangeHPP2();
 		}
 
-		previousHPP1 = characterStatP1.HP;
-	}
-	private void ChangeHPP2()
-	{
-		//hpTextP2.text = $"{characterStatP2.HP}";
-		hpBarIamgeP2.fillAmount = characterStatP2.HP / characterStatP2.MaxHP;
-
-		if (previousHPP2 > characterStatP2.HP)
+		private void ChangeHPP1()
 		{
-			characterImageP2.DOKill();
-			characterImageP2.DOShakePosition(0.2f, 5).OnComplete(() =>
+			//hpTextP1.text = $"{characterStatP1.HP}";
+			_hpBarIamgeP1.fillAmount = _characterStatP1.HP / _characterStatP1.MaxHP;
+
+			if (_previousHPP1 > _characterStatP1.HP)
 			{
-				characterImageP2.localPosition = originPosP2;
-			});
+				_characterImageP1.DOKill();
+				_characterImageP1.DOShakePosition(0.2f, 5).OnComplete(() =>
+				{
+					_characterImageP1.localPosition = _originPosP1;
+				});
+			}
+
+			_previousHPP1 = _characterStatP1.HP;
+		}
+		private void ChangeHPP2()
+		{
+			//hpTextP2.text = $"{characterStatP2.HP}";
+			_hpBarIamgeP2.fillAmount = _characterStatP2.HP / _characterStatP2.MaxHP;
+
+			if (_previousHPP2 > _characterStatP2.HP)
+			{
+				_characterImageP2.DOKill();
+				_characterImageP2.DOShakePosition(0.2f, 5).OnComplete(() =>
+				{
+					_characterImageP2.localPosition = _originPosP2;
+				});
+			}
+
+			_previousHPP2 = _characterStatP2.HP;
 		}
 
-		previousHPP2 = characterStatP2.HP;
 	}
 
 }
