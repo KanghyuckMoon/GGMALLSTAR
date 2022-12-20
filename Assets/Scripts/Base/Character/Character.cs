@@ -41,7 +41,17 @@ public abstract class Character : MonoBehaviour
 
     [SerializeField]
     private HitBoxDataSO _hitBoxDataSO = null;
-    public HitBoxDataSO HitBoxDataSO => _hitBoxDataSO;
+    public HitBoxDataSO HitBoxDataSO
+	{
+        get
+		{
+            return _hitBoxDataSO;
+		}
+        set
+		{
+            _hitBoxDataSO = value;
+        }
+	}
 
     private Dictionary<ComponentType, CharacterComponent> _characterComponents = null;
     public T GetCharacterComponent<T>() where T : CharacterComponent

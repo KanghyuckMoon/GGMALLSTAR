@@ -861,7 +861,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'XXVVV : 2022
 
-    Ver :  1.0'
+    Ver :  1.2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8b1a1f9ccf61434ebb4ce639784d284, type: 2}
   m_sharedMaterial: {fileID: -3656589031002724397, guid: c8b1a1f9ccf61434ebb4ce639784d284,
