@@ -2,44 +2,61 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Events;
 using Loading;
 
-public delegate IEnumerator coroutineEvent();
 
-public class PressSpace : MonoBehaviour
+namespace UI
 {
-	public string sceneName;
-	public coroutineEvent coroutineEvent;
-	private bool isInput = false;
-	
-	private DateTime currentTime;
+	public delegate IEnumerator coroutineEvent();
 
-	public void LoadScene()
+	public class PressSpace : MonoBehaviour
 	{
-		LoadingScene.Instance.LoadScene(sceneName);
-	}
-
-	private void Start()
-	{
-		currentTime = DateTime.Now;
-	}
-
-	void Update()
-    {
-		if (!isInput)
+		public coroutineEvent CoroutineEvent
 		{
-			if (Input.anyKeyDown)
+			get
 			{
-				isInput = true;
-				StartCoroutine(SceneMove());
+				return _coroutineEvent;
+			}
+			set
+			{
+				_coroutineEvent = value;
 			}
 		}
-    }
 
-	private IEnumerator SceneMove()
-	{
-		yield return coroutineEvent();
-		LoadScene();
+		[SerializeField, FormerlySerializedAs("sceneName")]
+		private string _sceneName;
+		[SerializeField, FormerlySerializedAs("coroutineEvent")]
+		private coroutineEvent _coroutineEvent;
+		private bool _isInput = false;
+
+		
+		/// <summary>
+		/// ¥Ÿ¿Ω æ¿ ¿Ãµø
+		/// </summary>
+		public void LoadScene()
+		{
+			LoadingScene.Instance.LoadScene(_sceneName);
+		}
+
+		private void Update()
+		{
+			if (!_isInput)
+			{
+				if (Input.anyKeyDown)
+				{
+					_isInput = true;
+					StartCoroutine(SceneMove());
+				}
+			}
+		}
+
+		private IEnumerator SceneMove()
+		{
+			yield return _coroutineEvent();
+			LoadScene();
+		}
 	}
+
 }
