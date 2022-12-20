@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class ItemBoxSpawner : MonoBehaviour
+namespace Inventory
 {
-    [SerializeField] private GameObject itemBoxObj;
-
-    // Start is called before the first frame update
-    void Start()
+    public class ItemBoxSpawner : MonoBehaviour
     {
-        Invoke("SpawnItem", Random.Range(20f, 50f));
+        [SerializeField, FormerlySerializedAs("itemBoxObj")]
+        private GameObject _itemBoxObj;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            Invoke("SpawnItem", Random.Range(20f, 50f));
+        }
+
+        private void SpawnItem()
+        {
+            _itemBoxObj.gameObject.SetActive(true);
+        }
     }
 
-    private void SpawnItem()
-	{
-        itemBoxObj.gameObject.SetActive(true);
-    }
 }

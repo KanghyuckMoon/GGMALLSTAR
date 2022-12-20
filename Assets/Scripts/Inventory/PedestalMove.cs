@@ -1,31 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class PedestalMove : MonoBehaviour
+namespace Inventory
 {
-    public Vector3 rotation = Vector3.zero;
-    public float speed = 1.0f;
-
-    // Update is called once per frame
-    void Update()
+    public class PedestalMove : MonoBehaviour
     {
-        if (Input.GetKey(KeyCode.A))
-		{
-            rotation.y += Time.deltaTime * speed;
-        }
-        if (Input.GetKey(KeyCode.D))
+        [SerializeField, FormerlySerializedAs("rotation")]
+        private Vector3 _rotation = Vector3.zero;
+        [SerializeField, FormerlySerializedAs("speed")]
+        private float _speed = 1.0f;
+
+        // Update is called once per frame
+        void Update()
         {
-            rotation.y -= Time.deltaTime * speed;
+            if (Input.GetKey(KeyCode.A))
+            {
+                _rotation.y += Time.deltaTime * _speed;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                _rotation.y -= Time.deltaTime * _speed;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                _rotation.x += Time.deltaTime * _speed;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                _rotation.x -= Time.deltaTime * _speed;
+            }
+            transform.eulerAngles = _rotation;
         }
-        if (Input.GetKey(KeyCode.W))
-        {
-            rotation.x += Time.deltaTime * speed;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            rotation.x -= Time.deltaTime * speed;
-        }
-        transform.eulerAngles = rotation;
     }
+
 }
