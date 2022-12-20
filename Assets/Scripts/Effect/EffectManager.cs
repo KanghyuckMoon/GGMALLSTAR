@@ -8,7 +8,9 @@ using Addressable;
 
 namespace Effect
 {
-
+    /// <summary>
+    /// 이펙트 생성 매니저
+    /// </summary>
     public class EffectManager : MonoSingleton<EffectManager>
     {
         private bool _isInit = false;
@@ -27,7 +29,6 @@ namespace Effect
                 }
             }
         }
-
 
         /// <summary>
         /// 초기화

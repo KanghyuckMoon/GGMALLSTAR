@@ -1,243 +1,252 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
+using UI.InGame;
 using TMPro;
 using DG.Tweening;
 
-public class RoundHUD : MonoBehaviour
+namespace UI.InGame
 {
-	//RoundTexts
-	[SerializeField] private TextMeshProUGUI roundtext;
-	[SerializeField] private Image[] roundCountP1;
-	[SerializeField] private Image[] roundCountP2;
-	[SerializeField] private Sprite winSprite;
-
-	[SerializeField] private GameObject upperHud;
-	[SerializeField] private GameObject frameImage;
-
-	[SerializeField] private Material originMaterial;
-	[SerializeField] private Material negativeMaterial;
-
-	//Infos
-	[SerializeField] private GameObject p1Info;
-	[SerializeField] private GameObject p2Info;
-	[SerializeField] private TextMeshProUGUI[] p1InfoTexts;
-	[SerializeField] private TextMeshProUGUI[] p2InfoTexts;
-	[SerializeField] private InfoDataSO[] infoDatas;
-
-	//RoundText Coroutine Variables
-	private Vector2 originVector;
-	private RoundManager roundManager;
-	private Coroutine coroutine;
-
-
-	private void Awake()
+	public class RoundHUD : MonoBehaviour
 	{
-		//RoundText
-		roundManager = FindObjectOfType<RoundManager>();
-		roundManager.GameSetEvent += GameSet;
-		roundManager.RoundSetEvent += RoundSet;
-		roundManager.RoundReadyEvent += RoundReady;
-		roundManager.RoundStartEvent += RoundStart;
-		roundManager.RoundEndEvent += RoundEnd;
-		roundManager.GameEndEvent += GameEnd;
-		originVector = roundtext.rectTransform.anchoredPosition;
+		//RoundTexts
+		[SerializeField, FormerlySerializedAs("roundtext")] 
+		private TextMeshProUGUI _roundtext;
+		[SerializeField, FormerlySerializedAs("roundCountP1")] 
+		private Image[] _roundCountP1;
+		[SerializeField, FormerlySerializedAs("roundCountP2")] 
+		private Image[] _roundCountP2;
+		[SerializeField, FormerlySerializedAs("winSprite")] 
+		private Sprite _winSprite;
 
-		upperHud.gameObject.SetActive(false);
-		frameImage.gameObject.SetActive(true);
 
-		//Info
-		InfoSetting();
-	}
-	private void GameSet()
-	{
-		upperHud.gameObject.SetActive(false);
-		frameImage.gameObject.SetActive(true);
-		
-		//Info
-		StartCoroutine(GametSetInfo());
-	}
+		[SerializeField, FormerlySerializedAs("upperHud")]
+		private GameObject _upperHud;
+		[SerializeField, FormerlySerializedAs("frameImage")]
+		private GameObject _frameImage;
 
-	private void InfoSetting()
-	{
-		InfoDataSO infoDataSOP1 = null;
-		InfoDataSO infoDataSOP2 = null;
-		infoDataSOP1 = ReturnInfoData(SelectDataSO.characterSelectP1);
-		infoDataSOP2 = ReturnInfoData(SelectDataSO.characterSelectP2);
 
-		//P1 Info Text Setting
-		p1InfoTexts[0].text = infoDataSOP1.originGame;
-		p1InfoTexts[1].text = infoDataSOP1.homeGround;
-		p1InfoTexts[2].text = infoDataSOP1.numbering;
+		[SerializeField, FormerlySerializedAs("originMaterial")]
+		private Material _originMaterial;
+		[SerializeField, FormerlySerializedAs("negativeMaterial")]
+		private Material _negativeMaterial;
 
-		//P2 Info Text Setting
-		p2InfoTexts[0].text = infoDataSOP2.originGame;
-		p2InfoTexts[1].text = infoDataSOP2.homeGround;
-		p2InfoTexts[2].text = infoDataSOP2.numbering;
 
-	}
+		//Infos
 
-	private InfoDataSO ReturnInfoData(CharacterSelect characterSelect)
-	{
-		switch (characterSelect)
+		[SerializeField, FormerlySerializedAs("p1Info")]
+		private GameObject _p1Info;
+		[SerializeField, FormerlySerializedAs("p2Info")]
+		private GameObject _p2Info;
+		[SerializeField, FormerlySerializedAs("p1InfoTexts")]
+		private TextMeshProUGUI[] _p1InfoTexts;
+		[SerializeField, FormerlySerializedAs("p2InfoTexts")]
+		private TextMeshProUGUI[] _p2InfoTexts;
+		[SerializeField, FormerlySerializedAs("infoDatas")]
+		private InfoDataSO[] _infoDatas;
+
+		//RoundText Coroutine Variables
+		private Vector2 _originVector;
+		private RoundManager _roundManager;
+		private Coroutine _coroutine;
+
+		private void Awake()
 		{
-			default:
-			case CharacterSelect.Jaeby:
-				return infoDatas[0];
-			case CharacterSelect.Frog:
-				return infoDatas[1];
-			case CharacterSelect.Dice:
-				return infoDatas[2];
-			case CharacterSelect.Puppet:
-				return infoDatas[3];
-			case CharacterSelect.Agent:
-				return infoDatas[4];
-			case CharacterSelect.Damvi:
-				return infoDatas[5];
+			//RoundText
+			_roundManager = FindObjectOfType<RoundManager>();
+			_roundManager.GameSetEvent += GameSet;
+			_roundManager.RoundSetEvent += RoundSet;
+			_roundManager.RoundReadyEvent += RoundReady;
+			_roundManager.RoundStartEvent += RoundStart;
+			_roundManager.RoundEndEvent += RoundEnd;
+			_roundManager.GameEndEvent += GameEnd;
+			_originVector = _roundtext.rectTransform.anchoredPosition;
+
+			_upperHud.gameObject.SetActive(false);
+			_frameImage.gameObject.SetActive(true);
+
+			//Info
+			InfoSetting();
 		}
-	}
+		private void GameSet()
+		{
+			_upperHud.gameObject.SetActive(false);
+			_frameImage.gameObject.SetActive(true);
 
-	private IEnumerator GametSetInfo()
-	{
-		yield return new WaitForSeconds(0.2f);
-		p1Info.gameObject.SetActive(true);
-		p2Info.gameObject.SetActive(false);
-		yield return new WaitForSeconds(1f);
-		p1Info.gameObject.SetActive(false);
-		p2Info.gameObject.SetActive(true);
-		yield return new WaitForSeconds(1f);
-		p1Info.gameObject.SetActive(false);
-		p2Info.gameObject.SetActive(false);
-	}
+			//Info
+			StartCoroutine(GametSetInfo());
+		}
+		private void InfoSetting()
+		{
+			InfoDataSO infoDataSOP1 = null;
+			InfoDataSO infoDataSOP2 = null;
+			infoDataSOP1 = ReturnInfoData(SelectDataSO.characterSelectP1);
+			infoDataSOP2 = ReturnInfoData(SelectDataSO.characterSelectP2);
 
-	private void RoundSet()
-	{
-		if (roundManager.RoundNumber == 5)
+			//P1 Info Text Setting
+			_p1InfoTexts[0].text = infoDataSOP1.originGame;
+			_p1InfoTexts[1].text = infoDataSOP1.homeGround;
+			_p1InfoTexts[2].text = infoDataSOP1.numbering;
+
+			//P2 Info Text Setting
+			_p2InfoTexts[0].text = infoDataSOP2.originGame;
+			_p2InfoTexts[1].text = infoDataSOP2.homeGround;
+			_p2InfoTexts[2].text = infoDataSOP2.numbering;
+
+		}
+		private InfoDataSO ReturnInfoData(CharacterSelect characterSelect)
+		{
+			switch (characterSelect)
+			{
+				default:
+				case CharacterSelect.Jaeby:
+					return _infoDatas[0];
+				case CharacterSelect.Frog:
+					return _infoDatas[1];
+				case CharacterSelect.Dice:
+					return _infoDatas[2];
+				case CharacterSelect.Puppet:
+					return _infoDatas[3];
+				case CharacterSelect.Agent:
+					return _infoDatas[4];
+				case CharacterSelect.Damvi:
+					return _infoDatas[5];
+			}
+		}
+		private IEnumerator GametSetInfo()
+		{
+			yield return new WaitForSeconds(0.2f);
+			_p1Info.gameObject.SetActive(true);
+			_p2Info.gameObject.SetActive(false);
+			yield return new WaitForSeconds(1f);
+			_p1Info.gameObject.SetActive(false);
+			_p2Info.gameObject.SetActive(true);
+			yield return new WaitForSeconds(1f);
+			_p1Info.gameObject.SetActive(false);
+			_p2Info.gameObject.SetActive(false);
+		}
+		private void RoundSet()
+		{
+			if (_roundManager.RoundNumber == 5)
+			{
+				CoroutineStop();
+				_coroutine = StartCoroutine(RoundSetText("Round Final"));
+			}
+			else
+			{
+				CoroutineStop();
+				_coroutine = StartCoroutine(RoundSetText($"Round {_roundManager.RoundNumber}"));
+			}
+			_upperHud.gameObject.SetActive(true);
+			_frameImage.gameObject.SetActive(false);
+
+		}
+		private IEnumerator RoundSetText(string text)
+		{
+			_roundtext.rectTransform.DOKill();
+			_roundtext.text = text;
+			_roundtext.fontMaterial = _negativeMaterial;
+			_roundtext.rectTransform.localScale = Vector3.one * 2;
+			_roundtext.gameObject.SetActive(true);
+			_roundtext.rectTransform.DOShakePosition(0.2f, 10f);
+			yield return new WaitForSeconds(0.2f);
+			_roundtext.fontMaterial = _originMaterial;
+			_roundtext.DOKill();
+			_roundtext.rectTransform.DOScale(4f, 0.7f);
+			_roundtext.rectTransform.anchoredPosition = _originVector;
+			yield return new WaitForSeconds(0.7f);
+			_roundtext.gameObject.SetActive(false);
+		}
+		private void RoundStart()
 		{
 			CoroutineStop();
-			coroutine = StartCoroutine(RoundSetText("Round Final"));
+			_coroutine = StartCoroutine(RoundStartText($"FIGHT"));
 		}
-		else
+		private IEnumerator RoundStartText(string text)
+		{
+			_roundtext.rectTransform.DOKill();
+			_roundtext.text = text;
+			_roundtext.rectTransform.localScale = Vector3.one * 20;
+			_roundtext.gameObject.SetActive(true);
+			_roundtext.rectTransform.DOScale(5f, 0.3f).SetEase(Ease.OutBack);
+			yield return new WaitForSeconds(0.1f);
+			_roundtext.fontMaterial = _negativeMaterial;
+			yield return new WaitForSeconds(0.05f);
+			_roundtext.fontMaterial = _originMaterial;
+			yield return new WaitForSeconds(0.1f);
+			_roundtext.rectTransform.DOShakePosition(0.3f, 10f);
+			yield return new WaitForSeconds(0.3f);
+			_roundtext.rectTransform.anchoredPosition = _originVector;
+			yield return new WaitForSeconds(1f);
+			_roundtext.gameObject.SetActive(false);
+		}
+		private void RoundEnd()
 		{
 			CoroutineStop();
-			coroutine = StartCoroutine(RoundSetText($"Round {roundManager.RoundNumber}"));
+			_coroutine = StartCoroutine(RoundEndText($"KO"));
+			CountImageSetting();
+			_upperHud.gameObject.SetActive(false);
+			_frameImage.gameObject.SetActive(true);
 		}
-		upperHud.gameObject.SetActive(true);
-		frameImage.gameObject.SetActive(false);
-
-	}
-
-	private IEnumerator RoundSetText(string text)
-	{
-		roundtext.rectTransform.DOKill();
-		roundtext.text = text;
-		roundtext.fontMaterial = negativeMaterial;
-		roundtext.rectTransform.localScale = Vector3.one * 2;
-		roundtext.gameObject.SetActive(true);
-		roundtext.rectTransform.DOShakePosition(0.2f, 10f);
-		yield return new WaitForSeconds(0.2f);
-		roundtext.fontMaterial = originMaterial;
-		roundtext.DOKill();
-		roundtext.rectTransform.DOScale(4f, 0.7f);
-		roundtext.rectTransform.anchoredPosition = originVector;
-		yield return new WaitForSeconds(0.7f);
-		roundtext.gameObject.SetActive(false);
-	}
-
-	private void RoundStart()
-	{
-		CoroutineStop();
-		coroutine = StartCoroutine(RoundStartText($"FIGHT"));
-	}
-
-	private IEnumerator RoundStartText(string text)
-	{
-		roundtext.rectTransform.DOKill();
-		roundtext.text = text;
-		roundtext.rectTransform.localScale = Vector3.one * 20;
-		roundtext.gameObject.SetActive(true);
-		roundtext.rectTransform.DOScale(5f, 0.3f).SetEase(Ease.OutBack);
-		yield return new WaitForSeconds(0.1f);
-		roundtext.fontMaterial = negativeMaterial;
-		yield return new WaitForSeconds(0.05f);
-		roundtext.fontMaterial = originMaterial;
-		yield return new WaitForSeconds(0.1f);
-		roundtext.rectTransform.DOShakePosition(0.3f, 10f);
-		yield return new WaitForSeconds(0.3f);
-		roundtext.rectTransform.anchoredPosition = originVector;
-		yield return new WaitForSeconds(1f);
-		roundtext.gameObject.SetActive(false);
-	}
-
-	private void RoundEnd()
-	{
-		CoroutineStop();
-		coroutine = StartCoroutine(RoundEndText($"KO"));
-		CountImageSetting();
-		upperHud.gameObject.SetActive(false);
-		frameImage.gameObject.SetActive(true);
-	}
-
-	private IEnumerator RoundEndText(string text)
-	{
-		yield return null;
-		roundtext.rectTransform.DOKill();
-		roundtext.gameObject.SetActive(true);
-		roundtext.text = text;
-		roundtext.fontMaterial = originMaterial;
-		roundtext.rectTransform.localScale = Vector3.one * 2;
-		roundtext.rectTransform.DOScale(4f, 1f).OnComplete(() => roundtext.gameObject.SetActive(false));
-	}
-
-	private void RoundReady()
-	{
-		CoroutineStop();
-		coroutine = StartCoroutine(SetText($"Ready"));
-	}
-	private void GameEnd()
-	{
-		CoroutineStop();
-		coroutine = StartCoroutine(RoundEndText($"Game Set"));
-		CountImageSetting();
-		upperHud.gameObject.SetActive(false);
-		frameImage.gameObject.SetActive(true);
-	}
-
-	private IEnumerator SetText(string str)
-	{
-		roundtext.fontMaterial = negativeMaterial;
-		yield return new WaitForSeconds(0.02f);
-		roundtext.fontMaterial = originMaterial;
-
-		roundtext.gameObject.SetActive(true);
-		roundtext.rectTransform.DOKill();
-		roundtext.rectTransform.localScale = Vector3.zero;
-
-		roundtext.text = str;
-
-		roundtext.rectTransform.DOScale(4f, 1f).OnComplete(() => roundtext.gameObject.SetActive(false));
-	}
-
-	private void CountImageSetting()
-	{
-		for (int i = 0; i < roundManager.WinCountP1; ++i)
+		private IEnumerator RoundEndText(string text)
 		{
-			roundCountP1[i].sprite = winSprite;
+			yield return null;
+			_roundtext.rectTransform.DOKill();
+			_roundtext.gameObject.SetActive(true);
+			_roundtext.text = text;
+			_roundtext.fontMaterial = _originMaterial;
+			_roundtext.rectTransform.localScale = Vector3.one * 2;
+			_roundtext.rectTransform.DOScale(4f, 1f).OnComplete(() => _roundtext.gameObject.SetActive(false));
+		}
+		private void RoundReady()
+		{
+			CoroutineStop();
+			_coroutine = StartCoroutine(SetText($"Ready"));
+		}
+		private void GameEnd()
+		{
+			CoroutineStop();
+			_coroutine = StartCoroutine(RoundEndText($"Game Set"));
+			CountImageSetting();
+			_upperHud.gameObject.SetActive(false);
+			_frameImage.gameObject.SetActive(true);
+		}
+		private IEnumerator SetText(string str)
+		{
+			_roundtext.fontMaterial = _negativeMaterial;
+			yield return new WaitForSeconds(0.02f);
+			_roundtext.fontMaterial = _originMaterial;
+
+			_roundtext.gameObject.SetActive(true);
+			_roundtext.rectTransform.DOKill();
+			_roundtext.rectTransform.localScale = Vector3.zero;
+
+			_roundtext.text = str;
+
+			_roundtext.rectTransform.DOScale(4f, 1f).OnComplete(() => _roundtext.gameObject.SetActive(false));
+		}
+		private void CountImageSetting()
+		{
+			for (int i = 0; i < _roundManager.WinCountP1; ++i)
+			{
+				_roundCountP1[i].sprite = _winSprite;
+			}
+
+			for (int i = 0; i < _roundManager.WinCountP2; ++i)
+			{
+				_roundCountP2[i].sprite = _winSprite;
+			}
+		}
+		private void CoroutineStop()
+		{
+			if (_coroutine != null)
+			{
+				StopCoroutine(_coroutine);
+			}
 		}
 
-		for (int i = 0; i < roundManager.WinCountP2; ++i)
-		{
-			roundCountP2[i].sprite = winSprite;
-		}
-	}
-
-	private void CoroutineStop()
-	{
-		if(coroutine != null)
-		{
-			StopCoroutine(coroutine);
-		}
 	}
 
 }

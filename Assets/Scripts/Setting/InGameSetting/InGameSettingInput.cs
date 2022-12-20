@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Setting
 {
     public class InGameSettingInput : MonoBehaviour
     {
-        public GameObject canvas;
+        [SerializeField, FormerlySerializedAs("canvas")]
+        private GameObject _canvas;
 
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
 			{
-                canvas.SetActive(!canvas.activeSelf);
+                _canvas.SetActive(!_canvas.activeSelf);
             }
         }
     }

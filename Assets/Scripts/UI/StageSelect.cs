@@ -3,14 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using Loading;
 
-public class StageSelect : MonoBehaviour
+namespace UI
 {
-	public void LoadScene(string sceneName)
+	public class StageSelect : MonoBehaviour
 	{
-		LoadingScene.Instance.LoadScene(sceneName, LoadingScene.LoadingSceneType.Battle);
+		/// <summary>
+		/// πﬁ¿∫ æ¿ ¿Ã∏ß¿∏∑Œ æ¿ ¿Ãµø
+		/// </summary>
+		/// <param name="sceneName"></param>
+		public void LoadScene(string sceneName)
+		{
+			LoadingScene.Instance.LoadScene(sceneName, LoadingScene.LoadingSceneType.Battle);
+		}
+
+		/// <summary>
+		/// æ∆ƒ…¿ÃµÂ æ¿¿∏∑Œ æ¿ ¿Ãµø
+		/// </summary>
+		public void ArcadeLoadScene()
+		{
+			LoadingScene.Instance.LoadScene("Arcade", LoadingScene.LoadingSceneType.Normal);
+		}
 	}
-	public void ArcadeLoadScene()
-	{
-		LoadingScene.Instance.LoadScene("Arcade", LoadingScene.LoadingSceneType.Normal);
-	}
+
 }

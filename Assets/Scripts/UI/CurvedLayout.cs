@@ -1,33 +1,17 @@
 
-/// <summary>
-/// Curved Layout Group Created by Freezy - http://www.ElicitIce.com
-/// Posted on Unity Forums http://forum.unity3d.com/threads/script-curved-layout.403985/
-///
-/// Free for any use and alteration, source code may not be sold without my permission.
-/// If you make improvements on this script please share them with the community.
-///
-/// </summary>
-
 namespace UnityEngine.UI.Extensions
 {
     /// <summary>
-    /// TODO:
-    /// - add automatic child sizing, like in the HorizontalOrVerticalLayoutGroup.cs
-    /// - nicer anchor handling for initial child positions
+    /// 대각선으로 레이아웃 형성
     /// </summary>
     [AddComponentMenu("Layout/Extensions/Curved Layout")]
     public class CurvedLayout : LayoutGroup
     {
         public Vector3 CurveOffset;
 
-        // Yes these two could be combined into a single vector
-        // but this makes it easier to use?
-        [Tooltip("axis along which to place the items, Normalized before use")]
         public Vector3 itemAxis;
-        [Tooltip("size of each item along the Normalized axis")]
         public float itemSize;
 
-        // the slope can be moved by altering this setting, it could be constrained to the 0-1 range, but other values are usefull for animations
         public float centerpoint = 0.5f;
 
         protected override void OnEnable() { base.OnEnable(); CalculateRadial(); }

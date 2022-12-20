@@ -1,22 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
+/// <summary>
+/// 애니메이션 그래프에 맞춰 회전
+/// </summary>
 public class TimeGraph : MonoBehaviour
 {
-	[SerializeField] private AnimationCurve animationCurve;
-	[SerializeField] private float period = 2f;
-	[SerializeField] private float speed = 1f;
-	private float curTime;
+	[SerializeField, FormerlySerializedAs("animationCurve")] 
+	private AnimationCurve _animationCurve;
+	[SerializeField, FormerlySerializedAs("period")] 
+	private float _period = 2f;
+	[SerializeField, FormerlySerializedAs("speed")] 
+	private float _speed = 1f;
+
+	private float _curTime;
 
 	private void Update()
 	{
-		curTime += Time.deltaTime * speed;
-		if (curTime >= period)
+		_curTime += Time.deltaTime * _speed;
+		if (_curTime >= _period)
 		{
-			curTime -= curTime;
+			_curTime -= _curTime;
 		}
-		float yValue = animationCurve.Evaluate(curTime);
+		float yValue = _animationCurve.Evaluate(_curTime);
 		transform.eulerAngles = new Vector3(transform.eulerAngles.x, yValue, transform.eulerAngles.z);
 	}
 

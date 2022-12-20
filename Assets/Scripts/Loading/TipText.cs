@@ -1,20 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using TMPro;
 
 namespace Loading
 {
+	/// <summary>
+	/// ∆¡ ≈ÿΩ∫∆Æ
+	/// </summary>
 	public class TipText : MonoBehaviour
 	{
-		public TipSO tipSO;
-		private int tipTextIndex;
-		private TextMeshProUGUI tipText;
+		[SerializeField, FormerlySerializedAs("tipSO")]
+		public TipSO _tipSO;
+		private int _tipTextIndex;
+		private TextMeshProUGUI _tipText;
 
 		public void Start()
 		{
-			tipText = GetComponent<TextMeshProUGUI>();
-			tipTextIndex = Random.Range(0, tipSO.tiptexts.Length - 1);
+			_tipText = GetComponent<TextMeshProUGUI>();
+			_tipTextIndex = Random.Range(0, _tipSO.tiptexts.Length - 1);
 			StartCoroutine(TipTextChange());
 		}
 
@@ -22,12 +27,12 @@ namespace Loading
 		{
 			while(true)
 			{
-				string text = tipSO.tiptexts[tipTextIndex];
-				tipText.text = $"TIP : {tipSO.tiptexts[tipTextIndex]}";
+				string text = _tipSO.tiptexts[_tipTextIndex];
+				_tipText.text = $"TIP : {_tipSO.tiptexts[_tipTextIndex]}";
 
 				yield return new WaitForSeconds(text.Length);
 				
-				tipTextIndex = (tipTextIndex + 1) % tipSO.tiptexts.Length;
+				_tipTextIndex = (_tipTextIndex + 1) % _tipSO.tiptexts.Length;
 			}
 		}
 

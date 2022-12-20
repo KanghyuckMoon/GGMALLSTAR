@@ -7,8 +7,19 @@ using Addressable;
 
 namespace Sound
 {
+	/// <summary>
+	/// 효과음 및 배경음악을 재생하는 매니저
+	/// </summary>
 	public class SoundManager : MonoSingleton<SoundManager>
 	{
+		public float BGMPitch
+		{
+			get
+			{
+				return _bgmPitch;
+			}
+		}
+
 		private AudioMixer _audioMixer;
 		private AudioMixerGroup _bgmAudioGroup;
 		private AudioMixerGroup _effAudioGroup;
@@ -17,17 +28,60 @@ namespace Sound
 		private Dictionary<AudioBGMType, AudioClip> _bgmAudioClips = new Dictionary<AudioBGMType, AudioClip>();
 		private AudioBGMType _currentBGMType = AudioBGMType.Count;
 		private EFFSO _effSO;
-		private bool _isInit = false;
-		private float _pitch = 1.0f;
-		public float Pitch
+		private float _bgmPitch = 1.0f;
+
+		private bool _isInit = false; //사운드 매니저 초기화 여부
+
+
+		/// <summary>
+		/// 효과음 출력 함수
+		/// </summary>
+		/// <param name="audioName"></param>
+		public void PlayEFF(string audioName)
 		{
-			get
+			if (!_isInit)
 			{
-				return _pitch;
+				Init();
 			}
+
+			//EffSO에서 효과음을 가져온다
+			AudioClip clip = _effSO.GetEFFClip(audioName);
+			_effAudioSource.PlayOneShot(clip);
 		}
 
-		public void Start()
+		/// <summary>
+		/// 배경음악 재생
+		/// </summary>
+		/// <param name="audioBGMType"></param>
+		public void PlayBGM(AudioBGMType audioBGMType)
+		{
+			if (!_isInit)
+			{
+				Init();
+			}
+
+			if (_currentBGMType == audioBGMType)
+			{
+				return;
+			}
+
+			_currentBGMType = audioBGMType;
+
+			_bgmAudioSource.Stop();
+			_bgmAudioSource.clip = _bgmAudioClips[audioBGMType];
+			_bgmAudioSource.Play();
+		}
+
+		/// <summary>
+		/// BGM 속도 설정
+		/// </summary>
+		/// <param name="speed"></param>
+		public void SetBGMSpeed(float speed)
+		{
+			_bgmPitch = speed;
+			_bgmAudioSource.pitch = speed;
+		}
+		private void Start()
 		{
 			if (!_isInit)
 			{
@@ -82,6 +136,8 @@ namespace Sound
 			_bgmAudioSource = audioSource;
 
 			int count = (int)AudioBGMType.Count;
+
+			//브금들 미리 세팅
 			for (int i = 0; i < count; ++i)
 			{
 				string key = System.Enum.GetName(typeof(AudioBGMType), i);
@@ -105,73 +161,6 @@ namespace Sound
 			audioSource.loop = true;
 
 			_effAudioSource = audioSource;
-		}
-
-		/// <summary>
-		/// 효과음 재생 개량중 사용금지
-		/// </summary>
-		/// <param name="audioEFFType"></param>
-		public void PlayEFF(AudioEFFType audioEFFType)
-		{
-			if (!_isInit)
-			{
-				Init();
-			}
-
-			//_effAudioSource[audioEFFType].Play();
-		}
-
-		public void PlayEFF(string audioName)
-		{
-			if (!_isInit)
-			{
-				Init();
-			}
-
-			_effAudioSource.PlayOneShot(_effSO.GetEFFClip(audioName));
-		}
-		public void PlayEFF(AudioClip clip)
-		{
-			if (!_isInit)
-			{
-				Init();
-			}
-
-			_effAudioSource.PlayOneShot(clip);
-		}
-
-
-		/// <summary>
-		/// 배경음악 재생
-		/// </summary>
-		/// <param name="audioBGMType"></param>
-		public void PlayBGM(AudioBGMType audioBGMType)
-		{
-			if (!_isInit)
-			{
-				Init();
-			}
-
-			if (_currentBGMType == audioBGMType)
-			{
-				return;
-			}
-
-			_currentBGMType = audioBGMType;
-
-			_bgmAudioSource.Stop();
-			_bgmAudioSource.clip = _bgmAudioClips[audioBGMType];
-			_bgmAudioSource.Play();
-		}
-
-		/// <summary>
-		/// BGM 속도 설정
-		/// </summary>
-		/// <param name="speed"></param>
-		public void SetBGMSpeed(float speed)
-		{
-			_pitch = speed;
-			_bgmAudioSource.pitch = speed;
 		}
 
 	}

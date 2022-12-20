@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using TMPro;
 
@@ -8,16 +9,18 @@ namespace Inventory
 {
 	public class ItemPopUpManager : MonoBehaviour
 	{
-		public GameObject popUpImage;
-		public TextMeshProUGUI nameText;
+		[SerializeField, FormerlySerializedAs("popUpImage")]
+		private GameObject _popUpImage;
+		[SerializeField, FormerlySerializedAs("nameText")]
+		private TextMeshProUGUI _nameText;
 
-		private bool isShow = false;
-		private Queue<string> getItemQueue = new Queue<string>();
+		private bool _isShow = false;
+		private Queue<string> _getItemQueue = new Queue<string>();
 
 		public void SetItemPopUp(string itemName)
 		{
-			getItemQueue.Enqueue(itemName);
-			if (!isShow)
+			_getItemQueue.Enqueue(itemName);
+			if (!_isShow)
 			{
 				ShowGetItem();
 			}
@@ -25,18 +28,18 @@ namespace Inventory
 
 		private void ShowGetItem()
 		{
-			if (getItemQueue.Count > 0)
+			if (_getItemQueue.Count > 0)
 			{
-				nameText.text = $"æ∆¿Ã≈€ »πµÊ : {getItemQueue.Dequeue()}";
-				popUpImage.gameObject.SetActive(true);
+				_nameText.text = $"æ∆¿Ã≈€ »πµÊ : {_getItemQueue.Dequeue()}";
+				_popUpImage.gameObject.SetActive(true);
 
-				isShow = true;
+				_isShow = true;
 				Invoke("ShowGetItem", 1f);
 			}
 			else
 			{
-				isShow = false;
-				popUpImage.gameObject.SetActive(false);
+				_isShow = false;
+				_popUpImage.gameObject.SetActive(false);
 			}
 		}
 
