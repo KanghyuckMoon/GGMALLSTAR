@@ -1,73 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using TMPro;
 using System;
 
-public class TutorialManager : MonoBehaviour
+namespace Tutorial
 {
-	private int tutorialStep = 0;
-	public int TutorialStrp => tutorialStep;
-
-	[SerializeField] private TutorialStepSO tutorialStepSO;
-	[SerializeField] private TextMeshProUGUI tutorialText;
-
-	private void Start()
+	public class TutorialManager : MonoBehaviour
 	{
-		SetText();
-		StartCoroutine(UpdateTutorial());
-		StartCoroutine(SetHP());
-	}
+		public int TutorialStrp => _tutorialStep;
+		
+		private int _tutorialStep = 0;
 
-	public void NextStep()
-	{
-		++tutorialStep;
-		SetText();
-	}
 
-	private void SetText()
-	{
-		tutorialText.text = $"{tutorialStepSO.stepText[tutorialStep]}";
-	}
+		[SerializeField, FormerlySerializedAs("tutorialStepSO")] 
+		private TutorialStepSO _tutorialStepSO;
+		[SerializeField, FormerlySerializedAs("tutorialText")] 
+		private TextMeshProUGUI _tutorialText;
 
-	private IEnumerator SetHP()
-	{
-		TutorialSpawner tutorialSpawner = FindObjectOfType<TutorialSpawner>();
-		Character characterP1 = tutorialSpawner.Player1.GetComponent<Character>();
-		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
-		CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
-		Character characterP2 = tutorialSpawner.Player2.GetComponent<Character>();
-		CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
-		CharacterLevel characterLevelP2 = characterP2.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
-		characterLevelP2.AddExp(1000);
-		while (true)
+		private void Start()
 		{
-			yield return null;
-			characterStatP1.SetHP(characterStatP1.MaxHP);
-			characterStatP2.SetHP(characterStatP2.MaxHP);
+			SetText();
+			StartCoroutine(UpdateTutorial());
+			StartCoroutine(SetHP());
 		}
-	}
 
-	private IEnumerator UpdateTutorial()
-	{
-		TutorialSpawner tutorialSpawner = FindObjectOfType<TutorialSpawner>();
-		Character characterP1 = tutorialSpawner.Player1.GetComponent<Character>();
-		CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
-		CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
-		while (tutorialStep < 11)
+		/// <summary>
+		/// 다음 튜토리얼 표시
+		/// </summary>
+		public void NextStep()
 		{
-			yield return new WaitForSeconds(5f);
-			NextStep();
-			switch (tutorialStep)
+			++_tutorialStep;
+			SetText();
+		}
+
+		private void SetText()
+		{
+			_tutorialText.text = $"{_tutorialStepSO.stepText[_tutorialStep]}";
+		}
+
+		private IEnumerator SetHP()
+		{
+			TutorialSpawner tutorialSpawner = FindObjectOfType<TutorialSpawner>();
+			Character characterP1 = tutorialSpawner.Player1.GetComponent<Character>();
+			CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+			CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
+			Character characterP2 = tutorialSpawner.Player2.GetComponent<Character>();
+			CharacterStat characterStatP2 = characterP2.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+			CharacterLevel characterLevelP2 = characterP2.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
+			characterLevelP2.AddExp(1000);
+			while (true)
 			{
-				case 5:
-				case 7:
-				case 9:
-					characterLevelP1.AddExp(100);
-				break;
+				yield return null;
+				characterStatP1.SetHP(characterStatP1.MaxHP);
+				characterStatP2.SetHP(characterStatP2.MaxHP);
 			}
 		}
-		Loading.LoadingScene.Instance.LoadScene("Main", Loading.LoadingScene.LoadingSceneType.Normal);
+
+		private IEnumerator UpdateTutorial()
+		{
+			TutorialSpawner tutorialSpawner = FindObjectOfType<TutorialSpawner>();
+			Character characterP1 = tutorialSpawner.Player1.GetComponent<Character>();
+			CharacterStat characterStatP1 = characterP1.GetCharacterComponent<CharacterStat>(ComponentType.Stat);
+			CharacterLevel characterLevelP1 = characterP1.GetCharacterComponent<CharacterLevel>(ComponentType.Level);
+			while (_tutorialStep < 11)
+			{
+				yield return new WaitForSeconds(5f);
+				NextStep();
+				switch (_tutorialStep)
+				{
+					case 5:
+					case 7:
+					case 9:
+						characterLevelP1.AddExp(100);
+						break;
+				}
+			}
+			Loading.LoadingScene.Instance.LoadScene("Main", Loading.LoadingScene.LoadingSceneType.Normal);
+		}
+
 	}
 
 }

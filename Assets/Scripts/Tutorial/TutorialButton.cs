@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialButton : MonoBehaviour
+namespace Tutorial
 {
-	public void SetTutorial()
+	public class TutorialButton : MonoBehaviour
 	{
-		SelectDataSO.isTutorial = true;
-		SelectDataSO.characterSelectP1 = CharacterSelect.Jaeby;
-		SelectDataSO.characterSelectP2 = CharacterSelect.Frog;
+		/// <summary>
+		/// 튜토리얼 데이터 설정
+		/// </summary>
+		public void SetTutorial()
+		{
+			SelectDataSO.isTutorial = true;
+			SelectDataSO.characterSelectP1 = CharacterSelect.Jaeby;
+			SelectDataSO.characterSelectP2 = CharacterSelect.Frog;
+		}
 	}
+
 }

@@ -5,9 +5,13 @@ using UnityEngine.Audio;
 
 namespace Setting
 {
+	/// <summary>
+	/// 소리 설정
+	/// </summary>
     public class SoundSetting : MonoBehaviour
     {
-        [SerializeField] AudioMixer _audioMixer;
+        [SerializeField] 
+		private AudioMixer _audioMixer;
 
 		/// <summary>
 		/// 브금 크기 설정

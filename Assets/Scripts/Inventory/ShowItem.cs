@@ -10,7 +10,7 @@ namespace Inventory
 		public Transform pedestal;
 		public TextMeshProUGUI nameText;
 		public TextMeshProUGUI captionText;
-		public int testShowItemIndex;
+		public int _showItemIndex;
 		public Transform contents;
 		public GameObject itemNamePanel;
 		public float namePanelHeightSize;
@@ -29,7 +29,7 @@ namespace Inventory
 			InitItemList();
 			if(InventoryStaticSO.itemDatas.Count > 0)
 			{
-				SetItem(InventoryStaticSO.itemDatas[testShowItemIndex]);
+				SetItem(InventoryStaticSO.itemDatas[_showItemIndex]);
 			}
 		}
 
@@ -52,17 +52,17 @@ namespace Inventory
 		{
 			if (Input.GetKeyDown(KeyCode.DownArrow))
 			{
-				testShowItemIndex = (testShowItemIndex + 1) % InventoryStaticSO.itemDatas.Count;
-				SetItem(InventoryStaticSO.itemDatas[testShowItemIndex]);
+				_showItemIndex = (_showItemIndex + 1) % InventoryStaticSO.itemDatas.Count;
+				SetItem(InventoryStaticSO.itemDatas[_showItemIndex]);
 			}
 			if (Input.GetKeyDown(KeyCode.UpArrow))
 			{
-				testShowItemIndex--;
-				if (testShowItemIndex < 0)
+				_showItemIndex--;
+				if (_showItemIndex < 0)
 				{
-					testShowItemIndex = InventoryStaticSO.itemDatas.Count - 1;
+					_showItemIndex = InventoryStaticSO.itemDatas.Count - 1;
 				}
-				SetItem(InventoryStaticSO.itemDatas[testShowItemIndex]);
+				SetItem(InventoryStaticSO.itemDatas[_showItemIndex]);
 			}
 		}
 
@@ -84,16 +84,16 @@ namespace Inventory
 
 			//테스트코드
 			{
-				namePanelObjectList[testShowItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
+				namePanelObjectList[_showItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.red;
 				namePanelObjectList[testPreviousItemIndex].GetComponentInChildren<TextMeshProUGUI>().color = Color.white;
 				SoundManager.Instance.PlayEFF(effName);
 
 				var contentRect = contents.GetComponent<RectTransform>();
-				float addHeight = (testShowItemIndex - testPreviousItemIndex) * namePanelHeightSize;
+				float addHeight = (_showItemIndex - testPreviousItemIndex) * namePanelHeightSize;
 
-				if(Mathf.Abs(testShowItemIndex - testPreviousItemIndex) > 1)
+				if(Mathf.Abs(_showItemIndex - testPreviousItemIndex) > 1)
 				{
-					if (testShowItemIndex > testPreviousItemIndex)
+					if (_showItemIndex > testPreviousItemIndex)
 					{
 						posY = namePanelObjectList.Count * 100 - viewPortHeightSize;
 					}
@@ -113,7 +113,7 @@ namespace Inventory
 					contentRect.anchoredPosition = vec2;
 				}
 
-				testPreviousItemIndex = testShowItemIndex;
+				testPreviousItemIndex = _showItemIndex;
 			}
 		}
 	}
