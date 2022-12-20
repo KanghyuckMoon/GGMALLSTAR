@@ -166,22 +166,30 @@ public class CharacterDodge : CharacterComponent
         }
     }
 
-
+    /// <summary>
+    /// Dodge
+    /// </summary>
     public void Dodge()
     {
+        // 죽었는지 확인
         if (!Character.GetCharacterComponent<CharacterStat>(ComponentType.Stat).IsAlive)
         {
             Character.Rigidbody.velocity = Vector3.zero;
             return;
         }
+
+        // 스턴중인지 확인
         if (_stunTime > 0f)
         {
             return;
         }
+
+        // 쿨타임인지 확인
         if (_coolTime > 0f)
         {
             return;
         }
+
 
         Effect.EffectManager.Instance.SetEffect(Effect.EffectType.Dirty_02, Character.transform.position);
         Character.StartCoroutine(ReturnState(Character.tag));
