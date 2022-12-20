@@ -197,6 +197,7 @@ public class CharacterDamage : CharacterComponent
         characterGravity.SetHitTime(stunHitTime);
         Character.Rigidbody.velocity = Vector3.zero;
         CharacterInput characterInput = Character.GetCharacterComponent<CharacterInput>(ComponentType.Input);
+
         if (characterInput is not null)
         {
             characterInput.SetStunTime(stunHitTime);
