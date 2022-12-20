@@ -6,7 +6,7 @@ using Utill;
 
 namespace Json
 {
-    public class SaveManager
+    public static class SaveManager
 	{
 		private static string _dataPath = Application.persistentDataPath + "/Save/";
 
