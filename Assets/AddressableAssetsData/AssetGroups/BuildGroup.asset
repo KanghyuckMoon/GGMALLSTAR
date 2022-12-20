@@ -25,10 +25,6 @@ MonoBehaviour:
     m_Address: AllItemSO
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 6a47238166e8739448fceb092cc64268
-    m_Address: ComboCountEff
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: ae25d12b8dd343c49abfc0a1b8465079
     m_Address: Dirty_01
     m_ReadOnly: 0
