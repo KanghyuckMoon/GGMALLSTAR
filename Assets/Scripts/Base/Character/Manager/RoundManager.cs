@@ -304,7 +304,7 @@ public class RoundManager : MonoBehaviour
 	{
 		roundEndEvent?.Invoke();
 		yield return new WaitForSeconds(time);
-		SoundManager.Instance.SetBGMSpeed(SoundManager.Instance.Pitch + 0.1f);
+		SoundManager.Instance.SetBGMSpeed(SoundManager.Instance.BGMPitch + 0.1f);
 		HPFullSetting();
 		PostionSetting();
 		RoundSetting();

@@ -22,11 +22,5 @@ namespace Sound
 		Damvi_Win,
 		Count,
 	}
-
-	public enum AudioEFFType
-	{
-		Count,
-	}
-
 }
 
