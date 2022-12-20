@@ -42,16 +42,16 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     private HitBoxDataSO _hitBoxDataSO = null;
     public HitBoxDataSO HitBoxDataSO
-	{
+    {
         get
-		{
+        {
             return _hitBoxDataSO;
-		}
+        }
         set
-		{
+        {
             _hitBoxDataSO = value;
         }
-	}
+    }
 
     private Dictionary<ComponentType, CharacterComponent> _characterComponents = null;
     public T GetCharacterComponent<T>() where T : CharacterComponent
@@ -103,6 +103,10 @@ public abstract class Character : MonoBehaviour
     private void Start()
     {
         SetComponent();
+        foreach (CharacterComponent characterComponent in _characterComponents.Values)
+        {
+            characterComponent?.Start();
+        }
     }
 
     private void Update()

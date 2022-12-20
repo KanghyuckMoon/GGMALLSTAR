@@ -53,7 +53,7 @@ public class Bullet_Damvi : MonoBehaviour
         {
             CharacterAttack characterAttack = _character.GetCharacterComponent<CharacterAttack>(ComponentType.Attack);
             characterAttack.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>(ComponentType.Damage);
-            characterAttack.TargetCharacterDamage?.OnAttcked(null, _hitBoxData, other.ClosestPoint(transform.position), _direction.x > 0 ? true : false);
+            characterAttack.TargetCharacterDamage?.OnAttacked(null, _hitBoxData, other.ClosestPoint(transform.position), _direction.x > 0 ? true : false);
 
             //AI
             CharacterAIInput aiInput = characterAttack.Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
@@ -75,9 +75,9 @@ public class Bullet_Damvi : MonoBehaviour
             gameObject.SetActive(false);
             PoolManager.AddObjToPool("Assets/Prefabs/Fireball_Frog.prefab", gameObject);
         }
-        
+
     }
-    
+
     private void OnEnable()
     {
         StartCoroutine(SetActiveCoroutine());
@@ -92,7 +92,7 @@ public class Bullet_Damvi : MonoBehaviour
     private IEnumerator SetActiveCoroutine(bool active = false)
     {
         yield return new WaitForSeconds(10f);
-        if(gameObject.activeSelf)
+        if (gameObject.activeSelf)
         {
             gameObject.SetActive(active);
             Pool.PoolManager.AddObjToPool("Bullet_Damvi", gameObject);

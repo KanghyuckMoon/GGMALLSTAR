@@ -92,7 +92,6 @@ public class CharacterSkill_MythicalDice : CharacterSkill
     public override void Start()
     {
         base.Start();
-        RollDice();
     }
 
     private IEnumerator DioTheWorld(float time)
@@ -120,9 +119,9 @@ public class CharacterSkill_MythicalDice : CharacterSkill
         while (timer < time)
         {
             targetCharacter.transform.position = targetPos;
-            
-            if(input != null)
-			{
+
+            if (input != null)
+            {
                 input.SetStunTime(1f);
             }
             if (aiInput != null)
@@ -130,7 +129,7 @@ public class CharacterSkill_MythicalDice : CharacterSkill
                 aiInput.SetStunTime(1f);
             }
             gravity.SetHitTime(1f);
-            move.SetSturnTime(1f);
+            move.SetStunTime(1f);
 
             timer += Time.deltaTime;
             yield return null;
@@ -150,11 +149,11 @@ public class CharacterSkill_MythicalDice : CharacterSkill
         Transform dicePos = null;
 
         if (Character is Character_MythicalDice)
-		{
+        {
             dicePos = (Character as Character_MythicalDice).DicePosition;
 
         }
-        else if(Character as Character_MythicalDice_AI)
+        else if (Character as Character_MythicalDice_AI)
         {
             dicePos = (Character as Character_MythicalDice_AI).DicePosition;
         }

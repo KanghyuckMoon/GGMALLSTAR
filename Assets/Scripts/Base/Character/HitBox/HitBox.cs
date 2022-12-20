@@ -39,15 +39,15 @@ public class HitBox : MonoBehaviour
     public void OwnerHitTime(float hitTime)
     {
         if (!RoundManager.ReturnIsSetting())
-		{
+        {
             return;
-		}
+        }
 
         Owner.Character.GetCharacterComponent<CharacterGravity>(ComponentType.Gravity).SetHitTime(hitTime);
         Vector3 vector = Owner.Character.Rigidbody.velocity;
         Owner.Character.Rigidbody.velocity = Vector3.zero;
         CharacterInput characterInput = Owner.Character.GetCharacterComponent<CharacterInput>(ComponentType.Input);
-        
+
         // 캐릭터 경직
         if (characterInput is not null)
         {
@@ -73,21 +73,21 @@ public class HitBox : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(_owner != null && other.gameObject == _owner.Character.gameObject)
-		{
+        if (_owner != null && other.gameObject == _owner.Character.gameObject)
+        {
             return;
-		}
+        }
 
         if (!other.gameObject.CompareTag(_owner.Character.tag) && !other.gameObject.CompareTag("Invincibility") && (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Player2")))
         {
             Owner.TargetCharacterDamage = other?.gameObject?.GetComponent<Character>()?.GetCharacterComponent<CharacterDamage>(ComponentType.Damage);
-            Owner.TargetCharacterDamage?.OnAttcked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
+            Owner.TargetCharacterDamage?.OnAttacked(this, hitBoxData, other.ClosestPoint(transform.position), Owner.IsRight);
             OnHit?.Invoke();
 
             //AI
             CharacterAIInput aiInput = Owner.Character.GetCharacterComponent<CharacterAIInput>(ComponentType.Input);
             if (aiInput is not null)
-			{
+            {
                 aiInput.IsHit(hitBoxData.actionName);
             }
 
@@ -99,18 +99,18 @@ public class HitBox : MonoBehaviour
             {
                 StarEffect starEffect = PoolManager.GetItem("StarEff").GetComponent<StarEffect>();
                 starEffect.SetEffect(transform.position, Owner.Character.GetCharacterComponent<CharacterLevel>(ComponentType.Level), hitBoxData.addExp / expCount);
-			}
+            }
 
         }
     }
 
     private IEnumerator OwnerHitTimeEnd(Character character, float hitTime, Vector3 vec)
-	{
+    {
         yield return new WaitForSeconds(hitTime);
         if (character is not null && RoundManager.ReturnIsSetting())
-		{
+        {
             character.Rigidbody.velocity = vec;
-		}
+        }
     }
 
     private void OnEnable()

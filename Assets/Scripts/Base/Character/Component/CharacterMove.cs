@@ -108,7 +108,7 @@ public class CharacterMove : CharacterComponent
         }
     }
 
-    public void SetSturnTime(float time)
+    public void SetStunTime(float time)
     {
         _sturnTime = time;
     }
