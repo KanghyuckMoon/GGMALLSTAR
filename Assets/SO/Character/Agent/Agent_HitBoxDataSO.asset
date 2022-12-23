@@ -15,7 +15,7 @@ MonoBehaviour:
   hitBoxDatasList:
   - hitBoxDatas:
     - actionName: Attack
-      damage: 15
+      damage: 8
       knockBack: 1
       knockAngle: 10
       hitTime: 0.2
@@ -38,7 +38,7 @@ MonoBehaviour:
       knockBack: 1
       knockAngle: -90
       hitTime: 0.6
-      sturnTime: 0.7
+      sturnTime: 0.5
       _attackOffset: {x: 0, y: 0, z: 0}
       _attackSize: {x: 1, y: 1, z: 1}
       shakePower: 7

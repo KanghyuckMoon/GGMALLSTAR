@@ -15,10 +15,10 @@ MonoBehaviour:
   hitBoxDatasList:
   - hitBoxDatas:
     - actionName: Attack
-      damage: 5
+      damage: 8
       knockBack: 5
       knockAngle: 15
-      hitTime: 0.3
+      hitTime: 0.25
       sturnTime: 0.2
       _attackOffset: {x: 0.25, y: 0.15, z: 0}
       _attackSize: {x: 0.5, y: 0.3, z: 0}
@@ -31,10 +31,10 @@ MonoBehaviour:
       hitEffectDirectionType: 0
       hitEffSoundName: se_common_sword_hit_s
       atkEffSoundName: se_common_swing_04
-      addExp: 10
+      addExp: 15
   - hitBoxDatas:
     - actionName: WindSkill
-      damage: 5
+      damage: 8
       knockBack: 10
       knockAngle: 20
       hitTime: 0.1
@@ -53,7 +53,7 @@ MonoBehaviour:
       addExp: 30
   - hitBoxDatas:
     - actionName: FireBite
-      damage: 12
+      damage: 15
       knockBack: 1
       knockAngle: 0
       hitTime: 0.5
@@ -72,7 +72,7 @@ MonoBehaviour:
       addExp: 15
   - hitBoxDatas:
     - actionName: EarthGolemAttack
-      damage: 17
+      damage: 25
       knockBack: 3
       knockAngle: 0
       hitTime: 0.1
@@ -91,7 +91,7 @@ MonoBehaviour:
       addExp: 20
   - hitBoxDatas:
     - actionName: WaterBeam
-      damage: 7
+      damage: 10
       knockBack: 5
       knockAngle: 5
       hitTime: 0.5
@@ -110,7 +110,7 @@ MonoBehaviour:
       addExp: 15
   - hitBoxDatas:
     - actionName: ALLSTAR
-      damage: 40
+      damage: 60
       knockBack: 3
       knockAngle: 90
       hitTime: 0.5

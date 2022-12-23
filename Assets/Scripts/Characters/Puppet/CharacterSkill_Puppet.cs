@@ -41,24 +41,24 @@ public class CharacterSkill_Puppet : CharacterSkill
         get => _isEarthGolemSpawn;
         set => _isEarthGolemSpawn = value;
     }
-    
+
     public CharacterSkill_Puppet(Character character) : base(character)
     {
     }
 
-	protected override void SetEvent()
-	{
-		base.SetEvent();
+    protected override void SetEvent()
+    {
+        base.SetEvent();
 
         // Elemental Transform Caching
-        if(Character is Character_Puppet)
-		{
+        if (Character is Character_Puppet)
+        {
             _elementalTransform = (Character as Character_Puppet)?.ElementalTransform;
-		}
-        else if(Character is Character_Puppet_AI)
-		{
+        }
+        else if (Character is Character_Puppet_AI)
+        {
             _elementalTransform = (Character as Character_Puppet_AI)?.ElementalTransform;
-		}
+        }
 
         // Elemental variable init
         _elemental = new GameObject[(uint)ElementalType.Count];
@@ -185,7 +185,7 @@ public class CharacterSkill_Puppet : CharacterSkill
         }, EventType.KEY_DOWN);
     }
 
-	public override void Update()
+    public override void Update()
     {
         base.Update();
         if (skillCoolTime1 < Character.CharacterSO.skill1Delay)
@@ -225,7 +225,8 @@ public class CharacterSkill_Puppet : CharacterSkill
         if (RoundManager.ReturnIsSetting())
         {
             Sound.SoundManager.Instance.PlayEFF("se_common_fire_ll_damage");
-            PoolManager.GetItem("Assets/Prefabs/FireBeamALLSTAR.prefab").GetComponent<FireBeamALLSTARSkill>().SetFireBeamALLSTARSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[5].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character.transform.position); // != null ? _character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character.gameObject.transform.position : _character.transform.position);
+            Debug.Log(_character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character.transform.position);
+            PoolManager.GetItem("Assets/Prefabs/FireBeamALLSTAR.prefab").GetComponent<FireBeamALLSTARSkill>().SetFireBeamALLSTARSkill(_character, _character.HitBoxDataSO.hitBoxDatasList[5].hitBoxDatas[0], _character.GetCharacterComponent<CharacterAttack>().TargetCharacterDamage.Character.transform.position);
         }
     }
 }
